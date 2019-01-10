@@ -1,0 +1,66 @@
+ <div id="slide-page">
+    <div class="bcg"
+
+                          style="background-position: 50% 70%;background-attachment: unset;";>
+        <div class="hsContainer">
+            <div class="hsContent center">
+              <div>
+                <h1 class="headline" style="color:{{settings.banner_color}}">{{ page.title }}</h1>
+<!--                 <p class="subtitle" style="color:{{settings.banner_color}}">{{ settings.image_contact_subtitle }}</p> -->
+              </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <a name="pagecontent" id="pagecontent"></a>
+  <div class="container">
+    <h3 class="center">All Of Our Wines Are Scrutinized And Investigated Carefully To Meet Our Exact And Specific Standards Of Purity – <br /> Including Lab Analysis By A Certified Enologist.</h3>
+  <br class="clear" />
+
+<!-- <div class="ten columns offset-by-three page clearfix"> -->
+<!--   <div class="feature_divider"></div> -->
+
+
+  {% assign cols = page.content | split: '<!-- split -->' %}
+  {% if cols.size == 2 %}
+    <div class="eight columns alpha">
+      {{ cols[0] }}
+    </div>
+    <div class="eight columns omega">
+      {{ cols[1] }}
+    </div>
+  {% elsif cols.size == 3 %}
+    <div class="one-third column alpha">
+      {{ cols[0] }}
+    </div>
+    <div class="one-third column">
+      {{ cols[1] }}
+    </div>
+    <div class="one-third column omega">
+      {{ cols[2] }}
+    </div>
+  {% elsif cols.size == 4 %}
+    <div class="four columns alpha">
+      {{ cols[0] }}
+    </div>
+    <div class="four columns">
+      {{ cols[1] }}
+    </div>
+    <div class="four columns">
+      {{ cols[2] }}
+    </div>
+    <div class="four columns omega">
+      {{ cols[3] }}
+    </div>
+  {% else %}
+    {{ page.content }}
+  {% endif %}
+
+</div>
+<a class="action_button secondary" style="background: crimson; color: white"href="https://www.dryfarmwines.com/products/wine-membership">Shop Now</a>
+
+    <style>
+#slide-page .bcg {background-image:url("https://cdn.shopify.com/s/files/1/0924/9540/files/Fotolia_41602907_M.jpg?1688153643302402031");}
+#slide-page .hsContainer { height: 400px; }
+    </style>

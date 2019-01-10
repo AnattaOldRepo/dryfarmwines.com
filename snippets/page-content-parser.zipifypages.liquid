@@ -1,0 +1,110 @@
+{% capture zp_page_content %}
+  {% assign zp_page_content = '' | append: zp_current_entity_content | split: ':|zpendofcontent|:' | first %}
+  {% for zp_page_metafield in zp_current_entity.metafields['zipifypagesparts'] %}
+    {% assign zp_page_content = zp_page_content | append: zp_page_metafield[1] %}
+  {% endfor %}
+  {% assign zp_page_product_tags = 'zp_product3,zp_product2,zp_product1,zp_product,zp_bvh_product3,zp_bvh_product2,zp_bvh_product1,zp_bv_product3,zp_bv_product2,zp_bv_product1' | split: ',' %}
+  {% assign zp_page_product_tags_views = 'three-products-view.zipifypages,three-products-view.zipifypages,three-products-view.zipifypages,product-view.zipifypages,best-value-horizontal-view.zipifypages,best-value-horizontal-view.zipifypages,best-value-horizontal-view.zipifypages,best-value-view.zipifypages,best-value-view.zipifypages,best-value-view.zipifypages' | split: ',' %}
+  {% assign zp_main_product_selector = 'ProductSelect' %}
+  {% for zp_page_product_tag in zp_page_product_tags %}
+    {% capture zp_page_content %}
+      {% assign zp_page_product_view = zp_page_product_tags_views[forloop.index0] %}
+      {% assign zp_opened_product_tag = zp_page_product_tag | prepend: '<' | append: '>' %}
+{% assign zp_closed_product_tag = zp_page_product_tag | prepend: '</' | append: '>' %}
+{% assign zp_page_products = zp_page_content | append: '' | split: zp_opened_product_tag %}
+{% assign zp_pg_content = '' %}
+{% assign zp_settings_separator = ':|~|:' %}
+{% assign zp_key_separator = ':--:' %}
+{% for zp_part in zp_page_products %}
+  {% assign zp_product_settings_content = zp_part | split: zp_closed_product_tag %}
+  {% assign zp_product_settings_content_size = zp_product_settings_content | size %}
+  {% if zp_product_settings_content_size < 2 %}
+    {% assign zp_pg_content = zp_pg_content | append: zp_part %}
+  {% else %}
+    {% assign zp_object_settings_data = zp_product_settings_content[0] %}
+    {% assign zp_settings_keys = '' %}{% assign zp_settings_values = '' %}{% assign zp_object_settings = zp_object_settings_data | strip | split: zp_settings_separator %}{% for zp_setting in zp_object_settings %} {% assign zp_setting_key = zp_setting | strip | split: zp_key_separator %} {% assign zp_remove_setting_key = zp_setting_key | first %} {% assign zp_setting_key = zp_setting_key | first | downcase %} {% assign zp_settings_keys = zp_settings_keys | append: zp_settings_separator | append: zp_setting_key %} {% assign zp_remove_setting_key = zp_remove_setting_key | append: zp_key_separator %} {% assign zp_setting_value = zp_setting | remove_first: zp_remove_setting_key %} {% assign zp_settings_values = zp_settings_values | append: zp_settings_separator | append: zp_setting_value %}{% endfor %}{% assign zp_settings_keys = zp_settings_keys | remove_first: zp_settings_separator %}{% assign zp_settings_values = zp_settings_values | remove_first: zp_settings_separator %}{% assign zp_settings_keys = zp_settings_keys | split: zp_settings_separator %}{% assign zp_settings_values = zp_settings_values | split: zp_settings_separator %}
+    {% assign zp_product_settings_keys = zp_settings_keys %}
+    {% assign zp_product_settings_values = zp_settings_values %}
+    {% assign zp_product_image_position = '' %}
+    {% assign zp_product_image = '' %}
+    {% assign zp_selected_variants = '' %}
+    {% for zp_setting_key in zp_product_settings_keys %}
+      {% assign zp_product_setting_value = '' | append: zp_product_settings_values[forloop.index0] %}
+      {% if zp_setting_key == 'handle' %}
+        {% assign zp_product_handle = zp_product_setting_value %}
+      {% elsif zp_setting_key == 'imgpos' %}
+        {% assign zp_product_image_position = zp_product_setting_value %}
+      {% elsif zp_setting_key == 'slctvrnt' %}
+        {% assign zp_selected_variants = zp_product_setting_value %}
+      {% elsif zp_setting_key == 'prdimg' %}
+        {% assign zp_product_image = zp_product_setting_value %}
+      {% elsif zp_setting_key == 'prdbtnltp' %}
+        {% assign zp_product_link_type = zp_product_setting_value %}
+      {% elsif zp_setting_key == 'shwqty' %}
+        {% assign zp_product_show_quantity = zp_product_setting_value %}
+      {% endif %}
+    {% endfor %}
+    {% assign zp_selected_variants = zp_selected_variants | split: ',' %}
+    {% assign product = all_products[zp_product_handle] %}
+    {% assign zp_product_id_size = '' | append: product.id | size %}
+    {% if zp_product_id_size < 1 %}
+      {% assign product = nil %}
+    {% endif %}
+    {% assign zp_hide_variants_link_types = 'product,external,zipify_page' | split: ',' %}
+    {% capture zp_product_snippet %}
+      {% include zp_page_product_view with product %}
+    {% endcapture %}
+    {% assign zp_object_settings_data = 'txtblattr:--:txtblclass:##:class:##::|~|:ttl5blattr:--:ttl5blclass:##:class:##::|~|:ttl4blattr:--:ttl4blclass:##:class:##::|~|:ttl3blattr:--:ttl3blclass:##:class:##::|~|:ttl2blattr:--:ttl2blclass:##:class:##::|~|:prdttlcss:--:prdttlclass:##:class:##::|~|:prdlbtnattr:--:prdlbtnclass:##:class:##::|~|:prdattr:--:prdclass:##:class:##::|~|:prdbtnattr:--:prdbtnclass:##:class:##::|~|:prdblattr:--:prdblclass:##:class:##::|~|:mcontclstpadd:--:mcontclstclass:##:class:##::|~|:mcontattr:--:mcontclass:##:class:##::|~|:lblblattr:--:lblblclass:##:class:##::|~|:imgblattr:--:imgblclass:##:class:##::|~|:img2blattr:--:img2blclass:##:class:##::|~|:descfnts:--:descclass:##:class:##::|~|:bvuppclr:--:bvuppclass:##:class:##::|~|:bvprcsv:--:bvprcsvclass:##:class:##::|~|:bvcrnrattr:--:bvcrnrclass:##:class:##::|~|:bprcttlcss:--:bprcttlclass:##:class:##:' %}
+{% assign zp_settings_keys = '' %}{% assign zp_settings_values = '' %}{% assign zp_object_settings = zp_object_settings_data | strip | split: zp_settings_separator %}{% for zp_setting in zp_object_settings %} {% assign zp_setting_key = zp_setting | strip | split: zp_key_separator %} {% assign zp_remove_setting_key = zp_setting_key | first %} {% assign zp_setting_key = zp_setting_key | first | downcase %} {% assign zp_settings_keys = zp_settings_keys | append: zp_settings_separator | append: zp_setting_key %} {% assign zp_remove_setting_key = zp_remove_setting_key | append: zp_key_separator %} {% assign zp_setting_value = zp_setting | remove_first: zp_remove_setting_key %} {% assign zp_settings_values = zp_settings_values | append: zp_settings_separator | append: zp_setting_value %}{% endfor %}{% assign zp_settings_keys = zp_settings_keys | remove_first: zp_settings_separator %}{% assign zp_settings_values = zp_settings_values | remove_first: zp_settings_separator %}{% assign zp_settings_keys = zp_settings_keys | split: zp_settings_separator %}{% assign zp_settings_values = zp_settings_values | split: zp_settings_separator %}
+{% for zp_setting_key in zp_settings_keys %}
+  {% assign zp_product_setting_value = nil %}
+  {% for zp_product_setting_key in zp_product_settings_keys %}
+    {% assign zp_product_key = zp_product_setting_key | downcase %}
+    {% assign zp_replacement_key = zp_setting_key | downcase %}
+    {% if zp_product_key == zp_replacement_key %}
+      {% assign zp_product_setting_value = '' | append: zp_product_settings_values[forloop.index0] | strip %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% assign zp_replace_data = zp_settings_values[forloop.index0] | split: ':##:' %}
+  {% assign zp_replacement_key = 'zps_' | append: zp_replace_data[0] | downcase %}
+  {% assign zp_find_attr_sq = '' | append: zp_replace_data[1] | strip | append: "='" %}
+  {% assign zp_find_attr_dq = '' | append: zp_replace_data[1] | strip | append: '="' %}
+  {% assign zp_replacement_default = '' | append: zp_replace_data[2] | strip %}
+  {% unless zp_product_setting_value == nil %}
+    {% assign zp_replacement_value = zp_product_setting_value | split: zp_find_attr_sq %}
+    {% assign zp_replacement_value = zp_replacement_value[1] | split: "'" | first | strip %}
+    {% assign zp_replace_value_size = zp_replacement_value | size %}
+    {% if zp_replace_value_size < 1 %}
+      {% assign zp_replacement_value = zp_product_setting_value | split: zp_find_attr_dq %}
+      {% assign zp_replacement_value = zp_replacement_value[1] | split: '"' | first | strip %}
+      {% assign zp_replace_value_size = zp_replacement_value | size %}
+    {% endif %}
+    {% if zp_replace_value_size < 1 %}
+      {% assign zp_replacement_value = zp_replacement_default %}
+    {% endif %}
+    {% assign zp_replacement_key_url_escape = zp_replacement_key | append: 'url_escape' | downcase %}{% assign zp_replacement_value_url_escape = zp_replacement_value | url_escape %}{% assign zp_replacement_key_escape = zp_replacement_key | append: 'escape' | downcase %}{% assign zp_replacement_value_escape = zp_replacement_value | escape %}{% assign zp_product_snippet = zp_product_snippet | replace: zp_replacement_key_url_escape, zp_replacement_value_url_escape | replace: zp_replacement_key_escape, zp_replacement_value_escape | replace: zp_replacement_key, zp_replacement_value %}
+  {% endunless %}
+{% endfor %}
+    {% for zp_setting_key in zp_product_settings_keys %}
+      {% assign zp_replacement_key = 'zps_' | append: zp_setting_key | downcase %}
+      {% assign zp_replacement_value = '' | append: zp_product_settings_values[forloop.index0] %}
+      {% assign zp_replacement_key_url_escape = zp_replacement_key | append: 'url_escape' | downcase %}{% assign zp_replacement_value_url_escape = zp_replacement_value | url_escape %}{% assign zp_replacement_key_escape = zp_replacement_key | append: 'escape' | downcase %}{% assign zp_replacement_value_escape = zp_replacement_value | escape %}{% assign zp_product_snippet = zp_product_snippet | replace: zp_replacement_key_url_escape, zp_replacement_value_url_escape | replace: zp_replacement_key_escape, zp_replacement_value_escape | replace: zp_replacement_key, zp_replacement_value %}
+    {% endfor %}
+    {% assign zp_pg_content = zp_pg_content | strip | append: zp_product_snippet %}
+    {% assign zp_pg_content = zp_pg_content | strip | append: zp_product_settings_content[1] %}
+  {% endif %}
+{% endfor %}
+{{ zp_pg_content | strip }}
+    {% endcapture %}
+  {% endfor %}
+  {% assign zp_translation = 'layout.customer.account' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'My Account' %}{% endif %}{% assign zp_page_content = zp_page_content | replace: '<zp_account_link_title></zp_account_link_title>', zp_translation %}{% assign zp_translation = 'layout.customer.log_out' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Log out' %}{% endif %}{% assign zp_page_content = zp_page_content | replace: '<zp_logout_link_title></zp_logout_link_title>', zp_translation %}{% assign zp_translation = 'layout.customer.log_in' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Login' %}{% endif %}{% assign zp_page_content = zp_page_content | replace: '<zp_login_link_title></zp_login_link_title>', zp_translation %}{% assign zp_translation = 'layout.customer.create_account' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Register' %}{% endif %}{% assign zp_page_content = zp_page_content | replace: '<zp_register_link_title></zp_register_link_title>', zp_translation %}{% assign zp_translation = 'layout.cart.title' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Cart' %}{% endif %}{% assign zp_page_content = zp_page_content | replace: '<zp_cart_link_title></zp_cart_link_title>', zp_translation %}{% assign zp_translation = 'general.search.placeholder' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Search' %}{% endif %}{% assign zp_page_content = zp_page_content | replace: 'zp_search_placeholder', zp_translation %}
+  {% assign zp_page_content = zp_page_content | replace: '<zp_cart_count></zp_cart_count>', cart.item_count | replace: '<zp_property_integration>', '' | replace: '</zp_property_integration>', '' | replace: '<zp_additional_integration>', '' | replace: '</zp_additional_integration>', '' | replace: '<zp_variant_integration>', '' | replace: '</zp_variant_integration>', '' | replace: '<zp_additional_property_integration>', '' | replace: '</zp_additional_property_integration>', '' | replace: '<zp_product_json_integration>', '' | replace: '</zp_product_json_integration>', '' | strip %}
+  {% assign zp_object_settings_data = 'txtcont:--::|~|:txtblclassescape:--::|~|:ttl5cont:--::|~|:ttl5blclassescape:--::|~|:ttl4cont:--::|~|:ttl4blclassescape:--::|~|:ttl3cont:--::|~|:ttl3blclassescape:--::|~|:ttl2cont:--::|~|:ttl2blclassescape:--::|~|:slctvrnturl_escape:--::|~|:selclassescape:--::|~|:prdurlescape:--::|~|:prdttlclassescape:--::|~|:prdttl:--::|~|:prdlbtnclassescape:--::|~|:prdimgaltescape:--::|~|:prdclassescape:--::|~|:prdbtnltpescape:--::|~|:prdbtncpturl_escape:--::|~|:prdbtncpt:--::|~|:prdbtnclassescape:--::|~|:prdblclassescape:--::|~|:prdbdhtml:--::|~|:mcontclstclassescape:--::|~|:mcontclassescape:--::|~|:lblvisattr:--::|~|:lbluptxt:--::|~|:lbltxtcont:--::|~|:lblmdltxt:--::|~|:lblblclassescape:--::|~|:imgimgattr:--::|~|:imgblclassescape:--::|~|:img2blclassescape:--::|~|:img2attr:--::|~|:descclassescape:--::|~|:clstidescape:--::|~|:bvuppclassescape:--::|~|:bvprcsvclassescape:--::|~|:bvcrnrclassescape:--::|~|:bprcttlclassescape:--::|~|:addcrtmsgurl_escape:--:' %}
+{% assign zp_settings_keys = '' %}{% assign zp_settings_values = '' %}{% assign zp_object_settings = zp_object_settings_data | strip | split: zp_settings_separator %}{% for zp_setting in zp_object_settings %} {% assign zp_setting_key = zp_setting | strip | split: zp_key_separator %} {% assign zp_remove_setting_key = zp_setting_key | first %} {% assign zp_setting_key = zp_setting_key | first | downcase %} {% assign zp_settings_keys = zp_settings_keys | append: zp_settings_separator | append: zp_setting_key %} {% assign zp_remove_setting_key = zp_remove_setting_key | append: zp_key_separator %} {% assign zp_setting_value = zp_setting | remove_first: zp_remove_setting_key %} {% assign zp_settings_values = zp_settings_values | append: zp_settings_separator | append: zp_setting_value %}{% endfor %}{% assign zp_settings_keys = zp_settings_keys | remove_first: zp_settings_separator %}{% assign zp_settings_values = zp_settings_values | remove_first: zp_settings_separator %}{% assign zp_settings_keys = zp_settings_keys | split: zp_settings_separator %}{% assign zp_settings_values = zp_settings_values | split: zp_settings_separator %}
+{% for zp_setting_key in zp_settings_keys %}
+  {% assign zp_replacement_key = 'zps_' | append: zp_setting_key | downcase %}
+  {% assign zp_page_content = zp_page_content | replace: zp_replacement_key, zp_settings_values[forloop.index0] %}
+{% endfor %}
+  {{ zp_page_content | strip }}
+{% endcapture %}

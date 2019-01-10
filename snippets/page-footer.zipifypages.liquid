@@ -1,0 +1,47 @@
+{% capture zp_blocks_json %}
+  {% assign zp_blocks_data = '' | append: zp_current_entity.metafields['zipifypages']['btnpopups'] | strip %}
+  {% assign zp_blocks_data_size = zp_blocks_data | size %}
+
+  {% if zp_blocks_data != 'nobuttons' and zp_blocks_data_size > 0 %}
+    <script type="json/template" id="zp-blocks-json-data">{{ zp_blocks_data }}</script>
+  {% endif %}
+{% endcapture %}
+{{ zp_blocks_json | strip }}
+<script defer src='https://zipifypages.zipify.com/page-published-scripts.min.js'></script>
+{% if zp_page_footer_scripts_size > 0 %}{{ zp_page_footer_scripts }}{% endif %}
+{% if zp_page_content contains 'data-zp-crm-btn-popup' %}<script id="published-popup-template" type="text/template">
+  <div class="zpa-crm-popup-wrap" role="dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <form class="zpa-crm-popup-form" id="zpa-crm-form" action="/subscribe" method="post">
+      <header class="zpa-crm-popup-header">
+        <button class="zpa-crm-popup-btn-close" type="button"  aria-label="Close Navigation" data-close-btn>
+          <svg class="zpa-crm-popup-btn-close-icon" width="20" height="20" data-name="btn-close">
+            <use xlink:href="#btn-close"></use>
+          </svg>
+        </button>
+      </header>
+      <div class="zpa-crm-popup-body" data-popup-content></div>
+    </form>
+  </div>
+</script> <script id="crm-button-popup" type="text/template">
+  <div class="zpa-crm-popup-progressbar-wrap {!= progress_image_option == 1 ? '' : 'hidden' !}">
+    <img class="zpa-crm-popup-img-progress zpa-img-fluid zpa-center-block" src="{!= progress_image.src !}" >
+  </div>
+  <h1 class="zpa-crm-popup-title" style="color:{!= form_name_color !}; font-size:{!= form_name_font_size !};">{!= form_name !}</h1>
+  <div class="zpa-crm-popup-form-container">
+    <div class="zpa-crm-popup-image-box {!= form_image_option == 1 ? '' : 'hidden' !}">
+      <img class="zpa-crm-popup-img-asside zpa-img-fluid zpa-center-block" style="border-radius:{!= form_image_shape !};" src="{!= form_image.src !}">
+    </div>
+    <div class="zpa-crm-popup-form-box">
+      <div class="zpa-crm-popup-field-wrap">
+        <input class="zpa-crm-popup-field zpa-crm-popup-field-first-name zpa-offset-bottom-xs {!= first_name_option == 1 ? '' : 'hidden' !}" type="text" placeholder="First Name" autofocus data-user-fname>
+        <input class="zpa-crm-popup-field zpa-crm-popup-field-last-name zpa-offset-bottom-xs {!= last_name_option == 1 ? '' : 'hidden' !}" type="text" placeholder="Last Name" data-user-lname>
+      </div>
+      <input class="zpa-crm-popup-field" type="email" placeholder="Best Email Address Here" required data-user-email>
+      <input class="zpa-crm-popup-field zpa-crm-popup-field-phone {!= phone_option == 1 ? '' : 'hidden' !}" type="tel" placeholder="Phone Number" data-user-phone>
+    </div>
+  </div>
+  <button class="zpa-crm-button-checkout zpa-btn-custom" type="button" style="color:{!= checkout_button_color !}; background-color: {!= checkout_button_background_color !}" data-checkout-btn>{!= checkout_button_caption !}</button>
+  <p class="zpa-crm-popup-description">{!= comment_text !}</p>
+  <img class="zpa-crm-popup-img-footer zpa-img-fluid zpa-center-block {!= banner_image_option == 1 ? '' : 'hidden' !}" src="{!= banner_image.src !}">
+</script>{% endif %}
+{% capture incentivized_theme_capture %}{% include 'incentivized-theme' %}{% endcapture %}{% unless incentivized_theme_capture contains 'Liquid error: Could not find asset snippets' %}{{ incentivized_theme_capture }}{% endunless %}

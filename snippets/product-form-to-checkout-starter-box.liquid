@@ -1,0 +1,121 @@
+{%include 'sca_freegift_price' with product %}
+
+{% if sca_product_available %}
+  <form style="margin-bottom: 0px;" action="/cart/add" data-productid="{{product.id}}"  method="post" class="clearfix product_form" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" id="product-form-{{ product.id }}"> 
+ {% if sca_product_available %}{% include 'subscription-product' %}{% endif %} 
+    
+    {% if settings.display_inventory_left %}
+      <div class="items_left">
+        {% if product.variants.first.inventory_management == "shopify" and product.variants.first.inventory_quantity > 0 %}
+          {% capture items_left_text %}
+            {% if product.variants.first.inventory_quantity == 1 %}
+              {{ 'products.product.items_left_count.one' | t }}
+            {% else %}
+              {{ 'products.product.items_left_count.other' | t }}
+            {% endif %}
+          {% endcapture %}
+
+          <p><em>{{ product.variants.first.inventory_quantity }} {{ items_left_text }}</em></p>
+        {% endif %}
+      </div>
+    {% endif %}
+    
+    {% if product.options.size > 1 %}
+      <div class="select">
+        <select id="product-select-{{ product.id }}{{ product-form }}" name="id" data-productid="{{product.id}}" class="multi_select">
+          {% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+                    {%unless variant.metafields.secomapp.freegifts %}
+            <option {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }}</option>
+<!--           <input type='radio' {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} value="{{ variant.id }}" name="{{ variant.title}}" data-sku="{{ variant.sku }}" />{{ variant.title }}  -->
+			          {%endunless%}
+
+{%endunless%}
+{%endunless%}
+          {% endfor %}
+        </select>
+      </div>
+    {% elsif product.options.size == 1 and (sca_product_variantCount > 1 or product.options[0] != "Title") %}
+      <div class="select">
+         <label>Select your box size (6 or 12 bottles)</label>
+<!--        {% for variant in product.variants %}
+        	<br />
+        	<input type='radio' {% if variant == product.selected_or_first_available_variant %}checked{% endif %} value="{{ variant.id }}" name="{{ variant.title}}" data-sku="{{ variant.sku }}" />{{ variant.title }} 
+ 		{% endfor %} -->
+        
+        <select id="product-select-{{ product.id }}{{ product-form }}" name="id" data-productid="{{product.id}}"> 
+          {% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+          {%unless variant.metafields.secomapp.freegifts %}
+            <option {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }} </option>
+          	<span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+          {%endunless%}
+ 
+
+{%endunless%}
+{%endunless%}
+          {% endfor %}
+        </select>
+      </div>
+    {% else %}
+      <input type="hidden" name="id" data-productid="{{product.id}}" value="{{ product.variants.first.id }}" />
+    {% endif %}
+
+    {% if settings.product_form_style == "swatches" and (sca_product_variantCount > 1 or product.options[0] != "Title") %}
+      <div class="swatch_options">
+        {% for option in product.options %}
+          {% include 'product-swatch' with option %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+
+      
+
+    <div class="purchase clearfix {% if settings.display_product_quantity %}inline_purchase{% endif %}" style="    display: inline-block;
+    float: right;">
+      
+      <div class="left quantity-field">
+        <input type="hidden" name="quantity" id="quantity" value="1" />
+      </div>
+
+      <input type="hidden" name="return_to" value="/checkout" />
+
+      {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
+      <button type="submit" name="add" class="action_button add_to_cart" data-label={{ add_to_cart_label | json }}><span class="text">Buy Now!</span></button>
+      {% if product.title contains "name of product" %}
+         <style>.gwbutton {display:inline !important}</style>
+       {% else %}
+         <style>.gwbutton {display:none   !important}</style>
+       {% endif %}
+
+       <button class="gwbutton btn">Send as a gift</button>
+    </div>
+    <p class="modal_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+          <meta itemprop="seller" content="{{ shop.name | escape }}" />
+          <link itemprop="availability" href="http://schema.org/{% if sca_product_available %}InStock{% else %}OutOfStock{% endif %}">
+          <meta itemprop="itemCondition" content="New" />
+
+          <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+          <span itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+            <span class="current_price">
+              {% if variant.available %}
+                {% if variant.price > 0 %} 
+                  {{ variant.price | money }} 
+                {% else %}
+                  {{ settings.free_price_text }}
+                {% endif %}
+              {% endif %}
+            </span>
+          </span>
+        </p>
+  </form>
+
+
+  
+{% endif %}

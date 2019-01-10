@@ -1,0 +1,633 @@
+{% layout 'theme.bootstrap.landing-page' %}
+
+
+<div class="header-logo">
+	<div class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+        <img src="https://cdn.shopify.com/s/files/1/0924/9540/t/5/assets/logo.png?6101563503781420941" >
+      </div>
+      <div class="col-sm-2 col-sm-offset-2">
+        <a href="#cart" class="icon-cart right" style="padding:20px 40px;"><span>{{ cart.item_count }}</span></a>
+      </div>
+    </div>
+</div>
+        
+
+
+<div class="main-product-section">
+  <div class="container">
+    
+    
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="row vertical-align">
+          <div class="col-md-6 col-sm-12 text-center">
+            <img style="" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Spring_Fling_1.png?13531420431199517827" />
+          </div>
+          <div class="col-lg-6 col-sm-6 col-xs-12">
+            <div class="main-product" id="main-product-id">
+              <h1>It's Spring!</h1>
+              {% assign collection_handles = product.collections | map: 'handle' %}
+              {% assign variant = product.selected_or_first_available_variant %}
+              {% if product.description != blank %}
+                 <div class="description" itemprop="description">
+                   {{ product.description | split: '<!-- split -->' | first }}
+                 </div>
+              {% endif %}
+              {% include 'product-form-to-checkout' with 'product' %}
+              
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="free-shipping-section">
+  <p> 
+    <i class="fa fa-truck" aria-hidden="true"></i>
+    FREE SHIPPING, 
+    100% HAPPINESS GUARANTEE ON ALL ORDERS!
+    <i class="fa fa-heart" aria-hidden="true"></i>
+  </p>
+</div>
+
+
+<div class="other-selections-section" style="border-bottom:1px solid black;">
+  <div class="container">
+    <div class="row" style="margin-bottom:0px;">
+      <div class="col-md-10 col-md-offset-1 col-sm-12">
+        <div class="row">
+          <div class="col-sm-3 col-sm-offset-1">
+            <a href="/products/easter-basket">
+              <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/Copy_of_Easter_Basket_1.png?2865765409916723784" >
+            </a>
+          </div>
+          <div class="col-sm-7">
+            <p class="bold">Or Shop The Easter Basket</p>
+            <p>Celebrate Easter with a handpicked basket of 6 artisanal organic wines - 2 rosé, 2 white, and 2 reds! </p>
+            <a class="btn" href="/products/easter-basket">Shop Easter Basket</a>
+          </div>
+        </div>
+      </div>
+    </div>	
+  </div>
+</div>
+
+
+
+<img style="width:100%;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Spring_is_here_1_1.png?11162167707907957138">
+
+<div class="about-dfw-section" style="margin-top:-10px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
+        <h1>‘Tis the Season</h1>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <p>We’ve curated these wines especially for the Spring Season! The sun is coming out, the skies are clearing up, and the air is filled with a breeze and the scent of budding flowers. </p>
+        <br />
+        
+        <p>The palates of these wines match perfectly. They’re fresh, pure, and vibrant, so they taste like Spring with amazing color and balanced texture. </p>
+		<br />
+         
+        <p class="bold">Food Pairing</p>
+        <p>These wines pair perfectly with the culinary fare of Spring: BBQs, light salads, and fresh ingredients.</p>
+		<br />
+        
+        <p class="bold">Refreshing Apéritif</p>
+        <p>Any of these wines can be sipped as an apéro (as the French call it) before or after a meal to lighten the mood and bring out the smiles. :-)</p>
+		<br />
+        
+        <p class="bold">Community Happiness</p>
+        <p>We’ve picked these wines to be very drinkable crowd pleasers - they’ll encourage conversation and good vibes!</p>
+        <br />
+        <div class="text-center">
+          <a href="#main-product-id" class="action_button" style="padding:10px 50px;"> BUY NOW! </a>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</div>
+
+<div class="testimonials" style="background:#f2f2f2;">
+  <div class="container">
+      	<div class="row">
+          <div class="col-md-12 text-center">
+              <h1>Endorsed By Leading Health Experts</h1>
+            </div>
+        </div>
+
+
+        
+    	<div class="row">
+
+            <div class="col-lg-5 col-lg-offset-1 col-sm-6 col-xs-12">
+              <div class="testimonial-list">
+                <blockquote>The <span class="bold">perfect Paleo wine</span>. I'm a believer!</blockquote>
+                 <div class="testimonial-user">
+                  <div class="user-image"><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/mark_841f5728-d670-468a-94b5-58ba0d1bea90.png?2132944492871136067"></div><b>Mark Sisson</b>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5 col-sm-6 col-xs-12">
+              <div class="testimonial-list">
+                <blockquote>Dry Farm Wines brings fanatical quantification to biohacking wine.</blockquote>
+                    <div class="testimonial-user">
+                      <div class="user-image"><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/dave_526573b9-e6d0-4914-9f65-90c02ce21aec.png?2132944492871136067"></div><b>Dave Asprey</b>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+    	<div class="row">
+
+            <div class="col-lg-5 col-lg-offset-1 col-sm-6 col-xs-12">
+              <div class="testimonial-list">
+                <blockquote>I woke up with a clear head! That was enough for me to be a believer.</blockquote>
+                    <div class="testimonial-user">
+                      <div class="user-image"><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/camille_802c6cbc-d65f-4535-baa9-c37735c2a0b4.png?5828806846140696976"></div><b>Camille, Paleo Kitchen</b>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 col-sm-6 col-xs-12">
+              <div class="testimonial-list">
+                <blockquote>Impressed with Dry Farms Keto wine. <span class="bold">Super high quality and won't kick you out of ketosis.</span> Red wine typically gives me a slight headache and this does not. Will make 100-200 ml/day a staple in my keto diet!</blockquote>
+                    <div class="testimonial-user">
+                      <div class="user-image"><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/dom.jpg?10062620863595936380"></div><b>Dominic D'Agostino</b>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+    	<div class="row">
+
+            <div class="col-lg-5 col-lg-offset-1 col-sm-6 col-xs-12">
+              <div class="testimonial-list">
+                <blockquote>Rejoice! You can <span class="bold">drink your wine and have your health</span> too!</blockquote>
+                 <div class="testimonial-user">
+                  <div class="user-image"><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/abel_6cc1b1d8-c223-4d01-aee8-323dc5444c31.png?2132944492871136067"></div><b>Abel James</b>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5 col-sm-6 col-xs-12">
+              <div class="testimonial-list">
+                <blockquote>If you enjoy wine but are not jazzed about the negative side effects, these wines are for you.</blockquote>
+                    <div class="testimonial-user">
+                      <div class="user-image"><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/robb_35836207-4f00-4a87-a1a1-d94ab0c51046.png?2132944492871136067"></div><b>Robb Wolf</b>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+    	<div class="row">
+
+            <div class="col-lg-5 col-lg-offset-1 col-sm-6 col-xs-12">
+              <div class="testimonial-list">
+                <blockquote>These are fabulous wines for all you low-carb loving wine lovers!</blockquote>
+                 <div class="testimonial-user">
+                  <div class="user-image"><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/jimmy_abc99c37-b9d4-4e44-a3df-9644edfbbdef.png?2132944492871136067"></div><b>Jimmy Moore</b>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5 col-sm-6 col-xs-12">
+              <div class="testimonial-list">
+                <blockquote><span class="bold">Amazed at the difference in taste!</span> I’ve always hated the strange aftertaste/mouthfeel from a lot of wines and yours are so smooth! I am definitely going to be a long-term customer!</blockquote>
+                    <div class="testimonial-user">
+                      <div class="user-image"><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/wellnessmama.png?10366380879810610429"></div><b>Katie, Wellness Mama</b>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    
+    	<div class="row">
+          <div class="col-md-8 col-md-offset-2 text-center">
+              <h1>Enjoyed by Thousands of Health-Conscious Wine Lovers</h1>
+            </div>
+        </div>
+
+    
+    	<div class="row">
+            <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+              <div class="testimonial-list">
+                <blockquote>I feel amazing this morning even though I indulged in wine last night... Thank you Dry Farm Wines! I'm amazed that <span class="bold">I can enjoy a good organic wine that allows me to stick to my diet</span> (no sugar/carbs) and also not wake up with a hangover.</blockquote>
+                <b>- Angela, Tampa</b>
+              </div>
+            </div>
+	    </div>
+    
+    	<div class="row">
+            <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+              <div class="testimonial-list">
+                <blockquote>So excited to have a wine option that I feel good about. These organic wines are all clean and pure, no sugar, low sulfites, no additives, and lower alcohol level. <span class="bold">Sometimes I just want a nice glass of wine to enjoy without the ill effects.</span></blockquote>
+                <b>- Gina, Chicago</b>
+              </div>
+            </div>
+        </div>
+    
+        <div class="row">
+          <div class="col-sm-10 col-sm-offset-1 col-xs-12">
+            <div class="testimonial-list">
+              <blockquote><span class="bold">I can finally drink wine again!</span> For the first time in over 30 days, I had a glass of wine. I'm now only drinking Dry Farm Wines. They're amazing. The quality, the taste, it's wonderful.</blockquote>
+              <b>- Kristin, Los Angeles</b> 
+            </div>
+          </div>
+        </div>
+    
+	    <div class="row">
+            <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+              <div class="testimonial-list">
+                <blockquote>The wine is exceptional and lives up to all of your claims- <span class="bold">no hangovers or "dead" head feelings the next day</span>. Keep up the good work!</blockquote>
+                <b>- Wayne, Oakland</b>
+              </div>
+            </div>
+        </div>
+  
+  		<div class="row">
+            <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+              <div class="testimonial-list">
+                <blockquote>Wow. I just opened my first bottle and am thrilled. I paired it with my homemade organic chicken sausage and veggie soup and <span class="bold">my head is exploding with happiness</span>. It's a totally new experience to enjoy wine so clean and beautiful. I am one of those who was swearing off wine because of the backlash and will know tomorrow but I have to say how excited I am about being a part of your clean revolution. Big hugs. </blockquote>
+                <b>- Amy, Oakland</b>
+              </div>
+            </div>
+        </div>
+    
+    	<div class="row">
+            <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+              <div class="testimonial-list">
+                <blockquote>Your wine was very smooth and light, easy to drink. I've been trying to commit to a primal/paleo lifestyle for a long time. Although I love it and feel so much better, I sure also love tacos! "No sugar" led me to your wine, <span class="bold">anything that Mark Sisson recommends is worth a look</span>. GLAD I FOUND YOU! </blockquote>
+                <b>- Stacy, Saint Charles </b>
+              </div>
+            </div>
+        </div>
+    	
+    	<div class="row">
+            <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+              <div class="testimonial-list">
+                <blockquote><span class="bold">So nice to enjoy wine and not feel guilty or worry about what is in it!</span> I'm a Paleo, plexus using, health nut nurse. I have been sharing all over Facebook to let others know!</blockquote>
+                <b>- Natalie, Indianapolis </b>
+              </div>
+            </div>
+        </div>
+<!--     
+    	<div class="row">
+            <div class="col-sm-10 col-xs-12 col-sm-offset-1">
+              <div class="testimonial-list">
+                <blockquote>I feel like a <span class="bold">kid on Christmas!!</span> No sugar, low sulfites, no additives... no hangovers!</blockquote>
+                <b>- Dave, New York </b>
+              </div>
+            </div>
+        </div> -->
+    	
+          
+          
+        <div class="row">
+
+            <div class="col-md-10 col-md-offset-1">
+              <h3 class="dfw-hashtag">#DryFarmWines</h3>
+              <div class="photo-grid">
+                <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/Dry_Farm_Wines___Natural__Lab-Tested__Health-Focused_Wine.png?18353356623572807350">
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div><!-- /end testimonials -->
+
+      
+<div class="guarantee-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h1>100% Happiness Guarantee</h1>
+        <h3>We are so confident you’ll love these wines we stand behind them with a 100% Happiness Guarantee.</h3>
+      </div>
+    </div>
+    <div class="text-center">
+	  <a href="#main-product-id" class="action_button"> BUY NOW! </a>
+    </div>
+  </div>
+</div>
+  
+  
+  
+  
+  
+
+
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }}, 
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+  
+  
+  
+  
+  
+</script>
+
+
+  
+<script>
+  $(document).on("click", '.add_to_cart', function(e) {
+    window.setTimeout(function () {
+      $('#cart').trigger("open");
+    }, 1000);
+  });
+</script>
+  
+
+
+
+<script>
+	/**BEGIN JAVASCRIPT **/
+  /** COPIED FROM SUBSCRIPTION-PRODUCT.LIQUID **/
+if (subscription_on==true) {
+
+    window.currency_symbol='$'
+    window.currency_suffix=''
+    
+    discount_percentage_metafield_value = {{ product.metafields.subscriptions.discount_percentage | floor }} 
+    has_discount_{{product.id}} = false
+    if(discount_percentage_metafield_value > 0) {
+		has_discount_{{product.id}} = true 
+	}
+	
+	/* for changing background color when a selection is clicked */
+	rjQuery('body').on('click','.autodeliver.{{product.id}}',function() {
+		rjQuery('.radio_option.{{product.id}}').removeClass('active')
+		rjQuery(this).parent().parent().addClass('active')
+
+		if( rjQuery(this).val()=='autodeliver' ) {
+			rjQuery('#recurring_purchase_{{product.id}}').addClass('active')
+			rjQuery('#single_purchase_{{product.id}}').removeClass('active')
+		} else if( rjQuery(this).val()=='onetime' ) {
+			rjQuery('#recurring_purchase_{{product.id}}').removeClass('active')
+			rjQuery('#single_purchase_{{product.id}}').addClass('active')
+		}
+
+		if(has_discount_{{product.id}} == true) {
+			updatePrice_{{product.id}}("UPDATE - Change radio");    
+		}
+	})
+	
+	 //HANDLE THE ADDING TO CART
+	rjQuery( document ).ready(function() {
+		// CREATE DUPLICATE SELECT WITH OPTIONS
+      	var myDiv = rjQuery('form[data-productid="{{product.id}}"]');
+		var discount_prices = discount_variants_array_for_select_{{product.id}}; //discount price options
+		//Create and append select list
+		var discount_select_menu_html = rjQuery("<select id='discount-select-{{product.id}}'></select>"); 
+		myDiv.append(discount_select_menu_html);
+		for (var i = 0; i < discount_prices.length; i++) {
+			var option = rjQuery('<option></option>').val(discount_prices[i]).html(discount_prices[i])
+			discount_select_menu_html.append(option);
+		}
+
+        // ADD IDENTIFIERS TO ORIGINAL AND DUPLICATE SELECT        
+        var discount_select_{{product.id}} = rjQuery("#discount-select-{{product.id}}")
+        discount_select_{{product.id}}.hide();  
+        
+        var original_select_{{product.id}} = rjQuery('[name="id"][data-productid="{{product.id}}"]')
+		original_select_{{product.id}}.addClass('original_select_{{product.id}}')
+        // Set value of discount select on page load
+        var original_select_menu_value = original_select_{{product.id}}.val();
+		var discount_value_of_originally_selected_menu_value = variant_id_to_discount_id_map_{{product.id}}[original_select_menu_value]['discount_variant_id'];
+		discount_select_{{product.id}}.val(discount_value_of_originally_selected_menu_value);	
+
+        // using a timeout to wait for shopify to load select elements via javascript
+        setTimeout(function(){
+        	
+        	// INITIALIZE LISTENER FOR WHEN VARIANT DROPDOWN IS CHANGED 
+			rjQuery('form[data-productid="{{product.id}}"] .single-option-selector').change(function(){
+				
+				setTimeout(function(){
+					var original_product_value = original_select_{{product.id}}.val();	
+					discount_select_{{product.id}}.val(variant_id_to_discount_id_map_{{product.id}}[original_product_value]['discount_variant_id']);	
+					
+					updatePrice_{{product.id}}();
+				}, 400);
+				
+			})
+
+            // LISTENER FOR WHEN RADIO OPTION FOR ONE-TIME/RECURRING IS CHECKED                
+            rjQuery(".autodeliver.{{product.id}}").change(function(){				
+				/*IF AUTODELIVER IS SELECTED, WE SET OUR SELECT to name=id and take that attribute off the original select*/	
+				if(rjQuery(this).val() == 'autodeliver'){
+					// set duplicate select to be submitted 
+					original_select_{{product.id}}.attr('name','')
+					discount_select_{{product.id}}.attr('name','id')
+					//set shipping interval + subscription id attributes to be submitted when form is submitted
+					rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','properties[shipping_interval_frequency]');
+					rjQuery("#subscription_id_{{product.id}}").attr('name','properties[subscription_id]');
+					rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','properties[shipping_interval_unit_type]');
+
+				}
+              else if (rjQuery(this).val() == 'onetime') {
+                  // set original select to be submitted
+                  original_select_{{product.id}}.attr('name','id')
+                  discount_select_{{product.id}}.attr('name','')
+                  
+                  // remove shipping interval + subscription id from form submission since we're not subscription
+                  rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','');
+                  rjQuery("#subscription_id_{{product.id}}").attr('name','');
+				  rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','');
+              }
+            });
+        }, 300); // end setTimeout / initialization of select menu listeners
+
+        // IF SUBSCRIPTION ONLY, preset the subscription inputs
+        {% if subscription_only == 'true' %}
+			// set duplicate select to be submitted
+			original_select_{{product.id}}.attr('name','')
+			discount_select_{{product.id}}.attr('name','id')
+			
+			// set shipping interval + subscription id to be submitted
+			rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','properties[shipping_interval_frequency]');
+			rjQuery("#subscription_id_{{product.id}}").attr('name','properties[subscription_id]');
+            rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','properties[shipping_interval_unit_type]');              
+			
+        {% endif %}
+      });
+ 
+ 
+	/*** THIS PERFORMS PRICE UPDATE of primary price text above options***/
+	function updatePrice_{{product.id}}(debugging_text) {
+		var price_selectors = '.current_price, #productPrice, .product-price, .price, #price-preview, .actual-price'
+		
+		//check for quickbuy and adjust selectors if needed
+		if ( rjQuery(price_selectors).size() > 1 ) {
+			var has_quickbuy = true
+			//the quickbuy price selectors
+			price_selectors += ', .current_price.{{product.id}}, #productPrice.{{product.id}}, .product-price.{{product.id}}, .price.{{product.id}}, #price-preview.{{product.id}}'
+		}
+		
+		rjQuery(price_selectors).html(''); //blank out the current price
+		var variant_id = rjQuery('.original_select_{{product.id}}').val()      
+		var quantity = rjQuery('form[data-productid="{{product.id}}"] [name="quantity"]').val()
+	  
+		if(typeof quantity === 'undefined'){
+			//some sites don't define quantity in the form so we need this as a backup
+			quantity = 1;
+		}
+		
+		variant_price_{{product.id}} = (variant_id_to_price_map_{{product.id}}[variant_id] / 100) 
+		
+		//if recurring is on, set 
+		if( rjQuery('#autodeliver_on_radio_{{product.id}}').prop('checked')==true && variant_id_to_discount_id_map_{{product.id}}[variant_id]['discount_variant_id'] !='') {
+			variant_price_{{product.id}} = variant_price_to_discount_price_map_{{product.id}}[variant_id]['discount_variant_price']
+		} 
+
+		variant_price_{{product.id}} = parseFloat(variant_price_{{product.id}}).toFixed(2)
+		var displayed_price = parseFloat(quantity * variant_price_{{product.id}}).toFixed(2)
+		var price_string = currency_symbol+' '+displayed_price + currency_suffix
+	  
+		if(window.first_time_{{product.id}}){
+			rjQuery(price_selectors).html(price_string)
+		}
+		window.first_time_{{product.id}} = true;
+		updateInlinePrice_{{product.id}}()
+	}
+
+	// This function updates the inline prices (next to radio buttons) 
+	function updateInlinePrice_{{product.id}}() {
+		var variant_id = rjQuery('.original_select_{{product.id}}').val();
+		var price_one_time = (variant_id_to_price_map_{{product.id}}[variant_id] / 100);
+		price_one_time = parseFloat(price_one_time).toFixed(2);
+        
+        var price_recurring = variant_price_to_discount_price_map_{{product.id}}[variant_id]['discount_variant_price']
+        price_recurring = parseFloat(price_recurring).toFixed(2);
+
+		rjQuery('#one-time-price_{{product.id}}').text(" "+currency_symbol+ price_one_time + currency_suffix);
+		rjQuery('#recurring-time-price_{{product.id}}').text(" "+currency_symbol + price_recurring + currency_suffix);
+	}
+	
+	/** PRICE RELATED DOCUMENT READY **/
+	rjQuery(document).ready(function(){
+		
+		/** make sure correct option has grey border **/
+		window.lock_{{product.id}} = false;
+		window.first_time_{{product.id}} = true;
+		if(rjQuery('#autodeliver_on_radio_{{product.id}}').prop('checked')==true ) {
+			rjQuery('#recurring_purchase_{{product.id}}').addClass('active');
+		} else {
+			rjQuery('#single_purchase_{{product.id}}').addClass('active');
+		}
+		if(has_discount_{{product.id}} == true) {
+			setTimeout(function(){ updatePrice_{{product.id}}("") }, 200);
+		}
+		
+		
+		//if something modifies the price, we notice it and then change it back. but we use a timeout function to avoid an infinite loop
+		rjQuery('.current_price, #productPrice, .product-price, .price, #price-preview').bind("DOMSubtreeModified",function(){      
+			if( window.lock_{{product.id}} == false ) {
+				window.lock_{{product.id}} = true;
+				if(has_discount_{{product.id}} == true) {
+					updatePrice_{{product.id}}("UPDATE - DOMSubtreeModified");
+				}
+				setTimeout(function(){window.lock_{{product.id}}=false}, 200);
+			}
+		});
+		
+		//handle change in quantity
+		rjQuery('#quantity').on("change",function(){
+			if(has_discount_{{product.id}} == true) {
+				updatePrice_{{product.id}}("UPDATE - Qty change on");
+			}
+		});
+		
+		//run the price updater once page loads to reset it to what we need it to be				
+		updateInlinePrice_{{product.id}}();		
+				
+	})//end document ready
+
+		
+
+	/** set variant mapping for the case in which there is an automatically created duplicate product **/
+	var variant_id_to_discount_id_map_{{product.id}} = {};  
+	var variant_price_to_discount_price_map_{{product.id}} ={} 
+	var discount_variants_array_for_select_{{product.id}}=[]
+	
+	{% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+		var discount_variant_id = '{{ variant.metafields.subscriptions.discount_variant_id }}'
+		variant_id_to_discount_id_map_{{product.id}}['{{variant.id}}']='' 
+		
+		if(discount_variant_id) {
+			variant_id_to_discount_id_map_{{product.id}}['{{variant.id}}'] = {"discount_variant_id":discount_variant_id};
+			discount_variants_array_for_select_{{product.id}}.push(discount_variant_id)
+		}
+		
+		var discount_variant_price = '{{ variant.metafields.subscriptions.discount_variant_price }}'
+		variant_price_to_discount_price_map_{{product.id}}['{{variant.id}}']=''
+		
+		if(discount_variant_price) {
+			variant_price_to_discount_price_map_{{product.id}}['{{variant.id}}'] = { "discount_variant_price": discount_variant_price } 
+		}
+
+{%endunless%}
+{%endunless%}
+	{% endfor %}
+	
+	//map original prices for updated price calculations
+	variant_id_to_price_map_{{product.id}}={}
+	{% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+		variant_id_to_price_map_{{product.id}}['{{variant.id}}'] = "{{variant.price}}"
+
+{%endunless%}
+{%endunless%}
+	{% endfor %}
+
+}//end if (subscription_on==true) section
+	
+</script> 
+
+

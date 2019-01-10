@@ -1,0 +1,112 @@
+<zp_additional_integration></zp_additional_integration>
+{% capture zp_product_var_content %}
+  {% assign zp_product_iterator = zp_product_iterator | plus: 1 %}
+  {% assign zp_product_selector = zp_main_product_selector | append: zp_product_iterator %}
+{% endcapture %}<div class="xs-10 xs-offset-1 sm-4 sm-offset-0 md-4 md-offset-0 zpa-best-value-block zps_selclassescape" id="{{ zp_product_selector }}Wrapper" data-product-content>
+  <div class="zpa-product-best-price-title-wrap">
+    <h2 class="zpa-product-best-price-title zp zps_bprcttlclassescape" zps_lblvisattr>zps_lbluptxt</h2>
+  </div>
+  <div class="zpa-best-value zpa-offset-vert-md zp zps_bvuppclassescape">
+    <div class="zpa-product-label-box zp zps_lblblclassescape">
+      <div class="zpa-best-value-corner zp zps_bvcrnrclassescape" zps_lblvisattr>
+        <p class="zpa-best-value-corner-text">zps_lbltxtcont</p>
+      </div>
+    </div>
+    <div class="zpa-offset-bottom-sm zpa-mobile-offset-bottom-xs default-styles-wrapper zpa-word-wrap disable-internal-link zp zps_ttl2blclassescape">zps_ttl2cont</div>
+    <div class="zpa-offset-bottom-xs zpa-word-wrap disable-internal-link zp zps_txtblclassescape">zps_txtcont</div>
+    <h2 class="zpa-product-best-price-save zpa-offset-bottom-sm zpa-text-center zpa-word-wrap zp zps_bvprcsvclassescape" zps_lblvisattr>zps_lblmdltxt</h2>
+    <div class="zpa-offset-bottom-xs zp zps_imgblclassescape">
+      <img class="zpa-img-fluid zpa-center-block zpa-img-height-lg zpa-mobile-img-height-sm zpa-tablet-img-height-md" zps_imgimgattr/>
+    </div>
+    <div class="zpa-offset-bottom-sm zpa-mobile-offset-bottom-xs zpa-text-center">
+      <div class="zpa-inline-block right-offset-xs default-styles-wrapper zpa-word-wrap disable-internal-link zp zps_ttl3blclassescape">zps_ttl3cont</div>
+      <div class="zpa-inline-block default-styles-wrapper zpa-word-wrap disable-internal-link zp zps_ttl4blclassescape">zps_ttl4cont</div>
+    </div>
+    <div class="zpa-offset-bottom-sm zpa-mobile-offset-bottom-xs">
+      <div class="default-styles-wrapper zpa-word-wrap disable-internal-link zp zps_ttl5blclassescape">zps_ttl5cont</div>
+    </div>
+    <div class="zpa-offset-bottom-md zpa-tablet-offset-bottom-sm zpa-mobile-offset-bottom-xs zpa-text-center">{% if product.available %}{% capture zp_product_var_content %}
+        {% assign zp_product_variants = product.variants | sort: 'id' %}
+        {% assign zp_selected_variants_size = zp_selected_variants | size %}
+        {% assign zp_default_variant_id = zp_selected_variants | first %}
+        {% if zp_selected_variants_size < 1 %}
+          {% assign zp_selected_variants = zp_product_variants | map: 'id' | join: ',' | split: ',' %}
+          {% assign zp_default_variant_id = '' | append: product.selected_or_first_available_variant.id %}
+        {% endif %}
+        {% assign zp_filtered_selected_variants = '' %}
+        {% for variant in zp_product_variants %}
+          {% assign zp_variant_id = '' | append: variant.id %}
+          {% if zp_selected_variants contains zp_variant_id %}
+            {% assign zp_filtered_selected_variants = zp_filtered_selected_variants | append: zp_variant_id | append: ',' %}
+          {% endif %}
+        {% endfor %}
+        {% assign zp_selected_variants = zp_filtered_selected_variants | split: ',' %}
+        {% assign zp_selected_variants_size = zp_selected_variants | size %}
+        {% assign zp_default_variant_id = zp_selected_variants | first %}
+        {% if zp_selected_variants_size < 1 %}
+          {% assign zp_selected_variants = zp_product_variants | map: 'id' | join: ',' | split: ',' %}
+          {% assign zp_default_variant_id = '' | append: product.selected_or_first_available_variant.id %}
+        {% endif %}
+      {% endcapture %}
+      <form method="post" enctype="multipart/form-data" data-add-to-cart-form data-redirect-with-variant="true" data-link-type="zps_prdbtnltpescape" data-product-url="zps_prdurlescape" data-productid="{{ product.id }}">{% unless zp_hide_variants_link_types contains zp_product_link_type %}
+        <div class="zpa-product-variants-form-center zp zps_prdblclassescape">
+          <zp_additional_property_integration></zp_additional_property_integration>
+          <select name="id" id="{{ zp_product_selector }}" class="zpa-center-block hidden" data-productid="{{ product.id }}">{% capture zp_product_variants_selector %}
+              {% for variant in zp_product_variants %}{% capture zp_product_variant_wrapper %}
+                  {% assign zp_variant_id = '' | append: variant.id %}
+                  {% unless zp_selected_variants contains zp_variant_id %}
+                    {% continue %}
+                  {% endunless %}
+                  <zp_variant_integration></zp_variant_integration>
+                  {% capture zp_product_variant_option %}
+                    {% if variant.available %}
+                      <option {% if zp_variant_id == zp_default_variant_id %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+                    {% else %}
+                      <option disabled="disabled">{{ variant.title }} - {% assign zp_translation = 'products.product.sold_out' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Sold Out' %}{% endif %}{{ zp_translation }}</option>
+                    {% endif %}
+                  {% endcapture %}
+                {% endcapture %}{{ zp_product_variant_wrapper | strip }}{{ zp_product_variant_option | strip }}{% endfor %}
+            {% endcapture %}{{ zp_product_variants_selector | strip }}</select>
+          <zp_property_integration></zp_property_integration>
+          <div class="zpa-selector-wrapper zpa-quantity zpa-center-block zpa-offset-bottom-xs" data-quantity-wrapper>{% capture zp_quantity_content %}
+          {% if zp_product_show_quantity == 'true' %}
+            <label for="{{ zp_product_selector }}-quantity">{% assign zp_translation = 'products.product.quantity' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Quantity' %}{% endif %}{{ zp_translation }}</label>
+            <div class="zpa-quantity-block">
+              <button class="zpa-btn-custom zpa-quantity-btn" type="button" data-product-decrease-qty>
+                <svg class="zpa-quantity-icon" width="12px" height="12px">
+                  <use xlink:href="#iconDecrease"></use>
+                </svg>
+              </button>
+              <input class="zpa-quantity-field xs" id="{{ zp_product_selector }}-quantity" type="tel" name="quantity" value="1" maxlength="2" size="2" pattern="[0-9]*" inputmode="numeric" data-product-quantity required>
+              <button class="zpa-btn-custom zpa-quantity-btn" type="button" data-product-increase-qty>
+                <svg class="zpa-quantity-icon" width="12px" height="12px">
+                  <use xlink:href="#iconIncrease"></use>
+                </svg>
+              </button>
+            </div>
+          {% else %}
+            <input type="hidden" name="quantity" value="1" data-product-quantity>
+          {% endif %}
+          {% endcapture %}{{ zp_quantity_content | strip }}
+          </div>
+          <div class="zpa-offset-bottom-xs zpa-text-center">
+            <span class="zpa-compare-price right-offset-xs zpa-word-wrap" data-product-compare-price>{% if product.compare_at_price_max > product.price_max %}{{ product.compare_at_price_max | money }}{% endif %}</span>
+            <span class="zpa-regular-price zpa-word-wrap" data-product-price>{{ product.price | money }}</span>
+          </div>
+        </div>{% endunless %}
+        <button class="zpa-btn-custom zpa-lime-color-btn zpa-add-to-cart-btn zp zps_prdbtnclassescape" type="submit" name="add" data-add-to-cart data-add-and-go-to-cart="true" data-link-type="zps_prdbtnltpescape"{% unless product.available %} disabled{% endunless %}>
+          <span data-add-to-cart-text>{% if product.available %}zps_prdbtncpt{% else %}{% assign zp_translation = 'products.product.sold_out' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Sold Out' %}{% endif %}{{ zp_translation }}{% endif %}</span>
+        </button>{% unless zp_hide_variants_link_types contains zp_product_link_type %}
+        <div class="zpa-product-message-wrap zpa-product-message-wrap-center">
+          <span class="zpa-product-message hidden" data-product-messages data-success-message="zps_addcrtmsgurl_escape" data-error-class="product-error" data-success-class="product-success"></span>
+        </div>{% endunless %}
+      </form>{% else %}
+      <button class="zpa-btn-custom zpa-lime-color-btn zpa-add-to-cart-btn zp zps_prdbtnclassescape" type="button" disabled>{% assign zp_translation = 'products.product.sold_out' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Sold Out' %}{% endif %}{{ zp_translation }}</button>
+      {% endif %}
+    </div>
+    <div class="zp zps_img2blclassescape">
+      <img class="zpa-img-fluid zpa-center-block zpa-img-height-xs" zps_img2attr/>
+    </div>
+  </div>
+</div>{% if product.available %}
+<script type="text/json" data-product-init>{"translations":{"add_to_cart":"zps_prdbtncpturl_escape","sold_out":"{% assign zp_translation = 'products.product.sold_out' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Sold Out' %}{% endif %}{{ zp_translation | url_escape }}","unavailable":"{% assign zp_translation = 'products.product.unavailable' | t %}{% if zp_translation contains 'translation missing' %}{% assign zp_translation = 'Unavailable' %}{% endif %}{{ zp_translation | url_escape }}"},"moneyFormat":"{{ shop.money_format | url_escape }}","currency":"{{ shop.currency | url_escape }}","productSelector":"{{ zp_product_selector }}","product":<zp_product_json_integration>{{ product | json }}</zp_product_json_integration>,"selectedVariants":"zps_slctvrnturl_escape","productType":"best-value"}</script>{% endif %}

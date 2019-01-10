@@ -1,0 +1,173 @@
+h1, h2, h3, h4, h5, p {
+    font-weight: normal;
+    font-style: normal;
+    line-height: normal;
+    font-family: brandon-grotesque, sans-serif;
+    font-size-adjust: 0.52;
+  	text-transform: inherit !important;
+} 
+h1{
+  font-weight: 800;
+}
+
+label {
+  font-family: brandon-grotesque, sans-serif;
+}
+span.subscription-font-color {
+  font-family: brandon-grotesque, sans-serif;
+}
+
+/* removed amazon payments button for subscriptions */
+.amazon-payments-pay-button{
+  display: none !important;
+}
+/* Popup styles */
+.fancybox-inner table, .fancybox-inner tr, .fancybox-inner td, .fancybox-inner td:first-child, .fancybox-inner tr:first-child{
+  border: none;
+}
+.feature_image table, .feature_image tr, .feature_image td, .feature_image td:first-child, .feature_image tr:first-child{
+  border: none;
+}
+.fancybox-inner .action_button{
+	background: crimson !important;
+ 	 color: white !important;
+}
+/* End Popup style */
+.flex-direction-nav, .fancybox-nav.fancybox-prev.ss-icon, .fancybox-nav.fancybox-next.ss-icon{
+  display: none!important;
+}
+
+
+.add_to_cart, #cart_form .add_to_cart, form.product_form input.add_to_cart{
+     width: auto;
+    background: crimson;
+    color: white;
+  
+}
+.add_to_cart{
+  float: right;
+}
+
+.mobile-on{
+  display: none !important;
+}
+.mobile-off{
+  display: block!important;
+}
+@media screen and (max-width: 779px){
+.mobile-on{
+  display: block!important;
+}
+.mobile-off{
+  display: none!important;
+}
+}
+
+#checkout.add_to_cart{
+  width: 100%;
+}
+p.modal_price {
+    font-size: 35px;
+}
+
+.action_button.secondary{
+    display: block;
+    width: 450px;;
+    margin: 0 auto;
+    background: #e7e7e7;
+}
+
+.nav a, .nav a:visited, .nav a:active, #header a span, .nav a.cart-button span, select.currencies{
+      color: rgba(0, 0, 0, 0.54);
+/*     letter-spacing: 4px; */
+      margin-left: 15px;
+  font-weight:400;
+  font-family: brandon-grotesque, sans-serif;
+}
+
+@media screen and (max-width: 960px){
+  .feature_image .header .nav a, .icon-cart.cart-button{
+	margin-left: 0px;
+        letter-spacing: 2px;
+}
+}
+
+
+/* .action_button.edit_cart.right{
+  display: none;
+} */
+
+.hsContent{
+  padding: 0 6%;
+}
+
+.headline, p.subtitle{
+  text-shadow: 0 0 30px rgba(0,0,0,.5);
+}
+
+#slide-4 .headline, #slide-5 .headline{
+  color: rgba(0, 0, 0, 0.54);
+  margin-bottom: 0px !important;
+  text-shadow: 0 0 1px rgba(0,0,0,0.05),0 1px 2px rgba(0,0,0,0);
+}
+
+.header{
+  background-color: white;
+  margin-top: 0px !important;
+}
+
+
+.radio_option label{
+  width: 100% !important;
+  
+}
+.radio_option{
+  width: 100% !important;
+  padding: 0px !important;
+  
+}
+
+.subscription-tooltip{
+  display: none !important;
+}
+.content1{
+  display: none;
+}
+  .mobile-response-text-on{
+    display: block !important;
+  }
+.mobile-response-text-off{
+    display: none !important;
+  }
+.mobile-shop-info{
+    display: none;
+  }
+
+@media screen and (max-width: 500px){
+  
+  #slide-1 .hsContainer,   #slide-2 .hsContainer,   #slide-3 .hsContainer{
+    background-color: rgba(0,0,0,.3);
+  }
+  .hsContainer{
+        padding: 20px 0;
+  }
+  .mobile-response-text-on{
+    display: none !important;
+  }
+  .mobile-response-text-off{
+    display: block !important;
+  }
+  .mobile-shop-info{
+    display: block;
+  }
+  .content1{
+    background-color: black;
+    text-align: center;
+    font-size: 22px;
+    padding: 0px;
+    display: block;
+  }
+  .headline{
+    font-size: 32px;
+  }
+}

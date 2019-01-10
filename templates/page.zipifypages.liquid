@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% capture zp_header_capture_html %}
+      {% assign zp_use_favicon = true %}
+
+      {% assign zp_failed_includes = false %}
+
+      {% capture zp_include_header_scripts %}
+        {% include 'header-scripts.zipifypages' %}
+      {% endcapture %}
+
+      {% if zp_include_header_scripts contains 'Liquid error: Could not find asset snippets/header-scripts.zipifypages.liquid' %}
+        {% assign zp_failed_includes = true %}
+      {% endif %}
+
+      {% capture zp_include_page_content %}
+        {% include 'page-content.zipifypages' %}
+      {% endcapture %}
+
+      {% if zp_include_page_content contains 'Liquid error: Could not find asset snippets/page-content.zipifypages.liquid' %}
+        {% assign zp_failed_includes = true %}
+      {% endif %}
+
+      {% capture zp_include_page_footer %}
+        {% include 'page-footer.zipifypages' %}
+      {% endcapture %}
+
+      {% if zp_include_page_footer contains 'Liquid error: Could not find asset snippets/page-footer.zipifypages.liquid' %}
+        {% assign zp_failed_includes = true %}
+      {% endif %}
+
+      {% unless zp_failed_includes %}
+        {{ zp_include_header_scripts | strip }}
+      {% endunless %}
+    {% endcapture %}{{ zp_header_capture_html | strip }}
+  </head>
+
+  <body>
+    {% if zp_failed_includes == true %}
+      {{ page.content }}
+    {% else %}
+      {{ zp_include_page_content | strip }}
+      {{ zp_include_page_footer | strip }}
+    {% endif %}
+  </body>
+</html>
+{% if zp_failed_includes == false %}{% layout none %}{% endif %}

@@ -1,0 +1,77 @@
+<div class=" {% if newsletter == 'center' %}center{% endif %}">
+  <p class="message"></p>
+  
+  <form id="email_signup" class="klaviyo_condensed_styling klaviyo_condensed_float klaviyo_condensed_embed_vtMp6x" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+    <input type="hidden" name="g" value="vtMp6x">
+    <div class="klaviyo_field_group">
+      <label for="k_id_email">Newsletter Sign Up</label>
+      <input type="email" value="" name="email" id="k_id_email" placeholder="Your email" />
+    </div>
+    <div class="klaviyo_messages">
+      <div class="success_message" style="display:none;"></div>
+      <div class="error_message" style="display:none;"></div>
+      </div>
+    <div class="klaviyo_form_actions">
+      <button type="submit" class="klaviyo_submit_button">Sign Up</button>
+    </div>
+  </form>
+  <style type="text/css">
+  .klaviyo_styling.klaviyo_condensed_embed_vtMp6x,
+  .klaviyo_condensed_styling.klaviyo_condensed_embed_vtMp6x {
+    font-family: "Helvetica Neue", Arial;
+  }.klaviyo_styling.klaviyo_condensed_embed_vtMp6x label,
+  .klaviyo_condensed_styling.klaviyo_condensed_embed_vtMp6x label {
+    color:#222;
+  }.klaviyo_styling.klaviyo_condensed_embed_vtMp6x input[type=text],
+  .klaviyo_styling.klaviyo_condensed_embed_vtMp6x input[type=email],
+  .klaviyo_condensed_styling.klaviyo_condensed_embed_vtMp6x input[type=text],
+  .klaviyo_condensed_styling.klaviyo_condensed_embed_vtMp6x input[type=email] {
+    border-radius: 2px;
+  }.klaviyo_styling.klaviyo_condensed_embed_vtMp6x .klaviyo_submit_button,
+  .klaviyo_condensed_styling.klaviyo_condensed_embed_vtMp6x .klaviyo_submit_button {
+    background-color:#0064cd;
+    border-radius: 2px;
+    height: 40px;
+  }.klaviyo_styling.klaviyo_condensed_embed_vtMp6x .klaviyo_submit_button:hover,
+  .klaviyo_condensed_styling.klaviyo_condensed_embed_vtMp6x .klaviyo_submit_button:hover {
+    background-color:#0064cd;
+  }
+  </style>
+  <script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+  <script type="text/javascript">
+    KlaviyoSubscribe.attachToForms('#email_signup', {
+      hide_form_on_success: true
+    });
+  </script>
+
+  
+  
+  
+  
+<!--   {% if settings.newsletter_system == 'mailchimp' %}
+    <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" class="contact-form" target="_blank">
+      {% comment %}
+        <input type="text" value="" name="FNAME" placeholder="{{ 'general.newsletter_form.subscriber_first_name' | t }}">
+        <input type="text" value="" name="LNAME" placeholder="{{ 'general.newsletter_form.subscriber_last_name' | t }}">
+      {% endcomment %}
+      <input type="email" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
+      <input type="submit" value="{{ 'general.newsletter_form.submit' | t }}" class="action_button sign_up" name="subscribe" />
+    </form>
+  {% else %}    
+    {% form 'customer' %}
+       {% if form.posted_successfully? %}
+         <p><em>{{ 'general.newsletter_form.success_text' | t }}</em></p>
+       {% elsif form.errors %}
+         {% for field in form.errors %}
+           <p><em>{{ field }} - {{ form.errors.messages[field] }}</em></p>
+         {% endfor %}
+       {% endif %}
+
+       <input type="hidden" name="contact[tags]" value="prospect,newsletter"/>
+       <input type="hidden" name="contact[first_name]" value="{{ 'general.newsletter_form.subscriber_first_name' | t }}" />
+       <input type="hidden" name="contact[last_name]" value="{{ 'general.newsletter_form.subscriber_last_name' | t }}" />
+       <input type="email" class="contact_email" name="contact[email]" required pattern="[^ @]*@[^ @]*" placeholder="{{ 'general.newsletter_form.placeholder' | t }}" />
+       <input type='submit' class="action_button sign_up" value="{{ 'general.newsletter_form.submit' | t }}" />
+     {% endform %}
+  {% endif %} -->
+</div>

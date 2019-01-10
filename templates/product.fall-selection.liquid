@@ -1,0 +1,494 @@
+{% layout 'theme.bootstrap.landing-page' %}
+
+<link href="https://allfont.net/allfont.css?fonts=montserrat-hairline" rel="stylesheet" type="text/css" />
+
+<div id="glass">
+  
+  <div class="header-logo" style="border:none;padding-top:40px;">
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+          <img style="height:80px;max-width:none;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/logo_09ef8713-23b5-463f-8830-ae307a954484.png?8425110674889817611" >
+        </div>
+        <div class="col-xs-2 col-xs-offset-2">
+          <a href="#cart" class="icon-cart right" style="padding:20px 40px;"><span>{{ cart.item_count }}</span></a>
+        </div>
+      </div>
+  </div>
+
+
+
+  <div id="">
+    <div class="container" style="padding-bottom:20px;padding-top:30px;">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+          <div class="text-center">
+            <h1 style="padding:15px 0px 5px 0px;font-size:50px;">Our Fall Selection</h1>
+            <h3 style="font-size:27px;color:black;font-family:'brandon_regular' !important;">An Exclusive Offering of Natural Wine and Olive Oil</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-product-section" id="main-product-id" style="background:white; padding-top:0px;">
+    <div class="container" style="padding-top:0px;">
+
+
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-12 text-center">
+          <img style="" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Fall_Selection_-_product_image_1.png?13300660154444154580" />
+          <br /><br />
+          <div class="main-product">
+            {% assign collection_handles = product.collections | map: 'handle' %}
+            {% assign variant = product.selected_or_first_available_variant  %}
+
+            <p style="font-family: 'brandon_regular_italic' !important; margin-bottom:12px;font-size:26px">Each Selection Includes</p>
+            <p style="font-family: 'brandon_regular' !important; margin-bottom:9px;font-size:20px">3 Organic Reds</p>
+            <p style="font-family: 'brandon_regular' !important; margin-bottom:9px;font-size:20px">2 Organic Whites</p>
+            <p style="font-family: 'brandon_regular' !important; margin-bottom:17px;font-size:20px">1 Organic EVOO</p>
+			<h2 style="color:red; margin-bottom:5px;">Sold Out</h2>
+            <p style="color:black;">Our wines are organic small batch productions, so they run out fast. We'll have another seasonal offering soon. In the meantime, order our Natural Wines <a href="/products/wine-membership">here</a>.</p>
+            <p style="font-family: 'brandon_regular' !important; margin-bottom:20px; margin-top:10px; font-size:18px">Complimentary Shipping   |   Happiness Guarantee</p>
+
+          </div>
+          <br /><br />
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="glass-quote" style="margin-bottom:-2px">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1 text-center">
+          <p> 
+            <i class="fa fa-quote-left" aria-hidden="true"></i>
+            <span class="quote-body">Thank you for this business. Our earth needs more conscious food and drink choices like this.</span>
+            <i class="fa fa-quote-right" aria-hidden="true"></i>
+          </p>
+          <p class="quote-author">- Stacey, Happy Member</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="">
+    <div class="container" style="padding-bottom:20px;padding-top:50px;">
+      <div class="row">
+          <div class="text-center">
+            <h1 style="padding:25px 0px 25px 0px;font-size:39px;">The Oil</h1>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+            <img style="max-height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/coratina-extra-virgin-olive-oil.png?12809896824607394170" >
+          </div>
+          <div class="col-xs-12 col-sm-5">
+           <h1 style="font-size:24px;margin-top:10px;">Region</h1>
+            <p style="margin-bottom:20px;">Puglia, Southern Italy</p>
+            <h1 style="font-size:24px;margin-top:10px;">Varietal</h1>
+            <p style="margin-bottom:20px;">100% Coratina Olives</p>
+            <h1 style="font-size:24px;margin-top:10px;">Notes</h1>
+            <p style="margin-bottom:20px;">Beautiful fruit with clean, subtle earth and smooth finish.</p>
+            <h1 style="font-size:24px;margin-top:10px;">Story</h1>
+            <p style="margin-bottom:20px;">Picked by hand from antioxidant rich, organic Coratina olives, this olive oil is milled 12 hours after harvest at an extraction temperature of exactly 23oC. The oil has particularly low acidity (0.2%) and is not industrially refined or blended with any other oils.</p> 
+            <p style="margin-bottom:20px;">The delicate process yields a clean Italian oil, bottled in a dark container to preserve freshness. We bring you its latest harvest and vintage. </p>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  
+  <div id="">
+    <div class="container" style="padding-bottom:20px;padding-top:50px;">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+          <div class="col-sm-4 col-sm-offset-4">
+          <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/17DFW_BottleStickers_v6b.jpg?15990469087838344296" >
+        </div>
+          <div class="text-center">
+            <h1 style="padding:25px 0px 25px 0px;font-size:39px;">The Wine</h1>
+          </div>
+        </div>
+      </div>
+        
+      <div class="row text-center" style="margin-bottom:50px;">
+        <div class="col-sm-5 col-sm-offset-1" style="margin-bottom:20px;">
+          <img style="max-height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Fall_Selection_-_bottles_1.png?3379442858237233857">
+          <h1 style="font-size:32px;">2015 Santalba Cotas Altas Rioja</h1>
+          <h1 style="font-size:24px;margin-top:20px;">Labs</h1>
+          <p>0.2 g/L sugar, 12% alcohol, 40 ppm sulfur </p>
+          <h1 style="font-size:24px;margin-top:20px;">Notes</h1>
+          <p>Smooth red fruit with slight earthy notes</p>
+          <h1 style="font-size:24px;margin-top:20px;">Story</h1>
+          <p>This blend of Tempranillo and Garnacha from Rioja has a uniquely smooth elegance. Everything is done by hand, from picking the grapes to barreling the wine. A beautiful, clean way to experience the power of Rioja.</p>
+        </div>
+        
+        <div class="col-sm-5" style="margin-bottom:20px;">
+          <img style="max-height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Fall_Selection_-_bottles_2_1.png?16243408460733717786">
+          <h1 style="font-size:32px;">2016 La Galoche Beaujolais</h1>
+          <h1 style="font-size:24px;margin-top:20px;">Labs</h1>
+          <p>0.6 g/L sugar, 12.1% alcohol, 15 ppm sulfur</p>
+          <h1 style="font-size:24px;margin-top:20px;">Notes</h1>
+          <p>Fresh and tart red fruit, clean palate, refreshing acid</p>
+          <h1 style="font-size:24px;margin-top:20px;">Story</h1>
+          <p>Born from the clay limestone soils of Beaujolais’ southern tip, this 100% Gamay reminds us why we love Gamay: drinkability. Its grapes grow on 25 year old vines and the wine ages in cement for 9 months. Wine purity on perfect display.</p>
+        </div>
+      </div>
+      
+      <div class="row text-center" style="margin-bottom:50px;">
+        <div class="col-sm-5 col-sm-offset-1" style="margin-bottom:20px;">
+          <img style="max-height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Fall_Selection_-_bottles_4_1.png?17957705626624082441">
+          <h1 style="font-size:32px;">2015 Stoka Teran Kras</h1>
+          <h1 style="font-size:24px;margin-top:20px;">Labs</h1>
+          <p>0.6 g/L sugar, 12.1% alcohol, 12 ppm sulfur</p>
+          <h1 style="font-size:24px;margin-top:20px;">Notes</h1>
+          <p>Deep iron-rich mineral accented by bright red fruits</p>
+          <h1 style="font-size:24px;margin-top:20px;">Story</h1>
+          <p>This Slovenian wine is born from the fertile, iron rich soils on the banks of the Danube River. The local red varietal - Teran - is on full display, growing on 20 year old vines. It’s slovenian terroir at its finest.</p>
+        </div>
+        
+        <div class="col-sm-5" style="margin-bottom:20px;">
+          <img style="max-height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Fall_Selection_-_bottles_3_1.png?8628875242382246418">
+          <h1 style="font-size:32px;">2015 Sarrazin Bourgogne Aligoté</h1>
+          <h1 style="font-size:24px;margin-top:20px;">Labs</h1>
+          <p>0.1 g/L sugar, 12.5% alcohol, 66 ppm sulfur</p>
+          <h1 style="font-size:24px;margin-top:20px;">Notes</h1>
+          <p>Fuller body, fleshy white fruit, thirst quenching palate</p>
+          <h1 style="font-size:24px;margin-top:20px;">Story</h1>
+          <p>As a cousin of Chardonnay, the Aligoté grape in this Burgundy white shines with deep flavor. It’s grown on 30 year old vines and bottled without any filtration, serving as a true expression of French terroir. Delicious with seafood and light fare.</p>
+        </div>
+      </div>
+        
+      <div class="row text-center" style="margin-bottom:50px;">
+        <div class="col-sm-6 col-sm-offset-3" style="margin-bottom:20px;">
+          <img style="max-height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Fall_Selection_-_bottles_5_1.png?4062499996666309686">
+          <h1 style="font-size:32px;">2015 Tetramythos Roditis Peloponnese</h1>
+          <h1 style="font-size:24px;margin-top:20px;">Labs</h1>
+          <p>0.4 g/L sugar, 12.1% alcohol, 62 ppm sulfur</p>
+          <h1 style="font-size:24px;margin-top:20px;">Notes</h1>
+          <p>Bright acid and crisp minerality graced by floral hints</p>
+          <h1 style="font-size:24px;margin-top:20px;">Story</h1>
+          <p>Crafted from the pink skinned Greek grape, Roditis, this refreshing white exemplifies the Mediterranean terroir of southern Greece. Higher altitudes, a cool sea breeze, and mineral driven soils come together in this organic wine. An elegant way to taste place.</p>
+        </div>
+      </div>
+     
+        
+	  <div class="text-center glass-harmony-cta">
+        <a href="#main-product-id" class="action_button" style="padding:10px 50px;margin:50px 0px;">Collect Our Wine and Oil</a>
+      </div>        
+
+    </div>
+  </div>
+
+
+
+  
+
+</div>
+
+  
+
+
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }}, 
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+  
+  
+  
+  
+  
+</script>
+
+
+  
+<script>
+  $(document).on("click", '.add_to_cart', function(e) {
+    window.setTimeout(function () {
+      $('#cart').trigger("open");
+    }, 1000);
+  });
+</script>
+  
+
+
+
+<script>
+	/**BEGIN JAVASCRIPT **/
+  /** COPIED FROM SUBSCRIPTION-PRODUCT.LIQUID **/
+if (subscription_on==true) {
+
+    window.currency_symbol='$'
+    window.currency_suffix=''
+    
+    discount_percentage_metafield_value = {{ product.metafields.subscriptions.discount_percentage | floor }} 
+    has_discount_{{product.id}} = false
+    if(discount_percentage_metafield_value > 0) {
+		has_discount_{{product.id}} = true 
+	}
+	
+	/* for changing background color when a selection is clicked */
+	rjQuery('body').on('click','.autodeliver.{{product.id}}',function() {
+		rjQuery('.radio_option.{{product.id}}').removeClass('active')
+		rjQuery(this).parent().parent().addClass('active')
+
+		if( rjQuery(this).val()=='autodeliver' ) {
+			rjQuery('#recurring_purchase_{{product.id}}').addClass('active')
+			rjQuery('#single_purchase_{{product.id}}').removeClass('active')
+		} else if( rjQuery(this).val()=='onetime' ) {
+			rjQuery('#recurring_purchase_{{product.id}}').removeClass('active')
+			rjQuery('#single_purchase_{{product.id}}').addClass('active')
+		}
+
+		if(has_discount_{{product.id}} == true) {
+			updatePrice_{{product.id}}("UPDATE - Change radio");    
+		}
+	})
+	
+	 //HANDLE THE ADDING TO CART
+	rjQuery( document ).ready(function() {
+		// CREATE DUPLICATE SELECT WITH OPTIONS
+      	var myDiv = rjQuery('form[data-productid="{{product.id}}"]');
+		var discount_prices = discount_variants_array_for_select_{{product.id}}; //discount price options
+		//Create and append select list
+		var discount_select_menu_html = rjQuery("<select id='discount-select-{{product.id}}'></select>"); 
+		myDiv.append(discount_select_menu_html);
+		for (var i = 0; i < discount_prices.length; i++) {
+			var option = rjQuery('<option></option>').val(discount_prices[i]).html(discount_prices[i])
+			discount_select_menu_html.append(option);
+		}
+
+        // ADD IDENTIFIERS TO ORIGINAL AND DUPLICATE SELECT        
+        var discount_select_{{product.id}} = rjQuery("#discount-select-{{product.id}}")
+        discount_select_{{product.id}}.hide();  
+        
+        var original_select_{{product.id}} = rjQuery('[name="id"][data-productid="{{product.id}}"]')
+		original_select_{{product.id}}.addClass('original_select_{{product.id}}')
+        // Set value of discount select on page load
+        var original_select_menu_value = original_select_{{product.id}}.val();
+		var discount_value_of_originally_selected_menu_value = variant_id_to_discount_id_map_{{product.id}}[original_select_menu_value]['discount_variant_id'];
+		discount_select_{{product.id}}.val(discount_value_of_originally_selected_menu_value);	
+
+        // using a timeout to wait for shopify to load select elements via javascript
+        setTimeout(function(){
+        	
+        	// INITIALIZE LISTENER FOR WHEN VARIANT DROPDOWN IS CHANGED 
+			rjQuery('form[data-productid="{{product.id}}"] .single-option-selector').change(function(){
+				
+				setTimeout(function(){
+					var original_product_value = original_select_{{product.id}}.val();	
+					discount_select_{{product.id}}.val(variant_id_to_discount_id_map_{{product.id}}[original_product_value]['discount_variant_id']);	
+					
+					updatePrice_{{product.id}}();
+				}, 400);
+				
+			})
+
+            // LISTENER FOR WHEN RADIO OPTION FOR ONE-TIME/RECURRING IS CHECKED                
+            rjQuery(".autodeliver.{{product.id}}").change(function(){				
+				/*IF AUTODELIVER IS SELECTED, WE SET OUR SELECT to name=id and take that attribute off the original select*/	
+				if(rjQuery(this).val() == 'autodeliver'){
+					// set duplicate select to be submitted 
+					original_select_{{product.id}}.attr('name','')
+					discount_select_{{product.id}}.attr('name','id')
+					//set shipping interval + subscription id attributes to be submitted when form is submitted
+					rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','properties[shipping_interval_frequency]');
+					rjQuery("#subscription_id_{{product.id}}").attr('name','properties[subscription_id]');
+					rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','properties[shipping_interval_unit_type]');
+
+				}
+              else if (rjQuery(this).val() == 'onetime') {
+                  // set original select to be submitted
+                  original_select_{{product.id}}.attr('name','id')
+                  discount_select_{{product.id}}.attr('name','')
+                  
+                  // remove shipping interval + subscription id from form submission since we're not subscription
+                  rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','');
+                  rjQuery("#subscription_id_{{product.id}}").attr('name','');
+				  rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','');
+              }
+            });
+        }, 300); // end setTimeout / initialization of select menu listeners
+
+        // IF SUBSCRIPTION ONLY, preset the subscription inputs
+        {% if subscription_only == 'true' %}
+			// set duplicate select to be submitted
+			original_select_{{product.id}}.attr('name','')
+			discount_select_{{product.id}}.attr('name','id')
+			
+			// set shipping interval + subscription id to be submitted
+			rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','properties[shipping_interval_frequency]');
+			rjQuery("#subscription_id_{{product.id}}").attr('name','properties[subscription_id]');
+            rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','properties[shipping_interval_unit_type]');              
+			
+        {% endif %}
+      });
+ 
+ 
+	/*** THIS PERFORMS PRICE UPDATE of primary price text above options***/
+	function updatePrice_{{product.id}}(debugging_text) {
+		var price_selectors = '.current_price, #productPrice, .product-price, .price, #price-preview, .actual-price'
+		
+		//check for quickbuy and adjust selectors if needed
+		if ( rjQuery(price_selectors).size() > 1 ) {
+			var has_quickbuy = true
+			//the quickbuy price selectors
+			price_selectors += ', .current_price.{{product.id}}, #productPrice.{{product.id}}, .product-price.{{product.id}}, .price.{{product.id}}, #price-preview.{{product.id}}'
+		}
+		
+		rjQuery(price_selectors).html(''); //blank out the current price
+		var variant_id = rjQuery('.original_select_{{product.id}}').val()      
+		var quantity = rjQuery('form[data-productid="{{product.id}}"] [name="quantity"]').val()
+	  
+		if(typeof quantity === 'undefined'){
+			//some sites don't define quantity in the form so we need this as a backup
+			quantity = 1;
+		}
+		
+		variant_price_{{product.id}} = (variant_id_to_price_map_{{product.id}}[variant_id] / 100) 
+		
+		//if recurring is on, set 
+		if( rjQuery('#autodeliver_on_radio_{{product.id}}').prop('checked')==true && variant_id_to_discount_id_map_{{product.id}}[variant_id]['discount_variant_id'] !='') {
+			variant_price_{{product.id}} = variant_price_to_discount_price_map_{{product.id}}[variant_id]['discount_variant_price']
+		} 
+
+		variant_price_{{product.id}} = parseFloat(variant_price_{{product.id}}).toFixed(2)
+		var displayed_price = parseFloat(quantity * variant_price_{{product.id}}).toFixed(2)
+		var price_string = currency_symbol+' '+displayed_price + currency_suffix
+	  
+		if(window.first_time_{{product.id}}){
+			rjQuery(price_selectors).html(price_string)
+		}
+		window.first_time_{{product.id}} = true;
+		updateInlinePrice_{{product.id}}()
+	}
+
+	// This function updates the inline prices (next to radio buttons) 
+	function updateInlinePrice_{{product.id}}() {
+		var variant_id = rjQuery('.original_select_{{product.id}}').val();
+		var price_one_time = (variant_id_to_price_map_{{product.id}}[variant_id] / 100);
+		price_one_time = parseFloat(price_one_time).toFixed(2);
+        
+        var price_recurring = variant_price_to_discount_price_map_{{product.id}}[variant_id]['discount_variant_price']
+        price_recurring = parseFloat(price_recurring).toFixed(2);
+
+		rjQuery('#one-time-price_{{product.id}}').text(" "+currency_symbol+ price_one_time + currency_suffix);
+		rjQuery('#recurring-time-price_{{product.id}}').text(" "+currency_symbol + price_recurring + currency_suffix);
+	}
+	
+	/** PRICE RELATED DOCUMENT READY **/
+	rjQuery(document).ready(function(){
+		
+		/** make sure correct option has grey border **/
+		window.lock_{{product.id}} = false;
+		window.first_time_{{product.id}} = true;
+		if(rjQuery('#autodeliver_on_radio_{{product.id}}').prop('checked')==true ) {
+			rjQuery('#recurring_purchase_{{product.id}}').addClass('active');
+		} else {
+			rjQuery('#single_purchase_{{product.id}}').addClass('active');
+		}
+		if(has_discount_{{product.id}} == true) {
+			setTimeout(function(){ updatePrice_{{product.id}}("") }, 200);
+		}
+		
+		
+		//if something modifies the price, we notice it and then change it back. but we use a timeout function to avoid an infinite loop
+		rjQuery('.current_price, #productPrice, .product-price, .price, #price-preview').bind("DOMSubtreeModified",function(){      
+			if( window.lock_{{product.id}} == false ) {
+				window.lock_{{product.id}} = true;
+				if(has_discount_{{product.id}} == true) {
+					updatePrice_{{product.id}}("UPDATE - DOMSubtreeModified");
+				}
+				setTimeout(function(){window.lock_{{product.id}}=false}, 200);
+			}
+		});
+		
+		//handle change in quantity
+		rjQuery('#quantity').on("change",function(){
+			if(has_discount_{{product.id}} == true) {
+				updatePrice_{{product.id}}("UPDATE - Qty change on");
+			}
+		});
+		
+		//run the price updater once page loads to reset it to what we need it to be				
+		updateInlinePrice_{{product.id}}();		
+				
+	})//end document ready
+
+		
+
+	/** set variant mapping for the case in which there is an automatically created duplicate product **/
+	var variant_id_to_discount_id_map_{{product.id}} = {};  
+	var variant_price_to_discount_price_map_{{product.id}} ={} 
+	var discount_variants_array_for_select_{{product.id}}=[]
+	
+	{% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+		var discount_variant_id = '{{ variant.metafields.subscriptions.discount_variant_id }}'
+		variant_id_to_discount_id_map_{{product.id}}['{{variant.id}}']='' 
+		
+		if(discount_variant_id) {
+			variant_id_to_discount_id_map_{{product.id}}['{{variant.id}}'] = {"discount_variant_id":discount_variant_id};
+			discount_variants_array_for_select_{{product.id}}.push(discount_variant_id)
+		}
+		
+		var discount_variant_price = '{{ variant.metafields.subscriptions.discount_variant_price }}'
+		variant_price_to_discount_price_map_{{product.id}}['{{variant.id}}']=''
+		
+		if(discount_variant_price) {
+			variant_price_to_discount_price_map_{{product.id}}['{{variant.id}}'] = { "discount_variant_price": discount_variant_price } 
+		}
+
+{%endunless%}
+{%endunless%}
+	{% endfor %}
+	
+	//map original prices for updated price calculations
+	variant_id_to_price_map_{{product.id}}={}
+	{% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+		variant_id_to_price_map_{{product.id}}['{{variant.id}}'] = "{{variant.price}}"
+
+{%endunless%}
+{%endunless%}
+	{% endfor %}
+
+}//end if (subscription_on==true) section
+	
+</script> 
+
+

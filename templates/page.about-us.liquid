@@ -1,0 +1,212 @@
+{% layout 'theme.bootstrap' %}
+
+{{ 'bootstrap-page.scss' | asset_url | stylesheet_tag }}
+
+<div class="about-us">
+
+  <div class="row vertical-align header-section">
+    <div class="col-sm-4 text-center" style="font-size:60px;">
+      <h1>About Us</h1>
+    </div>
+    <div class="col-sm-8">
+      <img class="header-img" src="https://cdn.shopify.com/s/files/1/0924/9540/files/heart-tree.png?3695813930193756157">
+    </div>
+  </div>
+  
+  <div class="container">
+    
+    <div class="row tagline">
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <h2>We are a Family of Health-Conscious Wine Lovers who believe in the Abundance of Health, Wellth, and Happiness.</h2>
+      </div>
+      <br />
+      <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+        <h2 class="bold" style="margin:0px;">We are <div class="rotating-outer"><span id="rotating-we-are">Authentic</span></div></h2>
+      </div>
+      
+    </div>
+    
+    <script type="text/javascript">
+      var text = ["Authentic.", "Love.", "Truth.", "Heart.", "Understanding.", "Reliable."];
+      var counter = 0;
+      var textToUpdate = $("#rotating-we-are");
+      setInterval(change, 3000);
+      function change() {
+      	textToUpdate.text(text[counter]);
+        counter++;
+        if(counter >= text.length) { counter = 0; }
+      }
+    </script>
+
+ 
+  </div>
+    
+  <div class="row ethos">
+    <div class="col-xs-12 text-center">
+      <h1>Ethos</h1>
+    </div>
+  </div>
+  
+  <div class="container" style="padding-top:20px;margin-bottom:100px;">
+    <div class="row">
+      
+      <div class="col-sm-8 col-sm-offset-2">
+        <br />
+        <h3 class="bold">Live Your Highest Life</h3>
+        <p>Because wine is a highly pleasurable part of our life’s journey, we search the globe to find world-class, pure, healthy, and sustainable family-farmed wines that are naturally low in alcohol, sulfites, and sugar.</p>
+        <br />
+        <p>Our ultimate mission, though, is much greater. Our passion and purpose is to share the knowledge, extraordinary vitality, and abundant pleasures of optimized health.</p>
+        <br />
+        
+        <br /><br />
+        
+        <h3 class="bold">Connect with Nature</h3>
+        <p>We also believe in the preservation and expansion of family farming. Our mission includes connecting more people with nature’s whole, pure bounties.</p>
+        <br />
+        <p>We are committed to financially supporting farmers who share our passion and purpose. We stand behind these dedicated artisans and activists who care deeply about the land, the health and quality of their product, and the authenticity of their craft.</p>
+        <br /><br />
+        
+
+      </div>
+      
+    </div>
+    
+    
+  </div>
+        
+
+  <div class="row our-family">
+    <div class="col-xs-12 text-center">
+      <h1>Our Family</h1>
+    </div>
+  </div>
+  
+  <div class="container family-photos" style="padding-top:20px;margin-bottom:100px;">
+    <div class="row">
+      
+      <div class="col-sm-4 text-center">
+        <div id="toddPhoto" class="cropcircle"></div>
+        <h3 class="bold">Todd White</h3>
+        <p>Fanatical biohacker. Wears the same uniform every day. Starts every morning with 40 minutes of meditation.</p>
+      </div>
+      
+      <div class="col-sm-4 text-center">
+        <div id="juanPhoto" class="cropcircle"></div>
+        <h3 class="bold">Juan Nava</h3>
+        <p>His biceps are so big, they have started growing their own biceps.</p>
+      </div>
+      
+      <div class="col-sm-4 text-center">
+        <div id="rosettaPhoto" class="cropcircle"></div>
+        <h3 class="bold">Rosetta Krizansky</h3>
+        <p>A yogi. Brews up the world’s best bone broth. Master of events.</p>
+      </div>
+   </div>
+    
+    <br />
+    
+   <div class="row">
+     <div class="col-sm-4 text-center">
+       <div id="markPhoto" class="cropcircle"></div>
+       <h3 class="bold">Mark Moschel</h3>
+        <p>Master of whiteboarding and stick figure drawings. Fueled by lots of Bulletproof Coffee.</p>
+     </div>
+     <div class="col-sm-4 text-center">
+        <div id="tonyPhoto" class="cropcircle"></div>
+       	<h3 class="bold">Tony Martinez</h3>
+        <p>Best dancer of the group. His salsa moves will sweep you off your feet. Just don’t go in the backseat of his car.</p>
+      </div>
+     <div class="col-sm-4 text-center">
+        <div id="sergioPhoto" class="cropcircle"></div>
+	    <h3 class="bold">Sergio Nava</h3>
+        <p>Most people have a heart the size of their fist. Sergio's heart is so big it takes up a whole room!</p>
+      </div>
+      
+    </div>     
+  </div>
+  
+  
+  
+  <div class="row peace-and-profit">
+    <div class="col-xs-12 text-center">
+      <h1>Peace & Profit</h1>
+      <h2>- Our Culture Manifesto -</h2>
+    </div>
+  </div>
+  
+  <div class="container peace-and-profit-body" style="padding-top:20px;">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 text-center">
+        <h3><i>"Be the change you want to see in the world"</i></h3>
+      </div>
+      <div class="col-sm-8 col-sm-offset-2">
+        <p>We talk a lot about that phrase.</p>
+        <p>All of us here want to be peaceful, grounded, and considerate. We also want to positively impact the world and people around us. </p>
+        <p>In the past, we’ve separated these two ideas. The goal was <i>balance</i>. Seek profit at work. Seek peace at home. Find a good work-life balance.</p>
+        <p>At Dry Farm Wines, we seek a blend, not a balance. We want to live with both peace and profit in every passing moment. Here’s what that means to us:</p>
+        <p><span class="bold">Peace:</span> Being in a state of joy, contentment, and love. Relaxing, socializing, playing, and improving ourselves. Living with presence and appreciation.</p>
+        <p><span class="bold">Profit:</span> Contributing meaningful service to the world. Making money to secure the future for ourselves, our family, and our team. Producing quality work, developing our skills, and achieving our goals.</p>
+        <p>There are 9 core principles we live by each day. Collectively, they are the framework for our ideal culture.</p>
+      </div>
+     
+      <div class="row">
+        <div class="col-sm-offset-4 col-sm-4">
+          <hr>
+        </div>
+      </div>
+      
+      <div class="col-sm-8 col-sm-offset-2 p-and-p-list">
+        <div class="text-center">
+          <h3>Peace & Profit Manifesto</h3>
+        </div>
+        <p class="bold">1. We love the people we work with.</p>
+        <p>This includes our team, partners, and customers. We make them feel loved every day.</p>
+
+        <p class="bold">2. We are wildly passionate about our mission and culture.</p>
+        <p>We commit to maintaining our values, knowing our passion attracts other great people to our cause.</p>
+
+        <p class="bold">3. We practice Family First.</p>
+        <p>We are selfless in supporting each other, even when it’s inconvenient. They will do the same for us. By working together, we all grow.</p>
+        
+        <p class="bold">4. We are honest, vulnerable, and authentic.</p>
+        <p>With a foundation of trust, we can openly discuss our failures without blame, adversities without fear, and feelings without judgement. Communication can flourish.</p>
+        
+        <p class="bold">5. We practice gratitude, meditation, and healthy living daily.</p>
+        <p>We believe everyone deserves to live with optimal health. The best way to help others is to first be the change you want to see.</p>
+        
+        <p class="bold">6. We simplify.</p>
+        <p>.</p>
+        
+        <p class="bold">7. We lead by example.</p>
+        <p>We take proactive actions that support our mission and culture. We are guided by our integrity and driven by an inner sense of determination. We actively seek opportunities to be proactive and lead.</p>
+        
+        <p class="bold">8. We have unrelenting self-discipline.</p>
+        <p>We follow our actions and projects through to completion. Because we are reliable, others feel a sense of peace working with us.</p>
+        
+        <p class="bold">9. We accept that Peace & Profit is a process.</p>
+        <p>It is not a goal. It will never be fully realized or completed. We commit to living it each day.</p>
+      </div>
+      
+      
+    </div>
+    
+    
+  </div>
+
+
+  <img class="p-and-p-bottom-img" src="https://cdn.shopify.com/s/files/1/0924/9540/files/wine-bg.png?15510954327683104684">
+
+  
+  <div class="row" style="margin: 50px;padding:0px;">
+    <div class="col-xs-12 text-center">
+      <a class="action_button secondary" style="background: crimson; color: white" href="https://www.dryfarmwines.com/pages/our-wines">Learn About Our Wines</a>
+    </div>
+  </div>
+    
+  
+
+
+</div>
+
+
+

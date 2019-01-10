@@ -1,0 +1,719 @@
+{% layout 'theme.bootstrap.landing-page' %}
+
+
+<link href="https://allfont.net/allfont.css?fonts=montserrat-hairline" rel="stylesheet" type="text/css" />
+
+<div id="glass">
+  
+   <div style="background:#ff7f7f;color:black;padding:20px;text-align:center;">
+    <p style="font-weight:700;"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> This offer is closed. Thank you to everyone who ordered. Happy Holidays! </p>
+  </div>
+  
+  
+    <div class="header-logo" style="border:none;padding-top:40px;background:black;">
+      <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+          <img style="height:80px;max-width:none;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/dfw_logo_silhouette-white.png?6757622883716266657" >
+        </div>
+        <div class="col-xs-2 col-xs-offset-2">
+          <a href="#cart" class="icon-cart right" style="padding:20px 40px;"><span>{{ cart.item_count }}</span></a>
+        </div>
+      </div>
+  </div>
+  
+   <div id="" style="background:black;">
+    <div class="container" style="padding-bottom:10px;padding-top:30px;">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+          <div class="text-center">
+            <h1 style="padding:15px 0px 5px 0px;font-size:56px;color:white;">BLACK FRIDAY</h1>
+            <h3 style="font-size:27px;color:white;font-family:'brandon_regular' !important;">Bold Red Wines for Winter</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-product-section" id="main-product-id" style="background:black; padding-top:0px;">
+    <div class="container" style="padding-top:40px;">
+
+
+      <div class="text-center">
+<img style="background:black; width:700px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/20181016_042455_Raw_00005_Halloween_BottleShots__2_1.jpg?3813040025211816375" />
+      </div>
+      
+      <div class="row product-{{ product.id }}">
+        <div class="col-md-6 col-md-offset-3 col-sm-12 text-center">
+<!--          {% include 'product-images' %} -->
+          <br /><br />
+            <p style="font-family: 'brandon_regular'; font-size: 35px; margin-bottom:10px;color:white;">The Black Friday Bold Box</p>
+            <p style="font-family: 'brandon_regular'; font-size: 22px; margin-bottom:50px;color:white;">4 bold, organic red wines</p>            
+          
+          <div class="main-product">
+            {% assign collection_handles = product.collections | map: 'handle' %}
+            {% assign variant = product.selected_or_first_available_variant  %}
+            
+            <style type="text/css" media="screen"> .current_price {color: white;}</style>
+            
+<!-- 			<h2 style="color:red; margin-bottom:5px;">Sold Out</h2>
+            <p style="color:black;">Our wines are organic small batch productions, so they run out fast. We'll have another seasonal offering soon. In the meantime, order our Natural Wines <a href="/products/wine-membership">here</a>.</p> -->
+            <p style="font-family: 'brandon_regular' !important; margin-bottom:20px; margin-top:10px; font-size:22px; color:white;">Complimentary Shipping     |     Happiness Guarantee     |     No Subscription</p>
+
+          </div>
+          <br /><br />
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="main-product-section" id="" style="background:black; padding-bottom:20px;padding-top:30px;">
+    <div class="container" style="padding-top:0px;">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
+          <h1 style="padding:20px 0px 0px 0px;font-size:39px;color:white;">Frequently Asked Questions</h1>
+        </div>
+        <div class="col-md-8 col-md-offset-2 col-sm-12 text-center">
+          <div class="text-center;" style="color:white;">       
+			<h1 style="padding:50px 0px 0px 0px;font-size:30px;color:white;">What do I get in the Black Friday Box?</h1>
+            <p style="margin-bottom:20px;font-size:24px;">The Black Friday Bold Box is a selection of 4 Natural Red Wines chosen with intention: dark, rich flavors to keep you warm during winter. The box also has one of our best prices of the year.</p>
+            <h1 style="padding:50px 0px 0px 0px;font-size:30px;color:white;">What if I don't like a bottle?</h1>
+            <p style="margin-bottom:20px;font-size:24px;">We will replace or refund any bottle you don't love, no time limits or questions asked. This is our Happiness Guarantee on every box.</p>
+            <h1 style="padding:50px 0px 0px 0px;font-size:30px;color:white;">Does this impact my active membership?</h1>
+            <p style="margin-bottom:20px;font-size:24px;">No, Black Friday orders do not impact any active memberships you have with us. All Black Friday orders are one-time orders separate from any subscriptions.</p>
+          </div>
+          <br /><br />
+        </div>
+
+      </div>
+           <div class="text-center glass-harmony-cta">
+      <a href="#main-product-id" class="action_button" style="padding:15px 30px;margin:20px 0px;background:#921c1c;">Collect the Black Friday Box</a>
+    </div> 
+    </div>  
+  </div> 
+  
+       <div id="" style="background:black;">
+    <div class="container" style="padding-bottom:20px;padding-top:50px; background:black;">
+      <div class="row">
+          <div class="text-center">
+            <h1 style="padding:25px 0px 25px 0px;font-size:39px; color:white;">Why Try our Black Friday Wines?</h1>  
+        </div>
+        </div>
+      
+      <div class="row">
+          <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+            <img style="max-height:275px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/20180923_184204_DSCF0500_X-H1_XF16-55mmF2.8-R-LM-WR_60-mm_YannikRohrer_DryFarmWines_2018_09_23_09_GrowerVisit_CraigHawkinsHome_SwartlandSouthAfrica_11189.jpg?970718259623836388" >
+          </div>
+          <div class="col-xs-12 col-sm-5" style="color:white;">
+           <h1 style="font-size:28px;margin-top:20px; color:white;">Clean, Joyful Buzz without the Negatives</h1>
+            <p style="margin-bottom:20px; font-size:22px;">With less than 1g/L of sugar and a lower alcoholic dose, these wines give you a unique buzz. They keep you energized while minimizing headaches and hangover effects.</p>
+
+          </div>
+      </div>
+      
+      <div class="row">
+          <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+            <img style="max-height:275px; margin-top:40px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/20180603110041_DSCF2849_YannikRohrer_Fujifilm_X-H1_XF16-55mmF2.8_R_LM_WR_80_mm_0._Raw_0117_Edit_DFW_Italy_GrowerVisit_Architepo_Edit_Color_12MP_1.5MB_1.jpg?8699165392615323876" >
+          </div>
+          <div class="col-xs-12 col-sm-5" style="color:white;">
+           <h1 style="font-size:28px; margin-top:60px; color:white;">Support Small, Family Farmers</h1>
+            <p style="margin-bottom:20px; font-size:22px;">We only source wines from family farmers who respect the Earth and work with their hands. They consistently sacrifice profits because they don’t use machinery or industrial additives; we wish to fairly support them for their work in service of our health.</p>
+
+          </div>
+      </div> 
+      
+       <div class="row">
+          <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+            <img style="max-height:275px;  margin-top:40px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/20180609163355_DSCF2760_YannikRohrer_Fujifilm_X-H1_XF16-55mmF2.8_R_LM_WR_26_mm_2018_06_09_DFW_Austria_Vienna_WineFair_VieVinum_Hofburg_Palace_1010_Vienna_4361_MIRROR_Color_Edit_-_Vie_Vinum_-_Hoffburg.jpg?8241653795899074173" >
+          </div>
+          <div class="col-xs-12 col-sm-5" style="color:white;">
+           <h1 style="font-size:28px;margin-top:60px; color:white;">Health Certified and Lab Tested</h1>
+            <p style="margin-bottom:20px; font-size:22px;">Every bottle we source is lab tested by an independent third party for levels of sugar, alcohol, and sulfites. Also, organic wine made without additives (like colorings), it can contain healthy gut probiotics.</p>
+
+          </div>
+       </div>
+
+        <div class="text-center glass-harmony-cta" style="background:black; margin-top:50px; margin-bottom:40px;">
+      		<a href="#main-product-id" class="action_button" style="padding:15px 30px;margin:20px 20px;background:#921c1c;">Collect the Black Friday Box</a>
+    	</div> 
+      
+    </div>
+  </div>
+  
+
+     <div class="main-product-section" style="background:black; padding-top:0px;margin-top:-3px;">
+      <div class="container" style="padding-bottom:20px;padding-top:0px; background:black;">
+      <div class="row">
+          <div class="text-center">
+            <h1 style="padding:40px 0px 20px 0px;font-size:40px; color:white;">- How to Enjoy - </h1>
+               <h1 style="font-family: 'brandon_regular'; font-size: 28px; margin-bottom:50px;margin-top:40px;color:white;">Here is the best way to enjoy our Holiday Natural Wines </h1>    
+        </div>
+        </div>
+      
+       <div class="row text-center" style="margin-bottom:50px; background:black;">
+        <div class="col-sm-3 col-sm-offset-1" style="margin-bottom:20px; color:white;">
+          <img style="max-height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/20180818_165123_DSCF6148_X-H1_XF16-55mmF2.8_R_LM_WR_83_mm_YannikRohrer_DryFarmWines_00085.jpg_MIRROR_5._Wine_Glasses_Bottles_Pours_1.jpg?14955193166984382237">
+          <h1 style="font-size:32px; color:white; margin-top:30px; margin-bottom:30px;">Chill</h1>
+          <p>Because of their fresh profile, Natural Wines are best served chilled (even reds!). For whites, rosés, and bubbles, ice for 30 mins; for reds, try 15.</p>
+        </div>
+        
+        <div class="col-sm-3" style="margin-bottom:20px; margin-left:45px; color:white;">
+          <img style="max-height:300px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Screen_Shot_2018-11-07_at_6.32.06_PM.png?6867645260865758495">
+          <h1 style="font-size:32px; color:white; margin-top:30px; margin-bottom:30px;">Swirl and Sip</h1>
+          <p>Use smaller pours. This leaves headspace in the glass for the aromatics. It also lets you swirl the wine to aerate and activate the bouquet.</p>
+        </div>
+              
+        <div class="col-sm-3" style="margin-bottom:20px; margin-left:40px; color:white;">
+          <img style="max-height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/20180513_205835_DSCF8996_81A55635Fujifilm_X-H1_XF16-55mmF2.8_R_LM_WR_24_mm___00446_Photos_-_Grower_Dinner_EditExport_BERLIN_RAW_CordoBar_GrowerDinner_1_1.jpg?16221225242601049049">
+          <h1 style="font-size:32px; color:white; margin-top:30px; margin-bottom:30px;">Invite Others</h1>
+          <p>Wine is a social event! Invite friends and family, cook a meal, open multiple bottles, and celebrate.</p>
+        </div>     
+      </div>
+      
+            
+    <div class="text-center glass-harmony-cta">
+      <a href="#main-product-id" class="action_button" style="padding:15px 30px;margin:20px 0px;background:#921c1c;">Taste our Black Friday Bold Reds</a>
+    </div> 
+    </div>
+    </div>
+  
+  
+    <div id="">
+    <div class="container" style="padding-bottom:20px;padding-top:50px;">
+      <div class="row">
+          <div class="text-center">
+            <h1 style="padding:25px 0px 25px 0px;font-size:39px;">Meet a Natural Wine Grower</h1>
+          </div>
+        </div>
+      
+        <div class="row">
+          <div class="col-xs-12 col-sm-6 col-sm-offset-1">
+            <img style="max-height:600px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/20180612124523_DSCF6262_YannikRohrer_Fujifilm_X-H1_XF16-55mmF2.8_R_LM_WR_24_mm_0._Organize_ClausPreisenger_0239_MIRROR_Edit_Color_ClausPreisenger_Austria_0001_1_7f997961-7d5d-4b4d-aef4-80f026c9171b.jpg?6244948998395886204" >
+          </div>
+          <div class="col-xs-12 col-sm-4">
+			<p style="margin-bottom:20px;font-size:24px;">Claus Preisinger is one of the most accomplished biodynamic wine growers in the world. A pioneer of Austrian Natural Wine, Claus originally studied commercial winemaking in California, but quickly developed a distaste for its lack of respect for Nature. He soon started his own vineyard in Austria, committing to intense organic and biodynamic practices.</p>
+          </div>
+        </div>
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+          	<p style="margin-bottom:15px;font-size:24px;">At heart, Claus is a farmer. He lives in the soil and is obsessive about his Natural lifestyle. With a rebellious spirit, he bucks every trend in modern winemaking: avoids commercial machinery, shuns shortcuts in his cellar, uses only native yeasts, works with his hands everyday, and perhaps most importantly, expresses his authentic personality in everything he does.</p>
+            <h1 style="margin-bottom:15px;font-size:24px;">We support Claus and all of our natural family farmers who respect Nature's health in the soil and our health in their wines!</h1>
+        </div>
+        </div>
+      
+    </div>
+  </div>
+  
+    <div class="main-product-section" style="background:white; padding-top:0px;margin-top:-3px;">
+  <div class="container" style="padding-top:25px;">
+    <div class="row">
+        <div class="text-center">
+                      <h1 style="padding:50px 0px 30px 0px;font-size:40px;">CLAUS TALKS ABOUT HIS PHILOSOPHY</h1>
+          <div class="vid-container">
+			<iframe width="500" height="315" src="https://www.youtube.com/embed/SujQ6nqcIQw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  
+<div class="row">
+      <div class="col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+        <div class="col-sm-4 col-sm-offset-4">
+        <img style="margin-top:10px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/17DFW_BottleStickers_v6b.jpg?15990469087838344296" >
+      </div>
+        <div class="text-center">
+          <h1 style="padding:10px 0px 0px 0px;font-size:39px;">A Healthier Way to Drink</h1>
+        </div>
+      </div>
+    </div>
+
+      
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-sm-offset-1 col-sm-10">
+<!--                   <h2>Committed to REAL Wine</h2> -->
+              <div class="commited-intro">
+                We curate only the highest quality natural wines from small, organic family farms that meet our strict standard of health. 
+                <br>
+                <br>
+                This is real wine; nothing added, nothing removed.
+                </div>
+
+              <ul class="commited-list">
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Sugar-Free (< 1g/L)</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Low Sulfites (< 75ppm)</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Low Alcohol (< 12.5%)</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Mycotoxin/Mold-Free</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">No Additives</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Dry Farmed (No Irrigation)</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Organic or Biodynamic</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Old Vines (up to 100 yrs)</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Hand Harvested</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Wild Native Yeast</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Small Batch Productions</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Paleo-Friendly</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Keto-Friendly</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Low Carb-Friendly</li>
+                  <li><img src="https://cdn.shopify.com/s/files/1/0924/9540/files/orange-check.png?14011044857486688923">Mouthwateringly Delicious</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+      </div>
+
+    </div>
+  
+     <div id="endorsed" class="endorsed">
+      <div class="container">
+          <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="row">
+                <div class="col-md-12">
+                  <h2 class="endorsed-title">Health Leaders Who Love Our Wines</h2>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <div class="row">
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                          <div class="endorsed-image">
+                            <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/mark.png?14011044857486688923">
+                            </div>
+                        </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-8">
+                          <div class="endorsed-name">Mark Sisson, Primal Blueprint</div>
+                          <blockquote>The perfect paleo wine, I’m a believer.</blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <div class="row">
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                          <div class="endorsed-image">
+                            <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/dave.png?14011044857486688923">
+                            </div>
+                        </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-8">
+                          <div class="endorsed-name">Dave Asprey, Bulletproof</div>
+                          <blockquote>Dry Farm Wines brings fanatical quantification to biohacking wine.</blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <div class="row">
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                          <div class="endorsed-image">
+                            <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/abel.png?14011044857486688923">
+                            </div>
+                        </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-8">
+                          <div class="endorsed-name">Abel James</div>
+                          <blockquote>Rejoice, you can drink your wine and have your health too!</blockquote>
+                        </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <div class="row">
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                          <div class="endorsed-image">
+                            <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/JJVirgin-headshot-circle.png?3869447806782600386">
+                            </div>
+                        </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-8">
+                          <div class="endorsed-name">JJ Virgin</div>
+                          <blockquote>Take great care of your body and your palate with Dry Farm Wines!</blockquote>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <div class="row">
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                          <div class="endorsed-image">
+                            <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/robb.png?14011044857486688923">
+                            </div>
+                        </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-8">
+                          <div class="endorsed-name">Robb Wolf</div>
+                          <blockquote>If you enjoy wine but are not jazzed about the negative side effects, these wines are for you.</blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <div class="row">
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                          <div class="endorsed-image">
+                            <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/camille.png?14011044857486688923">
+                            </div>
+                        </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-8">
+                          <div class="endorsed-name">Camille Macres</div>
+                          <blockquote>I woke up with a clear head! That was enough for me to be a believer!</blockquote>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <div class="row">
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                          <div class="endorsed-image">
+                            <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/wellness_mama_large.jpeg">
+                            </div>
+                        </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-8">
+                          <div class="endorsed-name">Katie, Wellness Mama</div>
+                          <blockquote>I was amazed at the difference in the taste!</blockquote>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <div class="row">
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                          <div class="endorsed-image">
+                            <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/ZAGuPsyr.jpg?9588798804005031646">
+                            </div>
+                        </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-8">
+                          <div class="endorsed-name">Drew Manning</div>
+                          <blockquote>Dry Farm Wines has done the impossible and now people can enjoy their wine and stay in ketosis.</blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 col-xs-12">
+                  <div class="row">
+                      <div class="col-lg-4 col-sm-4 col-xs-4">
+                          <div class="endorsed-image">
+                            <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/chriskresser-1-e1460137781843.jpg?10829125403142122348">
+                            </div>
+                        </div>
+                    <div class="col-lg-8 col-sm-8 col-xs-8">
+                          <div class="endorsed-name">Chris Kresser</div>
+                          <blockquote>Great taste and, even better, feel great the next morning.</blockquote>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+        </div>
+       </div>
+    </div>	
+
+  
+ <div class="text-center">     
+  <a href="#main-product-id" class="action_button" style="padding:15px 30px;margin:20px 0px;background:#921c1c; margin-bottom:30px;">Taste our Black Friday Bold Reds</a> 
+</div>
+
+  
+
+</div>
+
+  
+
+
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }}, 
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+  
+  
+  
+  
+  
+</script>
+
+
+  
+<script>
+  $(document).on("click", '.add_to_cart', function(e) {
+    window.setTimeout(function () {
+      $('#cart').trigger("open");
+    }, 1000);
+  });
+</script>
+  
+
+
+
+<script>
+	/**BEGIN JAVASCRIPT **/
+  /** COPIED FROM SUBSCRIPTION-PRODUCT.LIQUID **/
+if (subscription_on==true) {
+
+    window.currency_symbol='$'
+    window.currency_suffix=''
+    
+    discount_percentage_metafield_value = {{ product.metafields.subscriptions.discount_percentage | floor }} 
+    has_discount_{{product.id}} = false
+    if(discount_percentage_metafield_value > 0) {
+		has_discount_{{product.id}} = true 
+	}
+	
+	/* for changing background color when a selection is clicked */
+	rjQuery('body').on('click','.autodeliver.{{product.id}}',function() {
+		rjQuery('.radio_option.{{product.id}}').removeClass('active')
+		rjQuery(this).parent().parent().addClass('active')
+
+		if( rjQuery(this).val()=='autodeliver' ) {
+			rjQuery('#recurring_purchase_{{product.id}}').addClass('active')
+			rjQuery('#single_purchase_{{product.id}}').removeClass('active')
+		} else if( rjQuery(this).val()=='onetime' ) {
+			rjQuery('#recurring_purchase_{{product.id}}').removeClass('active')
+			rjQuery('#single_purchase_{{product.id}}').addClass('active')
+		}
+
+		if(has_discount_{{product.id}} == true) {
+			updatePrice_{{product.id}}("UPDATE - Change radio");    
+		}
+	})
+	
+	 //HANDLE THE ADDING TO CART
+	rjQuery( document ).ready(function() {
+		// CREATE DUPLICATE SELECT WITH OPTIONS
+      	var myDiv = rjQuery('form[data-productid="{{product.id}}"]');
+		var discount_prices = discount_variants_array_for_select_{{product.id}}; //discount price options
+		//Create and append select list
+		var discount_select_menu_html = rjQuery("<select id='discount-select-{{product.id}}'></select>"); 
+		myDiv.append(discount_select_menu_html);
+		for (var i = 0; i < discount_prices.length; i++) {
+			var option = rjQuery('<option></option>').val(discount_prices[i]).html(discount_prices[i])
+			discount_select_menu_html.append(option);
+		}
+
+        // ADD IDENTIFIERS TO ORIGINAL AND DUPLICATE SELECT        
+        var discount_select_{{product.id}} = rjQuery("#discount-select-{{product.id}}")
+        discount_select_{{product.id}}.hide();  
+        
+        var original_select_{{product.id}} = rjQuery('[name="id"][data-productid="{{product.id}}"]')
+		original_select_{{product.id}}.addClass('original_select_{{product.id}}')
+        // Set value of discount select on page load
+        var original_select_menu_value = original_select_{{product.id}}.val();
+		var discount_value_of_originally_selected_menu_value = variant_id_to_discount_id_map_{{product.id}}[original_select_menu_value]['discount_variant_id'];
+		discount_select_{{product.id}}.val(discount_value_of_originally_selected_menu_value);	
+
+        // using a timeout to wait for shopify to load select elements via javascript
+        setTimeout(function(){
+        	
+        	// INITIALIZE LISTENER FOR WHEN VARIANT DROPDOWN IS CHANGED 
+			rjQuery('form[data-productid="{{product.id}}"] .single-option-selector').change(function(){
+				
+				setTimeout(function(){
+					var original_product_value = original_select_{{product.id}}.val();	
+					discount_select_{{product.id}}.val(variant_id_to_discount_id_map_{{product.id}}[original_product_value]['discount_variant_id']);	
+					
+					updatePrice_{{product.id}}();
+				}, 400);
+				
+			})
+
+            // LISTENER FOR WHEN RADIO OPTION FOR ONE-TIME/RECURRING IS CHECKED                
+            rjQuery(".autodeliver.{{product.id}}").change(function(){				
+				/*IF AUTODELIVER IS SELECTED, WE SET OUR SELECT to name=id and take that attribute off the original select*/	
+				if(rjQuery(this).val() == 'autodeliver'){
+					// set duplicate select to be submitted 
+					original_select_{{product.id}}.attr('name','')
+					discount_select_{{product.id}}.attr('name','id')
+					//set shipping interval + subscription id attributes to be submitted when form is submitted
+					rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','properties[shipping_interval_frequency]');
+					rjQuery("#subscription_id_{{product.id}}").attr('name','properties[subscription_id]');
+					rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','properties[shipping_interval_unit_type]');
+
+				}
+              else if (rjQuery(this).val() == 'onetime') {
+                  // set original select to be submitted
+                  original_select_{{product.id}}.attr('name','id')
+                  discount_select_{{product.id}}.attr('name','')
+                  
+                  // remove shipping interval + subscription id from form submission since we're not subscription
+                  rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','');
+                  rjQuery("#subscription_id_{{product.id}}").attr('name','');
+				  rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','');
+              }
+            });
+        }, 300); // end setTimeout / initialization of select menu listeners
+
+        // IF SUBSCRIPTION ONLY, preset the subscription inputs
+        {% if subscription_only == 'true' %}
+			// set duplicate select to be submitted
+			original_select_{{product.id}}.attr('name','')
+			discount_select_{{product.id}}.attr('name','id')
+			
+			// set shipping interval + subscription id to be submitted
+			rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','properties[shipping_interval_frequency]');
+			rjQuery("#subscription_id_{{product.id}}").attr('name','properties[subscription_id]');
+            rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','properties[shipping_interval_unit_type]');              
+			
+        {% endif %}
+      });
+ 
+ 
+	/*** THIS PERFORMS PRICE UPDATE of primary price text above options***/
+	function updatePrice_{{product.id}}(debugging_text) {
+		var price_selectors = '.current_price, #productPrice, .product-price, .price, #price-preview, .actual-price'
+		
+		//check for quickbuy and adjust selectors if needed
+		if ( rjQuery(price_selectors).size() > 1 ) {
+			var has_quickbuy = true
+			//the quickbuy price selectors
+			price_selectors += ', .current_price.{{product.id}}, #productPrice.{{product.id}}, .product-price.{{product.id}}, .price.{{product.id}}, #price-preview.{{product.id}}'
+		}
+		
+		rjQuery(price_selectors).html(''); //blank out the current price
+		var variant_id = rjQuery('.original_select_{{product.id}}').val()      
+		var quantity = rjQuery('form[data-productid="{{product.id}}"] [name="quantity"]').val()
+	  
+		if(typeof quantity === 'undefined'){
+			//some sites don't define quantity in the form so we need this as a backup
+			quantity = 1;
+		}
+		
+		variant_price_{{product.id}} = (variant_id_to_price_map_{{product.id}}[variant_id] / 100) 
+		
+		//if recurring is on, set 
+		if( rjQuery('#autodeliver_on_radio_{{product.id}}').prop('checked')==true && variant_id_to_discount_id_map_{{product.id}}[variant_id]['discount_variant_id'] !='') {
+			variant_price_{{product.id}} = variant_price_to_discount_price_map_{{product.id}}[variant_id]['discount_variant_price']
+		} 
+
+		variant_price_{{product.id}} = parseFloat(variant_price_{{product.id}}).toFixed(2)
+		var displayed_price = parseFloat(quantity * variant_price_{{product.id}}).toFixed(2)
+		var price_string = currency_symbol+' '+displayed_price + currency_suffix
+	  
+		if(window.first_time_{{product.id}}){
+			rjQuery(price_selectors).html(price_string)
+		}
+		window.first_time_{{product.id}} = true;
+		updateInlinePrice_{{product.id}}()
+	}
+
+	// This function updates the inline prices (next to radio buttons) 
+	function updateInlinePrice_{{product.id}}() {
+		var variant_id = rjQuery('.original_select_{{product.id}}').val();
+		var price_one_time = (variant_id_to_price_map_{{product.id}}[variant_id] / 100);
+		price_one_time = parseFloat(price_one_time).toFixed(2);
+        
+        var price_recurring = variant_price_to_discount_price_map_{{product.id}}[variant_id]['discount_variant_price']
+        price_recurring = parseFloat(price_recurring).toFixed(2);
+
+		rjQuery('#one-time-price_{{product.id}}').text(" "+currency_symbol+ price_one_time + currency_suffix);
+		rjQuery('#recurring-time-price_{{product.id}}').text(" "+currency_symbol + price_recurring + currency_suffix);
+	}
+	
+	/** PRICE RELATED DOCUMENT READY **/
+	rjQuery(document).ready(function(){
+		
+		/** make sure correct option has grey border **/
+		window.lock_{{product.id}} = false;
+		window.first_time_{{product.id}} = true;
+		if(rjQuery('#autodeliver_on_radio_{{product.id}}').prop('checked')==true ) {
+			rjQuery('#recurring_purchase_{{product.id}}').addClass('active');
+		} else {
+			rjQuery('#single_purchase_{{product.id}}').addClass('active');
+		}
+		if(has_discount_{{product.id}} == true) {
+			setTimeout(function(){ updatePrice_{{product.id}}("") }, 200);
+		}
+		
+		
+		//if something modifies the price, we notice it and then change it back. but we use a timeout function to avoid an infinite loop
+		rjQuery('.current_price, #productPrice, .product-price, .price, #price-preview').bind("DOMSubtreeModified",function(){      
+			if( window.lock_{{product.id}} == false ) {
+				window.lock_{{product.id}} = true;
+				if(has_discount_{{product.id}} == true) {
+					updatePrice_{{product.id}}("UPDATE - DOMSubtreeModified");
+				}
+				setTimeout(function(){window.lock_{{product.id}}=false}, 200);
+			}
+		});
+		
+		//handle change in quantity
+		rjQuery('#quantity').on("change",function(){
+			if(has_discount_{{product.id}} == true) {
+				updatePrice_{{product.id}}("UPDATE - Qty change on");
+			}
+		});
+		
+		//run the price updater once page loads to reset it to what we need it to be				
+		updateInlinePrice_{{product.id}}();		
+				
+	})//end document ready
+
+		
+
+	/** set variant mapping for the case in which there is an automatically created duplicate product **/
+	var variant_id_to_discount_id_map_{{product.id}} = {};  
+	var variant_price_to_discount_price_map_{{product.id}} ={} 
+	var discount_variants_array_for_select_{{product.id}}=[]
+	
+	{% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+		var discount_variant_id = '{{ variant.metafields.subscriptions.discount_variant_id }}'
+		variant_id_to_discount_id_map_{{product.id}}['{{variant.id}}']='' 
+		
+		if(discount_variant_id) {
+			variant_id_to_discount_id_map_{{product.id}}['{{variant.id}}'] = {"discount_variant_id":discount_variant_id};
+			discount_variants_array_for_select_{{product.id}}.push(discount_variant_id)
+		}
+		
+		var discount_variant_price = '{{ variant.metafields.subscriptions.discount_variant_price }}'
+		variant_price_to_discount_price_map_{{product.id}}['{{variant.id}}']=''
+		
+		if(discount_variant_price) {
+			variant_price_to_discount_price_map_{{product.id}}['{{variant.id}}'] = { "discount_variant_price": discount_variant_price } 
+		}
+
+{%endunless%}
+{%endunless%}
+	{% endfor %}
+	
+	//map original prices for updated price calculations
+	variant_id_to_price_map_{{product.id}}={}
+	{% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+		variant_id_to_price_map_{{product.id}}['{{variant.id}}'] = "{{variant.price}}"
+
+{%endunless%}
+{%endunless%}
+	{% endfor %}
+
+}//end if (subscription_on==true) section
+	
+</script> 
+
+

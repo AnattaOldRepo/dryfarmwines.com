@@ -1,0 +1,125 @@
+
+
+<div class="sixteen columns page clearfix">
+  <h1 class="center">
+
+  </h1>
+
+    
+  {% assign cols = page.content | split: '<!-- split -->' %}
+  {% if cols.size == 2 %}
+    <div class="eight columns alpha">
+      {{ cols[0] }}
+    </div>
+    <div class="eight columns omega">
+      {{ cols[1] }}
+    </div>
+  {% elsif cols.size == 3 %}
+    <div class="one-third column alpha">
+      {{ cols[0] }}
+    </div>
+    <div class="one-third column">
+      {{ cols[1] }}
+    </div>
+    <div class="one-third column omega">
+      {{ cols[2] }}
+    </div>
+  {% elsif cols.size == 4 %}
+    <div class="four columns alpha">
+      {{ cols[0] }}
+    </div>
+    <div class="four columns">
+      {{ cols[1] }}
+    </div>
+    <div class="four columns">
+      {{ cols[2] }}
+    </div>
+    <div class="four columns omega">
+      {{ cols[3] }}
+    </div>
+  {% else %}
+    {{ page.content }}
+  {% endif %}
+</div>
+</div>
+<style>
+  .lab-tested:before {
+    content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+	    background-image: linear-gradient(to right,black, rgba(255,255,255,0));
+		opacity: .6; 
+  }
+  .lifestyle-section:before {
+    content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+        background-image: linear-gradient(to left,black, rgba(0,0,0,0));
+		opacity: .6; 
+  }
+  .lifestyle-section{
+    width: 100%; 
+    height: 100%;
+    background-image: url({{"slideshow_2.jpg" |asset_url}}); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center;
+    position:relative;
+  }
+  .lab-tested{
+    width: 100%; 
+    height: 100%; 
+    background-image: url({{"feature3.jpg" |asset_url}}); 
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position:relative;
+  }
+  
+  .container .columns{
+    box-sizing: border-box;
+  }
+  .padding{
+    padding: 30px;
+  }
+  @media screen and (max-width: 767px){
+   .lab-tested:before{
+     background-image: linear-gradient(to right,black, rgba(0,0,0,.5));
+  }
+    .lifestyle-section:before{
+              background-image: linear-gradient(to left,black, rgba(0,0,0,.5));
+    }
+    .padding{
+      padding: 0px;
+    }
+  }
+</style>
+
+<div class="lab-tested" style="">
+  <div class="container">
+    <div class="seven columns padding" style="">
+      <h1 style="font-size: 30px; color: white;">Lab Tested</h1>
+      <h2 style="color: white;"><strong>All of our wines are lab tested by an independent enologist to ensure our standards of purity</strong></h2>
+<!--       <a class="action_button secondary" style="background: crimson; color: white"href="https://www.dryfarmwines.com/products/wine-membership">Claim Your Penny Bottle</a> -->
+    </div>
+  </div>
+</div>
+
+<div class="lifestyle-section" style="">
+
+  <div class="container">
+      <div class="nine columns"><p> </p></div>
+    <div class="seven columns padding" style="">
+      <h1 style="font-size: 30px; color: white;">Discover a Taste Awakening</h1>
+      <h2 style="color: white;"><strong>Natural, Low Alcohol wines simply taste better and pair better with food</strong></h2>
+<!--       <a class="action_button secondary" style="background: crimson; color: white"href="https://www.dryfarmwines.com/products/wine-membership">Claim Your Penny Bottle</a> -->
+    </div>
+  </div>
+</div>
+

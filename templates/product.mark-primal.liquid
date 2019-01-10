@@ -1,0 +1,348 @@
+
+
+<div class="sixteen columns">
+  <div class="clearfix breadcrumb">
+    <div class="nav_arrows">
+      {% if collection.previous_product %}
+        <a href="{{ collection.previous_product }}" title="{{ 'products.general.previous_product_html' | t }}" class="ss-icon prev">&#x25C5;</a>
+      {% endif %}
+
+      {% if collection.next_product %}
+        <a href="{{collection.next_product}}" title="{{ 'products.general.next_product_html' | t }}" class="ss-icon next">&#x25BB;</a>
+      {% endif %}
+    </div>
+
+<!--     {% if settings.product_breadcrumb %}
+      <div class="breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item"><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a></span> 
+        &nbsp;<span class="icon-right-arrow"></span>
+        <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+          {% if collection %}
+            <a href="{{ collection.url }}" title="{{ collection.title | escape }}" itemprop="item"><span itemprop="name">{{ collection.title }}</span></a>
+          {% else %}
+            <a href="/collections/all" title="{{ collections.all.title }}">{{ collections.all.title }}</a>     
+          {% endif %}
+        </span>
+        &nbsp;<span class="icon-right-arrow"></span>
+        {{ product.title }}
+      </div>
+    {% endif %} -->
+  </div>
+</div>
+
+        
+
+{% if settings.product_sidebar %}
+  {% include 'sidebar' %}
+  <div class="twelve columns">
+    <div class="product-{{ product.id }}">
+{% else %}
+  <div class="sixteen columns">
+    <div class="product-{{ product.id }}">
+{% endif %}
+
+	<div class="section product_section clearfix" itemscope itemtype="http://schema.org/Product">
+	             
+    <div class="{% if settings.product_sidebar %}seven{% else %}nine{% endif %} columns {% if product-images == blank %}{% if settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}{% endif %} {% if settings.product_images_position == 'right' %}mobile_only{% endif %}">
+      {% include 'product-images' %}
+    </div>
+
+    <div class="{% if settings.product_sidebar %}five{% else %}seven{% endif %} columns {% if settings.product_images_position == 'left' %}omega{% else %}alpha{% endif %}">
+      
+      {% assign collection_handles = product.collections | map: 'handle' %}
+      {% assign variant = product.selected_or_first_available_variant %}
+      <h1 class="product_name" itemprop="name"><div style="position:relative;"> {{ product.title }} <div name="secomapp-fg-image-{{ product.id }}" style="display: none;"> {{ "icon-freegift.png" | asset_url | img_tag: "Free Gift", "sca-fg-img-label" }} </div> </div></h1>
+      {% if settings.display_vendor %}
+        <p class="vendor">
+          <span itemprop="brand">{{ product.vendor | link_to_vendor }}</span>
+        </p>
+      {% endif %}
+
+      {% if variant.sku != blank and settings.display_sku %}
+        <p class="sku">
+          <span itemprop="sku">{{ variant.sku }}</span>
+        </p>
+      {% endif %}
+      
+      {% if settings.size_chart != blank %}
+        <a href="#size-chart" class="lightbox size_chart">{{ 'products.product.size_chart' | t }} <span class="icon-right-arrow"></span></a>
+      {% endif %}
+      
+      {% if settings.product_description_position == "top" %}
+        {% if product.description != blank %}
+         <div class="description" itemprop="description">
+           {{ product.description | split: '<!-- split -->' | first }}
+         </div>
+       {% endif %}
+      {% endif %}
+
+<!--       {% unless collection_handles contains 'coming-soon' %}
+        <p class="modal_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+          <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+          <meta itemprop="seller" content="{{ shop.name | escape }}" />
+          <link itemprop="availability" href="http://schema.org/{% if sca_product_available %}InStock{% else %}OutOfStock{% endif %}">
+          <meta itemprop="itemCondition" content="New" />
+
+          <span class="sold_out">{% if variant.available == false %}{{ 'products.product.sold_out' | t }}{% endif %}</span>
+          <span itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+            <span class="current_price">
+              {% if variant.available %}
+                {% if variant.price > 0 %} 
+                  {{ variant.price | money }} 
+                {% else %}
+                  {{ settings.free_price_text }}
+                {% endif %}
+              {% endif %}
+            </span>
+          </span>
+          <span class="was_price">
+          {% if variant.price < variant.compare_at_price and variant.available %}
+            {{ variant.compare_at_price | money }}
+          {% endif %}
+          </span>
+        </p>
+        
+        {% include 'product-notify-me' %}
+      {% endunless %} -->
+
+      
+
+      {% unless collection_handles contains 'coming-soon' %}
+        {% include 'product-form' with 'product' %}
+      {% endunless %}  
+      
+      <p style="font-size:18px;text-align:center;margin-bottom:0px;">Complimentary Shipping</p>
+      <p style="font-size:18px;text-align:center;margin-bottom:0px;">Cancel Anytime </p>
+      <p style="font-size:18px;text-align:center;">100% Happiness Guarantee</p>
+
+      {% if settings.product_description_position == "bottom" %}
+        {% if product.description != blank %}
+         <div class="description" itemprop="description">
+          {{ product.description | split: '<!-- split -->' | first }}
+         </div>
+        {% endif %}
+      {% endif %}
+
+      {% if settings.display_collections or settings.display_tags or settings.display_type %}
+       <hr />
+      {% endif %}
+     
+      <div class="meta">
+        
+   
+        {% if settings.display_collections %}
+          <p>
+            <span class="label">{{ 'products.product.collections' | t }}:</span> 
+            <span>
+             {% for col in product.collections %}
+               <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>{% unless forloop.last %},{% endunless %} 
+             {% endfor %}
+           </span>
+         </p>
+        {% endif %}
+      
+        {% if settings.display_tags %}
+           <p>
+             {% for tag in product.tags %}
+               {% if forloop.first %}
+                 <span class="label">{{ 'products.product.tags' | t }}:</span> 
+               {% endif %}
+
+               {% unless tag contains 'meta-related-collection-' %}
+                 <span>
+                   <a href="/collections/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}" title="{{ 'products.product.products_tagged' | t: tag: tag }}">{{ tag }}</a>{% unless forloop.last %},{% endunless %}
+                 </span>
+               {% endunless %} 
+             {% endfor %}
+           </p>
+        {% endif %}
+      
+       {% if settings.display_type %}
+          <p>
+            <span class="label">{{ 'products.product.product_types' | t }}:</span> 
+            <span>{{ product.type | link_to_type }}</span>
+          </p>
+       {% endif %}
+      </div>
+
+      {% if settings.display_social_buttons %}
+          <div class="share-button"></div>
+        {% endif %}
+      
+    
+    {% if settings.product_images_position == 'right' %}   
+      <div class="{% if settings.product_sidebar %}seven{% else %}nine{% endif %} columns {% if product-images == blank %}{% if settings.product_images_position == 'left' %}alpha{% else %}omega{% endif %}{% endif %} mobile_hidden">          
+        {% include 'product-images' %}
+      </div>
+    {% endif %}
+  </div>
+
+  {% if product.description contains "<!-- split -->"  %}
+    <br class="clear" />
+    <div class="section clearfix">
+      <div class="description">
+        {{ product.description | split: '<!-- split -->' | last }}
+      </div>
+    </div>
+  {% endif %}
+  </div>
+{% comment %}
+  {% if settings.display_related_products %}
+    {% capture limit %}{{ settings.products_per_row | plus: 1 }}{% endcapture %}
+
+    {% if collection and collection.all_products_count > 1 %}
+      {% assign col = collection.handle %}
+    {% else %}
+      {% assign col = product.collections.last.handle %}
+    {% endif %}
+
+    {% for tag in product.tags %}
+      {% if tag contains 'meta-related-collection-' %}
+        {% assign col = tag | remove: 'meta-related-collection-' %}
+        {% assign collection = collections[col] %}
+        {% capture limit %}{{ collection.products_count | plus: 1 }}{% endcapture %}
+      {% endif %}
+    {% endfor %}
+      
+    {% if col and collections[col].all_products_count > 0 %}
+      {% if collections[col].all_products_count != 1 or collections[col].products.first.id != product.id %}
+        <br class="clear" />
+        <h4 class="title center">{{ 'products.product.related_items' | t }}</h4>
+        <div class="feature_divider"></div>
+
+        {% assign skip_product = product %}
+        {% assign products = collections[col].products %}
+        {% assign products_per_row = settings.products_per_row %}
+        {% include 'product-loop' with settings.product_sidebar %}
+      {% endif %}
+    {% endif %}
+  {% endif %}
+      {% endcomment %}
+</div>
+      </div>
+      <div class="seven columns mobile-on">
+         <div style="background: #f2f2f2;border: 1px solid #ccc;padding: 20px;text-align: center;">	
+        	<p style="font-size:18px;font-style:italic;">"Wow. I just opened my first bottle. My head is exploding with happiness!!" </p>
+    		<p>- Amy, happy and healthy wine drinker in Oakland</p>
+        </div>
+      </div>
+      
+      
+      
+<!--    Adding Section on 9/29/18    -->
+      <div class="sixteen columns" style="margin-bottom:20px;">
+        <div class="offset-by-three ten columns alpha" style=";">
+          <h3 style="font-size:32px;text-align:center;font-weight:900;">What is included?</h3>
+          <p style="font-size:22px;">In each order, you receive a unique selection of 6 or 12 biodynamic Natural Wines sourced from small farms around the world. Each shipment includes different grape varieties, countries, and styles. Because we're fanatical about health, every wine is lab-tested to be sugar-free (less than 1 g/L), low in sulfites, and lower in alcohol (12.5% or less).</p>
+        </div>
+      </div>
+
+      <div class="sixteen columns" style="margin-bottom:40px;">
+        
+        <div class="offset-by-three three columns alpha" style="text-align: center;">
+              <img style="height: 100px;" src="{{ 'globe-icon-b.png' | asset_url }}">
+              <p style="margin-top: 25px;font-size:18px;">We curate the finest sustainably-grown, natural wines</p>
+        </div>
+        <div class="three columns" style="text-align: center;">
+              <img style="height: 100px;" src="{{ 'lab-testing-icon-b.png' | asset_url }}">
+              <p style="margin-top: 25px;font-size:18px;">We lab-test for the highest standard of health</p>
+        </div>
+        <div class="three columns" style="text-align: center;">
+              <img style="height: 100px;" src="{{ 'wine-bottles-icon-b.png' | asset_url }}">
+          	  <p style="margin-top: 25px;font-size:18px;">You enjoy without the headaches or hangovers</p>
+        </div>
+        
+      </div>
+      
+      <div class="sixteen columns" style="margin-bottom:20px;">
+        <div class="offset-by-three ten columns alpha" style=";">
+          <h3 style="font-size:32px;text-align:center;font-weight:900;">How does shipping work?</h3>
+          <p style="font-size:22px;">Once you place your order, it takes 1 - 2 business days to hand pack. You will get a tracking email to follow the status of your shipment. Since we are shipping alcohol, a signature is required upon delivery. If you are not home during the day, we can ship to a work address or local shipping store. When it arrives at your door, pop open a bottle, pour a glass, and enjoy a cleaner, healthier, and more delicious drinking experience.</p>
+        </div>
+      </div>
+      
+      <div class="sixteen columns" style="margin-bottom:20px;">
+        <div class="offset-by-three ten columns alpha" style=";">
+          <h3 style="font-size:32px;text-align:center;font-weight:900;">What is your Happiness Promise?</h3>
+          <p style="font-size:22px;">We guarantee you will love every bottle in your curated selection. If you don't, we will replace or refund any bottle and cover all costs. We do this because we’re so confident in the quality of these wines, we know you will love them.</p> 
+          <p style="font-size:22px;">Here's what some of our Members and Health Leaders have to say...</p>
+          
+          <video controls="controls" width="600" name="Health Leaders talking about Dry Farm Wines" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Health_Leaders_compressed.mp4?7001138981555284834"></video>
+          
+          <div style="margin-top:40px;">
+          	<blockquote><span class="bold">I can finally drink wine again!</span> For the first time in over 30 days, I had a glass of wine. I'm now only drinking Dry Farm Wines. They're amazing. The quality, the taste, it's wonderful.</blockquote>
+              <div class="testimonial-user">
+                <div class="user-image"><img style="width: 45px;height: 45px;float: left;margin-right: 20px;border-radius: 50%;overflow: hidden;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Kristen_b.png?16803212355071111354"></div><b>Kristin</b>
+              </div>
+          </div>
+          
+          <div style="margin-top:40px;">
+          	<blockquote>I feel amazing this morning even though I indulged in wine last night... Thank you Dry Farm Wines! I'm amazed that <span class="bold">I can enjoy a good natural wine that allows me to stick to my diet</span> (no sugar/carbs) and also not wake up with a hangover.</blockquote>
+              <div class="testimonial-user">
+                <div class="user-image"><img style="width: 45px;height: 45px;float: left;margin-right: 20px;border-radius: 50%;overflow: hidden;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Testimonials_from_Social_-_Google_Docs.png?4691545146977110082"></div><b>Angela</b>
+              </div>
+          </div>
+            
+          <div style="margin-top:40px;">
+          	<blockquote>So excited to have a wine option that I feel good about. These natural wines are all clean and pure, no sugar, low sulfites, no additives, and lower alcohol level. <span class="bold">Sometimes I just want a nice glass of wine to enjoy without the ill effects.</span></blockquote>
+              <div class="testimonial-user">
+                <div class="user-image"><img style="width: 45px;height: 45px;float: left;margin-right: 20px;border-radius: 50%;overflow: hidden;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Testimonials_from_Social_-_Google_Docs_5599bf72-7897-4759-91de-2cc1c56e5cbe.png?637994110140783450"></div><b>Gina</b>
+              </div>
+          </div>
+          
+        </div>
+      </div>
+      
+<!--    End 9/29/18 changes    -->
+    
+      	
+      <div class="seven columns mobile-off">
+<!--                    <img src="{{ 'mark-quote-01.png' | asset_url }}" style="width: 100%"> -->
+<!--         <div style="background: #f2f2f2;border: 1px solid #ccc;padding: 20px;text-align: center;">	
+        	<p style="font-size:18px;font-style:italic;">"Wow. I just opened my first bottle. My head is exploding with happiness!!" </p>
+    		<p>- Amy, happy and healthy wine drinker in Oakland</p>
+        </div> -->
+      </div>
+      
+                	
+    </div>
+
+</div>
+
+<script>
+  $(document).ready(function(){
+$(".header_bar ul li:first-child").css("display", "none");
+// $(".mm-list li:first-child").css("display", "none");
+});
+</script>
+
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }}, 
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>	
+
+

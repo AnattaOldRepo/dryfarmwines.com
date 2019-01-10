@@ -1,0 +1,483 @@
+{% layout 'theme.bootstrap.landing-page' %}
+
+
+
+<div class="header-logo">
+	<div class="row">
+      <div class="col-sm-4 col-sm-offset-4">
+        <img src="https://cdn.shopify.com/s/files/1/0924/9540/t/5/assets/logo.png?6101563503781420941" >
+      </div>
+      <div class="col-sm-2 col-sm-offset-2">
+        <a href="#cart" class="icon-cart right" style="padding:20px 40px;"><span>{{ cart.item_count }}</span></a>
+      </div>
+    </div>
+</div>
+
+<div id="top-easter-photo" class="text-center" style="">
+</div>
+
+
+<div class="main-product-section">
+  <div class="container">
+    
+    
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="row vertical-align">
+<!--           <div class="col-md-6 col-sm-12 text-center">
+            <img style="" src="https://cdn.shopify.com/s/files/1/0924/9540/files/sparkling_spring_1_1.png?4342574937956092003" />
+          </div> -->
+          <div class="col-lg-6 col-sm-6 col-sm-offset-3 col-xs-12">
+            <div class="main-product" id="main-product-id">
+<!--               <h1>Spring is Sparkling</h1> -->
+              {% assign collection_handles = product.collections | map: 'handle' %}
+              {% assign variant = product.selected_or_first_available_variant %}
+              {% if product.description != blank %}
+                 <div class="description" itemprop="description">
+                   {{ product.description | split: '<!-- split -->' | first }}
+                 </div>
+              {% endif %}
+              {% include 'product-form-to-checkout' with 'product' %}
+              
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="free-shipping-section">
+  <p> 
+    <i class="fa fa-truck" aria-hidden="true"></i>
+    FREE SHIPPING, 
+    100% HAPPINESS GUARANTEE ON ALL ORDERS!
+    <i class="fa fa-heart" aria-hidden="true"></i>
+  </p>
+</div>
+
+
+<div class="about-dfw-section" style="background:#f9fafc;">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
+        <h1>The Wines</h1>
+      </div>
+    </div>
+    
+    <div class="row grid-of-wines">
+      <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+        <div class="text-center">
+          <img style="height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Tourage_bttle.jpg?4775606541498344919">
+        </div>
+        <h2>2015 Delecheneau Tournage Riant</h2>
+        <p><span class="bold">Winemaker</span>: Coralie et Damien Delecheneau</p>
+        <p><span class="bold">About</span>:  A bright & elegant showcase of the Loire Valley, this rosé is crafted from a blend of three grapes: Malbec, Gamay, and Grolleau. Its intense aromatics and long finish make it a perfect wine to pair with food or sip by itself.</p>
+        <p><span class="bold">Labs</span>: 12.5% alcohol, 0.9 g/L sugar, 40 ppm sulfur</p>
+      </div>
+    
+      <div class="col-xs-12 col-sm-5">
+        <div class="text-center">
+          <img style="height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Chinon_bttl.jpg?4775606541498344919">
+        </div>
+        <h2>2015 Jean-Maurice Raffault Chinon </h2>
+        <p><span class="bold">Winemaker</span>: Jean Maurice Raffault</p>
+        <p><span class="bold">About</span>: Without using any pumping or pressing machinery, Raffault handcrafts this precise rosé to showcase the beauty of the Chinon terroir. As a 100% Cabernet Franc, the wine presents slight earthy notes and a crisp palate with pleasantly bright acid.</p>
+        <p><span class="bold">Labs</span>: 12.5% alcohol, 0.7 g/L sugar, 75 ppm sulfur</p>
+      </div>
+    </div>
+    
+    <div class="row grid-of-wines">
+      <div class="col-xs-12 col-sm-5 col-sm-offset-1">
+        <div class="text-center">
+          <img style="height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/Lo-Bartos_bttle.jpg?4775606541498344919">
+        </div>
+        <h2>2015 Domaine Bassac Cepage </h2>
+        <p><span class="bold">Winemaker</span>: Delhon Francois and Leca Jean-Philippe</p>
+        <p><span class="bold">About</span>: Farmed organically in the Languedoc region, this Sauvignon Blanc shines with a beautiful color and balanced palate. The acid is perfect, the aromatics are light, and the finish is crisp.</p>
+        <p><span class="bold">Labs</span>: 12.2% alcohol, 0.2 g/L sugar, 50 ppm sulfur</p>
+      </div>
+      
+      <div class="col-xs-12 col-sm-5">
+        <div class="text-center">
+          <img style="height:500px;" src="https://cdn.shopify.com/s/files/1/0924/9540/files/VinRosso_bttl.jpg?4775606541498344919">
+        </div>
+        <h2>2015 Migliavacca Vino Rosso </h2>
+        <p><span class="bold">Winemaker</span>: Francesco Brezza</p>
+        <p><span class="bold">About</span>: Crafted from the oldest biodynamic winery in Italy, this Vino Rosso gives us a unique blend of local Italian grapes: Barbera, Grignolino, and Freisa. Its character is stellar, boasting youthful cherry fruit and great structure without overbearing tannins.</p>
+        <p><span class="bold">Labs</span>:  12.5% alcohol, 0.9 g/L sugar, 5 ppm sulfur</p>
+      </div>
+    
+    </div>
+    
+  </div>
+</div>
+
+
+<div id="spring-is-here"></div>
+
+<div class="about-dfw-section" style="margin-top:-10px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
+        <h1>‘Tis the Season</h1>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-xs-12 col-md-8 col-md-offset-2">
+        <p>We’ve curated these wines especially for the Spring Season! The sun is coming out, the skies are clearing up, and the air is filled with a breeze and the scent of budding flowers. </p>
+        <br />
+        
+        <p>The palates of these wines match perfectly. They’re fresh, pure, and vibrant, so they taste like Spring with amazing color and balanced texture. </p>
+		<br />
+         
+        <p class="bold">Food Pairing</p>
+        <p>These wines pair perfectly with the culinary fare of Spring: BBQs, light salads, and fresh ingredients.</p>
+		<br />
+        
+        <p class="bold">Refreshing Apéritif</p>
+        <p>Any of these wines can be sipped as an apéro (as the French call it) before or after a meal to lighten the mood and bring out the smiles. :-)</p>
+		<br />
+        
+        <p class="bold">Community Happiness</p>
+        <p>We’ve picked these wines to be very drinkable crowd pleasers - they’ll encourage conversation and good vibes!</p>
+        <br />
+        <div class="text-center">
+          <a href="#main-product-id" class="action_button" style="padding:10px 50px;"> BUY NOW! </a>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+</div>
+
+<div class="other-selections-section" style="border-bottom:1px solid black;">
+  <div class="container">
+    <div class="row" style="margin-bottom:0px;">
+      <div class="col-md-10 col-md-offset-1 col-sm-12">
+        <div class="row">
+          <div class="col-sm-3 col-sm-offset-1">
+            <a href="/products/spring-fling">
+              <img src="https://cdn.shopify.com/s/files/1/0924/9540/files/Spring_Fling_1.png?2865765409916723784" >
+            </a>
+          </div>
+          <div class="col-sm-7">
+            <p class="bold">Or Shop The Spring Fling Assortment</p>
+            <p>Because we’re so excited for the new season, we’ve curated a rockstar assortment of wines that are perfect for Spring. You’ll get two whites, a rosé, and a sparkling wine, all vibrant and immensely refreshing.</p>
+            <a class="btn" href="/products/spring-fling">Shop Spring Fling Assortment</a>
+          </div>
+        </div>
+      </div>
+    </div>	
+  </div>
+</div>
+
+  
+  
+  
+  
+
+
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }}, 
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+  
+  
+  
+  
+  
+</script>
+
+
+  
+<script>
+  $(document).on("click", '.add_to_cart', function(e) {
+    window.setTimeout(function () {
+      $('#cart').trigger("open");
+    }, 1000);
+  });
+</script>
+  
+
+
+
+<script>
+	/**BEGIN JAVASCRIPT **/
+  /** COPIED FROM SUBSCRIPTION-PRODUCT.LIQUID **/
+if (subscription_on==true) {
+
+    window.currency_symbol='$'
+    window.currency_suffix=''
+    
+    discount_percentage_metafield_value = {{ product.metafields.subscriptions.discount_percentage | floor }} 
+    has_discount_{{product.id}} = false
+    if(discount_percentage_metafield_value > 0) {
+		has_discount_{{product.id}} = true 
+	}
+	
+	/* for changing background color when a selection is clicked */
+	rjQuery('body').on('click','.autodeliver.{{product.id}}',function() {
+		rjQuery('.radio_option.{{product.id}}').removeClass('active')
+		rjQuery(this).parent().parent().addClass('active')
+
+		if( rjQuery(this).val()=='autodeliver' ) {
+			rjQuery('#recurring_purchase_{{product.id}}').addClass('active')
+			rjQuery('#single_purchase_{{product.id}}').removeClass('active')
+		} else if( rjQuery(this).val()=='onetime' ) {
+			rjQuery('#recurring_purchase_{{product.id}}').removeClass('active')
+			rjQuery('#single_purchase_{{product.id}}').addClass('active')
+		}
+
+		if(has_discount_{{product.id}} == true) {
+			updatePrice_{{product.id}}("UPDATE - Change radio");    
+		}
+	})
+	
+	 //HANDLE THE ADDING TO CART
+	rjQuery( document ).ready(function() {
+		// CREATE DUPLICATE SELECT WITH OPTIONS
+      	var myDiv = rjQuery('form[data-productid="{{product.id}}"]');
+		var discount_prices = discount_variants_array_for_select_{{product.id}}; //discount price options
+		//Create and append select list
+		var discount_select_menu_html = rjQuery("<select id='discount-select-{{product.id}}'></select>"); 
+		myDiv.append(discount_select_menu_html);
+		for (var i = 0; i < discount_prices.length; i++) {
+			var option = rjQuery('<option></option>').val(discount_prices[i]).html(discount_prices[i])
+			discount_select_menu_html.append(option);
+		}
+
+        // ADD IDENTIFIERS TO ORIGINAL AND DUPLICATE SELECT        
+        var discount_select_{{product.id}} = rjQuery("#discount-select-{{product.id}}")
+        discount_select_{{product.id}}.hide();  
+        
+        var original_select_{{product.id}} = rjQuery('[name="id"][data-productid="{{product.id}}"]')
+		original_select_{{product.id}}.addClass('original_select_{{product.id}}')
+        // Set value of discount select on page load
+        var original_select_menu_value = original_select_{{product.id}}.val();
+		var discount_value_of_originally_selected_menu_value = variant_id_to_discount_id_map_{{product.id}}[original_select_menu_value]['discount_variant_id'];
+		discount_select_{{product.id}}.val(discount_value_of_originally_selected_menu_value);	
+
+        // using a timeout to wait for shopify to load select elements via javascript
+        setTimeout(function(){
+        	
+        	// INITIALIZE LISTENER FOR WHEN VARIANT DROPDOWN IS CHANGED 
+			rjQuery('form[data-productid="{{product.id}}"] .single-option-selector').change(function(){
+				
+				setTimeout(function(){
+					var original_product_value = original_select_{{product.id}}.val();	
+					discount_select_{{product.id}}.val(variant_id_to_discount_id_map_{{product.id}}[original_product_value]['discount_variant_id']);	
+					
+					updatePrice_{{product.id}}();
+				}, 400);
+				
+			})
+
+            // LISTENER FOR WHEN RADIO OPTION FOR ONE-TIME/RECURRING IS CHECKED                
+            rjQuery(".autodeliver.{{product.id}}").change(function(){				
+				/*IF AUTODELIVER IS SELECTED, WE SET OUR SELECT to name=id and take that attribute off the original select*/	
+				if(rjQuery(this).val() == 'autodeliver'){
+					// set duplicate select to be submitted 
+					original_select_{{product.id}}.attr('name','')
+					discount_select_{{product.id}}.attr('name','id')
+					//set shipping interval + subscription id attributes to be submitted when form is submitted
+					rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','properties[shipping_interval_frequency]');
+					rjQuery("#subscription_id_{{product.id}}").attr('name','properties[subscription_id]');
+					rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','properties[shipping_interval_unit_type]');
+
+				}
+              else if (rjQuery(this).val() == 'onetime') {
+                  // set original select to be submitted
+                  original_select_{{product.id}}.attr('name','id')
+                  discount_select_{{product.id}}.attr('name','')
+                  
+                  // remove shipping interval + subscription id from form submission since we're not subscription
+                  rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','');
+                  rjQuery("#subscription_id_{{product.id}}").attr('name','');
+				  rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','');
+              }
+            });
+        }, 300); // end setTimeout / initialization of select menu listeners
+
+        // IF SUBSCRIPTION ONLY, preset the subscription inputs
+        {% if subscription_only == 'true' %}
+			// set duplicate select to be submitted
+			original_select_{{product.id}}.attr('name','')
+			discount_select_{{product.id}}.attr('name','id')
+			
+			// set shipping interval + subscription id to be submitted
+			rjQuery("#shipping_interval_frequency_{{product.id}}").attr('name','properties[shipping_interval_frequency]');
+			rjQuery("#subscription_id_{{product.id}}").attr('name','properties[subscription_id]');
+            rjQuery("#shipping_interval_unit_type_{{product.id}}").attr('name','properties[shipping_interval_unit_type]');              
+			
+        {% endif %}
+      });
+ 
+ 
+	/*** THIS PERFORMS PRICE UPDATE of primary price text above options***/
+	function updatePrice_{{product.id}}(debugging_text) {
+		var price_selectors = '.current_price, #productPrice, .product-price, .price, #price-preview, .actual-price'
+		
+		//check for quickbuy and adjust selectors if needed
+		if ( rjQuery(price_selectors).size() > 1 ) {
+			var has_quickbuy = true
+			//the quickbuy price selectors
+			price_selectors += ', .current_price.{{product.id}}, #productPrice.{{product.id}}, .product-price.{{product.id}}, .price.{{product.id}}, #price-preview.{{product.id}}'
+		}
+		
+		rjQuery(price_selectors).html(''); //blank out the current price
+		var variant_id = rjQuery('.original_select_{{product.id}}').val()      
+		var quantity = rjQuery('form[data-productid="{{product.id}}"] [name="quantity"]').val()
+	  
+		if(typeof quantity === 'undefined'){
+			//some sites don't define quantity in the form so we need this as a backup
+			quantity = 1;
+		}
+		
+		variant_price_{{product.id}} = (variant_id_to_price_map_{{product.id}}[variant_id] / 100) 
+		
+		//if recurring is on, set 
+		if( rjQuery('#autodeliver_on_radio_{{product.id}}').prop('checked')==true && variant_id_to_discount_id_map_{{product.id}}[variant_id]['discount_variant_id'] !='') {
+			variant_price_{{product.id}} = variant_price_to_discount_price_map_{{product.id}}[variant_id]['discount_variant_price']
+		} 
+
+		variant_price_{{product.id}} = parseFloat(variant_price_{{product.id}}).toFixed(2)
+		var displayed_price = parseFloat(quantity * variant_price_{{product.id}}).toFixed(2)
+		var price_string = currency_symbol+' '+displayed_price + currency_suffix
+	  
+		if(window.first_time_{{product.id}}){
+			rjQuery(price_selectors).html(price_string)
+		}
+		window.first_time_{{product.id}} = true;
+		updateInlinePrice_{{product.id}}()
+	}
+
+	// This function updates the inline prices (next to radio buttons) 
+	function updateInlinePrice_{{product.id}}() {
+		var variant_id = rjQuery('.original_select_{{product.id}}').val();
+		var price_one_time = (variant_id_to_price_map_{{product.id}}[variant_id] / 100);
+		price_one_time = parseFloat(price_one_time).toFixed(2);
+        
+        var price_recurring = variant_price_to_discount_price_map_{{product.id}}[variant_id]['discount_variant_price']
+        price_recurring = parseFloat(price_recurring).toFixed(2);
+
+		rjQuery('#one-time-price_{{product.id}}').text(" "+currency_symbol+ price_one_time + currency_suffix);
+		rjQuery('#recurring-time-price_{{product.id}}').text(" "+currency_symbol + price_recurring + currency_suffix);
+	}
+	
+	/** PRICE RELATED DOCUMENT READY **/
+	rjQuery(document).ready(function(){
+		
+		/** make sure correct option has grey border **/
+		window.lock_{{product.id}} = false;
+		window.first_time_{{product.id}} = true;
+		if(rjQuery('#autodeliver_on_radio_{{product.id}}').prop('checked')==true ) {
+			rjQuery('#recurring_purchase_{{product.id}}').addClass('active');
+		} else {
+			rjQuery('#single_purchase_{{product.id}}').addClass('active');
+		}
+		if(has_discount_{{product.id}} == true) {
+			setTimeout(function(){ updatePrice_{{product.id}}("") }, 200);
+		}
+		
+		
+		//if something modifies the price, we notice it and then change it back. but we use a timeout function to avoid an infinite loop
+		rjQuery('.current_price, #productPrice, .product-price, .price, #price-preview').bind("DOMSubtreeModified",function(){      
+			if( window.lock_{{product.id}} == false ) {
+				window.lock_{{product.id}} = true;
+				if(has_discount_{{product.id}} == true) {
+					updatePrice_{{product.id}}("UPDATE - DOMSubtreeModified");
+				}
+				setTimeout(function(){window.lock_{{product.id}}=false}, 200);
+			}
+		});
+		
+		//handle change in quantity
+		rjQuery('#quantity').on("change",function(){
+			if(has_discount_{{product.id}} == true) {
+				updatePrice_{{product.id}}("UPDATE - Qty change on");
+			}
+		});
+		
+		//run the price updater once page loads to reset it to what we need it to be				
+		updateInlinePrice_{{product.id}}();		
+				
+	})//end document ready
+
+		
+
+	/** set variant mapping for the case in which there is an automatically created duplicate product **/
+	var variant_id_to_discount_id_map_{{product.id}} = {};  
+	var variant_price_to_discount_price_map_{{product.id}} ={} 
+	var discount_variants_array_for_select_{{product.id}}=[]
+	
+	{% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+		var discount_variant_id = '{{ variant.metafields.subscriptions.discount_variant_id }}'
+		variant_id_to_discount_id_map_{{product.id}}['{{variant.id}}']='' 
+		
+		if(discount_variant_id) {
+			variant_id_to_discount_id_map_{{product.id}}['{{variant.id}}'] = {"discount_variant_id":discount_variant_id};
+			discount_variants_array_for_select_{{product.id}}.push(discount_variant_id)
+		}
+		
+		var discount_variant_price = '{{ variant.metafields.subscriptions.discount_variant_price }}'
+		variant_price_to_discount_price_map_{{product.id}}['{{variant.id}}']=''
+		
+		if(discount_variant_price) {
+			variant_price_to_discount_price_map_{{product.id}}['{{variant.id}}'] = { "discount_variant_price": discount_variant_price } 
+		}
+
+{%endunless%}
+{%endunless%}
+	{% endfor %}
+	
+	//map original prices for updated price calculations
+	variant_id_to_price_map_{{product.id}}={}
+	{% for variant in product.variants %}
+{% unless variant.metafields.secomapp.freegifts %}
+{% unless variant.title contains '(Freegifts)' %}
+
+		variant_id_to_price_map_{{product.id}}['{{variant.id}}'] = "{{variant.price}}"
+
+{%endunless%}
+{%endunless%}
+	{% endfor %}
+
+}//end if (subscription_on==true) section
+	
+</script> 
+
+
