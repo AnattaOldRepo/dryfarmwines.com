@@ -1,0 +1,11 @@
+/*================ Custom Media ================*/
+
+@custom-media --mobile (min-width: $breakpoint-mobile);
+@custom-media --mobile-large (min-width: $breakpoint-mobile-large);
+@custom-media --mobile-max (max-width: $breakpoint-mobile-max);
+@custom-media --tablet (min-width: $breakpoint-tablet);
+@custom-media --tablet-large (min-width: $breakpoint-tablet-large);
+@custom-media --tablet-large-max (max-width: $breakpoint-tablet-large);
+@custom-media --desktop (min-width: $breakpoint-desktop);
+@custom-media --desktop-max (max-width: $breakpoint-desktop-max);
+@custom-media --desktop-large (min-width: $breakpoint-desktop-large);

@@ -1,0 +1,8 @@
+/* ============ Transitions =============== */
+.u-hoverFade {
+    transition: all 0.3s;
+    &:hover {
+        cursor: pointer;
+        opacity: 0.8;
+    }
+}

@@ -1,0 +1,113 @@
+/*================ Pikaday ================*/
+
+.pika-single {
+  max-width: 100%;
+  .pika-title .pika-label {
+    &:last-of-type {
+      display: none;
+    }
+  }
+  .pika-lendar {
+    position: relative;
+    font-size: 16px;
+    line-height: 40px;
+  }
+  .pika-label {
+    font-family: $font-avenir-medium;
+    position: relative;
+    text-align: center;
+  }
+  .pika-title select {
+    width: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    padding: 0;
+  }
+  .pika-prev,
+  .pika-next {
+    position: absolute;
+    top: 12px;
+    font-size: 0;
+    outline: none;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    &:focus {
+      box-shadow: none !important;
+    }
+    &:after {
+      font-size: 12px;
+    }
+    &.is-disabled {
+      pointer-events: none;
+      color: rgba(0, 40, 86, 0.15);
+    }
+  }
+  .pika-prev {
+    left: 0;
+    &::after {
+      content: "◀";
+    }
+  }
+  .pika-next {
+    right: 0;
+    &::after {
+      content: "▶";
+    }
+  }
+  thead {
+    pointer-events: none;
+    abbr[title] {
+      color: rgba(0, 40, 86, 0.5);
+      font-weight: normal;
+      text-decoration: none;
+    }
+  }
+  tr {
+    display: flex;
+    justify-content: space-between;
+  }
+  th,
+  td {
+    border: none;
+    padding: 0;
+    flex-basis: calc(100% / 7);
+    text-align: center;
+  }
+  .pika-row .pika-button {
+    width: 80%;
+    padding: 6px 0;
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: $font-avenir-medium;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: $color-green;
+      color: $color-white;
+    }
+  }
+  .pika-row .is-outside-current-month .pika-button {
+    color: rgba(0, 40, 86, 0.3);
+    &:hover {
+      background-color: rgba(0, 150, 108, 0.75);
+      color: $color-white;
+    }
+  }
+  .pika-row .is-disabled .pika-button {
+    color: rgba(0, 40, 86, 0.05);
+    pointer-events: none;
+  }
+  .pika-row .is-selected .pika-button {
+    pointer-events: none;
+    background-color: $color-primary;
+    color: $color-white;
+  }
+  .pika-row .is-selected.is-outside-current-month .pika-button {
+    background-color: rgba(0, 40, 86, 0.3);
+  }
+}

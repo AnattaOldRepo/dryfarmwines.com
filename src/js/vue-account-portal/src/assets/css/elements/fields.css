@@ -1,0 +1,25 @@
+/*================ List Element ================*/
+
+/*===  Prevents Style Leaking ===*/
+.vp {
+  input,
+  select {
+    appearance: none;
+    width: 100%;
+    padding: 10px 12px 8px;
+    border: 1px solid rgba(0, 40, 86, 0.5);
+    color: $color-primary;
+    font-family: $font-avenir;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+    &:focus {
+      outline: none;
+      box-shadow: none !important;
+      border: 1px solid rgba(0, 40, 86, 0.85);
+    }
+  }
+  select {
+    padding-right: 35px;
+  }
+}

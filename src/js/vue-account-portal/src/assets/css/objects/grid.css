@@ -1,0 +1,32 @@
+/*================ Container ================*/
+
+@lost flexbox flex;
+
+.o-grid {
+    lost-center: 100%;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.o-grid--stretch {
+    align-items: stretch;
+}
+
+.o-grid__item--oneThree {
+    lost-column: 1;
+    lost-align: center;
+    @media (--tablet) {
+        lost-column: 1/3;
+    }
+}
+
+.o-grid__item--oneThreeFive {
+    lost-column: 1;
+    lost-align: center;
+    @media (--tablet) {
+        lost-column: 1/3;
+    }
+    @media (--tablet-large) {
+        lost-column: 1/5;
+    }
+}

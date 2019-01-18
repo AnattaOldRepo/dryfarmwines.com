@@ -1,0 +1,215 @@
+/*================ Portal Component ================*/
+
+/*===  Prevents Style Leaking ===*/
+.vp {
+  font-family: $font-avenir;
+  .vp-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .vp-side--left {
+    width: 350px;
+  }
+  .vp-side--right {
+    flex: 1;
+  }
+  .vp-section {
+    width: 100%;
+    margin-bottom: 60px;
+  }
+  .vp-h2 {
+    width: 100%;
+    margin-bottom: 20px;
+    text-transform: capitalize;
+  }
+  .vp-card {
+    position: relative;
+    width: 100%;
+    z-index: 0;
+    &::after {
+      content: " ";
+      position: absolute;
+      bottom: 0;
+      width: calc(100% - 40px);
+      height: 20px;
+      z-index: -1;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+    }
+  }
+  .vp-card__block {
+    display: block;
+    position: relative;
+    z-index: 0;
+    background-color: $color-white;
+    padding: 20px 30px;
+  }
+  .vp-card__block--isLink {
+    transition: background-color 0.3s ease-in-out;
+    padding-right: 40px;
+    &:hover {
+      opacity: 1;
+      background-color: #f2f2f2;
+    }
+  }
+  .vp-card__block--disableLink {
+    pointer-events: none;
+  }
+  .vp-card__block--hasBorder {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .vp-card__heading {
+    margin-bottom: 5px;
+    text-align: left;
+    color: $color-greenLight;
+  }
+  .vp-card__heading--items {
+    margin-bottom: -20px;
+  }
+  .vp-card__text {
+    display: block;
+    color: $color-primary;
+    font-size: 14px;
+    margin: 0;
+  }
+  .vp-card__text--large {
+    margin: 0;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  .vp-card__arrow {
+    position: absolute;
+    width: 10px;
+    top: calc(50% - 10px);
+    right: 20px;
+  }
+  .vp-card__button {
+    display: inline-block;
+    margin: 30px auto 0;
+    color: $color-white;
+  }
+  .vp-drawer__inner {
+    min-height: 100%;
+  }
+  .vp-drawer__header {
+    width: 100%;
+    margin-top: 35px;
+    padding: 0 30px 35px;
+    background-color: $color-gray;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  .vp-drawer__saved {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(0, 40, 86, 0.75);
+  }
+  .vp-drawer__savedIcon {
+    position: relative;
+    width: 28px;
+    height: 28px;
+    z-index: 1;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      width: 20px;
+      height: 20px;
+      background-color: $color-white;
+      border-radius: 50%;
+      z-index: -1;
+    }
+    & >>> svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .vp-drawer__savedText {
+    color: $color-white;
+    font-family: $font-circular-pro;
+    margin-left: 10px;
+  }
+  .vp-drawer__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex: 1;
+    background-color: $color-white;
+    padding: 30px 40px 60px;
+  }
+  .vp-drawer__row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .vp-drawer__h2 {
+    margin: 0;
+    text-align: center !important;
+  }
+  .vp-drawer__text {
+    font-size: 18px;
+    line-height: 1;
+  }
+  .vp-drawer__text {
+    font-size: 16px;
+    line-height: 1;
+  }
+  .vp-drawer__text--bold {
+    font-family: $font-avenir-medium;
+    font-size: 17px;
+    line-height: 1;
+  }
+  .vp-drawer__button {
+    margin: 10px auto;
+  }
+  .vp-field__group {
+    display: flex;
+    justify-content: space-between;
+  }
+  .vp-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  .vp-field--half {
+    flex-basis: calc(50% - 6px);
+    max-width: calc(50% - 6px);
+  }
+  .vp-field--select {
+    position: relative;
+    &::after {
+      content: "▾";
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      color: rgba(0, 40, 86, 0.85);
+      pointer-events: none;
+    }
+  }
+  .vp-field--quantity {
+    button {
+    }
+  }
+
+  @media (--tablet-large) {
+    .vp-side--right {
+      margin-left: 100px;
+    }
+    .vp-h2 {
+      text-align: left;
+    }
+    .vp-card__button {
+      margin: 30px 0 0;
+    }
+  }
+}

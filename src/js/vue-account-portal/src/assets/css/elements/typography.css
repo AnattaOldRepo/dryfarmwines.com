@@ -1,0 +1,82 @@
+/*================ Base Typopgraphy ================*/
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: "AvenirNext";
+  color: $color-primary;
+  line-height: $base-line-height;
+}
+
+/*===  Prevents Style Leaking ===*/
+.vp {
+  p,
+  li,
+  a,
+  button {
+    line-height: $font-line-height;
+  }
+
+  a {
+    color: $color-greenLight;
+    text-decoration: none;
+    transition: all 0.3s;
+    &:hover {
+      cursor: pointer;
+      opacity: 0.8;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    margin: 0;
+    text-align: center;
+    font-family: $font-circular-pro;
+  }
+
+  h1 {
+    margin: 0 auto 24px;
+    font-size: 24px;
+    line-height: 1.46;
+    text-transform: capitalize;
+    @media (--tablet) {
+      font-size: 32px;
+      line-height: 48px;
+    }
+  }
+  h3 {
+    font-size: 15px;
+    letter-spacing: 1px;
+    line-height: 1.88;
+    text-transform: uppercase;
+  }
+  h4 {
+    font-size: 14px;
+    line-height: 2;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  h5 {
+    font-family: $font-circular-pro;
+    font-size: 18px;
+    line-height: 1.56;
+    text-transform: capitalize;
+  }
+
+  p {
+    margin: 20px 0;
+    @media (--tablet) {
+      font-size: 18px;
+    }
+  }
+  label {
+    font-family: $font-avenir;
+  }
+}
