@@ -154,7 +154,7 @@ export default {
       const cancellation_reason_comments = comments ? comments : "";
       axios
         .post(
-          `https://athleticgreens.com/tools/recurring/customers/${customerHash}/subscriptions/cancel${previewThemeQuery}`,
+          `https://www.dryfarmwines.com/tools/recurring/customers/${customerHash}/subscriptions/cancel${previewThemeQuery}`,
           qs.stringify({
             cancellation_reason_comments,
             reasons_to_cancel,
@@ -199,7 +199,7 @@ export default {
       Object.keys(state.subscriptions).forEach(subscriptionId => {
         promises.push(
           axios.post(
-            `https://athleticgreensusa.shopifysubscriptions.com/customers/${customerHash}/subscriptions/cancel`,
+            `https://dryfarmwines.shopifysubscriptions.com/customers/${customerHash}/subscriptions/cancel`,
             qs.stringify({
               cancellation_reason_comments: "",
               reasons_to_cancel: "Select a reason",

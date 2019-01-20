@@ -54,7 +54,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    {{ 'bootstrap.css' | asset_url | stylesheet_tag }}
 
     <!-- Stylesheets for Parallax 2.4 -->
     {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
@@ -391,9 +390,9 @@ _kms('//scripts.kissmetrics.com/' + _kmk + '.2.js');
 
         {% unless feature_image %}
           {% if request.path contains 'customer_portal' %}
-            <div>
+          <div class="vue-container">
           {% else %}
-            <div class="container main content">
+          <div class="container main content">
           {% endif %}
         {% endunless %}
 
@@ -641,7 +640,6 @@ _kms('//scripts.kissmetrics.com/' + _kmk + '.2.js');
 
 
 {% if request.path contains 'customer_portal' %}
-{{ 'bootstrap.min.js' | asset_url | script_tag }}
 {{ "vue-account-portal.js" | asset_url | script_tag }}
 {% endif %}
     
