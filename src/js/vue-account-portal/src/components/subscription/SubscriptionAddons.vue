@@ -1,88 +1,114 @@
 <template lang="pug">
-	.vp-addon__grid
-		.vp-section.vp-card(
-			v-for="(variant, index) in product.shopify_product.variants"
-			v-if="activeVariant(variant)"
-			:key="index"
-		)
-			.vp-addons__box
-				.vp-addons__imageBox
-					img.vp-addons__image(
-						:src="product.shopify_product.images[variant.image_id].src"
-						:alt="product.shopify_product.images[variant.image_id].alt"
-					)
-				p.vp-addons__title {{ activeVariant(variant).info.title }}
-				ul.vp-addons__list
-					li.vp-addons__listItem(
-						v-for="(line, index) in activeVariant(variant).info.copy"
-						:key="index"
-					) 
-						span.vp-addons__listItemIcon(
-							v-html="checkCircle"
-						)
-						span.vp-addons__listItemText {{ line }}
-				p.vp-addons__price {{ variant.price | formatMoney() }}
-				button.vp-addons__button.u-btn.u-btn--greenLight(
-					@click="addSubscription({id: variant.id})"
-				) Add To My Subscription
-				//- button.vp-addons__button.u-btn.u-btn--blue(
-				//- 	@click="addSubscription({id: variant.id, is_subscription_item: 0 })"
-				//- ) Add To My Order
+  .vp-subscriptionAddons__grid
+    .vp-card(
+      v-for="(variant, index) in activeVariantProducts"
+      :key="variant.id"
+    )
+      .vp-addons__box
+        .vp-addons__imageBox
+          img.vp-addons__image(
+            :src="getProductImage(variant.productData, variant)"
+            :alt="getProductImageAlt(variant.productData, variant)"
+          )
+        p.vp-addons__title {{ variant.title }}
+        p.vp-addons__price {{ variant.price | formatMoney() }}
+        button.vp-addons__button.u-btn.u-btn--greenLight(
+          @click="addSubscription({id: variant.id})"
+        ) Select
+        //- button.vp-addons__button.u-btn.u-btn--blue(
+        //- 	@click="addSubscription({id: variant.id, is_subscription_item: 0 })"
+        //- ) Add To My Order
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import { variantCopy, variantList } from "../../assets/js";
-import { checkCircle, chevronBlue } from "../../assets/svg";
+import { mapGetters, mapActions } from 'vuex'
+import { variantCopy, variantList } from '../../assets/js'
+import { checkCircle, chevronBlue } from '../../assets/svg'
 export default {
   props: {
-    product: {
+    products: {
       type: Object,
-      default: () => {}
+      required: true
     }
   },
-  data() {
-    return {
-      checkCircle,
-      chevronBlue,
-      variantList,
-      variantCopy
-    };
-  },
+
+  data: () => ({
+    checkCircle,
+    chevronBlue,
+    variantList,
+    variantCopy
+  }),
+
   computed: {
-    ...mapGetters("subscriptions", ["subscriptions"])
+    ...mapGetters('subscriptions', ['subscriptions']),
+
+    activeVariantProducts() {
+      return Object.keys(this.products).reduce((final, productKey) => {
+        const { variants } = this.products[productKey].shopify_product
+
+        const activeProductVariants = Object.keys(variants)
+          .filter(variantKey => {
+            return this.activeVariant(variants[variantKey])
+              ? variants[variantKey]
+              : false
+          })
+          .map(variantKey => ({
+            ...variants[variantKey],
+            productData: this.products[productKey]
+          }))
+
+        return [...final, ...activeProductVariants]
+      }, [])
+    }
   },
+
   methods: {
-    ...mapActions("subscriptions", ["addSubscription"]),
+    ...mapActions('subscriptions', ['addSubscription']),
+
     alreadyActive(variant) {
-      let alreadyActive = false;
+      let alreadyActive = false
       Object.keys(this.subscriptions).forEach(subscriptionId => {
         if (
           this.subscriptions[subscriptionId].shopify_variant_id === variant.id
         ) {
-          alreadyActive = true;
+          alreadyActive = true
         }
-      });
-      return alreadyActive;
+      })
+      return alreadyActive
     },
+
     activeVariant(variant) {
       if (
-        this.variantList.indexOf(variant.id) != -1 &&
+        this.variantList.includes(variant.id) &&
         !this.alreadyActive(variant)
       ) {
-        variant.info = variantCopy[variant.id];
-        return variant;
+        variant.info = variantCopy[variant.id]
+        return variant
       } else {
-        return false;
+        return false
       }
+    },
+
+    getProductImage(product, variant) {
+      return product.shopify_product.images[variant.image_id].src
+    },
+
+    getProductImageAlt(product, variant) {
+      return product.shopify_product.images[variant.image_id].alt
     }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 
+.vp-subscriptionAddons__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.618em;
+}
 .vp-addons__box {
   display: flex;
   flex-direction: column;
@@ -131,5 +157,6 @@ export default {
 }
 .vp-addons__button {
   margin-bottom: 20px;
+  text-transform: uppercase;
 }
 </style>

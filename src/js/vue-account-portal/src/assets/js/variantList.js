@@ -1,8 +1,11 @@
+// Gift Membership - 12 Boxes (Mixed)
+// Gift Membership - 12 Boxes (White)
+// Gift Membership - 12 Boxes (Red)
+// The Bordeaux Box
+
 export const variantList = [
-  12953286475874, // 20 pack travel
-  12670425563234, // 30 pack travel
-  32643585296, // fish oil
-  43583095120, // vitamin
-  43582346960, // whey chocolate
-  43582347728 // whey vanilla
+  418151825417,
+  418151792649,
+  418151759881,
+  13614637023311
 ];

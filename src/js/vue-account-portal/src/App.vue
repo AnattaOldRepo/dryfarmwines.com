@@ -64,7 +64,7 @@ export default {
 }
 .vp__container {
   padding: 0 20px;
-  max-width: 900px;
+  max-width: 1015px;
   margin: auto;
 }
 </style>
