@@ -12,25 +12,26 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import { cleanAddress, isEmptyObject } from "../../assets/js";
-import { rechargeUrl, previewThemeQuery } from "../../config";
-import { chevronBlue } from "../../assets/svg";
+import { mapGetters } from 'vuex'
+import { isEmptyObject } from '../../assets/js'
+import { cleanPayment } from '../../assets/js/cleanPayment'
+import { rechargeUrl, previewThemeQuery } from '../../config'
+import { chevronBlue } from '../../assets/svg'
 export default {
   data() {
     return {
       isEmptyObject,
       chevronBlue
-    };
+    }
   },
   computed: {
-    ...mapGetters("customer", ["paymentMethod", "hash"]),
+    ...mapGetters('customer', ['paymentMethod', 'hash']),
     customerCard() {
-      return cleanPayment(this.paymentMethod);
+      return cleanPayment(this.paymentMethod)
     },
     editPaymentUrl() {
-      return `${rechargeUrl}${this.hash}/card${previewThemeQuery}`;
+      return `${rechargeUrl}${this.hash}/card${previewThemeQuery}`
     }
   }
-};
+}
 </script>
