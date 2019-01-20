@@ -58,7 +58,8 @@
     "prebuild": "rm -rf dist",
     "build": "webpack --mode=production --env.prod -p",
     "prebuild:dev": "rm -rf dist",
-    "dev": "webpack --mode=development --env.dev",
+    "tempfix:dev": "webpack --mode=production --env.dev -p",
+    "dev": "webpack --mode=development --env.dev -p",
     "start": "http-server",
     "validate": "npm-run-all --parallel lint build",
     "lint": "eslint ."
