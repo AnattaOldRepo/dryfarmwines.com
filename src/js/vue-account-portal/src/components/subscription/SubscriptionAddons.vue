@@ -1,23 +1,19 @@
 <template lang="pug">
   .vp-subscriptionAddons__grid
-    .vp-card(
+    .vp-addons__box(
       v-for="(variant, index) in activeVariantProducts"
       :key="variant.id"
     )
-      .vp-addons__box
-        .vp-addons__imageBox
-          img.vp-addons__image(
-            :src="getProductImage(variant.productData, variant)"
-            :alt="getProductImageAlt(variant.productData, variant)"
-          )
-        p.vp-addons__title {{ variant.title }}
-        p.vp-addons__price {{ variant.price | formatMoney() }}
-        button.vp-addons__button.u-btn.u-btn--greenLight(
-          @click="addSubscription({id: variant.id})"
-        ) Select
-        //- button.vp-addons__button.u-btn.u-btn--blue(
-        //- 	@click="addSubscription({id: variant.id, is_subscription_item: 0 })"
-        //- ) Add To My Order
+      .vp-addons__imageBox
+        img.vp-addons__image(
+          :src="getProductImage(variant.productData, variant)"
+          :alt="getProductImageAlt(variant.productData, variant)"
+        )
+      p.vp-addons__title {{ variant.title }}
+      p.vp-addons__price {{ variant.price | formatMoney() }}
+      BaseButton.vp-addons__button(
+        @click="addSubscription({id: variant.id})"
+      ) Select
 </template>
 
 <script>
@@ -106,8 +102,8 @@ export default {
 .vp-subscriptionAddons__grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1.618em;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 2em 1.618em;
 }
 .vp-addons__box {
   display: flex;
@@ -115,7 +111,6 @@ export default {
   align-items: center;
   text-align: center;
   width: 100%;
-  padding: 50px 30px;
   background-color: $white;
 }
 .vp-addons__imageBox {

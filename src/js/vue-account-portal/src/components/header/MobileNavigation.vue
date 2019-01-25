@@ -84,14 +84,14 @@ export default {
   width: 100%;
   padding: 20px 0;
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.5);
+  color: $gray-text;
   font-size: 13px;
   font-family: $font-circular-pro;
   text-transform: uppercase;
   transition: all 0.3s ease;
   &:hover {
     opacity: 1;
-    color: rgba(255, 255, 255, 1);
+    color: $gray-text;
     cursor: pointer;
   }
 }

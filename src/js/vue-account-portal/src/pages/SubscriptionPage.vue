@@ -4,14 +4,14 @@
 			.vp-section
 				h2.vp-h2 Your Next Shipment
 				SubscriptionList
-				button.vp-card__button.u-btn.u-btn--greenLight(
+				BaseButton.vp-card__button(
 					v-if="activeDelivery"
 					@click="setDrawer('DrawerSkipShipping')"
 				) Skip A Shipment
 			.vp-section
 				h2.vp-h2 Address & Payment
 				SubscriptionAddress
-				BaseButton(
+				BaseButton.vp-card__button(
 					v-if="!isEmptyObject(subscriptions)"
 					@click.native="setModal('ModalCancel')"
 				) Cancel Subscription

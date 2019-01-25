@@ -9,7 +9,7 @@
     align-items: flex-start;
   }
   .vp-side--left {
-    width: 350px;
+    width: 320px;
   }
   .vp-side--right {
     flex: 1;
@@ -192,7 +192,7 @@
 
   @media (--tablet-large) {
     .vp-side--right {
-      margin-left: 100px;
+      margin-left: 80px;
     }
     .vp-h2 {
       text-align: left;
