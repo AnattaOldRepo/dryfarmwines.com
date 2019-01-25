@@ -37,7 +37,7 @@ import SubscriptionListItem from './SubscriptionListItem.vue'
 import { mapGetters, mapMutations } from 'vuex'
 import { isEmptyObject } from '../../assets/js'
 import { chevronBlue } from '../../assets/svg'
-import subscriptions from '../../store/subscriptions'
+import subscriptions from '../../store/subscriptions';
 export default {
   components: {
     SubscriptionListItem
