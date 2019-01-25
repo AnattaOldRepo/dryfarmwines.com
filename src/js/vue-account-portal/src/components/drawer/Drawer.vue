@@ -24,7 +24,8 @@ const DrawerComponents = {
   DrawerInterval: require('./DrawerInterval.vue').default,
   DrawerShipping: require('./DrawerShipping.vue').default,
   DrawerSubscription: require('./DrawerSubscription.vue').default,
-  DrawerBilling: require('./DrawerBilling.vue').default
+  DrawerBilling: require('./DrawerBilling.vue').default,
+  DrawerSkipShipping: require('./DrawerSkipShipping.vue').default
 }
 
 export default {

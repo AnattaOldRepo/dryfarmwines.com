@@ -3,7 +3,7 @@
 			a.vp-card__block.vp-card__block--isLink(
 				@click="setDrawer('DrawerDate')"
 			)
-				h4.vp-card__heading Ships on
+				h4.vp-card__heading Ships On
 				p.vp-card__text.vp-card__text--large(
 					v-if="activeDelivery"
 				) {{ activeDelivery.date | formatDate("MMM D") }}

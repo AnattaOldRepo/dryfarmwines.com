@@ -1,29 +1,20 @@
 <template lang="pug">
 	.vp-subscription
 		.vp-side.vp-side--left
-			//- .vp-section
-			//- 	h2.vp-h2 Your next shipment
-			//- 	SubscriptionDelivery
-			//- 	button.vp-card__button.u-btn.u-btn--greenLight(
-			//- 		v-if="activeDelivery"
-			//- 		@click="skipDelivery"
-			//- 		:class="!canSkip() ? 'u-btn--disabled' : ''"
-			//- 		:disabled="!canSkip()"
-			//- 	) Skip shipment
 			.vp-section
-				h2.vp-h2 Your Subscription
+				h2.vp-h2 Your Next Shipment
 				SubscriptionList
 				button.vp-card__button.u-btn.u-btn--greenLight(
 					v-if="activeDelivery"
-					@click="skipDelivery"
-				) Skip Shipment
-				a.vp-card__cancel(
-					v-if="!isEmptyObject(subscriptions)"
-					@click="setModal('ModalCancel')"
-				) Cancel subscription
+					@click="setDrawer('DrawerSkipShipping')"
+				) Skip A Shipment
 			.vp-section
-				//- h2.vp-h2 Subscription Details
+				h2.vp-h2 Address & Payment
 				SubscriptionAddress
+				BaseButton(
+					v-if="!isEmptyObject(subscriptions)"
+					@click.native="setModal('ModalCancel')"
+				) Cancel Subscription
 		.vp-side.vp-side--right
 			h2.vp-h2 Add To Your Subscription
 			SubscriptionAddons(:products="products")
@@ -65,7 +56,6 @@ export default {
   },
   methods: {
     ...mapMutations('ui', ['setDrawer', 'setModal']),
-    ...mapActions('deliveries', ['skipDelivery']),
     ...mapActions('subscriptions', ['pauseAllSubscriptions']),
     canSkip() {
       const maxDate = moment()

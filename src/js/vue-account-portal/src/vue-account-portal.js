@@ -7,6 +7,7 @@ import DetailsPage from './pages/DetailsPage.vue'
 import HistoryPage from './pages/HistoryPage.vue'
 import SubscriptionPage from './pages/SubscriptionPage.vue'
 import RetentionPage from './pages/RetentionPage.vue'
+import './_globals'
 
 import store from './store'
 import moment from 'moment'

@@ -1,14 +1,14 @@
 module.exports = {
   plugins: {
-    "postcss-import": {
-      path: "./assets/css"
+    'postcss-import': {
+      path: './assets/css'
     },
-    "postcss-nested": {},
-    "postcss-preset-env": {},
-    "postcss-custom-properties": {},
+    'postcss-nested': {},
+    'postcss-preset-env': {},
+    'postcss-custom-properties': {},
     precss: {},
-    "postcss-flexbox": {},
+    'postcss-flexbox': {},
     lost: {},
-    "postcss-utilities": {}
+    'postcss-utilities': {}
   }
-};
+}

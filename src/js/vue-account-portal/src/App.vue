@@ -1,15 +1,15 @@
 <template lang="pug">
   .vp
-      Header
-      .vp__content
-        router-view.vp__container(v-if="!appLoading && activeSubscription")
-        Loading(v-if="appLoading")
-        Updating(v-if="appUpdating")
-      Drawer
-      DrawerOverlay
-      Modal(v-if="modalContent")
-      ModalOverlay(v-if="modalContent")
-      EmptyPage(v-if="!appLoading && !activeSubscription")
+    Header
+    .vp__content
+      router-view.vp__container(v-if="!appLoading && activeSubscription")
+      Loading(v-if="appLoading")
+      Updating(v-if="appUpdating")
+    Drawer
+    DrawerOverlay
+    Modal(v-if="modalContent")
+    ModalOverlay(v-if="modalContent")
+    EmptyPage(v-if="!appLoading && !activeSubscription")
 </template>
 
 <script>

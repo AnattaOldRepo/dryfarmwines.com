@@ -27,6 +27,7 @@
     position: relative;
     width: 100%;
     z-index: 0;
+    border: 1px solid #dddddd;
   }
   .vp-card__block {
     display: block;
