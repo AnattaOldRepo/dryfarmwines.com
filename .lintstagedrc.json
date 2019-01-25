@@ -1,0 +1,9 @@
+{
+  "linters": {
+    "src/vue-account-portal/src/*.{js,vue,css,json,md}": [
+      "yarn lint",
+      "git add"
+    ],
+    "ignore": ["src/**/dist/*.min.js"]
+  }
+}

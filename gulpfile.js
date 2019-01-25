@@ -7,7 +7,7 @@ const gulp = require('gulp'),
 
 gulp.task('vue-account-portal', function() {
   return gulp
-    .src(['src/js/vue-account-portal/dist/vue-account-portal.js'])
+    .src(['src/vue-account-portal/dist/vue-account-portal.js'])
     .pipe(sourcemaps.init())
     .pipe(
       plumber({ errorHandler: notify.onError('Error: <%= error.message %>') })
@@ -25,7 +25,7 @@ gulp.task('vue-account-portal', function() {
 
 gulp.task('watch', function() {
   gulp.watch(
-    'src/js/vue-account-portal/dist/vue-account-portal.js',
+    'src/vue-account-portal/dist/vue-account-portal.js',
     gulp.series('vue-account-portal')
   )
 })

@@ -61,17 +61,6 @@
     "webpack-config-utils": "^2.3.0",
     "webpack-dev-server": "^3.1.9"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/*.{js,json,vue,css,md}": [
-      "yarn lint",
-      "git add"
-    ]
-  },
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "webpack --mode=production --env.prod -p",
@@ -80,7 +69,7 @@
     "dev": "webpack --mode=development --env.dev -p",
     "start": "http-server",
     "validate": "npm-run-all --parallel lint build",
-    "precommit:lint": "eslint --fix src",
+    "precommit": "lint-staged",
     "lint": "eslint --fix --ext js,vue src"
   }
 }
