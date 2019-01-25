@@ -1,23 +1,38 @@
-<template lang="pug">
-	.vp-subscription
-		.vp-side.vp-side--left
-			.vp-section
-				h2.vp-h2 Your Next Shipment
-				SubscriptionList
-				BaseButton.vp-card__button(
+<template>
+	<div class="vp-subscription">
+		<div class="vp-side vp-side--left">
+      <div class="vp-section">
+				<h2 class="vp-h2">Your Next Shipment</h2>
+				<SubscriptionList />
+				<BaseButton
 					v-if="activeDelivery"
+          class="vp-card__button"
 					@click="setDrawer('DrawerSkipShipping')"
-				) Skip A Shipment
-			.vp-section
-				h2.vp-h2 Address & Payment
-				SubscriptionAddress
-				BaseButton.vp-card__button(
+				>
+          Skip A Shipment
+        </BaseButton>
+      </div>
+      <div class="vp-section">
+        <h2 class="vp-section">Subscription Settings</h2>
+        <SubscriptionSettings />
+      </div>
+      <div class="vp-section">
+				<h2 class="vp-h2">Address & Payment</h2>
+				<SubscriptionAddress />
+				<BaseButton
+          class="vp-card__button"
 					v-if="!isEmptyObject(subscriptions)"
-					@click.native="setModal('ModalCancel')"
-				) Cancel Subscription
-		.vp-side.vp-side--right
-			h2.vp-h2 Add To Your Subscription
-			SubscriptionAddons(:products="products")
+					@click="setModal('ModalCancel')"
+				>
+          Cancel Subscription
+        </BaseButton>
+      </div>
+    </div>
+    <div class="vp-side vp-side--right">
+		  <h2 class="vp-h2">Add To Your Subscription</h2>
+			<SubscriptionAddons :products="products" />
+    </div>
+  </div>
 </template>
 
 <script>
