@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { variantCopy } from "../../assets/js";
+import { variantCopy } from '../../assets/js'
 export default {
   props: {
     item: {
@@ -23,25 +23,25 @@ export default {
   },
   computed: {
     shopifyVariantImage() {
-      return this.$store.getters["products/shopifyVariantImage"](
+      return this.$store.getters['products/shopifyVariantImage'](
         this.item.shopify_product_id,
         this.item.shopify_variant_id
-      );
+      )
     },
     variantInfo() {
       if (variantCopy[this.item.shopify_variant_id]) {
-        return variantCopy[this.item.shopify_variant_id];
+        return variantCopy[this.item.shopify_variant_id]
       } else {
-        return { title: this.item.product_title };
+        return { title: this.item.product_title }
       }
     }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
-@import "../../assets/css/tools";
+@import '../../assets/css/settings';
+@import '../../assets/css/tools';
 
 .vp-item {
   display: flex;

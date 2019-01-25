@@ -10,26 +10,26 @@
 </template>
 
 <script>
-import HistoryOrder from "../components/history/HistoryOrder.vue";
-import { mapState } from "vuex";
-import { isEmptyObject } from "../assets/js";
+import HistoryOrder from '../components/history/HistoryOrder.vue'
+import { mapState } from 'vuex'
+import { isEmptyObject } from '../assets/js'
 export default {
   data() {
     return {
       isEmptyObject
-    };
+    }
   },
   components: {
     HistoryOrder
   },
   computed: {
-    ...mapState(["orders"])
+    ...mapState(['orders'])
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../assets/css/index.css";
+@import '../assets/css/index.css';
 .vp-history {
   display: flex;
   flex-direction: column;

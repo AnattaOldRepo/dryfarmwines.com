@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import SubscriptionListItem from "./SubscriptionListItem.vue";
-import { mapGetters, mapMutations } from "vuex";
-import { isEmptyObject } from "../../assets/js";
-import { chevronBlue } from "../../assets/svg";
-import subscriptions from "../../store/subscriptions";
+import SubscriptionListItem from './SubscriptionListItem.vue'
+import { mapGetters, mapMutations } from 'vuex'
+import { isEmptyObject } from '../../assets/js'
+import { chevronBlue } from '../../assets/svg'
+import subscriptions from '../../store/subscriptions'
 export default {
   components: {
     SubscriptionListItem
@@ -46,19 +46,19 @@ export default {
     return {
       isEmptyObject,
       chevronBlue
-    };
+    }
   },
   computed: {
-    ...mapGetters("subscriptions", ["subscriptions"]),
-    ...mapGetters("deliveries", ["deliverySettings", "activeDelivery"]),
+    ...mapGetters('subscriptions', ['subscriptions']),
+    ...mapGetters('deliveries', ['deliverySettings', 'activeDelivery']),
     subscriptionsEmpty() {
-      return isEmptyObject(subscriptions);
+      return isEmptyObject(subscriptions)
     }
   },
   methods: {
-    ...mapMutations("ui", ["setDrawer"])
+    ...mapMutations('ui', ['setDrawer'])
   }
-};
+}
 </script>
 
 <style scoped>

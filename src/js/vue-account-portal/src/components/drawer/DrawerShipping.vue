@@ -39,10 +39,10 @@
 </template>
 
 <script>
-import DrawerShippingForm from "./DrawerShippingForm.vue";
-import { mapGetters, mapMutations } from "vuex";
-import { cleanAddress } from "../../assets/js";
-import { checkBadge } from "../../assets/svg";
+import DrawerShippingForm from './DrawerShippingForm.vue'
+import { mapGetters, mapMutations } from 'vuex'
+import { cleanAddress } from '../../assets/js'
+import { checkBadge } from '../../assets/svg'
 export default {
   components: {
     DrawerShippingForm
@@ -52,33 +52,33 @@ export default {
       saved: false,
       editMode: false,
       checkBadge
-    };
+    }
   },
   computed: {
-    ...mapGetters("addresses", ["activeAddress"]),
+    ...mapGetters('addresses', ['activeAddress']),
     cleanShipping() {
-      return cleanAddress(this.activeAddress);
+      return cleanAddress(this.activeAddress)
     }
   },
   methods: {
     toggleEditMode() {
-      this.editMode = !this.editMode;
+      this.editMode = !this.editMode
     },
     markSaved() {
-      this.saved = true;
+      this.saved = true
     }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 
 .vp-address__box {
   width: 100%;
   position: relative;
   text-align: center;
-  background-color: $color-white;
+  background-color: $white;
   padding: 24px 20px 20px;
   margin: 10px auto 20px;
   border: 2px solid $color-greenLight;
@@ -93,13 +93,13 @@ export default {
   height: 30px;
   z-index: 0;
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 2px;
     left: 2px;
     width: 28px;
     height: 28px;
-    background-color: $color-white;
+    background-color: $white;
     border-radius: 50%;
     z-index: -1;
   }

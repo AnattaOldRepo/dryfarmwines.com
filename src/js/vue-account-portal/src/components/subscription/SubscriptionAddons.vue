@@ -116,7 +116,7 @@ export default {
   text-align: center;
   width: 100%;
   padding: 50px 30px;
-  background-color: $color-white;
+  background-color: $white;
 }
 .vp-addons__imageBox {
   height: 150px;

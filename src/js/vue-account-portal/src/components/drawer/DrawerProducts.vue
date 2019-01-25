@@ -6,14 +6,13 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from 'vuex'
 
 export default {
   methods: {
-    ...mapActions("subscriptions", ["updateAllSubscriptions"])
+    ...mapActions('subscriptions', ['updateAllSubscriptions'])
   }
-};
+}
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

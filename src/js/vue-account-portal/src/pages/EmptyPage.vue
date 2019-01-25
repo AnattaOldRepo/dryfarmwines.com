@@ -8,11 +8,11 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style scoped>
-@import "../assets/css/index.css";
+@import '../assets/css/index.css';
 .vp-empty {
   display: flex;
   flex-direction: column;

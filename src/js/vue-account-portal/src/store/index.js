@@ -1,15 +1,15 @@
-import Vuex from "vuex";
-import Vue from "vue";
+import Vuex from 'vuex'
+import Vue from 'vue'
 
-import addresses from "./addresses";
-import customer from "./customer";
-import deliveries from "./deliveries";
-import orders from "./orders";
-import products from "./products";
-import subscriptions from "./subscriptions";
-import ui from "./ui";
+import addresses from './addresses'
+import customer from './customer'
+import deliveries from './deliveries'
+import orders from './orders'
+import products from './products'
+import subscriptions from './subscriptions'
+import ui from './ui'
 
-Vue.use(Vuex);
+Vue.use(Vuex)
 
 export default new Vuex.Store({
   modules: {
@@ -42,4 +42,4 @@ export default new Vuex.Store({
       ...ui
     }
   }
-});
+})

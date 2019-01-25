@@ -6,16 +6,16 @@
 </template>
 
 <script>
-import UpdatingDots from "./UpdatingDots.vue";
+import UpdatingDots from './UpdatingDots.vue'
 export default {
   components: {
     UpdatingDots
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 
 .vp-updating {
   position: fixed;
@@ -27,7 +27,7 @@ export default {
   z-index: 200;
 }
 .vp-updating__text {
-  color: $color-white;
+  color: $white;
   font-size: 30px;
   margin-bottom: 20px;
 }

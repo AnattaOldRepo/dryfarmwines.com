@@ -28,10 +28,10 @@
 </template>
 
 <script>
-import SubscriptionDeliveryItem from "./SubscriptionDeliveryItem.vue";
-import { mapState, mapGetters, mapMutations } from "vuex";
-import { deliveryTotal } from "../../assets/js";
-import { chevronBlue } from "../../assets/svg";
+import SubscriptionDeliveryItem from './SubscriptionDeliveryItem.vue'
+import { mapState, mapGetters, mapMutations } from 'vuex'
+import { deliveryTotal } from '../../assets/js'
+import { chevronBlue } from '../../assets/svg'
 export default {
   components: {
     SubscriptionDeliveryItem
@@ -39,19 +39,19 @@ export default {
   data() {
     return {
       chevronBlue
-    };
+    }
   },
   computed: {
-    ...mapGetters("deliveries", ["activeDelivery"]),
+    ...mapGetters('deliveries', ['activeDelivery']),
     activeDeliveryList() {
-      return this.activeDelivery ? this.activeDelivery : false;
+      return this.activeDelivery ? this.activeDelivery : false
     },
     deliveryTotal() {
-      return this.activeDelivery ? deliveryTotal(this.activeDelivery) : false;
+      return this.activeDelivery ? deliveryTotal(this.activeDelivery) : false
     }
   },
   methods: {
-    ...mapMutations("ui", ["setDrawer"])
+    ...mapMutations('ui', ['setDrawer'])
   }
-};
+}
 </script>

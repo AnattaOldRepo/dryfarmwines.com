@@ -18,39 +18,39 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import { cleanAddress } from "../../assets/js";
-import { checkBadge } from "../../assets/svg";
+import { mapGetters, mapActions } from 'vuex'
+import { cleanAddress } from '../../assets/js'
+import { checkBadge } from '../../assets/svg'
 export default {
   data() {
     return {
       saved: false,
       deliveryOptions: [15, 30, 45, 60],
       checkBadge
-    };
+    }
   },
   computed: {
-    ...mapGetters("deliveries", ["deliverySettings"]),
+    ...mapGetters('deliveries', ['deliverySettings']),
     cleanBilling() {
-      return cleanAddress(this.billingAddress, "billing");
+      return cleanAddress(this.billingAddress, 'billing')
     }
   },
   methods: {
-    ...mapActions("subscriptions", ["updateAllIntervals"]),
+    ...mapActions('subscriptions', ['updateAllIntervals']),
     markSaved() {
-      this.saved = true;
+      this.saved = true
     }
   },
   watch: {
     deliverySettings() {
-      this.markSaved();
+      this.markSaved()
     }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 .vp-delivery__option {
   width: 100%;
   margin-bottom: 20px;

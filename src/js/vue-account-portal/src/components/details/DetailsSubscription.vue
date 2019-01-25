@@ -17,19 +17,19 @@
 </template>
 
 <script>
-import moment from "moment";
-import { mapGetters } from "vuex";
-import { chevronBlue } from "../../assets/svg";
+import moment from 'moment'
+import { mapGetters } from 'vuex'
+import { chevronBlue } from '../../assets/svg'
 
 export default {
   data() {
     return {
       chevronBlue
-    };
+    }
   },
   computed: {
-    ...mapGetters("customer", ["fullName"]),
-    ...mapGetters("deliveries", ["activeDelivery"])
+    ...mapGetters('customer', ['fullName']),
+    ...mapGetters('deliveries', ['activeDelivery'])
   }
-};
+}
 </script>

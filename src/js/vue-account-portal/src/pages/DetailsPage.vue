@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import DetailsSubscription from "../components/details/DetailsSubscription.vue";
-import DetailsBilling from "../components/details/DetailsBilling.vue";
-import DetailsPayment from "../components/details/DetailsPayment.vue";
-import { mapGetters } from "vuex";
-import { rechargeUrl, previewThemeQuery } from "../config";
-import { chevronBlue } from "../assets/svg";
+import DetailsSubscription from '../components/details/DetailsSubscription.vue'
+import DetailsBilling from '../components/details/DetailsBilling.vue'
+import DetailsPayment from '../components/details/DetailsPayment.vue'
+import { mapGetters } from 'vuex'
+import { rechargeUrl, previewThemeQuery } from '../config'
+import { chevronBlue } from '../assets/svg'
 export default {
   components: {
     DetailsSubscription,
@@ -34,22 +34,22 @@ export default {
   data() {
     return {
       chevronBlue
-    };
+    }
   },
   computed: {
-    ...mapGetters("customer", ["hash"]),
+    ...mapGetters('customer', ['hash']),
     editBillingUrl() {
-      return `${rechargeUrl}${this.hash}/edit${previewThemeQuery}`;
+      return `${rechargeUrl}${this.hash}/edit${previewThemeQuery}`
     },
     editPaymentUrl() {
-      return `${rechargeUrl}${this.hash}/card${previewThemeQuery}`;
+      return `${rechargeUrl}${this.hash}/card${previewThemeQuery}`
     }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../assets/css/index.css";
+@import '../assets/css/index.css';
 .vp-details {
   display: flex;
   flex-direction: column;

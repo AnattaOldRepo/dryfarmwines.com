@@ -7,20 +7,21 @@
 </template>
 
 <script>
-import MainNavigation from "./MainNavigation.vue";
-import MobileNavigation from "./MobileNavigation.vue";
+import MainNavigation from './MainNavigation.vue'
+import MobileNavigation from './MobileNavigation.vue'
 
 export default {
   components: {
     MainNavigation,
     MobileNavigation
   }
-};
+}
 </script>
 
 <style scoped>
+@import '../../assets/css/settings';
 .vp-header {
-  background: #0d2944;
+  background: $light-gray;
   z-index: 0;
 }
 </style>

@@ -27,53 +27,53 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from "vuex";
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 const reasonsList = [
-  "This is too expensive",
+  'This is too expensive',
   "I don't want a subscription",
-  "I already have more than I need",
+  'I already have more than I need',
   "I haven't noticed any benefit",
   "I'm moving or traveling",
   "I don't like the taste",
-  "I have a medical reason",
-  "Other reason"
-];
+  'I have a medical reason',
+  'Other reason'
+]
 export default {
   data() {
     return {
       reasonsList: reasonsList,
       reason: null,
       comments: null
-    };
+    }
   },
   methods: {
-    ...mapGetters(["activeDeliveryDate", "deliverySettings"]),
-    ...mapMutations("ui", ["closeModal"]),
-    ...mapActions("deliveries", ["skipDelivery"]),
-    ...mapActions("subscriptions", ["cancelAllSubscriptions"]),
+    ...mapGetters(['activeDeliveryDate', 'deliverySettings']),
+    ...mapMutations('ui', ['closeModal']),
+    ...mapActions('deliveries', ['skipDelivery']),
+    ...mapActions('subscriptions', ['cancelAllSubscriptions']),
     canSkip() {
       const maxDate = moment()
-        .add(120, "days")
-        .toDate();
+        .add(120, 'days')
+        .toDate()
       const nextDate = moment(this.activeDeliveryDate).add(
         this.deliverySettings.deliveryInterval,
-        "days"
-      );
-      return maxDate - nextDate > 0;
+        'days'
+      )
+      return maxDate - nextDate > 0
     },
     async cancelModal() {
       await this.cancelAllSubscriptions({
         reason: this.reason,
         comments: this.comments
-      });
-      this.closeModal();
+      })
+      this.closeModal()
     }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 
 .vp-modal__text {
   margin: 20px 0;
@@ -89,7 +89,7 @@ export default {
 }
 .vp-modal__button {
   margin: 0 10px;
-  color: $color-white !important;
+  color: $white !important;
 }
 .vp-modal__fields {
   display: flex;

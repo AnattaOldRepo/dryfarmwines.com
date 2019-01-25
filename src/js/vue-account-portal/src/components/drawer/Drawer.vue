@@ -15,38 +15,38 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
-import { closeBlue } from "../../assets/svg";
+import { mapGetters, mapMutations } from 'vuex'
+import { closeBlue } from '../../assets/svg'
 
 const DrawerComponents = {
-  DrawerProducts: require("./DrawerProducts.vue").default,
-  DrawerDate: require("./DrawerDate.vue").default,
-  DrawerInterval: require("./DrawerInterval.vue").default,
-  DrawerShipping: require("./DrawerShipping.vue").default,
-  DrawerSubscription: require("./DrawerSubscription.vue").default,
-  DrawerBilling: require("./DrawerBilling.vue").default
-};
+  DrawerProducts: require('./DrawerProducts.vue').default,
+  DrawerDate: require('./DrawerDate.vue').default,
+  DrawerInterval: require('./DrawerInterval.vue').default,
+  DrawerShipping: require('./DrawerShipping.vue').default,
+  DrawerSubscription: require('./DrawerSubscription.vue').default,
+  DrawerBilling: require('./DrawerBilling.vue').default
+}
 
 export default {
   data() {
     return {
       closeBlue
-    };
+    }
   },
   computed: {
-    ...mapGetters("ui", ["drawerContent"]),
+    ...mapGetters('ui', ['drawerContent']),
     DrawerComponent() {
-      return this.drawerContent ? DrawerComponents[this.drawerContent] : "";
+      return this.drawerContent ? DrawerComponents[this.drawerContent] : ''
     }
   },
   methods: {
-    ...mapMutations("ui", ["closeDrawer"])
+    ...mapMutations('ui', ['closeDrawer'])
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 
 .slide-enter,
 .slide-leave-to {
@@ -61,7 +61,7 @@ export default {
   top: 0;
   right: 0;
   bottom: 0;
-  z-index: 101;
+  z-index: 1000;
   width: 365px;
   background-color: $color-gray;
   text-align: left;

@@ -4,4 +4,4 @@ export const selectDown = `
 	</path>
 </svg>
 
-`;
+`

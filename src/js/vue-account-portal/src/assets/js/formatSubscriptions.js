@@ -1,9 +1,9 @@
 export const formatSubscriptions = rawSubscriptions => {
-  let subscriptionsObject = {};
+  let subscriptionsObject = {}
   rawSubscriptions.forEach(subscription => {
     if (subscription.is_active) {
-      subscriptionsObject[subscription.id] = subscription;
+      subscriptionsObject[subscription.id] = subscription
     }
-  });
-  return subscriptionsObject;
-};
+  })
+  return subscriptionsObject
+}

@@ -18,7 +18,7 @@
   border: none;
   border-radius: 25px;
   user-select: none;
-  color: $color-white;
+  color: $white;
   font-size: 14px;
   font-weight: bold;
   text-transform: capitalize;

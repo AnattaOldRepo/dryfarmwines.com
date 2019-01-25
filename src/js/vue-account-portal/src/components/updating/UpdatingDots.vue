@@ -13,10 +13,10 @@ export default {
     animationDelay(n) {
       return {
         animationDelay: `${0.2 * n}s`
-      };
+      }
     }
   }
-};
+}
 </script>
 
 <style scoped>

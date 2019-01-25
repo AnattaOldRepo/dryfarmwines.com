@@ -18,10 +18,10 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
-import { mountPikaday } from "../../assets/js";
-import Pikaday from "pikaday";
-import { checkBadge } from "../../assets/svg";
+import { mapGetters, mapActions } from 'vuex'
+import { mountPikaday } from '../../assets/js'
+import Pikaday from 'pikaday'
+import { checkBadge } from '../../assets/svg'
 
 export default {
   data() {
@@ -31,32 +31,32 @@ export default {
       nextShipDate: null,
       dateOutsideRestriction: null,
       checkBadge
-    };
+    }
   },
   computed: {
-    ...mapGetters("deliveries", ["activeDeliveryDate"])
+    ...mapGetters('deliveries', ['activeDeliveryDate'])
   },
   methods: {
-    ...mapActions("subscriptions", ["updateAllChargeDates"]),
+    ...mapActions('subscriptions', ['updateAllChargeDates']),
     handleDateChange() {
-      this.updateAllChargeDates(this.date);
+      this.updateAllChargeDates(this.date)
     },
     markSaved() {
-      this.saved = true;
+      this.saved = true
     }
   },
   watch: {
     activeDeliveryDate() {
-      this.markSaved();
+      this.markSaved()
     }
   },
   mounted() {
-    this.date = this.activeDeliveryDate;
+    this.date = this.activeDeliveryDate
     this.$nextTick(() => {
-      mountPikaday(this, "c-subscription__pikaday");
-    });
+      mountPikaday(this, 'c-subscription__pikaday')
+    })
   }
-};
+}
 </script>
 
 <style scoped>

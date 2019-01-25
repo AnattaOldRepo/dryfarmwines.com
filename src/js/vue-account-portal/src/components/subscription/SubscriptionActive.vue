@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import SubscriptionListItem from "./SubscriptionListItem.vue";
-import { mapState } from "vuex";
-import isEmptyObject from "../../assets/js/isEmptyObject";
-import { chevronBlue } from "../../assets/svg";
+import SubscriptionListItem from './SubscriptionListItem.vue'
+import { mapState } from 'vuex'
+import isEmptyObject from '../../assets/js/isEmptyObject'
+import { chevronBlue } from '../../assets/svg'
 export default {
   props: {
     subscriptions: {
@@ -29,15 +29,15 @@ export default {
     return {
       isEmptyObject,
       chevronBlue
-    };
+    }
   },
   computed: {
     itemCount() {
-      const length = Object.keys(this.subscriptions).length;
-      return length === 1 ? "1 Item" : `${length} Items`;
+      const length = Object.keys(this.subscriptions).length
+      return length === 1 ? '1 Item' : `${length} Items`
     }
   }
-};
+}
 </script>
 
 <style scoped>

@@ -8,58 +8,58 @@ export default {
   },
   getters: {
     drawerContent: state => {
-      return state.drawerContent;
+      return state.drawerContent
     },
     modalContent: state => {
-      return state.modalContent;
+      return state.modalContent
     },
     mobileNavOpen: state => {
-      return state.mobileNavOpen;
+      return state.mobileNavOpen
     },
     appLoading: state => {
-      return state.appLoading;
+      return state.appLoading
     },
     appUpdating: state => {
-      return state.appUpdating;
+      return state.appUpdating
     }
   },
   mutations: {
     clearAppLoading(state) {
-      state.appLoading = false;
+      state.appLoading = false
     },
     toggleAppUpdating(state) {
-      state.appUpdating = !state.appUpdating;
+      state.appUpdating = !state.appUpdating
     },
     setAppUpdating(state) {
-      state.appUpdating = true;
+      state.appUpdating = true
     },
     clearAppUpdating(state) {
-      state.appUpdating = false;
+      state.appUpdating = false
     },
     setDrawer(state, value) {
-      state.drawerContent = value;
+      state.drawerContent = value
     },
     closeDrawer(state) {
-      state.drawerContent = false;
+      state.drawerContent = false
     },
     setModal(state, value) {
-      state.modalContent = value;
+      state.modalContent = value
     },
     closeModal(state) {
-      state.modalContent = false;
+      state.modalContent = false
     },
     toggleMobileNav(state) {
-      state.mobileNavOpen = !state.mobileNavOpen;
+      state.mobileNavOpen = !state.mobileNavOpen
     },
     closeMobileNav(state) {
-      state.mobileNavOpen = false;
+      state.mobileNavOpen = false
     }
   },
   actions: {
     resetUi({ commit }) {
-      commit("closeDrawer");
-      commit("closeModal");
-      commit("closeMobileNav");
+      commit('closeDrawer')
+      commit('closeModal')
+      commit('closeMobileNav')
     }
   }
-};
+}

@@ -24,4 +24,4 @@ export const backArrow = `
 		</g>
 	</g>
 </svg>
-`;
+`

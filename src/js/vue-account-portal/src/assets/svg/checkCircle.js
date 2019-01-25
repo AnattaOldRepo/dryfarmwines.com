@@ -7,4 +7,4 @@ export const checkCircle = `
 		<polyline id="Stroke-9" fill="none" stroke="#ffffff" points="3.7,5.9 5.4,7.6 8.5,4.5  "/>
 	</g>
 </svg>
-`;
+`

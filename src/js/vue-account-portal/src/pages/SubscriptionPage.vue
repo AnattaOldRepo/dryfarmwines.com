@@ -30,75 +30,75 @@
 </template>
 
 <script>
-import SubscriptionDelivery from "../components/subscription/SubscriptionDelivery.vue";
-import SubscriptionList from "../components/subscription/SubscriptionList.vue";
-import SubscriptionAddress from "../components/subscription/SubscriptionAddress.vue";
-import SubscriptionAddons from "../components/subscription/SubscriptionAddons.vue";
-import { mapGetters, mapMutations, mapActions } from "vuex";
-import moment from "moment";
-import { isEmptyObject } from "../assets/js";
-import { chevronBlue } from "../assets/svg";
+import SubscriptionDelivery from '../components/subscription/SubscriptionDelivery.vue'
+import SubscriptionList from '../components/subscription/SubscriptionList.vue'
+import SubscriptionAddress from '../components/subscription/SubscriptionAddress.vue'
+import SubscriptionAddons from '../components/subscription/SubscriptionAddons.vue'
+import { mapGetters, mapMutations, mapActions } from 'vuex'
+import moment from 'moment'
+import { isEmptyObject } from '../assets/js'
+import { chevronBlue } from '../assets/svg'
 export default {
-	components: {
-		SubscriptionDelivery,
-		SubscriptionList,
-		SubscriptionAddress,
-		SubscriptionAddons
-	},
-	data() {
-		return {
-			isEmptyObject,
-			chevronBlue
-		};
-	},
-	computed: {
-		...mapGetters("products", ["products"]),
-		...mapGetters("deliveries", [
-			"activeDelivery",
-			"activeDeliveryDate",
-			"deliverySettings"
-		]),
-		...mapGetters("subscriptions", ["subscriptions"]),
-		productsArray() {
-			return Object.keys(this.products).map(key => this.products[key])
-		}
-	},
-	methods: {
-		...mapMutations("ui", ["setDrawer", "setModal"]),
-		...mapActions("deliveries", ["skipDelivery"]),
-		...mapActions("subscriptions", ["pauseAllSubscriptions"]),
-		canSkip() {
-			const maxDate = moment()
-				.add(120, "days")
-				.toDate();
-			const nextDate = moment(this.activeDeliveryDate).add(
-				this.deliverySettings.deliveryInterval,
-				"days"
-			);
-			return maxDate - nextDate > 0;
-		}
-	}
-};
+  components: {
+    SubscriptionDelivery,
+    SubscriptionList,
+    SubscriptionAddress,
+    SubscriptionAddons
+  },
+  data() {
+    return {
+      isEmptyObject,
+      chevronBlue
+    }
+  },
+  computed: {
+    ...mapGetters('products', ['products']),
+    ...mapGetters('deliveries', [
+      'activeDelivery',
+      'activeDeliveryDate',
+      'deliverySettings'
+    ]),
+    ...mapGetters('subscriptions', ['subscriptions']),
+    productsArray() {
+      return Object.keys(this.products).map(key => this.products[key])
+    }
+  },
+  methods: {
+    ...mapMutations('ui', ['setDrawer', 'setModal']),
+    ...mapActions('deliveries', ['skipDelivery']),
+    ...mapActions('subscriptions', ['pauseAllSubscriptions']),
+    canSkip() {
+      const maxDate = moment()
+        .add(120, 'days')
+        .toDate()
+      const nextDate = moment(this.activeDeliveryDate).add(
+        this.deliverySettings.deliveryInterval,
+        'days'
+      )
+      return maxDate - nextDate > 0
+    }
+  }
+}
 </script>
 
 <style scoped>
-@import "../assets/css/index.css";
+@import '../assets/css/index.css';
 
 .vp-subscription {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .vp-card__cancel {
-	margin-left: 20px;
-	display: inline-block;
-	color: $color-primary !important;
+  margin-left: 20px;
+  display: inline-block;
+  color: $color-primary !important;
 }
 @media (--tablet-large) {
-	.vp-subscription {
-		flex-direction: row;
-		justify-content: flex-start;
-		align-items: flex-start;
-	}
+  .vp-subscription {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 }
 </style>

@@ -16,23 +16,23 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
-import { cleanAddress, isEmptyObject } from "../../assets/js";
-import { chevronBlue } from "../../assets/svg";
+import { mapGetters, mapMutations } from 'vuex'
+import { cleanAddress, isEmptyObject } from '../../assets/js'
+import { chevronBlue } from '../../assets/svg'
 export default {
   data() {
     return {
       chevronBlue
-    };
+    }
   },
   computed: {
-    ...mapGetters("addresses", ["activeAddress"]),
+    ...mapGetters('addresses', ['activeAddress']),
     cleanShipping() {
-      return cleanAddress(this.activeAddress);
+      return cleanAddress(this.activeAddress)
     }
   },
   methods: {
-    ...mapMutations("ui", ["setDrawer"])
+    ...mapMutations('ui', ['setDrawer'])
   }
-};
+}
 </script>

@@ -15,26 +15,25 @@
 </template>
 
 <script>
-import DrawerSubscriptionForm from "./DrawerSubscriptionForm.vue";
-import { checkBadge } from "../../assets/svg";
+import DrawerSubscriptionForm from './DrawerSubscriptionForm.vue'
+import { checkBadge } from '../../assets/svg'
 
 export default {
   data() {
     return {
       saved: false,
       checkBadge
-    };
+    }
   },
   components: {
     DrawerSubscriptionForm
   },
   methods: {
     markSaved() {
-      this.saved = true;
+      this.saved = true
     }
   }
-};
+}
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

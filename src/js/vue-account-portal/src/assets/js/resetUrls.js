@@ -1,4 +1,4 @@
-import { rechargeUrl, previewThemeQuery } from "../../config.js";
+import { rechargeUrl, previewThemeQuery } from '../../config.js'
 
 export const resetUrls = customerHash => {
   return {
@@ -7,5 +7,5 @@ export const resetUrls = customerHash => {
     history: `${rechargeUrl}${customerHash}${previewThemeQuery}/#/history`,
     rechargeEdit: `${rechargeUrl}${customerHash}/edit${previewThemeQuery}`,
     rechargeCard: `${rechargeUrl}${customerHash}/card${previewThemeQuery}`
-  };
-};
+  }
+}

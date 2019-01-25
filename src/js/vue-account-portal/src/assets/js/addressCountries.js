@@ -1,1 +1,1 @@
-export const addressCountries = ["United States"];
+export const addressCountries = ['United States']

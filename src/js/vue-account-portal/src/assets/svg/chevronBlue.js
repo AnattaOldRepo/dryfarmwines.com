@@ -4,4 +4,4 @@ export const chevronBlue = `
         <polygon id="Shape" fill="#002856" fill-rule="nonzero" points="5.29289322 6 0.646446609 1.35355339 1.35355339 0.646446609 6.70710678 6 1.35355339 11.3535534 0.646446609 10.6464466"></polygon>
     </g>
 </svg>
-`;
+`

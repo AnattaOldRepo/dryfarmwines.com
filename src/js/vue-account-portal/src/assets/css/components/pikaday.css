@@ -48,13 +48,13 @@
   .pika-prev {
     left: 0;
     &::after {
-      content: "◀";
+      content: '◀';
     }
   }
   .pika-next {
     right: 0;
     &::after {
-      content: "▶";
+      content: '▶';
     }
   }
   thead {
@@ -88,14 +88,14 @@
     transition: all 0.3s ease;
     &:hover {
       background-color: $color-green;
-      color: $color-white;
+      color: $white;
     }
   }
   .pika-row .is-outside-current-month .pika-button {
     color: rgba(0, 40, 86, 0.3);
     &:hover {
       background-color: rgba(0, 150, 108, 0.75);
-      color: $color-white;
+      color: $white;
     }
   }
   .pika-row .is-disabled .pika-button {
@@ -105,7 +105,7 @@
   .pika-row .is-selected .pika-button {
     pointer-events: none;
     background-color: $color-primary;
-    color: $color-white;
+    color: $white;
   }
   .pika-row .is-selected.is-outside-current-month .pika-button {
     background-color: rgba(0, 40, 86, 0.3);

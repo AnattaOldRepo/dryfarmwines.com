@@ -13,35 +13,35 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
-import { closeBlue } from "../../assets/svg";
+import { mapGetters, mapMutations } from 'vuex'
+import { closeBlue } from '../../assets/svg'
 
 const ModalComponents = {
-  ModalCancel: require("./ModalCancel.vue").default,
-  ModalCancelConfirm: require("./ModalCancelConfirm.vue").default
-};
+  ModalCancel: require('./ModalCancel.vue').default,
+  ModalCancelConfirm: require('./ModalCancelConfirm.vue').default
+}
 
 export default {
   data() {
     return {
       closeBlue
-    };
+    }
   },
   computed: {
-    ...mapGetters("ui", ["modalContent"]),
+    ...mapGetters('ui', ['modalContent']),
     ModalComponent() {
-      return this.modalContent ? ModalComponents[this.modalContent] : "";
+      return this.modalContent ? ModalComponents[this.modalContent] : ''
     }
   },
   methods: {
-    ...mapMutations("ui", ["closeModal"])
+    ...mapMutations('ui', ['closeModal'])
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
-@import "../../assets/css/tools";
+@import '../../assets/css/settings';
+@import '../../assets/css/tools';
 
 .slide-enter,
 .slide-leave-to {
@@ -73,7 +73,7 @@ export default {
   left: 0;
   overflow-y: scroll;
   padding: 40px;
-  background-color: $color-white;
+  background-color: $white;
   @media (--tablet) {
     position: relative;
     top: unset;

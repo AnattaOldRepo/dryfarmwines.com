@@ -17,28 +17,28 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
-import { cleanAddress, isEmptyObject } from "../../assets/js";
-import { rechargeUrl, previewThemeQuery } from "../../config";
-import { chevronBlue } from "../../assets/svg";
+import { mapGetters, mapMutations } from 'vuex'
+import { cleanAddress, isEmptyObject } from '../../assets/js'
+import { rechargeUrl, previewThemeQuery } from '../../config'
+import { chevronBlue } from '../../assets/svg'
 export default {
   data() {
     return {
       isEmptyObject,
       chevronBlue
-    };
+    }
   },
   computed: {
-    ...mapGetters("customer", ["billingAddress", "hash"]),
+    ...mapGetters('customer', ['billingAddress', 'hash']),
     cleanBilling() {
-      return cleanAddress(this.billingAddress, "billing");
+      return cleanAddress(this.billingAddress, 'billing')
     },
     editBillingUrl() {
-      return `${rechargeUrl}${this.hash}/edit${previewThemeQuery}`;
+      return `${rechargeUrl}${this.hash}/edit${previewThemeQuery}`
     }
   },
   methods: {
-    ...mapMutations("ui", ["setDrawer"])
+    ...mapMutations('ui', ['setDrawer'])
   }
-};
+}
 </script>

@@ -26,8 +26,8 @@
  	.vp-order__summary
 				.vp-order__summaryLine Total #[span {{ order.total_price | formatMoney("missingDecimal") }}] */
 
-import HistoryOrderItem from "./HistoryOrderItem.vue";
-import { chevronBlue } from "../../assets/svg";
+import HistoryOrderItem from './HistoryOrderItem.vue'
+import { chevronBlue } from '../../assets/svg'
 export default {
   props: {
     order: {
@@ -46,18 +46,18 @@ export default {
     return {
       chevronBlue,
       orderExpanded: false
-    };
+    }
   },
   methods: {
     toggleOrder() {
-      this.orderExpanded = !this.orderExpanded;
+      this.orderExpanded = !this.orderExpanded
     }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 
 .vp-order {
   margin-bottom: 60px;
@@ -113,7 +113,7 @@ export default {
   align-items: flex-end;
   padding: 30px 0;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
-  font-family: "Circular Pro", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Circular Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-size: 14px;
 }

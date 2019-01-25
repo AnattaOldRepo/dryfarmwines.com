@@ -10,4 +10,4 @@ export const closeBlue = `
 		</path>
 	</g>
 </svg>
-`;
+`

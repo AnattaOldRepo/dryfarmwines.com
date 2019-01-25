@@ -6,4 +6,4 @@ export const checkBadge = `
         </g>
     </g>
 </svg>
-`;
+`

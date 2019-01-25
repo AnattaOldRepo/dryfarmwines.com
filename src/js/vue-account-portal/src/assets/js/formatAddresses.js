@@ -1,7 +1,7 @@
 export const formatAddresses = rawAddresses => {
-  let addressesObject = {};
+  let addressesObject = {}
   rawAddresses.forEach(address => {
-    addressesObject[address.id] = address;
-  });
-  return addressesObject;
-};
+    addressesObject[address.id] = address
+  })
+  return addressesObject
+}

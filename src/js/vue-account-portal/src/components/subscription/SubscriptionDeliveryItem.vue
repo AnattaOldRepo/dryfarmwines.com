@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import { mapMutations } from "vuex";
-import { variantCopy } from "../../assets/js";
-import { chevronBlue } from "../../assets/svg";
+import { mapMutations } from 'vuex'
+import { variantCopy } from '../../assets/js'
+import { chevronBlue } from '../../assets/svg'
 export default {
   props: {
     item: {
@@ -32,36 +32,36 @@ export default {
   data() {
     return {
       chevronBlue
-    };
+    }
   },
   computed: {
     shopifyVariantImage() {
-      return this.$store.getters["products/shopifyVariantImage"](
+      return this.$store.getters['products/shopifyVariantImage'](
         this.item.shopify_product_id,
         this.item.shopify_variant_id
-      );
+      )
     },
     variantInfo() {
       if (variantCopy[this.item.shopify_variant_id]) {
-        return variantCopy[this.item.shopify_variant_id];
+        return variantCopy[this.item.shopify_variant_id]
       } else {
-        return { title: this.item.product_title };
+        return { title: this.item.product_title }
       }
     }
   },
   methods: {
-    ...mapMutations("ui", ["setDrawer"]),
-    ...mapMutations("subscriptions", ["setActiveSubscriptionId"]),
+    ...mapMutations('ui', ['setDrawer']),
+    ...mapMutations('subscriptions', ['setActiveSubscriptionId']),
     openDrawer() {
-      this.setActiveSubscriptionId(this.item.id);
-      this.setDrawer("DrawerSubscription");
+      this.setActiveSubscriptionId(this.item.id)
+      this.setDrawer('DrawerSubscription')
     }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 
 .vp-item {
   display: flex;
@@ -82,7 +82,7 @@ export default {
     padding: 2px 8px;
     background-color: $color-green;
     border-radius: 2px;
-    color: $color-white;
+    color: $white;
     font-family: $font-avenir-medium;
     font-size: 10px;
     text-transform: uppercase;

@@ -44,10 +44,10 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
-import { onEditCustomerPage, resetUrls } from "../../assets/js";
-import { chevronWhite } from "../../assets/svg";
-import { siteUrl } from "../../config";
+import { mapGetters, mapMutations } from 'vuex'
+import { onEditCustomerPage, resetUrls } from '../../assets/js'
+import { chevronWhite } from '../../assets/svg'
+import { siteUrl } from '../../config'
 
 export default {
   data() {
@@ -55,22 +55,22 @@ export default {
       onEditCustomerPage,
       chevronWhite,
       siteUrl
-    };
+    }
   },
   computed: {
-    ...mapGetters("ui", ["mobileNavOpen"]),
+    ...mapGetters('ui', ['mobileNavOpen']),
     resetUrls() {
-      return resetUrls(VuePortal.customerHash);
+      return resetUrls(VuePortal.customerHash)
     }
   },
   methods: {
-    ...mapMutations("ui", ["toggleMobileNav"])
+    ...mapMutations('ui', ['toggleMobileNav'])
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 .vp-mobileNav {
   display: flex;
   flex-direction: column;

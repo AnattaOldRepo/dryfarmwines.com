@@ -9,16 +9,16 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters, mapMutations } from 'vuex'
 
 export default {
   computed: {
-    ...mapGetters("ui", ["drawerContent"])
+    ...mapGetters('ui', ['drawerContent'])
   },
   methods: {
-    ...mapMutations("ui", ["closeDrawer"])
+    ...mapMutations('ui', ['closeDrawer'])
   }
-};
+}
 </script>
 
 <style scoped>

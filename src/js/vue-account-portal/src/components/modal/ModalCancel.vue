@@ -14,37 +14,37 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from "vuex";
+import { mapGetters, mapMutations, mapActions } from 'vuex'
 export default {
   methods: {
-    ...mapGetters(["activeDeliveryDate", "deliverySettings"]),
-    ...mapMutations("ui", ["closeModal", "setModal"]),
-    ...mapActions("deliveries", ["skipDelivery"]),
-    ...mapActions("subscriptions", ["cancelAllSubscriptions"]),
+    ...mapGetters(['activeDeliveryDate', 'deliverySettings']),
+    ...mapMutations('ui', ['closeModal', 'setModal']),
+    ...mapActions('deliveries', ['skipDelivery']),
+    ...mapActions('subscriptions', ['cancelAllSubscriptions']),
     canSkip() {
       const maxDate = moment()
-        .add(120, "days")
-        .toDate();
+        .add(120, 'days')
+        .toDate()
       const nextDate = moment(this.activeDeliveryDate).add(
         this.deliverySettings.deliveryInterval,
-        "days"
-      );
-      return maxDate - nextDate > 0;
+        'days'
+      )
+      return maxDate - nextDate > 0
     },
     async skipModal() {
-      await this.skipDelivery();
-      this.closeModal();
+      await this.skipDelivery()
+      this.closeModal()
     },
     async cancelModal() {
-      await this.cancelAllSubscriptions();
-      this.closeModal();
+      await this.cancelAllSubscriptions()
+      this.closeModal()
     }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 
 .vp-modal__text {
   margin: 20px 0;
@@ -63,6 +63,6 @@ export default {
 }
 .vp-modal__button {
   margin: 0 10px;
-  color: $color-white !important;
+  color: $white !important;
 }
 </style>

@@ -25,72 +25,72 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations, mapActions } from "vuex";
-import { checkBadge } from "../../assets/svg";
+import { mapGetters, mapMutations, mapActions } from 'vuex'
+import { checkBadge } from '../../assets/svg'
 
 export default {
   data() {
     return {
       updateInfo: {}
-    };
+    }
   },
   computed: {
-    ...mapGetters("subscriptions", ["activeSubscription"]),
+    ...mapGetters('subscriptions', ['activeSubscription']),
     shopifyVariantImage() {
-      return this.$store.getters["products/shopifyVariantImage"](
+      return this.$store.getters['products/shopifyVariantImage'](
         this.activeSubscription.shopify_product_id,
         this.activeSubscription.shopify_variant_id
-      );
+      )
     },
     subscriptionTotal() {
-      return this.activeSubscription.price * this.activeSubscription.quantity;
+      return this.activeSubscription.price * this.activeSubscription.quantity
     }
   },
   methods: {
-    ...mapMutations("ui", ["setDrawer", "closeDrawer"]),
-    ...mapActions("subscriptions", [
-      "updateSubscription",
-      "cancelSubscription"
+    ...mapMutations('ui', ['setDrawer', 'closeDrawer']),
+    ...mapActions('subscriptions', [
+      'updateSubscription',
+      'cancelSubscription'
     ]),
     updateQuantity(action) {
-      action === "decrease"
+      action === 'decrease'
         ? this.updateInfo.quantity > 0
           ? this.updateInfo.quantity--
-          : ""
+          : ''
         : this.updateInfo.quantity < 3
-          ? this.updateInfo.quantity++
-          : "";
+        ? this.updateInfo.quantity++
+        : ''
     },
     handleSubscriptionUpdate() {
       this.updateSubscription({
         subscriptionId: this.activeSubscription.id,
         data: this.updateInfo
-      });
+      })
     },
     async handleSubscriptionCancel() {
       await this.cancelSubscription({
         subscriptionId: this.activeSubscription.id
-      });
+      })
     }
   },
   watch: {
     activeSubscription() {
-      this.$emit("saved");
+      this.$emit('saved')
     }
   },
   mounted() {
-    const sub = this.activeSubscription;
+    const sub = this.activeSubscription
     this.updateInfo = {
       quantity: sub.quantity,
       order_interval_frequency: sub.charge_interval_frequency,
       order_interval_unit: sub.charge_interval_unit
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 
 .vp-item {
   display: flex;
@@ -147,4 +147,3 @@ export default {
   border-right: none;
 }
 </style>
-

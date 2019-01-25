@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import LoadingDots from "./LoadingDots.vue";
+import LoadingDots from './LoadingDots.vue'
 export default {
   components: {
     LoadingDots
   }
-};
+}
 </script>
 
 <style scoped>

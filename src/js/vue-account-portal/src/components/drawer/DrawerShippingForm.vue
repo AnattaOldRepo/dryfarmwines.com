@@ -71,8 +71,8 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
-import {addressCountries, addressStates} from "../../assets/js";
+import { mapActions } from 'vuex'
+import { addressCountries, addressStates } from '../../assets/js'
 export default {
   props: {
     address: {
@@ -85,21 +85,21 @@ export default {
       addressCountries,
       addressStates,
       updateInfo: {}
-    };
+    }
   },
   methods: {
-    ...mapActions("addresses", ["updateAddress"]),
+    ...mapActions('addresses', ['updateAddress']),
     handleAddressUpdate() {
-      this.updateAddress(this.updateInfo);
+      this.updateAddress(this.updateInfo)
     }
   },
   watch: {
     address() {
-      this.$emit("saved");
+      this.$emit('saved')
     }
   },
   mounted() {
-    const add = this.address;
+    const add = this.address
     this.updateInfo = {
       first_name: add.first_name,
       last_name: add.last_name,
@@ -111,13 +111,13 @@ export default {
       zip: add.zip,
       country: add.country,
       phone: add.phone
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/settings";
+@import '../../assets/css/settings';
 
 .vp-addressForm {
   width: 100%;

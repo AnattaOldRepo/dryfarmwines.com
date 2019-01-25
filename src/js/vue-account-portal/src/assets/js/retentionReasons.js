@@ -1,6 +1,6 @@
 export const rententionReasons = [
   {
-    text: "This is too expensive.",
+    text: 'This is too expensive.',
     id: 124713
   },
   {
@@ -8,7 +8,7 @@ export const rententionReasons = [
     id: 124713
   },
   {
-    text: "I already have more than I need.",
+    text: 'I already have more than I need.',
     id: 124713
   },
   {
@@ -23,9 +23,9 @@ export const rententionReasons = [
     text: "I don't like the taste."
   },
   {
-    text: "I have a medical reason."
+    text: 'I have a medical reason.'
   },
   {
-    text: "Other reason."
+    text: 'Other reason.'
   }
-];
+]
