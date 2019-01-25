@@ -21,7 +21,7 @@ import DrawerOverlay from './components/drawer/DrawerOverlay.vue'
 import Modal from './components/modal/Modal.vue'
 import ModalOverlay from './components/modal/ModalOverlay.vue'
 import EmptyPage from './pages/EmptyPage.vue'
-import { loadRechargeData } from './assets/js'
+import { loadRechargeData } from './assets/js';
 import { mapGetters, mapMutations } from 'vuex';
 export default {
   components: {
