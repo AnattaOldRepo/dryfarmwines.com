@@ -4,6 +4,6 @@
       "yarn lint",
       "git add"
     ],
-    "ignore": ["src/**/dist/*.min.js"]
+    "ignore": ["src/**/dist/*.min.js", "assets/*"]
   }
 }

@@ -20,7 +20,7 @@
 					v-model="comments"
 				)
 		.vp-modal__buttons
-			a.vp-modal__button.u-btn.u-btn--greenLight(
+			a.vp-modal__button.c-button.c-button--greenLight(
 				@click="cancelModal"
 			) Submit
 

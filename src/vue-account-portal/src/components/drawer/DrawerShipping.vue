@@ -28,7 +28,7 @@
 					span.vp-address__text(
 						v-if="cleanShipping.phone"
 					) {{ cleanShipping.phone }}
-				button.vp-drawer__button.u-btn.u-btn--greenLight(
+				button.vp-drawer__button.c-button.c-button--greenLight(
 					@click="toggleEditMode"
 				) Edit Address
 			DrawerShippingForm(

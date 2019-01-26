@@ -35,6 +35,7 @@
     z-index: 0;
     background-color: $white;
     padding: 20px 30px;
+    width: 100%;
   }
   .vp-card__block--isLink {
     transition: background-color 0.3s ease-in-out;
@@ -53,7 +54,7 @@
   .vp-card__heading {
     margin-bottom: 5px;
     text-align: left;
-    color: $color-greenLight;
+    color: $gray-text;
   }
   .vp-card__heading--items {
     margin-bottom: -20px;
@@ -63,6 +64,7 @@
     color: $color-primary;
     font-size: 14px;
     margin: 0;
+    text-align: left;
   }
   .vp-card__text--large {
     margin: 0;

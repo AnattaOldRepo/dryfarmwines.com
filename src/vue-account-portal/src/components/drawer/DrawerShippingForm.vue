@@ -65,7 +65,7 @@
 					placeholder="Phone Number"
 					type="tel"
 				)
-		button.vp-drawer__button.u-btn.u-btn--greenLight(
+		button.vp-drawer__button.c-button.c-button--greenLight(
 			@click="handleAddressUpdate"
 		) Save Address
 </template>

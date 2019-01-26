@@ -19,7 +19,7 @@
 					)
 					span.vp-address__text.vp-address__text--large {{ cleanBilling.line1 }}
 					span.vp-address__text {{ cleanBilling.vpityStateZip }} {{ cleanBilling.vpountry }}
-				button.vp-drawer__button.u-btn.u-btn--greenLight(
+				button.vp-drawer__button.c-button.c-button--greenLight(
 					@click="toggleEditMode"
 				) Edit Address
 			DrawerBillingForm(

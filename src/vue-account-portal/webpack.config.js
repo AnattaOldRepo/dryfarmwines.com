@@ -1,6 +1,7 @@
 const { resolve } = require('path')
 const { getIfUtils } = require('webpack-config-utils')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const path = require('path')
 
 module.exports = env => {
   const { ifProd, ifNotProd } = getIfUtils(env)
@@ -38,8 +39,10 @@ module.exports = env => {
     },
     plugins: [new VueLoaderPlugin()],
     resolve: {
+      extensions: ['*', '.js', '.vue', '.json'],
       alias: {
-        vue$: 'vue/dist/vue.esm.js'
+        vue$: 'vue/dist/vue.esm.js',
+        '@': path.resolve(__dirname, './src/')
       }
     }
   }

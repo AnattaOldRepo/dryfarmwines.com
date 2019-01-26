@@ -9,7 +9,7 @@
           :src="getProductImage(variant.productData, variant)"
           :alt="getProductImageAlt(variant.productData, variant)"
         )
-      p.vp-addons__title {{ variant.title }}
+      p.vp-addons__title {{ variant.productData.title }}
       p.vp-addons__price {{ variant.price | formatMoney() }}
       BaseButton.vp-addons__button(
         @click="addSubscription({id: variant.id})"
@@ -40,7 +40,8 @@ export default {
 
     activeVariantProducts() {
       return Object.keys(this.products).reduce((final, productKey) => {
-        const { variants } = this.products[productKey].shopify_product
+        const product = this.products[productKey]
+        const { variants } = product.shopify_product
 
         const activeProductVariants = Object.keys(variants)
           .filter(variantKey => {
@@ -50,7 +51,7 @@ export default {
           })
           .map(variantKey => ({
             ...variants[variantKey],
-            productData: this.products[productKey]
+            productData: product
           }))
 
         return [...final, ...activeProductVariants]

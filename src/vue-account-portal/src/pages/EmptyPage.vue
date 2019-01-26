@@ -2,7 +2,7 @@
 	.vp-empty
 		h2.vp-h2 Your Subscription
 		p.vp-empty__text You do not have any active subscriptions.  Visit our shop to signup.
-		a.vp-card__button.u-btn.u-btn--greenLight(
+		a.vp-card__button.c-button.c-button--greenLight(
 			href="https://www.dryfarmwines.com"
 		) Visit Shop
 </template>

@@ -1,5 +1,5 @@
 <template lang="pug">
-	a.vp-card__block.vp-card__block--hasBorder.vp-card__block--isLink.vp-item(
+	div.vp-item(
 		v-if="item.is_active && !item.is_one_time_product"
 		@click="openDrawer"
 	)
@@ -10,14 +10,9 @@
 			)
 		.vp-item__details 
 			.vp-item__text {{ variantInfo.title }} 
-			.vp-item__tags(
-				v-if="!item.is_active"
-			)
+			.vp-item__tags(v-if="!item.is_active")
 				span Inactive
 			.vp-item__tags #[span Quantity: {{ item.quantity }}]
-		span.vp-card__arrow(
-			v-html="chevronBlue"
-		)
 </template>
 
 <script>
@@ -29,6 +24,10 @@ export default {
     item: {
       type: Object,
       default: () => {}
+    },
+    shouldOpenDrawer: {
+      type: Boolean,
+      default: false
     }
   },
   data() {
@@ -55,6 +54,8 @@ export default {
     ...mapMutations('ui', ['setDrawer']),
     ...mapMutations('subscriptions', ['setActiveSubscriptionId']),
     openDrawer() {
+      if (!this.shouldOpenDrawer) return
+
       this.setActiveSubscriptionId(this.item.id)
       this.setDrawer('DrawerSubscription')
     }

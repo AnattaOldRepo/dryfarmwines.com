@@ -16,10 +16,10 @@
 			button.vp-field__control.vp-field__control--add(
 				@click="updateQuantity('increase')"
 			) +
-		button.vp-drawer__button.u-btn.u-btn--greenLight(
+		button.vp-drawer__button.c-button.c-button--greenLight(
 			@click="handleSubscriptionUpdate"
 		) Save Product
-		button.vp-drawer__button.u-btn.u-btn--blue(
+		button.vp-drawer__button.c-button.c-button--blue(
 			@click="handleSubscriptionCancel"
 		) Cancel Product
 </template>

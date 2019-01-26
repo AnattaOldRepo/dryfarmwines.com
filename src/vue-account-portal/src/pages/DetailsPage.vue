@@ -1,21 +1,34 @@
-<template lang="pug">
-	.vp-details
-		.vp-side.vp-side--left
-			.vp-section
-				h2.vp-h2 Your Subscription
-				DetailsSubscription
-			.vp-section
-				h2.vp-h2 Billing Address
-				DetailsBilling
-				a.vp-card__button.u-btn.u-btn--greenLight(
-					:href="editBillingUrl"
-				) Edit Address
-			.vp-section
-				h2.vp-h2 Payment Method
-				DetailsPayment
-				a.vp-card__button.u-btn.u-btn--greenLight(
-					:href="editPaymentUrl"
-				) Edit Card
+<template>
+  <div class="vp-details">
+    <div class="vp-side vp-side--left">
+      <div class="vp-section">
+        <h2 class="vp-h2">Your Subscription</h2>
+        <DetailsSubscription />
+      </div>
+      <div class="vp-section">
+        <h2 class="vp-h2">Billing Address</h2>
+        <DetailsBilling />
+        <a
+          class="vp-card__button c-button c-button--greenLight"
+          :href="editBillingUrl"
+        >
+          Edit Address
+        </a>
+      </div>
+      <div class="vp-section">
+        <h2 class="vp-h2">Payment Method</h2>
+        <BaseCardWrapper>
+          <DetailsPayment />
+        </BaseCardWrapper>
+        <a
+          class="vp-card__button c-button c-button--greenLight"
+          :href="editPaymentUrl"
+        >
+          Edit Card
+        </a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>

@@ -3,52 +3,56 @@
 		<div class="vp-side vp-side--left">
       <div class="vp-section">
 				<h2 class="vp-h2">Your Next Shipment</h2>
-				<SubscriptionList />
-				<BaseButton
+				<subscription-list />
+				<base-button
 					v-if="activeDelivery"
           class="vp-card__button"
 					@click="setDrawer('DrawerSkipShipping')"
+          secondary
 				>
           Skip A Shipment
-        </BaseButton>
+        </base-button>
       </div>
       <div class="vp-section">
-        <h2 class="vp-section">Subscription Settings</h2>
-        <SubscriptionSettings />
+        <h2 class="vp-h2">Subscription Settings</h2>
+        <subscription-settings />
       </div>
       <div class="vp-section">
 				<h2 class="vp-h2">Address & Payment</h2>
-				<SubscriptionAddress />
-				<BaseButton
+				<subscription-address-and-payment />
+				<base-button
           class="vp-card__button"
 					v-if="!isEmptyObject(subscriptions)"
 					@click="setModal('ModalCancel')"
+          secondary
 				>
           Cancel Subscription
-        </BaseButton>
+        </base-button>
       </div>
     </div>
     <div class="vp-side vp-side--right">
 		  <h2 class="vp-h2">Add To Your Subscription</h2>
-			<SubscriptionAddons :products="products" />
+			<subscription-addons :products="products" />
     </div>
   </div>
 </template>
 
 <script>
-import SubscriptionDelivery from '../components/subscription/SubscriptionDelivery.vue'
-import SubscriptionList from '../components/subscription/SubscriptionList.vue'
-import SubscriptionAddress from '../components/subscription/SubscriptionAddress.vue'
-import SubscriptionAddons from '../components/subscription/SubscriptionAddons.vue'
+import SubscriptionDelivery from '@/components/subscription/SubscriptionDelivery'
+import SubscriptionList from '@/components/subscription/SubscriptionList'
+import SubscriptionAddressAndPayment from '@/components/subscription/SubscriptionAddressAndPayment'
+import SubscriptionSettings from '@/components/subscription/SubscriptionSettings'
+import SubscriptionAddons from '@/components/subscription/SubscriptionAddons'
 import { mapGetters, mapMutations, mapActions } from 'vuex'
 import moment from 'moment'
-import { isEmptyObject } from '../assets/js'
-import { chevronBlue } from '../assets/svg'
+import { isEmptyObject } from '@/assets/js'
+import { chevronBlue } from '@/assets/svg'
 export default {
   components: {
     SubscriptionDelivery,
     SubscriptionList,
-    SubscriptionAddress,
+    SubscriptionAddressAndPayment,
+    SubscriptionSettings,
     SubscriptionAddons
   },
   data() {

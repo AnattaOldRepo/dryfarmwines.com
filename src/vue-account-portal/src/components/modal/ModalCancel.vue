@@ -4,10 +4,10 @@
 		.vp-modal__text Are you sure you want to cancel your subscription?  You can always skip a shipment instead.
 		.vp-modal__text Please call customer support #[a(class="vp-modal__phone" href="tel:1-888-390-4029") 1-888-390-4029] to see if we can help with your subscription.
 		.vp-modal__buttons
-			a.vp-modal__button.u-btn.u-btn--greenLight(
+			a.vp-modal__button.c-button.c-button--greenLight(
 				@click="skipModal"
 			) Skip shipment
-			a.vp-modal__button.u-btn.u-btn--greenLight(
+			a.vp-modal__button.c-button.c-button--greenLight(
 				@click="setModal('ModalCancelConfirm')"
 			) Cancel Subscription
 

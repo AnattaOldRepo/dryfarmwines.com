@@ -19,6 +19,9 @@ export default {
     paymentMethod: state => {
       return state.paymentMethod
     },
+    paymentBrand: state => {
+      return state.paymentMethod.brand
+    },
     profile: state => {
       return state.profile
     },
