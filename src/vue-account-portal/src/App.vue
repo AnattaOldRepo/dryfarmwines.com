@@ -358,7 +358,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 import Drawer from './components/Drawer.vue'
