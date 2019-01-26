@@ -4,6 +4,6 @@
       "eslint --fix",
       "git add"
     ],
-    "ignore": ["./src/**/dist/*.min.js", "./assets/**/*"]
+    "ignore": ["./src/**/dist/*.js", "./assets/**/*"]
   }
 }
