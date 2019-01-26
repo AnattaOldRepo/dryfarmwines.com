@@ -358,7 +358,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 import { mapState, mapMutations, mapActions } from 'vuex'
 
 import Drawer from './components/Drawer.vue'
@@ -543,9 +543,6 @@ $(document).ready(function() {
   margin: 0 auto;
 }
 
-.vuePortalWrapper {
-}
-
 .c-rButton {
   cursor: pointer;
   display: inline-block;
@@ -565,14 +562,6 @@ $(document).ready(function() {
   span {
     color: #fff;
   }
-
-  // svg, svg * {
-  //     transform: rotate(180deg);
-  //     width: 10px;
-  //     height: 13px;
-  //     transform-origin: 90%;
-  //     transition: all .3s ease;
-  // }
 
   &:hover,
   &:active,
@@ -679,7 +668,6 @@ $(document).ready(function() {
 
     svg {
       width: 13px;
-      fill-color: white;
       fill: white;
       margin-left: -1px;
       margin-bottom: -1px;
@@ -748,9 +736,6 @@ input.c-rForm__input:-moz-placeholder {
     display: grid;
     grid-template-columns: repeat(2, calc(50% - 5px));
     grid-column-gap: 10px;
-  }
-
-  &.c-rForm__input--full {
   }
 }
 

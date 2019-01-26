@@ -1,9 +1,9 @@
 {
   "linters": {
-    "src/vue-account-portal/src/*.{js,vue,css,json,md}": [
-      "yarn lint",
+    "src/vue-account-portal/src/**/*.{js,vue,css,json,md}": [
+      "eslint --fix",
       "git add"
     ],
-    "ignore": ["src/**/dist/*.min.js", "assets/*"]
+    "ignore": ["./src/**/dist/*.min.js", "./assets/**/*"]
   }
 }

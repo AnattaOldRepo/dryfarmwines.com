@@ -50,8 +50,7 @@
     "prebuild:dev": "rm -rf dist",
     "dev": "webpack --env.dev -p",
     "start": "http-server",
-    "precommit": "lint-staged",
     "validate": "npm-run-all --parallel lint build",
-    "lint": "eslint ."
+    "lint": "eslint --fix --ext js,vue src"
   }
 }

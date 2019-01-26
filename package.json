@@ -6,17 +6,18 @@
   "license": "ISC",
   "husky": {
     "hooks": {
-      "precommit": "yarn precommit"
+      "pre-commit": "lint-staged"
     }
-  },
-  "scripts": {
-    "precommit:vue-account-portal": "cd src/vue-account-portal && yarn precommit",
-    "precommit": "yarn precommit:vue-account-portal"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
     "babe": "^0.0.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.1",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-vue": "^5.1.0",
     "ghooks": "^2.0.4",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
@@ -25,6 +26,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
     "husky": "^1.3.1",
-    "lint-staged": "^8.1.0"
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.16.1"
   }
 }
