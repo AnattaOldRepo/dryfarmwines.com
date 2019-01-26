@@ -1,9 +1,9 @@
 /* eslint no-console:"off" */
-const { resolve } = require('path')
-const { getIfUtils } = require('webpack-config-utils')
-const VueLoaderPlugin = require('vue-loader/lib/plugin')
+import { resolve } from 'path'
+import { getIfUtils } from 'webpack-config-utils'
+import VueLoaderPlugin from 'vue-loader/lib/plugin'
 
-module.exports = env => {
+export default env => {
   const { ifProd, ifNotProd } = getIfUtils(env)
   const config = {
     context: resolve('src'),
@@ -55,9 +55,10 @@ module.exports = env => {
     },
     plugins: [new VueLoaderPlugin()],
     resolve: {
+      extensions: ['*', '.js', '.vue', '.json'],
       alias: {
-        vue$: 'vue/dist/vue.esm.js'
-        // vue: 'vue/dist/vue.js'
+        vue$: 'vue/dist/vue.esm.js',
+        '@': resolve(__dirname, './src/')
       }
     }
   }

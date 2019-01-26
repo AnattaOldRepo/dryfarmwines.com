@@ -10,6 +10,8 @@ import SubscriptionPage from './pages/SubscriptionPage.vue'
 import RetentionPage from './pages/RetentionPage.vue'
 import store from './store'
 
+import 'babel-polyfill'
+
 Vue.use(VueRouter)
 Vue.use(Vuex)
 

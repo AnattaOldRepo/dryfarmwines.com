@@ -403,8 +403,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-.c-rDrawerEditAddress {
-}
-</style>
