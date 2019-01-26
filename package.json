@@ -1,0 +1,30 @@
+{
+  "name": "dryfarmwines",
+  "version": "1.0.0",
+  "repository": "git@github.com:anattadesign/dryfarmwines.com",
+  "author": "Anatta Design",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "precommit": "yarn precommit"
+    }
+  },
+  "scripts": {
+    "precommit:vue-account-portal": "cd src/vue-account-portal && yarn precommit",
+    "precommit": "yarn precommit:vue-account-portal"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babe": "^0.0.1",
+    "ghooks": "^2.0.4",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.1",
+    "husky": "^1.3.1",
+    "lint-staged": "^8.1.0"
+  }
+}

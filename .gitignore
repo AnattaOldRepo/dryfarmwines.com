@@ -1,2 +1,8 @@
+.vscode
+.DS_Store
 config.yml
-yarn.lock
+config
+theme.lock
+node_modules/
+yarn-error.log
+tasks.txt

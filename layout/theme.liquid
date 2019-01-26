@@ -638,7 +638,9 @@ _kms('//scripts.kissmetrics.com/' + _kmk + '.2.js');
  
 
  
-
+{% if request.path contains 'customer_portal' %}
+{{ "vue-account-portal.js" | asset_url | script_tag }}
+{% endif %}
  
 
  
