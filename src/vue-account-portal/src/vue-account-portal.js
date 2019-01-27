@@ -9,8 +9,9 @@ import HistoryPage from './pages/HistoryPage.vue'
 import SubscriptionPage from './pages/SubscriptionPage.vue'
 import RetentionPage from './pages/RetentionPage.vue'
 import store from './store'
+import './components/_globals'
 
-import 'babel-polyfill'
+import './assets/css/index.scss'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)

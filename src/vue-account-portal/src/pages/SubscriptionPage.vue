@@ -21,10 +21,9 @@
           do, then please email membership@dryfarmwines.com and we'll help get
           to the bottom of it. Sorry again for this inconvenience!</span>
         <div class="c-rDrawerProduct__actionBox">
-          <router-link
-            class="c-rButton c-rButton--red"
-            :to="{ name: 'DetailsPage', params: {} }"
-          >Update Information</router-link>
+          <router-link :to="{ name: 'DetailsPage', params: {} }">
+            <base-button>Update Information</base-button>
+          </router-link>
         </div>
       </div>
 
@@ -34,12 +33,11 @@
       >
         <span class="c-sub__initialMessage">looks like you have no current subscriptions.</span>
         <div class="c-rDrawerProduct__actionBox">
-          <a
-            class="c-rButton c-rButton--red"
-            href="https://www.dryfarmwines.com/pages/membership"
-          >
-            Subscribe & Save
-          </a>
+          <base-button>
+            <a href="https://www.dryfarmwines.com/pages/membership">
+              Subscribe & Save
+            </a>
+          </base-button>
         </div>
       </div>
 
@@ -72,22 +70,7 @@
                     prettyDate(activeDeliveryChargeScheduledAt)
                     }}</span>
                 </div>
-
-                <svg
-                  version="1.1"
-                  id="Capa_1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  x="0px"
-                  y="0px"
-                  width="306px"
-                  height="306px"
-                  viewBox="0 0 306 306"
-                  style="enable-background:new 0 0 306 306;"
-                  xml:space="preserve"
-                >
-                  <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
-                </svg>
+                <base-chevron-right />
               </div>
 
               <hr />
@@ -115,21 +98,7 @@
 
                     <p>{{ item.subscription.product_title }}</p>
 
-                    <svg
-                      version="1.1"
-                      id="Capa_1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      xmlns:xlink="http://www.w3.org/1999/xlink"
-                      x="0px"
-                      y="0px"
-                      width="306px"
-                      height="306px"
-                      viewBox="0 0 306 306"
-                      style="enable-background:new 0 0 306 306;"
-                      xml:space="preserve"
-                    >
-                      <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
-                    </svg>
+                    <base-chevron-right />
                   </div>
                 </div>
               </div>
@@ -168,13 +137,14 @@
                     </div>
                   </div>
 
-                  <a
-                    class="c-sub__sectionButton c-rButton"
+                  <base-button
+                    class="c-sub__sectionButton"
                     v-if="!updatingRemovingProduct"
-                    @click.prevent="undoAddProduct"
+                    @click="undoAddProduct"
+                    secondary
                   >
-                    <span>Undo</span>
-                  </a>
+                    Undo
+                  </base-button>
 
                   <div
                     class="c-rDrawer__updateMessage"
@@ -186,13 +156,14 @@
               </div>
             </div>
 
-            <a
-              class="c-sub__sectionButton c-rButton"
-              @click.prevent="skipShipment"
+            <base-button
+              class="c-sub__sectionButton"
+              @click="skipShipment"
               v-if="!skipShipmentUpdating && !skipShipmentSaved"
+              secondary
             >
-              <span>Skip A Shipment</span>
-            </a>
+              Skip A Shipment
+            </base-button>
 
             <div
               class="c-rDrawer__updateMessage"
@@ -231,20 +202,7 @@
               :class="{ 'is-open-title': subscriptionSettingsOpenMobile }"
             >
               Subscription Settings
-              <svg
-                version="1.1"
-                id="Capa_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                width="306px"
-                height="306px"
-                viewBox="0 0 306 306"
-                xml:space="preserve"
-              >
-                <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		"></polygon>
-              </svg>
+              <base-chevron-right />
             </h1>
             <div
               class="c-sub__sectionInner c-sub__sectionInner--closedMobile"
@@ -260,21 +218,7 @@
                     {{ activeDeliveryIntervalUnit }}</span>
                 </div>
 
-                <svg
-                  version="1.1"
-                  id="Capa_1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  x="0px"
-                  y="0px"
-                  width="306px"
-                  height="306px"
-                  viewBox="0 0 306 306"
-                  style="enable-background:new 0 0 306 306;"
-                  xml:space="preserve"
-                >
-                  <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
-                </svg>
+                <base-chevron-right />
               </div>
 
               <hr />
@@ -307,21 +251,7 @@
 
                       <p>{{ item.subscription.product_title }}</p>
 
-                      <svg
-                        version="1.1"
-                        id="Capa_1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                        x="0px"
-                        y="0px"
-                        width="306px"
-                        height="306px"
-                        viewBox="0 0 306 306"
-                        style="enable-background:new 0 0 306 306;"
-                        xml:space="preserve"
-                      >
-                        <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
-                      </svg>
+                      <base-chevron-right />
                     </div>
                   </div>
                 </div>
@@ -352,13 +282,13 @@
                     </div>
                   </div>
 
-                  <a
-                    class="c-sub__sectionButton c-rButton"
+                  <base-button
+                    class="c-sub__sectionButton"
                     v-if="!updatingRemovingProduct"
-                    @click.prevent="undoAddProduct"
+                    @click="undoAddProduct"
                   >
-                    <span>Undo</span>
-                  </a>
+                    Undo
+                  </base-button>
 
                   <div
                     class="c-rDrawer__updateMessage"
@@ -380,20 +310,7 @@
               :class="{ 'is-open-title': addressPaymentOpenMobile }"
             >
               Address & Payment
-              <svg
-                version="1.1"
-                id="Capa_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                width="306px"
-                height="306px"
-                viewBox="0 0 306 306"
-                xml:space="preserve"
-              >
-                <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		"></polygon>
-              </svg>
+              <base-chevron-right />
             </h1>
             <div
               class="c-sub__sectionInner c-sub__sectionInner--closedMobile"
@@ -447,21 +364,7 @@
                   </div>
                 </div>
 
-                <svg
-                  version="1.1"
-                  id="Capa_1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  x="0px"
-                  y="0px"
-                  width="306px"
-                  height="306px"
-                  viewBox="0 0 306 306"
-                  style="enable-background:new 0 0 306 306;"
-                  xml:space="preserve"
-                >
-                  <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
-                </svg>
+                <base-chevron-right />
               </div>
 
               <hr />
@@ -514,21 +417,7 @@
                   </div>
                 </div>
 
-                <svg
-                  version="1.1"
-                  id="Capa_1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  x="0px"
-                  y="0px"
-                  width="306px"
-                  height="306px"
-                  viewBox="0 0 306 306"
-                  style="enable-background:new 0 0 306 306;"
-                  xml:space="preserve"
-                >
-                  <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
-                </svg>
+                <base-chevron-right />
               </div>
 
               <hr />
@@ -554,29 +443,16 @@
                   </div>
                 </div>
 
-                <svg
-                  version="1.1"
-                  id="Capa_1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  x="0px"
-                  y="0px"
-                  width="306px"
-                  height="306px"
-                  viewBox="0 0 306 306"
-                  style="enable-background:new 0 0 306 306;"
-                  xml:space="preserve"
-                >
-                  <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
-                </svg>
+                <base-chevron-right />
               </div>
             </div>
-            <a
-              class="c-sub__sectionButton c-rButton"
-              @click.prevent="cancelSubscription"
+            <base-button
+              class="c-sub__sectionButton"
+              @click="cancelSubscription"
+              secondary
             >
-              <span>Cancel Subscription</span>
-            </a>
+              Cancel Subscription
+            </base-button>
           </div>
         </div>
 
@@ -599,6 +475,7 @@
             class="c-sub__browseAll"
             v-if="visibleProductsCount !== products.length"
             @click="browseAllProducts"
+            secondary
           >
             Browse All
           </base-button>
@@ -978,7 +855,7 @@ export default {
 }
 
 .c-sub__sectionInner {
-  background-color: #f7f7f7;
+  border: 1px solid #dddddd;
 
   hr {
     display: block;

@@ -406,7 +406,6 @@ export default {
 
   svg {
     width: 13px;
-    fill-color: white;
     fill: white;
     margin-left: -1px;
     margin-bottom: -1px;

@@ -1,7 +1,10 @@
 <template>
   <div class="c-subProductGrid__product">
     <div class="c-subProduct__productImageBox">
-      <img :src="productImageSrc" class="c-subProduct__productImage" />
+      <img
+        :src="productImageSrc"
+        class="c-subProduct__productImage"
+      />
     </div>
 
     <div class="c-subProduct__productInfoBox">
@@ -13,12 +16,9 @@
         {{ productPrice }}
       </span>
 
-      <a class="c-rButton c-rButton--red" @click="addProduct">
-        <div>
-          <span v-if="updating">...</span>
-          <span v-else>Add</span>
-        </div>
-      </a>
+      <base-button @click="addProduct">
+        {{ updating ? '...' : 'Add' }}
+      </base-button>
     </div>
   </div>
 </template>
