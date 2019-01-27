@@ -595,13 +595,13 @@
             />
           </div>
 
-          <a
-            class="c-rButton c-sub__browseAll"
+          <base-button
+            class="c-sub__browseAll"
             v-if="visibleProductsCount !== products.length"
-            @click.prevent="browseAllProducts"
+            @click="browseAllProducts"
           >
-            <span>Browse All</span>
-          </a>
+            Browse All
+          </base-button>
         </div>
       </div>
     </div>
@@ -941,7 +941,6 @@ export default {
 }
 
 .c-sub__sectionTitle {
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 19px;
   line-height: 29px;
@@ -1027,7 +1026,6 @@ export default {
   }
 
   span {
-    font-family: Gotham Book;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
@@ -1040,7 +1038,6 @@ export default {
     }
 
     &.c-sub__blockSectionLabel {
-      font-family: Gotham;
       font-weight: 700;
       font-size: 13px;
       letter-spacing: 2px;
@@ -1120,7 +1117,6 @@ export default {
 
   p {
     max-width: 70%;
-    font-family: Gotham Book;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
@@ -1209,7 +1205,6 @@ export default {
   font-size: 16px !important;
   line-height: 25px !important;
   font-weight: 400 !important;
-  font-family: Gotham Book !important;
   letter-spacing: 0 !important;
 }
 
@@ -1217,7 +1212,6 @@ export default {
   font-size: 18px;
   line-height: 35px;
   font-weight: 700;
-  font-family: Gotham;
   letter-spacing: 3px;
   text-align: center;
   text-transform: none;

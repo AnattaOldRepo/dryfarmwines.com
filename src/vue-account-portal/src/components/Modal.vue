@@ -293,7 +293,6 @@ export default {
 .c-rModal__title {
   display: block;
   text-align: center;
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 19px;
   line-height: 29px;
@@ -385,7 +384,6 @@ export default {
 }
 
 .c-subLandPopup__confirm {
-  font-family: Gotham;
   font-weight: 700;
   font-size: 16px;
   margin-top: 23px;
@@ -463,7 +461,6 @@ export default {
 }
 
 .c-rModal__text {
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -477,7 +474,6 @@ export default {
   }
 
   &--bold {
-    font-family: Gotham;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -499,7 +495,6 @@ export default {
   }
 
   &--extra {
-    font-family: Gotham;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 11px;

@@ -53,7 +53,6 @@ export default {
 }
 
 .c-rPageTitle {
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 19px;
   line-height: 29px;

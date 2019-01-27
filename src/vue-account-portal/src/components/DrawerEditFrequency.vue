@@ -236,7 +236,6 @@ export default {
 }
 
 .c-rDrawer__updateMessageText {
-  font-family: Gotham;
   font-weight: 700;
   font-size: 13px;
   line-height: 1;

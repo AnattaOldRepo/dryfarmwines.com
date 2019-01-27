@@ -281,7 +281,6 @@ export default {
 
 <style lang="scss">
 .c-rPageTitle {
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 19px;
   line-height: 29px;
@@ -303,7 +302,6 @@ export default {
 }
 
 .c-rRet__text {
-  font-family: Gotham Book;
   font-weight: 400;
   color: #ee2e2d;
   font-size: 19px;
@@ -365,7 +363,6 @@ export default {
 }
 
 .c-rRet__reasonText {
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;

@@ -296,7 +296,6 @@ export default {
   .c-rButton {
     padding: 10px 94px;
     font-weight: 400;
-    font-family: Gotham Book;
   }
 
   .c-rDrawerProduct__actionBox {
@@ -332,7 +331,6 @@ export default {
 }
 
 .c-rSubSelect__title {
-  font-family: Gotham;
   font-weight: 700;
   font-size: 23px;
   line-height: 35px;
@@ -372,7 +370,6 @@ export default {
 .c-rSubSelect__text {
   display: block;
   margin-bottom: 22px;
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
@@ -417,7 +414,6 @@ export default {
 }
 
 .c-rSubSelect__savedText {
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
@@ -442,7 +438,6 @@ export default {
   text-transform: uppercase;
   padding: 11px 16px 11px 22px;
   font-weight: 400;
-  font-family: Gotham Book;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -480,7 +475,6 @@ export default {
   text-transform: none;
   padding: 10px 0;
   font-weight: 400;
-  font-family: Gotham Book;
   border: 1px solid #dcdcdc;
   border-collapse: collapse;
   cursor: pointer;

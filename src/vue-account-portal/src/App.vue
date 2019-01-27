@@ -12,347 +12,21 @@
         :products="products"
         :subscriptions="subscriptions"
         :deliverySchedule="deliverySchedule"
-      ></router-view>
+      />
       <div
         class="c-rOverlay"
         v-if="(drawerOpen || modalOpen) && !updateOverlay"
         @click="closeAndResetDrawer"
       ></div>
-      <div class="c-rUpdateOverlay" v-if="updateOverlay">
-        <svg
-          class="c-rUpdateOverlay__spinner lds-spinner"
-          width="100%"
-          height="100%"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 100 100"
-          preserveAspectRatio="xMidYMid"
-        >
-          <g transform="rotate(0 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.9375s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(22.5 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.875s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(45 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.8125s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(67.5 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.75s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(90 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.6875s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(112.5 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.625s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(135 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.5625s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(157.5 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.5s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(180 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.4375s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(202.5 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.375s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(225 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.3125s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(247.5 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.25s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(270 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.1875s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(292.5 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.125s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(315 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="-0.0625s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-          <g transform="rotate(337.5 50 50)">
-            <rect
-              x="47"
-              y="24"
-              rx="9.4"
-              ry="4.8"
-              width="6"
-              height="12"
-              fill="#fff"
-            >
-              <animate
-                attributeName="opacity"
-                values="1;0"
-                keyTimes="0;1"
-                dur="1s"
-                begin="0s"
-                repeatCount="indefinite"
-              ></animate>
-            </rect>
-          </g>
-        </svg>
-        <span class="c-rUpdateOverlay__text">Updating...</span>
-      </div>
+      <UpdateOverlay
+        class="c-rUpdateOverlay"
+        v-if="updateOverlay"
+      />
     </div>
-    <Drawer :products="products" :subscriptions="subscriptions" />
+    <Drawer
+      :products="products"
+      :subscriptions="subscriptions"
+    />
     <Modal v-if="modalOpen" />
   </div>
 </template>
@@ -360,27 +34,21 @@
 <script>
 import axios from 'axios'
 import { mapState, mapMutations, mapActions } from 'vuex'
-
-import Drawer from './components/Drawer.vue'
-import Modal from './components/Modal.vue'
-import HeaderNavigation from './components/HeaderNavigation.vue'
+import UpdateOverlay from '@/components/UpdateOverlay'
+import Drawer from '@/components/Drawer'
+import Modal from '@/components/Modal'
+import HeaderNavigation from '@/components/HeaderNavigation'
 
 export default {
-  name: 'App',
-
   components: {
+    UpdateOverlay,
     HeaderNavigation,
     Drawer,
     Modal
   },
 
-  data: function() {
-    return {}
-  },
-
   watch: {
     $route(to, from) {
-      console.log('route watch')
       $('.js-expand-trigger').removeClass('is-open')
       $('.js-expand-content').addClass('is-closed')
     }
@@ -527,20 +195,13 @@ $(document).ready(function() {
 
 .c-rUpdateOverlay__text {
   color: #fff;
-  font-family: Gotham;
+  font-family: Avenir;
   text-transform: uppercase;
   font-weight: 400;
   font-size: 28px;
   text-align: center;
   letter-spacing: 4px;
   margin-top: 10px;
-}
-
-.c-rUpdateOverlay__spinner {
-  display: block;
-  width: 100px;
-  height: 100px;
-  margin: 0 auto;
 }
 
 .c-rButton {
@@ -554,7 +215,7 @@ $(document).ready(function() {
   letter-spacing: 2px;
   padding: 10px 30px;
   text-align: center;
-  font-family: Gotham;
+  font-family: Avenir;
   font-weight: 700;
   border: 1px solid #000;
   transition: all 0.3s ease;
@@ -631,7 +292,7 @@ $(document).ready(function() {
   font-size: 23px;
   line-height: 35px;
   font-weight: 700;
-  font-family: Gotham;
+  font-family: Avenir;
   letter-spacing: 3px;
   text-align: center;
   text-transform: uppercase;
@@ -676,7 +337,7 @@ $(document).ready(function() {
 }
 
 .c-rOptionText {
-  font-family: Gotham Book;
+  font-family: Avenir;
   font-weight: 400;
   text-align: center;
 
@@ -742,7 +403,7 @@ input.c-rForm__input:-moz-placeholder {
 input.c-rForm__input,
 select.c-rForm__input {
   width: 100%;
-  font-family: Gotham Book;
+  font-family: Avenir;
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;

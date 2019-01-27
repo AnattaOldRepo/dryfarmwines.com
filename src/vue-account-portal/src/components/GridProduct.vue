@@ -144,7 +144,6 @@ export default {
 }
 
 .c-subProduct__productTitle {
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 13px;
   line-height: 16px;
@@ -154,7 +153,6 @@ export default {
 }
 
 .c-subProduct__productPrice {
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;

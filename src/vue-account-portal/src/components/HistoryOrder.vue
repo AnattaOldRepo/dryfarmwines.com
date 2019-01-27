@@ -176,7 +176,6 @@ export default {
   }
 
   span {
-    font-family: Gotham Book;
     font-weight: 400;
     text-transform: uppercase;
     font-size: 16px;
@@ -208,7 +207,6 @@ export default {
 
   span {
     display: block;
-    font-family: Gotham Book;
     font-weight: 400;
     text-transform: uppercase;
     font-size: 13px;
@@ -217,12 +215,10 @@ export default {
     margin-bottom: 13px;
 
     @media (max-width: 1023px) {
-      font-family: Gotham;
       font-weight: 700;
     }
 
     &.u-font-bold {
-      font-family: Gotham;
       font-weight: 700;
     }
   }
@@ -291,7 +287,6 @@ export default {
 
   p {
     max-width: 50%;
-    font-family: Gotham Book;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
@@ -341,7 +336,6 @@ export default {
     letter-spacing: 2px;
     font-size: 13px;
     line-height: 16px;
-    font-family: Gotham;
     font-weight: 700;
 
     &.is-faded {
@@ -371,7 +365,6 @@ export default {
   margin-bottom: 13px;
 
   span {
-    font-family: Gotham;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 13px;

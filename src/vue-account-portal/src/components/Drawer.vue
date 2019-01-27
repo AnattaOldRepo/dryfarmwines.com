@@ -167,7 +167,6 @@ export default {
   display: block;
   margin-bottom: 20px;
   text-align: center;
-  font-family: Gotham;
   font-weight: 700px;
   font-size: 23px;
   line-height: 35px;
@@ -205,7 +204,6 @@ export default {
 }
 
 .c-rDrawer__updateMessageText {
-  font-family: Gotham;
   font-weight: 700;
   font-size: 13px;
   line-height: 1;

@@ -7,7 +7,10 @@
       {{ activeDeliveryIntervalUnit }}s.
     </p>
 
-    <div class="c-editProduct__lineitems" v-if="activeDeliveryScheduleGetter">
+    <div
+      class="c-editProduct__lineitems"
+      v-if="activeDeliveryScheduleGetter"
+    >
       <div
         class="c-editProduct__lineitem"
         v-for="(item, index) in activeDeliveryScheduleGetter.delivery"
@@ -24,7 +27,7 @@
             </p>
             <span>{{
               formatMoney(item.subscription.price * item.subscription.quantity)
-            }}</span>
+              }}</span>
           </div>
         </div>
 
@@ -34,13 +37,11 @@
               class="c-rButton"
               style="padding:10px 18px;"
               @click.prevent="removeProduct(item.subscription, index)"
-              >Remove</a
-            >
+            >Remove</a>
             <a
               class="c-rButton c-rButton--red"
               @click.prevent="swapProductSetup(item, index)"
-              >Swap</a
-            >
+            >Swap</a>
           </div>
           <div class="c-editProduct__lineitemQuantityBox">
             <span @click="updateQuantity(item.subscription, 'remove', index)">
@@ -57,17 +58,15 @@
               >
                 <g>
                   <g>
-                    <path
-                      d="M465.167,211.613H240.21H26.69c-8.424,0-26.69,11.439-26.69,34.316s18.267,34.316,26.69,34.316h213.52h224.959
-                                        c8.421,0,26.689-11.439,26.689-34.316S473.59,211.613,465.167,211.613z"
-                    />
+                    <path d="M465.167,211.613H240.21H26.69c-8.424,0-26.69,11.439-26.69,34.316s18.267,34.316,26.69,34.316h213.52h224.959
+                                        c8.421,0,26.689-11.439,26.689-34.316S473.59,211.613,465.167,211.613z" />
                   </g>
                 </g>
               </svg>
             </span>
             <span class="c-editProduct__lineitemQuantity">{{
               item.subscription.quantity
-            }}</span>
+              }}</span>
 
             <span @click="updateQuantity(item.subscription, 'add', index)">
               <svg
@@ -83,11 +82,9 @@
               >
                 <g>
                   <g>
-                    <path
-                      d="M465.167,211.614H280.245V26.691c0-8.424-11.439-26.69-34.316-26.69s-34.316,18.267-34.316,26.69v184.924H26.69
+                    <path d="M465.167,211.614H280.245V26.691c0-8.424-11.439-26.69-34.316-26.69s-34.316,18.267-34.316,26.69v184.924H26.69
                                             C18.267,211.614,0,223.053,0,245.929s18.267,34.316,26.69,34.316h184.924v184.924c0,8.422,11.438,26.69,34.316,26.69
-                                            s34.316-18.268,34.316-26.69V280.245H465.17c8.422,0,26.69-11.438,26.69-34.316S473.59,211.614,465.167,211.614z"
-                    />
+                                            s34.316-18.268,34.316-26.69V280.245H465.17c8.422,0,26.69-11.438,26.69-34.316S473.59,211.614,465.167,211.614z" />
                   </g>
                 </g>
               </svg>
@@ -98,12 +95,18 @@
     </div>
 
     <div class="c-rDrawerProduct__actionBox">
-      <a class="c-rButton c-rButton--red" @click.prevent="addProductSetup">
+      <a
+        class="c-rButton c-rButton--red"
+        @click.prevent="addProductSetup"
+      >
         Add Products
       </a>
     </div>
 
-    <div class="c-rDrawer__updateMessage" v-if="productEditDrawerUpdating">
+    <div
+      class="c-rDrawer__updateMessage"
+      v-if="productEditDrawerUpdating"
+    >
       <span class="c-rDrawer__updateMessageText">Updating...</span>
     </div>
 
@@ -112,10 +115,7 @@
       v-if="productEditDrawerSaved"
       transition="fade"
     >
-      <span
-        class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success"
-        >SAVED</span
-      >
+      <span class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success">SAVED</span>
       <div class="c-rDrawer__updateMessageIcon--save">
         <svg
           version="1.1"
@@ -124,9 +124,7 @@
           xmlns:xlink="http://www.w3.org/1999/xlink"
           enable-background="new 0 0 26 26"
         >
-          <path
-            d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
-          />
+          <path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z" />
         </svg>
       </div>
     </div>
@@ -282,7 +280,6 @@ export default {
 <style lang="scss">
 .c-rDrawerEditProduct {
   .c-rDrawerEditProduct__shipText {
-    font-family: Gotham Book;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
@@ -311,7 +308,6 @@ export default {
   margin-bottom: 24px;
   font-size: 13px;
   line-height: 16px;
-  font-family: Gotham Book;
   font-weight: 400;
   letter-spacing: 0;
 }

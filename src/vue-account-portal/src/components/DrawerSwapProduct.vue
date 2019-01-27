@@ -112,7 +112,6 @@ export default {
     line-height: 16px;
     letter-spacing: 2px;
     font-weight: 700;
-    font-family: Gotham;
     letter-spacing: 2px;
     display: block;
     text-align: center;

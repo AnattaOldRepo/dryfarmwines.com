@@ -133,7 +133,6 @@ export default {
 <style lang="scss">
 .c-rDrawerEditProduct {
   .c-rDrawerEditProduct__shipText {
-    font-family: Gotham Book;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
@@ -147,7 +146,6 @@ export default {
     line-height: 16px;
     letter-spacing: 2px;
     font-weight: 700;
-    font-family: Gotham;
     letter-spacing: 2px;
     display: block;
     text-align: center;
@@ -175,7 +173,6 @@ export default {
   margin-bottom: 24px;
   font-size: 13px;
   line-height: 16px;
-  font-family: Gotham Book;
   font-weight: 400;
   letter-spacing: 0;
 }

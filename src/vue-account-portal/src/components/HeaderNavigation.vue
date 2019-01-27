@@ -358,7 +358,6 @@ export default {
   padding: 27px 0 24px;
 
   span {
-    font-family: Gotham;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 13px;
@@ -428,7 +427,6 @@ export default {
   }
 
   span {
-    font-family: Gotham;
     font-weight: 700;
     text-transform: uppercase;
     font-size: 13px;
@@ -461,7 +459,6 @@ export default {
 }
 
 .c-rHeaderNav__item {
-  font-family: Gotham;
   font-weight: 700;
   text-transform: uppercase;
   font-size: 13px;

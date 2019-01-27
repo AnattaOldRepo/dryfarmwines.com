@@ -387,7 +387,6 @@ export default {
   a {
     color: #ee2e2d;
     font-weight: 700;
-    font-family: Gotham;
   }
 }
 
@@ -419,7 +418,6 @@ export default {
 }
 
 .c-details__sectionTitle {
-  font-family: Gotham Book;
   font-weight: 400;
   font-size: 19px;
   line-height: 29px;
@@ -473,7 +471,6 @@ export default {
 
 .c-details__blockSection {
   span {
-    font-family: Gotham Book;
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
@@ -486,7 +483,6 @@ export default {
     }
 
     &.c-details__blockSectionLabel {
-      font-family: Gotham;
       font-weight: 700;
       font-size: 13px;
       letter-spacing: 2px;

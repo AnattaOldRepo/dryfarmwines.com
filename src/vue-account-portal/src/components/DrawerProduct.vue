@@ -156,7 +156,6 @@ export default {
   .c-rDrawerProduct__contentBox {
     font-size: 13px;
     line-height: 16px;
-    font-family: Gotham Book;
     font-weight: 400;
     letter-spacing: 0;
     padding: 10px 0px;
