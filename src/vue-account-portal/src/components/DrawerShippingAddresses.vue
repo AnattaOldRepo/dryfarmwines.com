@@ -16,9 +16,6 @@
                 localActiveAddress.id == address.id
             }"
           >
-            <!-- @click="updateAllCurrentProductsToNewAddress(address)" -->
-
-            <!-- @click="selectLocalActiveAddress(address)" -->
 
             <span class="c-rOptionText c-rOptionText--1">{{
               address.address1
@@ -69,14 +66,6 @@
           </a>
         </div>
       </div>
-
-      <!-- <div class="c-rDrawer__actionBox">
-                <a class="c-rButton c-rButton--red"
-                    @click.prevent="addAddressMode"
-                >
-                    <span>Add Address</span>
-                </a>
-            </div>              -->
     </div>
 
     <div v-if="addressMode === 'edit'">
@@ -100,13 +89,6 @@
         </div>
 
         <div class="c-rForm__inputWrapper c-rForm__inputWrapper--full">
-          <!-- <input 
-                        class="c-rForm__input"
-                        type="text" 
-                        placeholder="Country"
-                        v-model="updateCountry"
-                    />     -->
-
           <select
             name="countries"
             class="c-rForm__input"
@@ -150,13 +132,6 @@
             placeholder="City"
             v-model="updateCity"
           />
-
-          <!-- <input 
-                        class="c-rForm__input"
-                        type="text" 
-                        placeholder="State"
-                        v-model="updateProvince"
-                    />      -->
 
           <select class="c-rForm__input" v-model="updateProvince">
             <option disabled value="">State</option>
@@ -235,170 +210,8 @@
         <a class="c-rButton c-rButton--red" @click.prevent="updateAddress()">
           <span>Save Address</span>
         </a>
-
-        <!-- <a class="c-rButton c-rButton--red"
-                    v-if="activeDeliveryAddressId !== localActiveAddress.id && localActiveAddress.subscriptions.length === 0"
-                >
-                    <span>Remove Address</span>
-                </a>                 -->
       </div>
     </div>
-
-    <!-- <div v-if="addressMode === 'add'">
-
-            <span class="c-rDrawer__title">Add Address</span>
-
-            <div class="c-rForm">
-
-                <span class="c-rDrawer__title">Edit Address</span>
-
-                <div class="c-rForm__inputWrapper c-rForm__inputWrapper--half">
-                    <input 
-                        class="c-rForm__input"
-                        type="text" 
-                        placeholder="Last Name"
-                        v-model="updateFirst_name"
-                    />
-
-                    <input 
-                        class="c-rForm__input"
-                        type="text" 
-                        placeholder="First Name"
-                        v-model="updateLast_name"
-                    />                    
-                </div>        
-
-                <div class="c-rForm__inputWrapper c-rForm__inputWrapper--full">
-
-                    <select name="countries"
-                        class="c-rForm__input"
-                        placeholder="Country"
-                        v-model="updateCountry"                    
-                    >
-                        <option disabled value="">Country</option>
-                        <option value="United States">United States</option>
-                    </select>
-                </div>           
-
-                <div class="c-rForm__inputWrapper c-rForm__inputWrapper--half">
-                    <input 
-                        class="c-rForm__input"
-                        type="text" 
-                        placeholder="Address"
-                        v-model="updateAddress1"
-                    />       
-
-                    <input 
-                        class="c-rForm__input"
-                        type="text" 
-                        placeholder="Apt/Suite"
-                        v-model="updateAddress2"
-                    />                                    
-                </div>         
-
-                <div class="c-rForm__inputWrapper c-rForm__inputWrapper--full">
-                    <input 
-                        class="c-rForm__input"
-                        type="text" 
-                        placeholder="Company"
-                        v-model="updateCompany"
-                    />                    
-                </div>                     
-
-                <div class="c-rForm__inputWrapper c-rForm__inputWrapper--half">
-                    <input 
-                        class="c-rForm__input"
-                        type="text" 
-                        placeholder="City"
-                        v-model="updateCity"
-                    />       
-
-                    <select 
-                        class="c-rForm__input"
-                        v-model="updateProvince"
-                    >
-                        <option disabled value="">State</option>
-                        <option value="AL">Alabama</option>
-                        <option value="AK">Alaska</option>
-                        <option value="AZ">Arizona</option>
-                        <option value="AR">Arkansas</option>
-                        <option value="CA">California</option>
-                        <option value="CO">Colorado</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="DE">Delaware</option>
-                        <option value="DC">District Of Columbia</option>
-                        <option value="FL">Florida</option>
-                        <option value="GA">Georgia</option>
-                        <option value="HI">Hawaii</option>
-                        <option value="ID">Idaho</option>
-                        <option value="IL">Illinois</option>
-                        <option value="IN">Indiana</option>
-                        <option value="IA">Iowa</option>
-                        <option value="KS">Kansas</option>
-                        <option value="KY">Kentucky</option>
-                        <option value="LA">Louisiana</option>
-                        <option value="ME">Maine</option>
-                        <option value="MD">Maryland</option>
-                        <option value="MA">Massachusetts</option>
-                        <option value="MI">Michigan</option>
-                        <option value="MN">Minnesota</option>
-                        <option value="MS">Mississippi</option>
-                        <option value="MO">Missouri</option>
-                        <option value="MT">Montana</option>
-                        <option value="NE">Nebraska</option>
-                        <option value="NV">Nevada</option>
-                        <option value="NH">New Hampshire</option>
-                        <option value="NJ">New Jersey</option>
-                        <option value="NM">New Mexico</option>
-                        <option value="NY">New York</option>
-                        <option value="NC">North Carolina</option>
-                        <option value="ND">North Dakota</option>
-                        <option value="OH">Ohio</option>
-                        <option value="OK">Oklahoma</option>
-                        <option value="OR">Oregon</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="RI">Rhode Island</option>
-                        <option value="SC">South Carolina</option>
-                        <option value="SD">South Dakota</option>
-                        <option value="TN">Tennessee</option>
-                        <option value="TX">Texas</option>
-                        <option value="UT">Utah</option>
-                        <option value="VT">Vermont</option>
-                        <option value="VA">Virginia</option>
-                        <option value="WA">Washington</option>
-                        <option value="WV">West Virginia</option>
-                        <option value="WI">Wisconsin</option>
-                        <option value="WY">Wyoming</option>
-                    </select>		
-                </div>     
-
-                <div class="c-rForm__inputWrapper c-rForm__inputWrapper--half">
-                    <input 
-                        class="c-rForm__input"
-                        type="text" 
-                        placeholder="Postal Code"
-                        v-model="updateZip"
-                    />       
-
-                    <input 
-                        class="c-rForm__input"
-                        type="text" 
-                        placeholder="Phone (Optional)"
-                        v-model="updatePhone"
-                    />                                    
-                </div>                                                      
-
-            </div>
-
-            <div class="c-rDrawer__actionBox">
-                <a class="c-rButton c-rButton--red"
-                    @click.prevent="updateAddress(true)"
-                >
-                    <span>Add Address</span>
-                </a>
-            </div>             
-
-        </div> -->
 
     <div class="c-rDrawer__updateMessage" v-if="addressUpdating">
       <span
