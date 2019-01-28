@@ -213,18 +213,9 @@
     </div>
 
     <div class="c-rDrawer__actionBox">
-      <a
-        class="c-rButton c-rButton--red"
-        @click.prevent="updateBillingAddress()"
-      >
-        <span>Save Address</span>
-      </a>
-
-      <!-- <a class="c-rButton c-rButton--red"
-            v-if="activeDeliveryAddressId !== localActiveAddress.id && localActiveAddress.subscriptions.length === 0"
-        >
-            <span>Remove Address</span>
-        </a>                 -->
+      <base-button @click="updateBillingAddress()">
+        Save Address
+      </base-button>
     </div>
 
     <div

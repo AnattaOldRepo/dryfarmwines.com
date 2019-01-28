@@ -33,15 +33,20 @@
 
         <div class="c-editProduct__lineitemEdit">
           <div class="c-editProduct__lineitemButtonBox">
-            <a
+            <base-button
               class="c-rButton"
               style="padding:10px 18px;"
-              @click.prevent="removeProduct(item.subscription, index)"
-            >Remove</a>
-            <a
-              class="c-rButton c-rButton--red"
-              @click.prevent="swapProductSetup(item, index)"
-            >Swap</a>
+              @click="removeProduct(item.subscription, index)"
+              secondary
+            >
+              Remove
+            </base-button>
+            <base-button
+              class="c-rButton"
+              @click="swapProductSetup(item, index)"
+            >
+              Swap
+            </base-button>
           </div>
           <div class="c-editProduct__lineitemQuantityBox">
             <span @click="updateQuantity(item.subscription, 'remove', index)">

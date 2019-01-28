@@ -35,10 +35,11 @@
       >
         <span class="c-sub__initialMessage">looks like you have no current subscriptions.</span>
         <div class="c-rDrawerProduct__actionBox">
-          <base-button>
-            <a :href="`${this.siteURL}/pages/membership`">
-              Subscribe & Save
-            </a>
+          <base-button
+            :href="`${this.siteURL}/pages/membership`"
+            is-link
+          >
+            Subscribe & Save
           </base-button>
         </div>
       </div>

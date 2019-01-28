@@ -16,12 +16,9 @@
     </div>
 
     <div class="c-rDrawer__actionBox">
-      <a
-        class="c-rButton c-rButton--red"
-        @click.prevent="editCard"
-      >
+      <base-button @click="editCard">
         Edit Card
-      </a>
+      </base-button>
     </div>
   </div>
 </template>
