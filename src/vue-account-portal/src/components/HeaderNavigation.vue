@@ -253,8 +253,8 @@
 
 <script>
 import axios from 'axios'
-
 import { mapState } from 'vuex'
+import { rechargeURL, siteURL } from '@/config'
 
 function hasItem(sKey) {
   // console.log('hasItem', sKey)
@@ -310,21 +310,15 @@ export default {
     },
 
     resetSubscriptionURL() {
-      return `https://www.dryfarmwines.com/tools/recurring/customer_portal/${
-        this.customerHash
-      }/`
+      return `${rechargeURL}${this.customerHash}/`
     },
 
     resetDetailsURL() {
-      return `https://www.dryfarmwines.com/tools/recurring/customer_portal/${
-        this.customerHash
-      }/#/details`
+      return `${rechargeURL}${this.customerHash}/#/details`
     },
 
     resetHistoryURL() {
-      return `https://www.dryfarmwines.com/tools/recurring/customer_portal/${
-        this.customerHash
-      }/#/history`
+      return `${rechargeURL}${this.customerHash}/#/history`
     }
   },
 
@@ -332,7 +326,7 @@ export default {
     logout() {
       removeItem('dryfarmwines_analytics', '/', '.dryfarmwines.com')
       this.$nextTick(() => {
-        window.location = 'https://www.dryfarmwines.com/account/logout'
+        window.location = `${siteURL}/account/logout`
       })
     }
   }

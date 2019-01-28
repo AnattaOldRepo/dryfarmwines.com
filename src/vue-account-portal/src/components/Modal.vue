@@ -4,14 +4,21 @@
     :class="{ 'is-open': modalOpen, 'c-rModal--large': true }"
   >
     <div class="c-rModal__head">
-      <span class="c-rModal__title " v-if="subscriptionCanceled"
-        >Cancellation</span
-      >
+      <span
+        class="c-rModal__title "
+        v-if="subscriptionCanceled"
+      >Cancellation</span>
 
-      <span class="c-rModal__title " v-else>WAIT!</span>
+      <span
+        class="c-rModal__title "
+        v-else
+      >WAIT!</span>
     </div>
 
-    <div class="c-rModal__inner" v-if="subscriptionCanceled">
+    <div
+      class="c-rModal__inner"
+      v-if="subscriptionCanceled"
+    >
       <div class="c-rModal__content">
         <p class="c-rModal__text c-rModal__text--bold">
           your subscription is now cancelled.
@@ -29,29 +36,35 @@
         </p>
       </div>
 
-      <div class="c-rModal__actionBox" style="margin-top: 20px;">
+      <div
+        class="c-rModal__actionBox"
+        style="margin-top: 20px;"
+      >
         <a
           class="c-rButton c-rButton--red"
-          href="https://www.dryfarmwines.com/collections/all-products/"
+          :href="`${this.siteURL}/collections/all-products/`"
         >
           WHAT'S NEW
         </a>
 
-        <a class="c-rButton" href="https://www.dryfarmwines.com/account/">
+        <a
+          class="c-rButton"
+          :href="`${this.siteURL}/account/`"
+        >
           BACK TO ACCOUNT
         </a>
       </div>
     </div>
 
-    <div class="c-rModal__inner" v-else-if="!subscriptionCancelAvailable">
+    <div
+      class="c-rModal__inner"
+      v-else-if="!subscriptionCancelAvailable"
+    >
       <div class="c-rModal__content">
         <p class="c-rModal__text c-rModal__text--bold c-rModal__text--red">
           TO CANCEL BEFORE YOU’VE RECEIVED 3 SHIPMENTS,<br />
           PLEASE EMAIL
-          <a
-            href="https://dryfarmwines.zendesk.com/hc/en-us/categories/201489385-Contact-Us"
-            >CUSTOMER SUPPORT*</a
-          >.
+          <a href="https://dryfarmwines.zendesk.com/hc/en-us/categories/201489385-Contact-Us">CUSTOMER SUPPORT*</a>.
         </p>
 
         <p class="c-rModal__text c-rModal__text--extra">
@@ -93,13 +106,19 @@
           <span>Swap My Products</span>
         </a>
 
-        <a class="c-rButton c-rButton--red" @click.prevent="closeModal">
+        <a
+          class="c-rButton c-rButton--red"
+          @click.prevent="closeModal"
+        >
           Don't Cancel
         </a>
       </div>
     </div>
 
-    <div class="c-rModal__inner" v-else-if="subscriptionCancelAvailable">
+    <div
+      class="c-rModal__inner"
+      v-else-if="subscriptionCancelAvailable"
+    >
       <div class="c-rModal__content">
         <p
           class="c-rModal__text c-rModal__text--bold c-rModal__text--red"
@@ -124,7 +143,10 @@
             <span>Swap My Products</span>
           </a>
 
-          <a class="c-rButton c-rButton--red" @click.prevent="closeModal">
+          <a
+            class="c-rButton c-rButton--red"
+            @click.prevent="closeModal"
+          >
             Don't Cancel
           </a>
         </div>
@@ -134,7 +156,10 @@
         </p>
       </div>
 
-      <div class="c-rModal__confirm" @click="confirmTerms()">
+      <div
+        class="c-rModal__confirm"
+        @click="confirmTerms()"
+      >
         <span
           class="c-rModal__confirmCheckbox"
           :class="{ 'is-checked': termsConfirmed }"
@@ -160,7 +185,10 @@
       </div>
     </div>
 
-    <span class="c-rModal__close" @click="closeModalAndResetType">
+    <span
+      class="c-rModal__close"
+      @click="closeModalAndResetType"
+    >
       <svg
         version="1.1"
         id="Capa_1"
@@ -174,14 +202,12 @@
         xml:space="preserve"
       >
         <g>
-          <path
-            d="M62.819,47.97l32.533-32.534c0.781-0.781,0.781-2.047,0-2.828L83.333,0.586C82.958,0.211,82.448,0,81.919,0
+          <path d="M62.819,47.97l32.533-32.534c0.781-0.781,0.781-2.047,0-2.828L83.333,0.586C82.958,0.211,82.448,0,81.919,0
                             c-0.53,0-1.039,0.211-1.414,0.586L47.97,33.121L15.435,0.586c-0.75-0.75-2.078-0.75-2.828,0L0.587,12.608
                             c-0.781,0.781-0.781,2.047,0,2.828L33.121,47.97L0.587,80.504c-0.781,0.781-0.781,2.047,0,2.828l12.02,12.021
                             c0.375,0.375,0.884,0.586,1.414,0.586c0.53,0,1.039-0.211,1.414-0.586L47.97,62.818l32.535,32.535
                             c0.375,0.375,0.884,0.586,1.414,0.586c0.529,0,1.039-0.211,1.414-0.586l12.02-12.021c0.781-0.781,0.781-2.048,0-2.828L62.819,47.97
-                            z"
-          ></path>
+                            z"></path>
         </g>
       </svg>
     </span>
@@ -190,23 +216,15 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-
-// import ModalShippingAddresses from '../components/ModalShippingAddresses.vue'
+import { siteURL } from '@/config'
 
 export default {
   name: 'Modal',
 
-  components: {
-    // ModalShippingAddresses
-  },
-
-  props: {},
-
-  data: function() {
-    return {
-      termsConfirmed: false
-    }
-  },
+  data: () => ({
+    termsConfirmed: false,
+    siteURL
+  }),
 
   mounted() {},
 

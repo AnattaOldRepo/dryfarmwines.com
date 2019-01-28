@@ -25,7 +25,7 @@
             >Subscription {{ index + 1 }}</span
           >
           <span class="c-rOptionText c-rOptionText--2"
-            >Ships
+            >Ships on
             {{
               prettyDate(
                 deliverySchedule.delivery[0].subscription
@@ -261,7 +261,7 @@ export default {
     },
 
     prettyDate(date) {
-      return moment(date).format('MMM Do')
+      return moment(date).format('MMMM D')
     }
   }
 }

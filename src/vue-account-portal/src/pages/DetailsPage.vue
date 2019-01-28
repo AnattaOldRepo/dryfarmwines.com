@@ -1,12 +1,21 @@
 <template>
   <div>
-    <div class="c-sub__initialContainer" v-if="initialRechargeDataLoading">
+    <div
+      class="c-sub__initialContainer"
+      v-if="initialRechargeDataLoading"
+    >
       <span class="c-sub__initialMessage">Loading...</span>
     </div>
 
-    <div class="c-details clearfix" v-else>
+    <div
+      class="c-details clearfix"
+      v-else
+    >
       <div class="c-details__left">
-        <div class="c-details__section" v-if="deliverySchedule.length">
+        <div
+          class="c-details__section"
+          v-if="deliverySchedule.length"
+        >
           <h1 class="c-details__sectionTitle">Your Subscription</h1>
           <router-link
             class="c-details__sectionInner"
@@ -17,11 +26,9 @@
               <div class="c-details__blockSection">
                 <span class="c-details__blockSectionLabel">{{
                   customerName
-                }}</span>
-                <span
-                  >Next shipment is on
-                  {{ prettyDate(activeDeliveryChargeScheduledAt) }}</span
-                >
+                  }}</span>
+                <span>Next shipment is on
+                  {{ prettyDate(activeDeliveryChargeScheduledAt) }}</span>
               </div>
 
               <svg
@@ -37,9 +44,7 @@
                 style="enable-background:new 0 0 306 306;"
                 xml:space="preserve"
               >
-                <polygon
-                  points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		"
-                />
+                <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
               </svg>
             </div>
           </router-link>
@@ -48,56 +53,51 @@
         <div class="c-details__section">
           <h1 class="c-details__sectionTitle">Billing Address</h1>
           <div class="c-details__sectionInner">
-            <div class="c-details__block" @click.prevent="editBillingAddress">
-              <div
-                class="c-details__blockSection c-details__blockSection--address"
-              >
+            <div
+              class="c-details__block"
+              @click.prevent="editBillingAddress"
+            >
+              <div class="c-details__blockSection c-details__blockSection--address">
                 <span
                   class="c-details__blockSectionLabel"
                   style="margin-bottom: 10px;"
-                  >Billing Address</span
-                >
+                >Billing Address</span>
                 <div>
                   <span
                     v-if="billingAddressGetter.first_name"
                     class="is-inline"
-                    >{{ billingAddressGetter.first_name }}</span
-                  >
+                  >{{ billingAddressGetter.first_name }}</span>
                   <span
                     v-if="billingAddressGetter.last_name"
                     style="margin-left: 3px;"
                     class="is-inline"
-                    >{{ billingAddressGetter.last_name }}</span
-                  >
+                  >{{ billingAddressGetter.last_name }}</span>
                   <span v-if="billingAddressGetter.address1">{{
                     billingAddressGetter.address1
-                  }}</span>
+                    }}</span>
                   <span v-if="billingAddressGetter.address2">{{
                     billingAddressGetter.address2
-                  }}</span>
+                    }}</span>
                   <span v-if="billingAddressGetter.company">{{
                     billingAddressGetter.company
-                  }}</span>
-                  <span class="is-inline" v-if="billingAddressGetter.city"
-                    >{{ billingAddressGetter.city }},</span
-                  ><span
+                    }}</span>
+                  <span
+                    class="is-inline"
+                    v-if="billingAddressGetter.city"
+                  >{{ billingAddressGetter.city }},</span><span
                     class="is-inline"
                     v-if="billingAddressGetter.province"
                     style="margin-left: 3px;"
-                    >{{ billingAddressGetter.province }}</span
-                  ><span
+                  >{{ billingAddressGetter.province }}</span><span
                     class="is-inline"
                     v-if="billingAddressGetter.zip"
                     style="margin-left: 3px;"
                   >
-                    {{ billingAddressGetter.zip }}</span
-                  >
+                    {{ billingAddressGetter.zip }}</span>
                   <span v-if="billingAddressGetter.country">
-                    {{ billingAddressGetter.country }}</span
-                  >
+                    {{ billingAddressGetter.country }}</span>
                   <span v-if="billingAddressGetter.phone">
-                    {{ billingAddressGetter.phone }}</span
-                  >
+                    {{ billingAddressGetter.phone }}</span>
                 </div>
               </div>
 
@@ -114,9 +114,7 @@
                 style="enable-background:new 0 0 306 306;"
                 xml:space="preserve"
               >
-                <polygon
-                  points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		"
-                />
+                <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
               </svg>
             </div>
           </div>
@@ -146,13 +144,14 @@
                       customer.customer_card
                   "
                 >
-                  <img v-if="creditCardImage" :src="creditCardImage" />
+                  <img
+                    v-if="creditCardImage"
+                    :src="creditCardImage"
+                  />
                   <span> *{{ customer.customer_card.last4 }}</span>
-                  <span
-                    >{{ customer.customer_card.exp_month }}/{{
-                      customer.customer_card.exp_year
-                    }}</span
-                  >
+                  <span>{{ customer.customer_card.exp_month }}/{{
+                    customer.customer_card.exp_year
+                    }}</span>
                 </div>
 
                 <div
@@ -175,9 +174,7 @@
                   style="enable-background:new 0 0 306 306;"
                   xml:space="preserve"
                 >
-                  <polygon
-                    points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		"
-                  />
+                  <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
                 </svg>
               </div>
             </div>
@@ -190,21 +187,22 @@
             <span>Edit Card</span>
           </a>
 
-          <div class="c-details__card" v-if="paypalEditInfoVisible">
+          <div
+            class="c-details__card"
+            v-if="paypalEditInfoVisible"
+          >
             <span class="c-details__paypalInfo">
               <br />
               You need to login to
               <a
                 target="_blank"
                 href="https://www.paypal.com/us/cgi-bin/webscr?cmd=_login-run"
-                >PayPal</a
-              >
+              >PayPal</a>
               to update your card. Here are detailed
               <a
                 target="_blank"
                 href="https://www.paypal.com/us/webapps/helpcenter/helphub/article/?solutionId=FAQ999&topicID=PAYING&m=TCI"
-                >instructions</a
-              >.
+              >instructions</a>.
             </span>
           </div>
 
@@ -224,6 +222,7 @@
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 import moment from 'moment'
+import { rechargeURL } from '@/config'
 
 export default {
   name: 'Details',
@@ -351,9 +350,7 @@ export default {
     },
 
     editBillingAddress() {
-      let editBillingAddressUrl = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${
-        this.customerHash
-      }/edit/`
+      let editBillingAddressUrl = `${rechargeURL}${this.customerHash}/edit/`
 
       // editBillingAddressUrl += '?preview_theme=1792#/' // only for testing
 

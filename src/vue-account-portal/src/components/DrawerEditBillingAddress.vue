@@ -92,7 +92,10 @@
           placeholder="Country"
           v-model="updateCountry"
         >
-          <option disabled value="">Country</option>
+          <option
+            disabled
+            value=""
+          >Country</option>
           <option value="United States">United States</option>
         </select>
       </div>
@@ -130,8 +133,14 @@
           v-model="updateCity"
         />
 
-        <select class="c-rForm__input" v-model="updateProvince">
-          <option disabled value="">State</option>
+        <select
+          class="c-rForm__input"
+          v-model="updateProvince"
+        >
+          <option
+            disabled
+            value=""
+          >State</option>
           <option value="Alabama">Alabama</option>
           <option value="Alaska">Alaska</option>
           <option value="Arizona">Arizona</option>
@@ -218,7 +227,10 @@
         </a>                 -->
     </div>
 
-    <div class="c-rDrawer__updateMessage" v-if="addressUpdating">
+    <div
+      class="c-rDrawer__updateMessage"
+      v-if="addressUpdating"
+    >
       <span
         v-if="!isEmptyObject(addressUpdateErrors)"
         class="c-rDrawer__updateMessageText"
@@ -227,18 +239,21 @@
           class="c-rForm__errorMessage"
           v-for="(error, index) in addressUpdateErrors"
           :key="index"
-          >{{ error[0] }}</span
-        >
+        >{{ error[0] }}</span>
       </span>
 
-      <span v-else class="c-rDrawer__updateMessageText">Updating...</span>
+      <span
+        v-else
+        class="c-rDrawer__updateMessageText"
+      >Updating...</span>
     </div>
 
-    <div class="c-rDrawer__updateMessage" v-if="addressSaved" transition="fade">
-      <span
-        class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success"
-        >SAVED</span
-      >
+    <div
+      class="c-rDrawer__updateMessage"
+      v-if="addressSaved"
+      transition="fade"
+    >
+      <span class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success">SAVED</span>
       <div class="c-rDrawer__updateMessageIcon--save">
         <svg
           version="1.1"
@@ -247,9 +262,7 @@
           xmlns:xlink="http://www.w3.org/1999/xlink"
           enable-background="new 0 0 26 26"
         >
-          <path
-            d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
-          />
+          <path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z" />
         </svg>
       </div>
     </div>
@@ -258,6 +271,7 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
+import { rechargeURL } from '@/config'
 
 export default {
   name: 'DrawerEditBillingAddress',
@@ -385,9 +399,7 @@ export default {
 
     // change route to theme editor so we can submit the update
     editBillingAddress() {
-      let editBillingAddressUrl = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${
-        this.customerHash
-      }/edit/`
+      let editBillingAddressUrl = `${rechargeURL}${this.customerHash}/edit/`
 
       editBillingAddressUrl += '?preview_theme=1792#/' // only for testing
 

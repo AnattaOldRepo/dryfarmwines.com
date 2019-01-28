@@ -1,6 +1,13 @@
+import API from './api'
 import axios from 'axios'
 import moment from 'moment'
 import qs from 'qs'
+import {
+  siteURL,
+  rechargeURL,
+  previewThemeQuery,
+  shopifySubscriptionURL
+} from '@/config'
 
 export const updateQuantityAction = ({ commit, state }, payload) => {
   let { subscriptionId, newQuantity } = payload
@@ -10,22 +17,14 @@ export const updateQuantityAction = ({ commit, state }, payload) => {
   state.productEditDrawerUpdating = true
   state.productEditDrawerSaved = false
 
-  const UPDATE_API = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${customerHash}/subscriptions/${subscriptionId}/edit`
+  const UPDATE_API = `${rechargeURL}${customerHash}/subscriptions/${subscriptionId}/edit`
 
-  axios
-    .post(
-      UPDATE_API,
-      qs.stringify({
-        quantity: newQuantity
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          'X-Requested-With': 'XMLHttpRequest',
-          Accept: 'application/json, text/javascript, */*; q=0.01'
-        }
-      }
-    )
+  API.post(
+    UPDATE_API,
+    qs.stringify({
+      quantity: newQuantity
+    })
+  )
     .then(function(response) {
       console.log(response)
       console.log('updatequantityview')
@@ -33,51 +32,38 @@ export const updateQuantityAction = ({ commit, state }, payload) => {
       commit('updateQuantityView', payload)
     })
     .catch(function(error) {
-      console.log(error)
       state.productEditDrawerUpdating = false
       state.productEditDrawerSaved = true
+      console.error(error)
       alert('Update failed - please refresh the page.')
     })
 }
 
 export const loadInitialData = async ({ commit, state }, callbackType) => {
-  const baseUrl =
-    'https://www.dryfarmwines.com/tools/recurring/customer_portal/'
+  const baseUrl = rechargeURL,
+    { customerHash } = state
 
-  console.log('loadinitialdata')
-  console.log(customerHash)
-  console.log(state.customerHash)
-
-  const { customerHash } = state
-
-  let customerAddressSubs = await axios.get(`${baseUrl}${customerHash}.json`)
-  let orders = await axios.get(`${baseUrl}${customerHash}/orders.json`)
-  let productsSearch = await axios.get(
-    `${baseUrl}${customerHash}/products/search.json`
-  )
-  let deliverySchedule = await axios.get(
-    `${baseUrl}${customerHash}/delivery_schedule.json`
-  )
+  let customerAddressSubs = await axios.get(`${baseUrl}${customerHash}.json`),
+    orders = await axios.get(`${baseUrl}${customerHash}/orders.json`),
+    productsSearch = await axios.get(
+      `${baseUrl}${customerHash}/products/search.json`
+    ),
+    { data: deliverySchedule } = await axios.get(
+      `${baseUrl}${customerHash}/delivery_schedule.json`
+    )
 
   if (!customerAddressSubs) {
     alert('Data timeout - please refresh the page.')
   }
-
-  console.log('finish async')
-  console.log('customerAddressSubs', customerAddressSubs)
-  console.log('orders', orders)
-  console.log('products', productsSearch)
-  console.log('deliveryschedule', deliverySchedule)
 
   commit('setCustomer', customerAddressSubs.data.customer)
   commit('setAddresses', customerAddressSubs.data.addresses)
   commit('setSubscriptions', customerAddressSubs.data.subscriptions)
   commit('setOrders', orders.data.orders)
   commit('setProducts', productsSearch.data.rules)
-  commit('setDeliverySchedule', deliverySchedule.data.delivery_schedule)
+  commit('setDeliverySchedule', deliverySchedule.delivery_schedule)
   commit('setInitialRechargeDataLoading', false)
 
-  console.log('callback', callbackType)
   if (
     callbackType &&
     callbackType.name &&
@@ -133,7 +119,6 @@ export const loadInitialData = async ({ commit, state }, callbackType) => {
     commit('setProductEditDrawerSaved', true)
   }
 
-  console.log('loadinitaldata complete')
   commit('setUpdateOverlay', false)
 }
 
@@ -161,25 +146,16 @@ export const selectDeliveryFrequencyAction = (
   subscriptionIds.forEach(function(subscriptionId) {
     updatesRequired += 1
 
-    let UPDATE_API = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${customerHash}/subscriptions/${subscriptionId}/edit`
+    let UPDATE_API = `${rechargeURL}${customerHash}/subscriptions/${subscriptionId}/edit`
 
     promise = promise.then(function() {
-      axios
-        .post(
-          UPDATE_API,
-          qs.stringify({
-            order_interval_frequency: intervalFrequency,
-            order_interval_unit: activeDeliveryIntervalUnit
-          }),
-          {
-            headers: {
-              'Content-Type':
-                'application/x-www-form-urlencoded; charset=UTF-8',
-              'X-Requested-With': 'XMLHttpRequest',
-              Accept: 'application/json, text/javascript, */*; q=0.01'
-            }
-          }
-        )
+      API.post(
+        UPDATE_API,
+        qs.stringify({
+          order_interval_frequency: intervalFrequency,
+          order_interval_unit: activeDeliveryIntervalUnit
+        })
+      )
         .then(function() {
           completedUpdates += 1
           updateView()
@@ -222,29 +198,21 @@ export const updateAddressAction = ({ commit, dispatch, state }, payload) => {
   commit('setAddressSaved', false)
   commit('addressUpdateErrors', {})
 
-  axios
-    .post(
-      updateAddressEndpoint,
-      qs.stringify({
-        first_name: addressUpdates.first_name,
-        last_name: addressUpdates.last_name,
-        address1: addressUpdates.address1,
-        address2: addressUpdates.address2,
-        company: addressUpdates.company,
-        country: addressUpdates.country,
-        province: addressUpdates.province,
-        city: addressUpdates.city,
-        zip: addressUpdates.zip,
-        phone: addressUpdates.phone
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          'X-Requested-With': 'XMLHttpRequest',
-          Accept: 'application/json, text/javascript, */*; q=0.01'
-        }
-      }
-    )
+  API.post(
+    updateAddressEndpoint,
+    qs.stringify({
+      first_name: addressUpdates.first_name,
+      last_name: addressUpdates.last_name,
+      address1: addressUpdates.address1,
+      address2: addressUpdates.address2,
+      company: addressUpdates.company,
+      country: addressUpdates.country,
+      province: addressUpdates.province,
+      city: addressUpdates.city,
+      zip: addressUpdates.zip,
+      phone: addressUpdates.phone
+    })
+  )
     .then(function(response) {
       console.log(response)
 
@@ -282,7 +250,7 @@ export const updateBillingAddressAction = ({ commit, state }, payload) => {
 
   const { addressUpdates } = payload
 
-  let updateAddressEndpoint = `https://dryfarmwines.shopifysubscriptions.com/customer/${customerHash}/edit`
+  let updateAddressEndpoint = `${shopifySubscriptionURL}/customer/${customerHash}/edit`
 
   commit('setUpdateOverlay', true)
 
@@ -290,30 +258,22 @@ export const updateBillingAddressAction = ({ commit, state }, payload) => {
   commit('setAddressSaved', false)
   commit('addressUpdateErrors', {})
 
-  axios
-    .post(
-      updateAddressEndpoint,
-      qs.stringify({
-        email: addressUpdates.email,
-        billing_first_name: addressUpdates.first_name,
-        billing_last_name: addressUpdates.last_name,
-        billing_address_1: addressUpdates.address1,
-        billing_address_2: addressUpdates.address2,
-        billing_company: addressUpdates.company,
-        billing_country: addressUpdates.country,
-        billing_province_state: addressUpdates.province,
-        billing_city: addressUpdates.city,
-        billing_postalcode: addressUpdates.zip,
-        billing_phone: addressUpdates.phone
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          'X-Requested-With': 'XMLHttpRequest',
-          Accept: 'application/json, text/javascript, */*; q=0.01'
-        }
-      }
-    )
+  API.post(
+    updateAddressEndpoint,
+    qs.stringify({
+      email: addressUpdates.email,
+      billing_first_name: addressUpdates.first_name,
+      billing_last_name: addressUpdates.last_name,
+      billing_address_1: addressUpdates.address1,
+      billing_address_2: addressUpdates.address2,
+      billing_company: addressUpdates.company,
+      billing_country: addressUpdates.country,
+      billing_province_state: addressUpdates.province,
+      billing_city: addressUpdates.city,
+      billing_postalcode: addressUpdates.zip,
+      billing_phone: addressUpdates.phone
+    })
+  )
     .then(function(response) {
       console.log(response)
       console.log('buildpayload', payload.addressUpdates)
@@ -346,34 +306,25 @@ export const swapProductAction = ({ commit, state, dispatch }, payload) => {
   state.productEditDrawerUpdating = true
   state.productEditDrawerSaved = false
 
-  let updateUrl = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${customerHash}/subscriptions/${
+  let updateUrl = `${rechargeURL}${customerHash}/subscriptions/${
     subscriptionToSwap.subscription.id
   }/swap?shopify_variant_id=${newProductVariantId}`
 
   console.log('updateUrl', updateUrl)
   commit('setUpdateOverlay', true)
 
-  axios
-    .post(
-      updateUrl,
-      qs.stringify({
-        quantity: subscriptionToSwap.subscription.quantity,
-        order_interval_frequency:
-          subscriptionToSwap.subscription.charge_interval_frequency,
-        order_interval_unit:
-          subscriptionToSwap.subscription.charge_interval_unit,
-        first_charge_date: moment(
-          subscriptionToSwap.subscription.next_charge_scheduled_at
-        ).format('YYYY-MM-DD')
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          'X-Requested-With': 'XMLHttpRequest',
-          Accept: 'application/json, text/javascript, */*; q=0.01'
-        }
-      }
-    )
+  API.post(
+    updateUrl,
+    qs.stringify({
+      quantity: subscriptionToSwap.subscription.quantity,
+      order_interval_frequency:
+        subscriptionToSwap.subscription.charge_interval_frequency,
+      order_interval_unit: subscriptionToSwap.subscription.charge_interval_unit,
+      first_charge_date: moment(
+        subscriptionToSwap.subscription.next_charge_scheduled_at
+      ).format('YYYY-MM-DD')
+    })
+  )
     .then(function() {
       console.log('swap from recharge')
 
@@ -388,44 +339,36 @@ export const swapProductAction = ({ commit, state, dispatch }, payload) => {
 }
 
 export const removeProductAction = ({ commit, state, dispatch }, payload) => {
-  console.log('remove product action')
-
   const { customerHash } = state
 
-  let { subscriptionId } = payload
+  const { subscriptionId, reason, comments } = payload
+  const reasons_to_cancel = reason || 'No Reason'
+  const cancellation_reason_comments = comments || ''
 
   state.productEditDrawerUpdating = true
   state.productEditDrawerSaved = false
 
-  const API_CANCEL = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${customerHash}/subscriptions/${subscriptionId}/cancel?preview_theme=1792`
+  const API_CANCEL = `${siteURL}/tools/recurring/customers/${customerHash}/subscriptions/cancel${previewThemeQuery}`
 
   commit('setUpdateOverlay', true)
 
-  axios
-    .post(
-      API_CANCEL,
-      qs.stringify({
-        comments: 'Remove Product From Delivery'
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          'X-Requested-With': 'XMLHttpRequest',
-          Accept: 'application/json, text/javascript, */*; q=0.01'
-        }
-      }
-    )
-    .then(function(response) {
-      console.log('removed from recharge')
-      console.log(response)
-
+  API.post(
+    API_CANCEL,
+    qs.stringify({
+      comments: 'Remove Product From Delivery',
+      cancellation_reason_comments,
+      reasons_to_cancel,
+      purchase_item_id: subscriptionId
+    })
+  )
+    .then(() => {
       dispatch('loadInitialData', 'remove-product')
     })
-    .catch(function(error) {
+    .catch(error => {
       alert('Update failed - please refresh the page.')
       commit('setProductEditDrawerUpdating', false)
       commit('setProductEditDrawerSaved', false)
-      console.log(error)
+      console.error(error)
     })
 }
 
@@ -433,8 +376,6 @@ export const addProductAction = (
   { commit, getters, state, dispatch },
   productVariantId
 ) => {
-  console.log('start add product action')
-
   commit('setUpdateOverlay', true)
 
   commit('setNewProductAddedSaved', false)
@@ -496,26 +437,18 @@ export const undoAddProduct = ({ commit, state, dispatch }) => {
 
   const { customerHash } = state
 
-  const API_CANCEL = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${customerHash}/subscriptions/${
+  const API_CANCEL = `${rechargeURL}${customerHash}/subscriptions/${
     state.newProductAdded.subscription.id
   }/cancel/506774`
 
   commit('setUpdateOverlay', true)
 
-  axios
-    .post(
-      API_CANCEL,
-      qs.stringify({
-        comments: 'Undo Product Add'
-      }),
-      {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          'X-Requested-With': 'XMLHttpRequest',
-          Accept: 'application/json, text/javascript, */*; q=0.01'
-        }
-      }
-    )
+  API.post(
+    API_CANCEL,
+    qs.stringify({
+      comments: 'Undo Product Add'
+    })
+  )
     .then(function(response) {
       console.log('remove from recharge')
       console.log(response)
@@ -530,6 +463,17 @@ export const undoAddProduct = ({ commit, state, dispatch }) => {
     })
 }
 
+export const updateChargeDate = (ctx, payload) => {
+  const { customerHash, date, subscriptionId } = payload
+  return axios.post(
+    `${shopifySubscriptionURL}/customers/${customerHash}/subscriptions/${subscriptionId}/set_next_charge_date/${date}`,
+    qs.stringify({
+      action: 'customer moved date',
+      first_charge_date: date
+    })
+  )
+}
+
 export const changeShipmentDateAction = (
   { commit, dispatch, state },
   payload
@@ -538,7 +482,7 @@ export const changeShipmentDateAction = (
 
   let {
     subscriptionIds,
-    newDate, // 2018-12-21 format
+    newDate: date, // 2018-12-21 format
     callbackType
   } = payload
 
@@ -554,45 +498,27 @@ export const changeShipmentDateAction = (
     commit('setShipsOnUpdating', true)
   }
 
-  subscriptionIds.forEach(function(subscriptionId) {
-    updatesRequired += 1
+  let length = subscriptionIds.length
 
-    let postUrl = `https://shopifysubscriptions.com/customers/${customerHash}/subscriptions/${subscriptionId}/set_next_charge_date/${newDate}`
-
-    promise = promise.then(function() {
-      axios
-        .post(
-          postUrl,
-          qs.stringify({
-            purchase_id: subscriptionId,
-            first_charge_date: newDate,
-            action: 'customer moved date'
-          }),
-          {
-            headers: {
-              'Content-Type':
-                'application/x-www-form-urlencoded; charset=UTF-8',
-              // 'X-Requested-With': 'XMLHttpRequest',
-              Accept: 'application/json, text/javascript, */*; q=0.01'
-            }
-          }
-        )
-        .then(function(response) {
-          completedUpdates += 1
-          updateView()
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
-
-      return new Promise(function(resolve) {
+  subscriptionIds.forEach(subscriptionId => {
+    updatesRequired++
+    promise = promise.then(() => {
+      dispatch('updateChargeDate', {
+        customerHash,
+        date,
+        subscriptionId
+      }).then(() => {
+        length--
+        updateView()
+      })
+      return new Promise(resolve => {
         setTimeout(resolve, interval)
       })
     })
   })
 
   function updateView() {
-    if (updatesRequired === completedUpdates) {
+    if (length === 0) {
       if (callbackType === 'edit-ships-on') {
         dispatch('loadInitialData', 'edit-ships-on')
       }
@@ -622,7 +548,7 @@ export const skipShipmentAction = ({ commit, dispatch, state }, payload) => {
   item_ids.forEach(function(id) {
     updatesRequired += 1
 
-    let skipShipmentEndpoint = `https://dryfarmwines.shopifysubscriptions.com/customers/${customerHash}/charges/${charge_id}/skip?date=${date}&charge_id=${charge_id}&item_ids[0]=${id}`
+    let skipShipmentEndpoint = `${shopifySubscriptionURL}/customers/${customerHash}/charges/${charge_id}/skip?date=${date}&charge_id=${charge_id}&item_ids[0]=${id}`
 
     promise = promise.then(function() {
       axios
@@ -685,28 +611,19 @@ export const combineSubscriptionsAction = ({
   })
 
   activeSubscriptionIds.forEach(function(id) {
-    let UPDATE_API = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${customerHash}/subscriptions/${id}/edit`
+    let UPDATE_API = `${rechargeURL}${customerHash}/subscriptions/${id}/edit`
 
     promises.push(
-      axios
-        .post(
-          UPDATE_API,
-          qs.stringify({
-            // purchase_item_id: id,
-            charge_interval_frequency: chargeIntervalFrequency,
-            charge_interval_unit_type: chargeIntervalUnit,
-            order_interval_frequency: chartIntervalFrequency,
-            address_id: addressId
-          }),
-          {
-            headers: {
-              'Content-Type':
-                'application/x-www-form-urlencoded; charset=UTF-8',
-              'X-Requested-With': 'XMLHttpRequest',
-              Accept: 'application/json, text/javascript, */*; q=0.01'
-            }
-          }
-        )
+      API.post(
+        UPDATE_API,
+        qs.stringify({
+          // purchase_item_id: id,
+          charge_interval_frequency: chargeIntervalFrequency,
+          charge_interval_unit_type: chargeIntervalUnit,
+          order_interval_frequency: chartIntervalFrequency,
+          address_id: addressId
+        })
+      )
         .then(function(response) {
           console.log(response)
         })
@@ -745,24 +662,15 @@ export const cancelSubscriptionAction = (
   commit('setCancellationUpdating', true)
 
   subscriptionIds.forEach(function(subscriptionId) {
-    const API_CANCEL = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${customerHash}/subscriptions/${subscriptionId}/cancel/${reasonToCancel}`
+    const API_CANCEL = `${rechargeURL}${customerHash}/subscriptions/${subscriptionId}/cancel/${reasonToCancel}`
 
     promises.push(
-      axios
-        .post(
-          API_CANCEL,
-          qs.stringify({
-            comments: reasonToCancel
-          }),
-          {
-            headers: {
-              'Content-Type':
-                'application/x-www-form-urlencoded; charset=UTF-8',
-              'X-Requested-With': 'XMLHttpRequest',
-              Accept: 'application/json, text/javascript, */*; q=0.01'
-            }
-          }
-        )
+      API.post(
+        API_CANCEL,
+        qs.stringify({
+          comments: reasonToCancel
+        })
+      )
         .then(function(response) {
           console.log('removed from recharge')
           console.log(response)

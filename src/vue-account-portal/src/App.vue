@@ -129,14 +129,12 @@ export default {
 }
 
 $(document).ready(function() {
-  console.log('document ready')
   $(document).on('click', '.js-expand-trigger', function() {
     var wrapper = $(this).closest('.js-expand-wrapper')
     var content = wrapper.find('.js-expand-content')
     $(this).toggleClass('is-open')
 
     content.toggleClass('is-closed')
-    console.log('run trigger')
   })
 })
 </script>

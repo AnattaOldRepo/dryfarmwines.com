@@ -1,18 +1,25 @@
 <template>
   <div class="c-rDrawerEditPayment">
     <span class="c-rDrawer__title">Payment Method</span>
-    <div class="c-sub__card" v-if="customer.customer_card">
-      <img v-if="creditCardImage" :src="creditCardImage" />
+    <div
+      class="c-sub__card"
+      v-if="customer.customer_card"
+    >
+      <img
+        v-if="creditCardImage"
+        :src="creditCardImage"
+      />
       <span> *{{ customer.customer_card.last4 }}</span>
-      <span
-        >{{ customer.customer_card.exp_month }}/{{
-          customer.customer_card.exp_month
-        }}</span
-      >
+      <span>{{ customer.customer_card.exp_month }}/{{
+        customer.customer_card.exp_month
+        }}</span>
     </div>
 
     <div class="c-rDrawer__actionBox">
-      <a class="c-rButton c-rButton--red" @click.prevent="editCard">
+      <a
+        class="c-rButton c-rButton--red"
+        @click.prevent="editCard"
+      >
         Edit Card
       </a>
     </div>
@@ -21,6 +28,7 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
+import { rechargeURL } from '@/config'
 
 export default {
   name: 'DrawerEditPayment',
@@ -94,9 +102,7 @@ export default {
     editCard() {
       // let editCardUrl = `https://checkout.rechargeapps.com/customer/${this.customerHash}/card_edit/`
 
-      let editCardUrl = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${
-        this.customerHash
-      }/card`
+      let editCardUrl = `${rechargeURL}${this.customerHash}/card`
 
       console.log(editCardUrl)
 

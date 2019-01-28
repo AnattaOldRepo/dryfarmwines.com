@@ -133,10 +133,7 @@ export const setActiveDeliveryIntervalUnit = (state, value) => {
 }
 
 export const setDeliverySchedule = (state, value) => {
-  console.log('setDeliverySchedule')
-  console.log(value)
-
-  state.deliverySchedule = [...state.deliverySchedule, ...value]
+  state.deliverySchedule = value
 }
 
 export const setAddressUpdating = (state, value) => {

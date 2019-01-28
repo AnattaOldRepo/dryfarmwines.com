@@ -15,11 +15,13 @@
         <span
           class="c-sub__initialMessage__error"
           style="max-width:700px;"
-        >Uh oh! Something's off and your subscription has been put on hold.
+        >
+          Uh oh! Something's off and your subscription has been put on hold.
           We're so sorry! Please navigate to the "your details" section of your
           account and make sure we have your most up-to-date payment info. If we
           do, then please email membership@dryfarmwines.com and we'll help get
-          to the bottom of it. Sorry again for this inconvenience!</span>
+          to the bottom of it. Sorry again for this inconvenience!
+        </span>
         <div class="c-rDrawerProduct__actionBox">
           <router-link :to="{ name: 'DetailsPage', params: {} }">
             <base-button>Update Information</base-button>
@@ -34,7 +36,7 @@
         <span class="c-sub__initialMessage">looks like you have no current subscriptions.</span>
         <div class="c-rDrawerProduct__actionBox">
           <base-button>
-            <a href="https://www.dryfarmwines.com/pages/membership">
+            <a :href="`${this.siteURL}/pages/membership`">
               Subscribe & Save
             </a>
           </base-button>
@@ -490,6 +492,7 @@ import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 import GridProduct from '../components/GridProduct.vue'
 import SubscriptionSelect from '../components/SubscriptionSelect.vue'
 import moment from 'moment'
+import { rechargeURL, siteURL } from '@/config'
 
 export default {
   name: 'Subscription',
@@ -521,17 +524,16 @@ export default {
     }
   },
 
-  data: function() {
-    return {
-      initialDataLoading: true,
-      visibleProductsCount: 6,
-      selectedDeliverySchedule: false,
-      selectedDeliveryScheduleIndex: null,
+  data: () => ({
+    initialDataLoading: true,
+    visibleProductsCount: 6,
+    selectedDeliverySchedule: false,
+    selectedDeliveryScheduleIndex: null,
 
-      subscriptionSettingsOpenMobile: false,
-      addressPaymentOpenMobile: false
-    }
-  },
+    subscriptionSettingsOpenMobile: false,
+    addressPaymentOpenMobile: false,
+    siteURL
+  }),
 
   computed: {
     ...mapState([
@@ -658,17 +660,13 @@ export default {
     ]),
 
     editCard() {
-      let editCardUrl = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${
-        this.customerHash
-      }/card`
+      let editCardUrl = `${rechargeURL}${this.customerHash}/card`
 
       document.location = editCardUrl
     },
 
     editBillingAddress() {
-      let editBillingAddressUrl = `https://www.dryfarmwines.com/tools/recurring/customer_portal/${
-        this.customerHash
-      }/edit/`
+      let editBillingAddressUrl = `${rechargeURL}${this.customerHash}/edit/`
 
       // editBillingAddressUrl += '?preview_theme=1792#/' // only for testing
 

@@ -205,7 +205,6 @@ export default {
     },
 
     cancelSubscriptions() {
-      console.log('cancel subscriptions')
 
       if (this.selectedReason !== null) {
         this.setCancellationUpdating(true)
@@ -225,13 +224,6 @@ export default {
           (delivery, index) => {
             payload.subscriptionIds.push(delivery.subscription.id)
 
-            console.log(delivery)
-            console.log(index)
-            console.log(
-              'activeDeliveryScheduleCount ',
-              activeDeliveryScheduleCount
-            )
-
             // if first one
             if (activeDeliveryScheduleCount === 1 || index === 0) {
               payload.subscriptionTitles += delivery.subscription.product_title
@@ -247,8 +239,6 @@ export default {
                 delivery.subscription.product_title
               }`
             }
-
-            console.log('paylod at end of each loop', payload)
           }
         )
 
@@ -261,8 +251,6 @@ export default {
         }s`
 
         this.cancelSubscriptionAction(payload)
-      } else {
-        console.log('reason not selected ')
       }
     },
 

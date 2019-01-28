@@ -3,12 +3,13 @@ import Vue from 'vue'
 import * as actions from './actions'
 import * as mutations from './mutations'
 import * as getters from './getters'
+import { rechargeURL } from '@/config'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    baseUrl: 'https://www.dryfarmwines.com/tools/recurring/customer_portal/',
+    baseUrl: rechargeURL,
     customerHash: '',
     customer: {},
     orders: [],
