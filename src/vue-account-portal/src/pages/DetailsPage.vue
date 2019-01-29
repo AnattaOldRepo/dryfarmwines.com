@@ -12,6 +12,15 @@
       v-else
     >
       <div class="c-details__left">
+        <base-card-wrapper title="Email & Password">
+          <base-card-item title="Email Address">
+            {{ customer.email }}
+          </base-card-item>
+          <base-card-item title="Password">
+            *******
+          </base-card-item>
+        </base-card-wrapper>
+
         <base-card-wrapper
           v-if="deliverySchedule.length"
           title="Your Subscription"
@@ -143,8 +152,6 @@ export default {
     }
   },
 
-  mounted() {},
-
   computed: {
     ...mapState([
       'customerHash',
@@ -171,9 +178,11 @@ export default {
     },
 
     customerName() {
-      var name = ''
-      var firstName = this.customer.first_name
-      var lastName = this.customer.last_name
+      let name = ''
+      const firstName = this.customer.first_name
+      const lastName = this.customer.last_name
+
+      Object.keys(this.customer).forEach(k => console.log(k, ':', this.customer[k]))
 
       if (firstName) {
         name += firstName
@@ -235,8 +244,6 @@ export default {
   },
 
   methods: {
-    ...mapActions([]),
-
     prettyDate(date) {
       return moment(date).format('MMM Do')
     },

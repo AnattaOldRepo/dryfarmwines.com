@@ -57,20 +57,27 @@ export default {
 
 .c-cardItem {
   display: block;
+  padding: 0;
   width: 100%;
   background: none;
   text-align: left;
   text-transform: none;
   font-size: 14px;
   color: $dark-text;
-  padding: 1.618em;
 
   &.has-pointer {
     cursor: pointer;
   }
+
+  &:not(:last-of-type) .c-cardItem__wrapper {
+    border-bottom: 1px solid $light-gray;
+  }
 }
 
 .c-cardItem__wrapper {
+  width: calc(100% - 3.236em);
+  margin: auto;
+  padding: 1.618em 0;
   display: grid;
   grid-template-columns: 1fr auto;
 }
