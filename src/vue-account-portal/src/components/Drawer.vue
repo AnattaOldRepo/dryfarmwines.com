@@ -1,44 +1,21 @@
 <template>
-  <div class="c-rDrawer" :class="{ 'is-open': drawerOpen }">
+  <div
+    class="c-rDrawer"
+    :class="{ 'is-open': drawerOpen }"
+  >
     <div class="c-rDrawer__inner">
-      <DrawerEditProduct v-if="drawerContentType == 'editProduct'" />
-
-      <DrawerSwapProduct
-        v-if="drawerContentType == 'swapProduct'"
+      <component
+        v-if="drawerContentType"
+        :is="drawers[drawerContentType]"
         :products="products"
         :subscriptions="subscriptions"
-      />
-
-      <DrawerAddProduct
-        v-if="drawerContentType == 'addProduct'"
-        :products="products"
-        :subscriptions="subscriptions"
-      />
-
-      <DrawerEditShipDate v-else-if="drawerContentType == 'editShipDate'" />
-
-      <DrawerEditFrequency v-else-if="drawerContentType == 'editFrequency'" />
-
-      <DrawerAddAddress v-else-if="drawerContentType == 'addAddress'" />
-
-      <DrawerEditPayment v-else-if="drawerContentType == 'editPayment'" />
-
-      <DrawerEditCard v-else-if="drawerContentType == 'editCard'" />
-
-      <DrawerEditBillingAddress
-        v-else-if="drawerContentType == 'editBillingAddress'"
-      />
-
-      <DrawerShippingAddresses
-        v-else-if="drawerContentType == 'shippingAddresses'"
-      />
-
-      <DrawerRetentionEditProducts
-        v-else-if="drawerContentType == 'retentionEditProducts'"
       />
     </div>
 
-    <span class="c-rDrawer__close" @click="closeDrawerAndResetType">
+    <span
+      class="c-rDrawer__close"
+      @click="closeDrawerAndResetType"
+    >
       <svg
         version="1.1"
         id="Capa_1"
@@ -53,14 +30,12 @@
         xml:space="preserve"
       >
         <g>
-          <path
-            d="M62.819,47.97l32.533-32.534c0.781-0.781,0.781-2.047,0-2.828L83.333,0.586C82.958,0.211,82.448,0,81.919,0
+          <path d="M62.819,47.97l32.533-32.534c0.781-0.781,0.781-2.047,0-2.828L83.333,0.586C82.958,0.211,82.448,0,81.919,0
                     c-0.53,0-1.039,0.211-1.414,0.586L47.97,33.121L15.435,0.586c-0.75-0.75-2.078-0.75-2.828,0L0.587,12.608
                     c-0.781,0.781-0.781,2.047,0,2.828L33.121,47.97L0.587,80.504c-0.781,0.781-0.781,2.047,0,2.828l12.02,12.021
                     c0.375,0.375,0.884,0.586,1.414,0.586c0.53,0,1.039-0.211,1.414-0.586L47.97,62.818l32.535,32.535
                     c0.375,0.375,0.884,0.586,1.414,0.586c0.529,0,1.039-0.211,1.414-0.586l12.02-12.021c0.781-0.781,0.781-2.048,0-2.828L62.819,47.97
-                    z"
-          />
+                    z" />
         </g>
       </svg>
     </span>
@@ -100,35 +75,32 @@ export default {
   },
 
   props: {
-    products: {
-      type: Array,
-      required: false
-    },
+    products: Array,
+    subscriptions: Array
+  },
 
-    subscriptions: {
-      type: Array,
-      required: true
+  data: () => ({
+    drawers: {
+      editProduct: DrawerEditProduct,
+      swapProduct: DrawerSwapProduct,
+      addProduct: DrawerAddProduct,
+      editShipDate: DrawerEditShipDate,
+      editFrequency: DrawerEditFrequency,
+      addAddress: DrawerAddAddress,
+      editPayment: DrawerEditPayment,
+      // editCard: DrawerEditCard,
+      editBillingAddress: DrawerEditBillingAddress,
+      shippingAddresses: DrawerShippingAddresses,
+      retentionEditProducts: DrawerRetentionEditProducts
     }
-  },
-
-  data: function() {
-    return {}
-  },
-
-  mounted() {},
+  }),
 
   computed: {
     ...mapState(['drawerOpen', 'drawerContentType'])
   },
 
   methods: {
-    ...mapMutations([
-      'setDrawerContentType',
-      'closeDrawer',
-      'openDrawer',
-      'toggleDrawer'
-    ]),
-
+    ...mapMutations(['setDrawerContentType', 'closeDrawer', 'openDrawer', 'toggleDrawer']),
     closeDrawerAndResetType() {
       this.closeDrawer()
       setTimeout(() => {
