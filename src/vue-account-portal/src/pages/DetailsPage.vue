@@ -12,181 +12,80 @@
       v-else
     >
       <div class="c-details__left">
-        <div
-          class="c-details__section"
+        <base-card-wrapper
           v-if="deliverySchedule.length"
+          title="Your Subscription"
         >
-          <h1 class="c-details__sectionTitle">Your Subscription</h1>
-          <router-link
-            class="c-details__sectionInner"
+          <base-card-item
+            :title="customerName"
+            component-is="router-link"
             tag="div"
             :to="{ name: 'SubscriptionPage' }"
           >
-            <div class="c-details__block">
-              <div class="c-details__blockSection">
-                <span class="c-details__blockSectionLabel">{{
-                  customerName
+            Next shipment is on {{ prettyDate(activeDeliveryChargeScheduledAt) }}
+          </base-card-item>
+        </base-card-wrapper>
+
+        <base-card-wrapper title="Billing Address">
+          <base-card-item
+            title="Billing Address"
+            @click="editBillingAddress"
+          >
+            <div v-if="billingAddressGetter.first_name || billingAddressGetter.last_name">
+              {{ billingAddressGetter.first_name || '' }} {{ billingAddressGetter.last_name || '' }}
+            </div>
+            <div v-if="billingAddressGetter.address1">
+              {{ billingAddressGetter.address1 }}
+            </div>
+            <div v-if="billingAddressGetter.address2">
+              {{ billingAddressGetter.address2 }}
+            </div>
+            <div v-if="billingAddressGetter.company">
+              {{ billingAddressGetter.company }}
+            </div>
+            <div v-if="hasCityProvinceOrZip">
+              {{ cityProvinceAndZip }}
+            </div>
+            <div v-if="billingAddressGetter.country">
+              {{ billingAddressGetter.country }}
+            </div>
+            <div v-if="billingAddressGetter.phone">
+              {{ billingAddressGetter.phone }}
+            </div>
+          </base-card-item>
+        </base-card-wrapper>
+
+        <div>
+          <base-card-wrapper title="Payment Method">
+            <base-card-item
+              title="Payment Method"
+              @click="openDrawerEditPayment"
+            >
+              <div
+                class="c-details__card"
+                v-if="
+                  customer.customer_payment_type === 'credit' &&
+                  customer.customer_card
+                "
+              >
+                <img
+                  v-if="creditCardImage"
+                  :src="creditCardImage"
+                />
+                <span> *{{ customer.customer_card.last4 }}</span>
+                <span>{{ customer.customer_card.exp_month }}/{{
+                  customer.customer_card.exp_year
                   }}</span>
-                <span>Next shipment is on
-                  {{ prettyDate(activeDeliveryChargeScheduledAt) }}</span>
               </div>
 
-              <svg
-                version="1.1"
-                id="Capa_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                width="306px"
-                height="306px"
-                viewBox="0 0 306 306"
-                style="enable-background:new 0 0 306 306;"
-                xml:space="preserve"
+              <div
+                class="c-details__card"
+                v-if="customer.customer_payment_type === 'paypal'"
               >
-                <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
-              </svg>
-            </div>
-          </router-link>
-        </div>
-
-        <div class="c-details__section">
-          <h1 class="c-details__sectionTitle">Billing Address</h1>
-          <div class="c-details__sectionInner">
-            <div
-              class="c-details__block"
-              @click.prevent="editBillingAddress"
-            >
-              <div class="c-details__blockSection c-details__blockSection--address">
-                <span
-                  class="c-details__blockSectionLabel"
-                  style="margin-bottom: 10px;"
-                >Billing Address</span>
-                <div>
-                  <span
-                    v-if="billingAddressGetter.first_name"
-                    class="is-inline"
-                  >{{ billingAddressGetter.first_name }}</span>
-                  <span
-                    v-if="billingAddressGetter.last_name"
-                    style="margin-left: 3px;"
-                    class="is-inline"
-                  >{{ billingAddressGetter.last_name }}</span>
-                  <span v-if="billingAddressGetter.address1">{{
-                    billingAddressGetter.address1
-                    }}</span>
-                  <span v-if="billingAddressGetter.address2">{{
-                    billingAddressGetter.address2
-                    }}</span>
-                  <span v-if="billingAddressGetter.company">{{
-                    billingAddressGetter.company
-                    }}</span>
-                  <span
-                    class="is-inline"
-                    v-if="billingAddressGetter.city"
-                  >{{ billingAddressGetter.city }},</span><span
-                    class="is-inline"
-                    v-if="billingAddressGetter.province"
-                    style="margin-left: 3px;"
-                  >{{ billingAddressGetter.province }}</span><span
-                    class="is-inline"
-                    v-if="billingAddressGetter.zip"
-                    style="margin-left: 3px;"
-                  >
-                    {{ billingAddressGetter.zip }}</span>
-                  <span v-if="billingAddressGetter.country">
-                    {{ billingAddressGetter.country }}</span>
-                  <span v-if="billingAddressGetter.phone">
-                    {{ billingAddressGetter.phone }}</span>
-                </div>
+                Paypal
               </div>
-
-              <svg
-                version="1.1"
-                id="Capa_1"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                x="0px"
-                y="0px"
-                width="306px"
-                height="306px"
-                viewBox="0 0 306 306"
-                style="enable-background:new 0 0 306 306;"
-                xml:space="preserve"
-              >
-                <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
-              </svg>
-            </div>
-          </div>
-          <a
-            class="c-details__sectionButton c-rButton"
-            @click.prevent="editBillingAddress"
-          >
-            <span>
-              Edit Address
-            </span>
-          </a>
-        </div>
-
-        <div class="c-details__section">
-          <h1 class="c-details__sectionTitle">Payment Method</h1>
-          <div class="c-details__sectionInner">
-            <div
-              class="c-details__block"
-              @click.prevent="openDrawerEditPayment"
-            >
-              <div class="c-details__blockSection">
-                <span class="c-details__blockSectionLabel">Payment Method</span>
-                <div
-                  class="c-details__card"
-                  v-if="
-                    customer.customer_payment_type === 'credit' &&
-                      customer.customer_card
-                  "
-                >
-                  <img
-                    v-if="creditCardImage"
-                    :src="creditCardImage"
-                  />
-                  <span> *{{ customer.customer_card.last4 }}</span>
-                  <span>{{ customer.customer_card.exp_month }}/{{
-                    customer.customer_card.exp_year
-                    }}</span>
-                </div>
-
-                <div
-                  class="c-details__card"
-                  v-if="customer.customer_payment_type === 'paypal'"
-                >
-                  <span>Paypal</span>
-                </div>
-
-                <svg
-                  version="1.1"
-                  id="Capa_1"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlns:xlink="http://www.w3.org/1999/xlink"
-                  x="0px"
-                  y="0px"
-                  width="306px"
-                  height="306px"
-                  viewBox="0 0 306 306"
-                  style="enable-background:new 0 0 306 306;"
-                  xml:space="preserve"
-                >
-                  <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <a
-            class="c-details__sectionButton c-rButton"
-            v-if="customer.customer_payment_type === 'credit'"
-            :href="updateCardUrl"
-          >
-            <span>Edit Card</span>
-          </a>
-
+            </base-card-item>
+          </base-card-wrapper>
           <div
             class="c-details__card"
             v-if="paypalEditInfoVisible"
@@ -205,14 +104,13 @@
               >instructions</a>.
             </span>
           </div>
-
-          <a
-            class="c-details__sectionButton c-rButton"
-            v-if="customer.customer_payment_type === 'paypal'"
-            @click.prevent="showPaypalEditInfo"
+          <base-button
+            component-is="a"
+            :href="cardUrl"
+            secondary
           >
-            <span>Edit Card</span>
-          </a>
+            Edit Card
+          </base-button>
         </div>
       </div>
     </div>
@@ -266,11 +164,7 @@ export default {
       'activeDeliveryIntervalUnit'
     ]),
 
-    ...mapGetters([
-      'activeSubscriptions',
-      'activeDeliveryChargeScheduledAt',
-      'billingAddressGetter'
-    ]),
+    ...mapGetters(['activeSubscriptions', 'activeDeliveryChargeScheduledAt', 'billingAddressGetter']),
 
     updateCardUrl() {
       return `/tools/recurring/customer/${this.customerHash}/card/`
@@ -304,22 +198,39 @@ export default {
 
       switch (creditCardBrand) {
         case 'Visa':
-          creditCardImage =
-            'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
+          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
           break
         case 'Amex':
-          creditCardImage =
-            'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
+          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
           break
         case 'Mastercard':
-          creditCardImage =
-            'https://cdn.shopify.com/s/files/1/0739/9341/files/mastercard-icon.png?9900082236234763207'
+          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/mastercard-icon.png?9900082236234763207'
           break
         default:
           creditCardImage = false
       }
 
       return creditCardImage
+    },
+
+    cardURL() {
+      if (this.customer.customer_payment_type === 'credit') {
+        return this.updateCardUrl
+      } else if (this.customer.customer_payment_type === 'paypal') {
+        return this.showPaypalEditInfo
+      }
+
+      return ''
+    },
+
+    hasCityProvinceOrZip() {
+      const { city, province, zip } = this.billingAddressGetter
+      return city || province || zip
+    },
+
+    cityProvinceAndZip() {
+      const { city, province, zip } = this.billingAddressGetter
+      return `${city || ''} ${province || ''} ${zip || ''}`
     }
   },
 
@@ -367,11 +278,7 @@ export default {
 
 <style lang="scss">
 .c-details {
-  // margin-left: 190px;
-  // padding: 54px 0 0;
-
   padding: 54px 20px 0;
-  lost-utility: clearfix;
   margin: 0 auto;
   max-width: 1060px;
 
@@ -405,118 +312,25 @@ export default {
   max-width: 350px;
 }
 
-.c-details__section {
-  width: 100%;
-  margin-bottom: 65px;
-
-  @media (max-width: 1023px) {
-    text-align: center;
-  }
-}
-
-.c-details__sectionTitle {
-  font-weight: 400;
-  font-size: 19px;
-  line-height: 29px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin: 0 0 20px;
-  padding: 0;
-  border: none;
-  text-align: left;
-
-  @media (max-width: 1023px) {
-    text-align: center;
-  }
-}
-
-.c-details__sectionInner {
-  background-color: #f7f7f7;
-
-  hr {
-    display: block;
-    width: calc(100% - 60px);
-    margin: 0 auto;
-  }
-
-  @media (max-width: 1023px) {
-    text-align: left;
-  }
-}
-
-.c-details__block {
-  padding: 28px 30px;
+.c-details__card {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  cursor: pointer;
-  position: relative;
+  justify-content: flex-start;
+  margin-top: 10px;
 
-  @media (max-width: 1023px) {
-    padding: 20px;
+  img {
+    width: 30px;
+    margin-right: 10px;
   }
 
-  svg {
-    width: 16px;
-    height: 16px;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-}
-
-.c-details__blockSection {
   span {
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 16px;
-    letter-spacing: 0;
-    display: block;
-    color: #000;
+    display: inline-block;
+    margin-bottom: 0;
+    line-height: 1;
 
-    &.is-inline {
-      display: inline-block;
-    }
-
-    &.c-details__blockSectionLabel {
-      font-weight: 700;
-      font-size: 13px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
+    &:first-of-type {
+      margin-right: 5px;
     }
   }
-  &.c-details__blockSection--address {
-    span:not(.c-details__blockSectionLabel) {
-      line-height: 19px;
-    }
-  }
-
-  .c-details__card {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 10px;
-
-    img {
-      width: 30px;
-      margin-right: 10px;
-    }
-
-    span {
-      display: inline-block;
-      margin-bottom: 0;
-      line-height: 1;
-
-      &:first-of-type {
-        margin-right: 5px;
-      }
-    }
-  }
-}
-
-.c-details__sectionButton {
-  margin-top: 34px;
 }
 </style>

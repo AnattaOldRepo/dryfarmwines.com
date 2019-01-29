@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import '../assets/css/variables.sass'
+@import '../assets/css/variables'
 
 .button
   background-color: $primary-color

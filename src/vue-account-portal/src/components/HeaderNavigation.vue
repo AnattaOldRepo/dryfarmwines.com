@@ -126,10 +126,10 @@
 
       <base-button
         class="c-rHeaderNav__button"
+        component-is="a"
         href="/account/logout"
         @click.prevent="logout"
         secondary
-        is-link
       >
         <div>
           Sign Out
@@ -334,10 +334,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/css/variables';
+
 .c-rHeader {
+  background: $header-background-color;
   box-sizing: border-box;
 
-  border-bottom: 1px solid #dcdcdc;
   * {
     box-sizing: border-box;
   }
@@ -380,7 +382,7 @@ export default {
     @media (min-width: 1024px) {
       max-width: 1100px;
       display: flex;
-      padding: 50px 20px;
+      padding: 3em 1.618em;
       margin: 0 auto;
       display: flex;
       align-items: center;

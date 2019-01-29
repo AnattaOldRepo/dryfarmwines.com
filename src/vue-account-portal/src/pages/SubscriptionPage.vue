@@ -36,8 +36,8 @@
         <span class="c-sub__initialMessage">looks like you have no current subscriptions.</span>
         <div class="c-rDrawerProduct__actionBox">
           <base-button
-            :href="`${this.siteURL}/pages/membership`"
-            is-link
+            href="/products/wine-membership"
+            component-is="a"
           >
             Subscribe & Save
           </base-button>
@@ -213,7 +213,7 @@
             >
               <div
                 class="c-sub__block"
-                @click.prevent="openDrawerEditFrequency"
+                @click="openDrawerEditFrequency"
               >
                 <div class="c-sub__blockSection">
                   <span class="c-sub__blockSectionLabel">Delivery Every</span>
