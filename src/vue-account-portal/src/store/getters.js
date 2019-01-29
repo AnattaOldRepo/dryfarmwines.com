@@ -1,5 +1,4 @@
-export const initialRechargeDataLoadingGetter = state =>
-  state.initialRechargeDataLoading
+export const initialRechargeDataLoadingGetter = state => state.initialRechargeDataLoading
 
 export const activeDeliveryScheduleGetter = (state, getters) => {
   const { uniqueDeliveries } = getters
@@ -14,24 +13,21 @@ export const activeDeliveryChargeScheduledAt = (state, getters) => {
     state.activeDeliveryScheduleIndex !== null &&
     getters.uniqueDeliveries[state.activeDeliveryScheduleIndex]
   ) {
-    console.log(
-      'state.activeDeliveryScheduleIndex',
-      state.activeDeliveryScheduleIndex
-    )
+    console.log('state.activeDeliveryScheduleIndex', state.activeDeliveryScheduleIndex)
     console.log('getters.uniqueDeliveries', getters.uniqueDeliveries)
     console.log(
       'getters.uniqueDeliveries[state.activeDeliveryScheduleIndex]',
       getters.uniqueDeliveries[state.activeDeliveryScheduleIndex]
     )
 
-    return getters.uniqueDeliveries[state.activeDeliveryScheduleIndex]
-      .delivery[0].subscription.next_charge_scheduled_at
+    return getters.uniqueDeliveries[state.activeDeliveryScheduleIndex].delivery[0].subscription.next_charge_scheduled_at
   }
 }
 
 export const activeDeliveryAddressGetter = state => state.activeDeliveryAddress
 
 export const uniqueDeliveries = state => {
+  console.log(state.deliverySchedule)
   const { deliverySchedule } = state
 
   let finalUniqueDeliveries = [] // return
@@ -141,8 +137,7 @@ export const productImages = state => {
   let productImagesById = {}
 
   state.products.forEach(product => {
-    productImagesById[product.shopify_product_id] =
-      product.shopify_product.image.src
+    productImagesById[product.shopify_product_id] = product.shopify_product.image.src
   })
 
   return productImagesById
@@ -171,7 +166,5 @@ export const availableProducts = (state, getters) => {
 }
 
 export const activeSubscriptions = state => {
-  return state.subscriptions.filter(
-    subscription => subscription.status === 'ACTIVE'
-  )
+  return state.subscriptions.filter(subscription => subscription.status === 'ACTIVE')
 }

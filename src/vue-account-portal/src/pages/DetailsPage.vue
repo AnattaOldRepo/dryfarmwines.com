@@ -8,7 +8,7 @@
     </div>
 
     <div
-      class="c-details clearfix"
+      class="c-details"
       v-else
     >
       <div class="c-details__left">
@@ -26,41 +26,12 @@
           title="Your Subscription"
         >
           <base-card-item
-            :title="customerName"
-            component-is="router-link"
-            tag="div"
-            :to="{ name: 'SubscriptionPage' }"
+            title="Delivery Every"
+            @click="setAndOpenDrawer('editFrequency')"
           >
-            Next shipment is on {{ prettyDate(activeDeliveryChargeScheduledAt) }}
-          </base-card-item>
-        </base-card-wrapper>
-
-        <base-card-wrapper title="Billing Address">
-          <base-card-item
-            title="Billing Address"
-            @click="editBillingAddress"
-          >
-            <div v-if="billingAddressGetter.first_name || billingAddressGetter.last_name">
-              {{ billingAddressGetter.first_name || '' }} {{ billingAddressGetter.last_name || '' }}
-            </div>
-            <div v-if="billingAddressGetter.address1">
-              {{ billingAddressGetter.address1 }}
-            </div>
-            <div v-if="billingAddressGetter.address2">
-              {{ billingAddressGetter.address2 }}
-            </div>
-            <div v-if="billingAddressGetter.company">
-              {{ billingAddressGetter.company }}
-            </div>
-            <div v-if="hasCityProvinceOrZip">
-              {{ cityProvinceAndZip }}
-            </div>
-            <div v-if="billingAddressGetter.country">
-              {{ billingAddressGetter.country }}
-            </div>
-            <div v-if="billingAddressGetter.phone">
-              {{ billingAddressGetter.phone }}
-            </div>
+            <span class="u-text-large">
+              {{ activeDeliveryFrequency }} {{ activeDeliveryIntervalUnit }}
+            </span>
           </base-card-item>
         </base-card-wrapper>
 
@@ -68,7 +39,7 @@
           <base-card-wrapper title="Payment Method">
             <base-card-item
               title="Payment Method"
-              @click="openDrawerEditPayment"
+              @click="setAndOpenDrawer('editPayment')"
             >
               <div
                 class="c-details__card"
@@ -122,6 +93,81 @@
           </base-button>
         </div>
       </div>
+
+      <div class="c-details__right">
+        <base-card-wrapper
+          v-if="shippingAddress"
+          title="Shipping Address"
+        >
+          <base-card-item
+            title="Shipping Address"
+            @click="setAndOpenDrawer('shippingAddresses')"
+          >
+            <div v-if="
+                shippingAddress.first_name ||
+                shippingAddress.last_name
+            ">
+              {{ shippingAddress.first_name || '' }}
+              {{ shippingAddress.last_name || '' }}
+            </div>
+            <div v-if="shippingAddress.address1">{{
+              shippingAddress.address1
+              }}
+            </div>
+            <div v-if="shippingAddress.address2">{{
+              shippingAddress.address2
+              }}
+            </div>
+            <div v-if="shippingAddress.company">{{
+              shippingAddress.company
+              }}
+            </div>
+            <div v-if="
+                shippingAddress.city ||
+                shippingAddress.province ||
+                shippingAddress.zip
+            ">
+              {{ shippingAddress.city || '' }},
+              {{ shippingAddress.province || '' }}
+              {{ shippingAddress.zip || '' }}
+            </div>
+            <div v-if="shippingAddress.country">
+              {{ shippingAddress.country }}
+            </div>
+            <div v-if="shippingAddress.phone">
+              {{ shippingAddress.phone }}
+            </div>
+          </base-card-item>
+        </base-card-wrapper>
+        <base-card-wrapper title="Billing Address">
+          <base-card-item
+            title="Billing Address"
+            @click="editBillingAddress"
+          >
+            <div v-if="billingAddressGetter.first_name || billingAddressGetter.last_name">
+              {{ billingAddressGetter.first_name || '' }} {{ billingAddressGetter.last_name || '' }}
+            </div>
+            <div v-if="billingAddressGetter.address1">
+              {{ billingAddressGetter.address1 }}
+            </div>
+            <div v-if="billingAddressGetter.address2">
+              {{ billingAddressGetter.address2 }}
+            </div>
+            <div v-if="billingAddressGetter.company">
+              {{ billingAddressGetter.company }}
+            </div>
+            <div v-if="hasCityProvinceOrZip">
+              {{ cityProvinceAndZip }}
+            </div>
+            <div v-if="billingAddressGetter.country">
+              {{ billingAddressGetter.country }}
+            </div>
+            <div v-if="billingAddressGetter.phone">
+              {{ billingAddressGetter.phone }}
+            </div>
+          </base-card-item>
+        </base-card-wrapper>
+      </div>
     </div>
   </div>
 </template>
@@ -146,11 +192,9 @@ export default {
     }
   },
 
-  data: function() {
-    return {
-      paypalEditInfoVisible: false
-    }
-  },
+  data: () => ({
+    paypalEditInfoVisible: false
+  }),
 
   computed: {
     ...mapState([
@@ -168,31 +212,14 @@ export default {
       'activeFirstDeliverySubscription',
       'activeDeliveryAddressId',
       'activeDeliveryFrequency',
-      'activeDeliveryIntervalUnit'
+      'activeDeliveryIntervalUnit',
+      'activeDeliveryAddress'
     ]),
 
     ...mapGetters(['activeSubscriptions', 'activeDeliveryChargeScheduledAt', 'billingAddressGetter']),
 
     updateCardUrl() {
       return `/tools/recurring/customer/${this.customerHash}/card/`
-    },
-
-    customerName() {
-      let name = ''
-      const firstName = this.customer.first_name
-      const lastName = this.customer.last_name
-
-      Object.keys(this.customer).forEach(k => console.log(k, ':', this.customer[k]))
-
-      if (firstName) {
-        name += firstName
-      }
-
-      if (lastName) {
-        name += ` ${lastName}`
-      }
-
-      return name
     },
 
     creditCardImage() {
@@ -223,6 +250,7 @@ export default {
     },
 
     cardURL() {
+      Object.keys(this.customer).forEach(k => console.log(k, ':', this.customer[k]))
       if (this.customer.customer_payment_type === 'credit') {
         return this.updateCardUrl
       } else if (this.customer.customer_payment_type === 'paypal') {
@@ -240,6 +268,10 @@ export default {
     cityProvinceAndZip() {
       const { city, province, zip } = this.billingAddressGetter
       return `${city || ''} ${province || ''} ${zip || ''}`
+    },
+
+    shippingAddress() {
+      return this.activeDeliveryAddress
     }
   },
 
@@ -275,8 +307,8 @@ export default {
       document.location = editBillingAddressUrl
     },
 
-    openDrawerEditPayment() {
-      this.setDrawerContentType('editPayment')
+    setAndOpenDrawer(contentType) {
+      this.setDrawerContentType(contentType)
       this.openDrawer()
     }
   }

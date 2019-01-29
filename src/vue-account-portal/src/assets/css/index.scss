@@ -276,3 +276,17 @@ select.c-rForm__input {
 .fade-leave-to {
   opacity: 0;
 }
+
+.u-text-large {
+  font-size: 23px !important;
+  line-height: 35px !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+}
+
+.u-text-med {
+  font-size: 16px !important;
+  line-height: 25px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0 !important;
+}

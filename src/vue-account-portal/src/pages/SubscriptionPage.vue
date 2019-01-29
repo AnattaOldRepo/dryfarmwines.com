@@ -211,18 +211,14 @@
               class="c-sub__sectionInner c-sub__sectionInner--closedMobile"
               :class="{ 'is-open-mobile': subscriptionSettingsOpenMobile }"
             >
-              <div
-                class="c-sub__block"
+              <base-card-item
+                title="Delivery Every"
                 @click="openDrawerEditFrequency"
               >
-                <div class="c-sub__blockSection">
-                  <span class="c-sub__blockSectionLabel">Delivery Every</span>
-                  <span class="u-text-large">{{ activeDeliveryFrequency }}
-                    {{ activeDeliveryIntervalUnit }}</span>
-                </div>
-
-                <base-chevron-right />
-              </div>
+                <span class="u-text-large">
+                  {{ activeDeliveryFrequency }} {{ activeDeliveryIntervalUnit }}
+                </span>
+              </base-card-item>
 
               <hr />
 
@@ -619,16 +615,13 @@ export default {
 
       switch (creditCardBrand) {
         case 'Visa':
-          creditCardImage =
-            'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
+          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
           break
         case 'Amex':
-          creditCardImage =
-            'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
+          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
           break
         case 'Mastercard':
-          creditCardImage =
-            'https://cdn.shopify.com/s/files/1/0739/9341/files/mastercard-icon.png?9900082236234763207'
+          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/mastercard-icon.png?9900082236234763207'
           break
         default:
           creditCardImage = false
@@ -696,22 +689,15 @@ export default {
     },
 
     setActiveDeliveryScheduleLocal() {
-      const activeFirstDeliverySubscription = this.selectedDeliverySchedule
-        .delivery[0].subscription
+      const activeFirstDeliverySubscription = this.selectedDeliverySchedule.delivery[0].subscription
 
       this.setActiveDeliverySchedule(this.selectedDeliverySchedule)
       this.setActiveDeliveryScheduleIndex(this.selectedDeliveryScheduleIndex)
 
       this.setActiveFirstDeliverySubscription(activeFirstDeliverySubscription)
-      this.setActiveDeliveryAddressId(
-        activeFirstDeliverySubscription.address_id
-      )
-      this.setActiveDeliveryFrequency(
-        activeFirstDeliverySubscription.charge_interval_frequency
-      )
-      this.setActiveDeliveryIntervalUnit(
-        activeFirstDeliverySubscription.charge_interval_unit
-      )
+      this.setActiveDeliveryAddressId(activeFirstDeliverySubscription.address_id)
+      this.setActiveDeliveryFrequency(activeFirstDeliverySubscription.charge_interval_frequency)
+      this.setActiveDeliveryIntervalUnit(activeFirstDeliverySubscription.charge_interval_unit)
     },
 
     selectDelivery(deliverySchedule, index) {
@@ -1068,20 +1054,6 @@ export default {
   @media (max-width: 1023px) {
     margin: 30px auto 70px;
   }
-}
-
-.u-text-large {
-  font-size: 23px !important;
-  line-height: 35px !important;
-  letter-spacing: 3px !important;
-  text-transform: uppercase !important;
-}
-
-.u-text-med {
-  font-size: 16px !important;
-  line-height: 25px !important;
-  font-weight: 400 !important;
-  letter-spacing: 0 !important;
 }
 
 .c-sub__initialMessage__error {
