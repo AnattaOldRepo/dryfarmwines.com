@@ -389,7 +389,11 @@ _kms('//scripts.kissmetrics.com/' + _kmk + '.2.js');
 
 
         {% unless feature_image %}
+          {% if request.path contains 'customer_portal' %}
+          <div class="vue-container content">
+          {% else %}
           <div class="container main content">
+          {% endif %}
         {% endunless %}
 
         {% if template contains 'list-collections' %}
