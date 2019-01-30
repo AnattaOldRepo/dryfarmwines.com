@@ -45,17 +45,18 @@
 <script>
 import { mapState, mapMutations } from 'vuex'
 
-import DrawerEditProduct from '../components/DrawerEditProduct.vue'
-import DrawerSwapProduct from '../components/DrawerSwapProduct.vue'
-import DrawerAddProduct from '../components/DrawerAddProduct.vue'
-import DrawerEditShipDate from '../components/DrawerEditShipDate.vue'
-import DrawerEditFrequency from '../components/DrawerEditFrequency.vue'
-// import DrawerEditAddress from '../components/DrawerEditAddress.vue'
-import DrawerAddAddress from '../components/DrawerAddAddress.vue'
-import DrawerEditPayment from '../components/DrawerEditPayment.vue'
-import DrawerEditBillingAddress from '../components/DrawerEditBillingAddress.vue'
-import DrawerShippingAddresses from '../components/DrawerShippingAddresses.vue'
-import DrawerRetentionEditProducts from '../components/DrawerRetentionEditProducts.vue'
+import DrawerEditProduct from './DrawerEditProduct'
+import DrawerSwapProduct from './DrawerSwapProduct'
+import DrawerAddProduct from './DrawerAddProduct'
+import DrawerEditShipDate from './DrawerEditShipDate'
+import DrawerEditFrequency from './DrawerEditFrequency'
+// import DrawerEditAddress from './DrawerEditAddress'
+import DrawerAddAddress from './DrawerAddAddress'
+import DrawerEditPayment from './DrawerEditPayment'
+import DrawerEditBillingAddress from './DrawerEditBillingAddress'
+import DrawerShippingAddresses from './DrawerShippingAddresses'
+import DrawerRetentionEditProducts from './DrawerRetentionEditProducts'
+import DrawerChangePassword from './DrawerChangePassword'
 
 export default {
   name: 'Drawer',
@@ -91,7 +92,8 @@ export default {
       // editCard: DrawerEditCard,
       editBillingAddress: DrawerEditBillingAddress,
       shippingAddresses: DrawerShippingAddresses,
-      retentionEditProducts: DrawerRetentionEditProducts
+      retentionEditProducts: DrawerRetentionEditProducts,
+      changePassword: DrawerChangePassword
     }
   }),
 

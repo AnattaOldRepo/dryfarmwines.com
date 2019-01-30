@@ -12,14 +12,17 @@
       v-else
     >
       <div class="c-details__left">
-        <base-card-wrapper title="Email & Password">
+        <!-- <base-card-wrapper title="Email & Password">
           <base-card-item title="Email Address">
             {{ customer.email }}
           </base-card-item>
-          <base-card-item title="Password">
+          <base-card-item
+            title="Password"
+            @click="setAndOpenDrawer('changePassword')"
+          >
             *******
           </base-card-item>
-        </base-card-wrapper>
+        </base-card-wrapper> -->
 
         <base-card-wrapper
           v-if="deliverySchedule.length"
