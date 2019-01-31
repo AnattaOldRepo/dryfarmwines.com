@@ -155,14 +155,9 @@ export const availableProducts = (state, getters) => {
   })
 
   console.log('activeShopifyProductIds ', activeShopifyProductIds)
+  console.log(products)
 
-  return products.filter(product => {
-    return (
-      !activeShopifyProductIds.includes(product.shopify_product_id) &&
-      product.handle != 'mushroom-matcha-bundle-3-pack' &&
-      product.handle != 'mushroom-coffee-with-lions-mane-ground-3-pack'
-    )
-  })
+  return products.filter(product => !activeShopifyProductIds.includes(product.shopify_product_id))
 }
 
 export const activeSubscriptions = state => {

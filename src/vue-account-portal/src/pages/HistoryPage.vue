@@ -53,6 +53,7 @@ export default {
 }
 
 .c-rPageTitle {
+  text-align: center;
   font-weight: 400;
   font-size: 19px;
   line-height: 29px;

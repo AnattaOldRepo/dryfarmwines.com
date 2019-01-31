@@ -85,9 +85,7 @@ export default {
   mounted() {
     const vm = this
 
-    this.date = this.activeDeliveryScheduleGetter.delivery[0].subscription.next_charge_scheduled_at.split(
-      'T'
-    )[0]
+    this.date = this.activeDeliveryScheduleGetter.delivery[0].subscription.next_charge_scheduled_at.split('T')[0]
 
     this.$nextTick(() => {
       const minDate = moment()
@@ -97,8 +95,7 @@ export default {
         .add(60, 'days')
         .toDate()
 
-      this.dateOutsideRestriction =
-        moment(this.date, 'YYYY-MM-DD').diff(maxDate) > 0
+      this.dateOutsideRestriction = moment(this.date, 'YYYY-MM-DD').diff(maxDate) > 0
 
       const picker = new Pikaday({
         field: document.getElementById('datepicker-input'),
@@ -135,15 +132,7 @@ export default {
             'November',
             'December'
           ],
-          weekdays: [
-            'Sunday',
-            'Monday',
-            'Tuesday',
-            'Wednesday',
-            'Thursday',
-            'Friday',
-            'Saturday'
-          ],
+          weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
           weekdaysShort: ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']
         }
       })
@@ -167,10 +156,7 @@ export default {
       'shipsOnSaved'
     ]),
 
-    ...mapGetters([
-      'activeDeliveryChargeScheduledAt',
-      'activeDeliveryScheduleGetter'
-    ]),
+    ...mapGetters(['activeDeliveryChargeScheduledAt', 'activeDeliveryScheduleGetter']),
 
     nextDateShipment() {
       let date = this.activeDeliveryChargeScheduledAt.split('T')[0]
@@ -275,11 +261,11 @@ export default {
   position: relative;
   color: #333;
   background: #fff;
-  border: 1px solid #ccc;
+  // border: 1px solid #ccc;
   border-bottom-color: #bbb;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border: none;
-  box-shadow: 0px 1px 20px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px -4px rgba(0,0,0,0.125);
   margin-bottom: 20px;
 }
 
@@ -287,17 +273,17 @@ export default {
 clear child float (pika-lendar), using the famous micro clearfix hack
 http://nicolasgallagher.com/micro-clearfix-hack/
 */
-.pika-single:before,
-.pika-single:after {
-  content: ' ';
-  display: table;
-}
-.pika-single:after {
-  clear: both;
-}
-.pika-single {
-  *zoom: 1;
-}
+// .pika-single:before,
+// .pika-single:after {
+//   content: ' ';
+//   display: table;
+// }
+// .pika-single:after {
+//   clear: both;
+// }
+// .pika-single {
+//   *zoom: 1;
+// }
 
 .pika-single.is-hidden {
   display: none;
@@ -309,9 +295,10 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 }
 
 .pika-lendar {
-  float: left;
+  // float: left;
   width: 240px;
-  margin: 8px;
+  // margin: 8px;
+  padding: 1em;
 }
 
 .pika-title {
@@ -408,12 +395,15 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   border-collapse: collapse;
   border-spacing: 0;
   border: 0;
+  margin: 0;
 }
 
 .pika-table th,
 .pika-table td {
   width: 14.285714285714286%;
   padding: 0;
+  border: none;
+  border-left: none !important;
 }
 
 .pika-table th {
@@ -422,6 +412,8 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   line-height: 25px;
   font-weight: bold;
   text-align: center;
+  border-right: none;
+  background: none;
 
   font-weight: 400;
   opacity: 0.5;
@@ -440,6 +432,8 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   width: 100%;
   padding: 7px;
   background: #fff;
+  border-radius: 50%;
+  color: black;
 
   font-size: 16px;
   line-height: 19px;
@@ -451,6 +445,12 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   justify-content: center;
   width: 40px;
   height: 40px;
+
+  &:hover {
+    color: #ffffff;
+    opacity: 0.7;
+    background: #ee2e2d;
+  }
 }
 
 .pika-week {
@@ -477,16 +477,6 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   }
 }
 
-// .has-event .pika-button {
-// background: #005da9;
-// box-shadow: inset 0 1px 3px #0076c9;
-// }
-
-.is-disabled .pika-button,
-.is-inrange .pika-button {
-  background: #d5e9f7;
-}
-
 .is-startrange .pika-button {
   color: #fff;
   background: #6cb31d;
@@ -509,7 +499,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 }
 
 .is-outside-current-month .pika-button {
-  color: #999;
+  color: rgb(130, 130, 130);
   opacity: 0.3;
 }
 
@@ -518,19 +508,18 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   cursor: default;
 }
 
-.pika-button:hover,
-.pika-row.pick-whole-week:hover .pika-button {
-  // color: #fff;
-  // background: #999;
-  // box-shadow: none;
-  // border-radius: 50px
-}
-
-/* styling for abbr */
 .pika-table abbr {
   border-bottom: none;
   text-decoration: none;
   cursor: default;
+}
+
+.pika-table tr {
+  border: none;
+
+  &:first-child {
+    border: none;
+  }
 }
 
 .pika-title .pika-label:nth-of-type(2) {

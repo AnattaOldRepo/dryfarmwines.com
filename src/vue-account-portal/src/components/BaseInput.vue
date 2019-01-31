@@ -1,18 +1,24 @@
 <template>
-  <input
-    class="input"
-    v-bind="$attrs"
-    :value="value"
-    v-on="inputListeners"
-  />
+  <label>
+    {{ label }}
+    <input
+      class="input"
+      v-bind="$attrs"
+      :value="value"
+      v-on="inputListeners"
+    />
+  </label>
 </template>
 
 <script>
 export default {
   inheritAttrs: false,
   props: {
-    value: String,
-    required: true
+    value: {
+      type: String,
+      required: true
+    },
+    label: String
   },
   computed: {
     inputListeners() {

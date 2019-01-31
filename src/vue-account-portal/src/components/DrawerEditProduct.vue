@@ -34,17 +34,13 @@
         <div class="c-editProduct__lineitemEdit">
           <div class="c-editProduct__lineitemButtonBox">
             <base-button
-              class="c-rButton"
-              style="padding:10px 18px;"
+              class="c-button"
               @click="removeProduct(item.subscription, index)"
               secondary
             >
               Remove
             </base-button>
-            <base-button
-              class="c-rButton"
-              @click="swapProductSetup(item, index)"
-            >
+            <base-button @click="swapProductSetup(item, index)">
               Swap
             </base-button>
           </div>
@@ -100,12 +96,9 @@
     </div>
 
     <div class="c-rDrawerProduct__actionBox">
-      <a
-        class="c-rButton c-rButton--red"
-        @click.prevent="addProductSetup"
-      >
+      <base-button @click="addProductSetup">
         Add Products
-      </a>
+      </base-button>
     </div>
 
     <div
@@ -142,19 +135,6 @@ import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 export default {
   name: 'DrawerEditProduct',
 
-  props: {
-    // product: {
-    //     type: Object,
-    //     required: true
-    // }
-  },
-
-  data: function() {
-    return {}
-  },
-
-  mounted() {},
-
   computed: {
     ...mapState([
       'drawerOpen',
@@ -166,11 +146,7 @@ export default {
       'activeDeliveryIntervalUnit'
     ]),
 
-    ...mapGetters([
-      'productImages',
-      'activeDeliveryScheduleGetter',
-      'activeSubscriptions'
-    ])
+    ...mapGetters(['productImages', 'activeDeliveryScheduleGetter', 'activeSubscriptions'])
   },
 
   methods: {
@@ -244,18 +220,12 @@ export default {
       } else if (addOrRemove === 'remove') {
         newQuantity = currentQuantity - 1
       } else {
-        console.log(
-          'updateQuantity requires either or "add" or "remove" as a param'
-        )
+        console.log('updateQuantity requires either or "add" or "remove" as a param')
         return
       }
 
-      console.log('newQuantity', newQuantity)
-
       if (newQuantity <= 0) {
-        console.log(
-          'Unable to remove product by changing quantity, remove entire subscription'
-        )
+        console.log('Unable to remove product by changing quantity, remove entire subscription')
         this.removeProduct(item, index)
       } else {
         payload = {
@@ -344,8 +314,14 @@ export default {
 }
 
 .c-editProduct__lineitemButtonBox {
-  .c-rButton {
-    margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+
+  .c-button {
+    &:first-child {
+      padding-left: 0;
+      margin-right: 10px;
+    }
   }
 }
 

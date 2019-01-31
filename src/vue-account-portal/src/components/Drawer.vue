@@ -57,6 +57,7 @@ import DrawerEditBillingAddress from './DrawerEditBillingAddress'
 import DrawerShippingAddresses from './DrawerShippingAddresses'
 import DrawerRetentionEditProducts from './DrawerRetentionEditProducts'
 import DrawerChangePassword from './DrawerChangePassword'
+import DrawerSkipAShipment from './DrawerSkipAShipment'
 
 export default {
   name: 'Drawer',
@@ -72,7 +73,8 @@ export default {
     DrawerEditPayment,
     DrawerEditBillingAddress,
     DrawerShippingAddresses,
-    DrawerRetentionEditProducts
+    DrawerRetentionEditProducts,
+    DrawerSkipAShipment
   },
 
   props: {
@@ -93,7 +95,8 @@ export default {
       editBillingAddress: DrawerEditBillingAddress,
       shippingAddresses: DrawerShippingAddresses,
       retentionEditProducts: DrawerRetentionEditProducts,
-      changePassword: DrawerChangePassword
+      changePassword: DrawerChangePassword,
+      skipAShipment: DrawerSkipAShipment
     }
   }),
 

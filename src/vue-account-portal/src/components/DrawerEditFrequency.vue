@@ -69,6 +69,10 @@ import qs from 'qs'
 export default {
   name: 'DrawerEditFrequency',
 
+  mounted() {
+    console.log(this.$data, this.$props, this)
+  },
+
   computed: {
     ...mapState([
       'drawerOpen',
@@ -155,9 +159,6 @@ export default {
 </script>
 
 <style lang="scss">
-.c-rDrawerEditFrequency {
-}
-
 .c-rDrawerEditFrequency__frequencyOptionsContainer {
   margin-top: 30px;
   display: grid;

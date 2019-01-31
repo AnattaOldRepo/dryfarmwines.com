@@ -40,7 +40,7 @@ export default {
   font-size: 13px;
   line-height: 1;
   letter-spacing: 2px;
-  padding: 10px 30px;
+  padding: 10px 20px;
   text-align: center;
   font: inherit;
   font-weight: 700;

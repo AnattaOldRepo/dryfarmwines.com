@@ -155,11 +155,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/css/variables';
+
 .c-order {
-  background-color: #f7f7f7;
   width: 100%;
   max-width: 600px;
   margin: 0 auto 36px;
+  border: 1px solid $light-gray;
 }
 
 .c-rOrderHeader {

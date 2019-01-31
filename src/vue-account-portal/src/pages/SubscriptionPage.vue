@@ -45,7 +45,7 @@
       </div>
 
       <div
-        class="c-sub clearfix"
+        class="c-sub"
         v-else
       >
         <SubscriptionSelect
@@ -161,7 +161,7 @@
 
             <base-button
               class="c-sub__sectionButton"
-              @click="skipShipment"
+              @click="setAndOpenDrawer('skipAShipment')"
               v-if="!skipShipmentUpdating && !skipShipmentSaved"
               secondary
             >
@@ -461,7 +461,7 @@
           class="c-sub__right"
           v-if="activeDeliveryScheduleGetter"
         >
-          <h1 class="c-sub__sectionTitle">Mix & Match</h1>
+          <h1 class="c-sub__sectionTitle">Add Product</h1>
           <div class="c-subProductGrid">
             <grid-product
               v-for="product in visibleProducts"
@@ -481,15 +481,17 @@
         </div>
       </div>
     </div>
+    <!-- <modal-add-product /> -->
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
-import GridProduct from '../components/GridProduct.vue'
-import SubscriptionSelect from '../components/SubscriptionSelect.vue'
+import GridProduct from '@/components/GridProduct'
+import SubscriptionSelect from '@/components/SubscriptionSelect'
 import moment from 'moment'
 import { rechargeURL, siteURL } from '@/config'
+// import ModalAddProduct from '@/components/ModalAddProduct'
 
 export default {
   name: 'Subscription',
@@ -497,6 +499,7 @@ export default {
   components: {
     SubscriptionSelect,
     GridProduct
+    // ModalAddProduct
   },
 
   props: {
@@ -707,6 +710,11 @@ export default {
 
     prettyDate(date) {
       return moment(date).format('MMM Do')
+    },
+
+    setAndOpenDrawer(contentType) {
+      this.setDrawerContentType(contentType)
+      this.openDrawer()
     },
 
     openDrawerEditShipDate() {
