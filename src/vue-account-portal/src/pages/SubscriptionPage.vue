@@ -384,7 +384,7 @@
             </div>
             <base-button
               class="c-sub__sectionButton"
-              @click="cancelSubscription"
+              @click="openModal()"
               secondary
             >
               Cancel Subscription
@@ -473,21 +473,13 @@ export default {
     ...mapState([
       'drawerOpen',
       'drawerContentType',
-
-      'customerHash',
-
       'initialRechargeDataLoading',
-
       'skipShipmentUpdating',
       'skipShipmentSaved',
-
       'newProductAddedSaved',
-      'frequencySaved',
       'updatingRemovingProduct',
-
       'ShipmentUpdating',
       'ShipmentSaved',
-
       'activeDeliverySchedule',
       'activeFirstDeliverySubscription',
       'activeDeliveryAddressId',
@@ -497,14 +489,11 @@ export default {
     ]),
 
     ...mapGetters([
-      'activeSubscriptions',
       'activeDeliveryAddressGetter',
-      'billingAddressGetter',
       'productImages',
       'availableProducts',
       'activeDeliveryChargeScheduledAt',
       'uniqueDeliveries',
-
       'activeDeliveryScheduleGetter'
     ]),
 
@@ -576,26 +565,15 @@ export default {
 
     ...mapMutations([
       'setDrawerContentType',
-      'closeDrawer',
       'openDrawer',
-      'toggleDrawer',
-
-      'closeModal',
       'openModal',
-      'toggleModal',
-
       'setActiveDeliverySchedule',
       'setActiveDeliveryScheduleIndex',
-
       'setActiveFirstDeliverySubscription',
       'setActiveDeliveryAddressId',
       'setActiveDeliveryFrequency',
       'setActiveDeliveryIntervalUnit'
     ]),
-
-    cancelSubscription() {
-      this.openModal()
-    },
 
     skipShipment() {
       let payload = {
@@ -659,10 +637,6 @@ export default {
 </script>
 
 <style lang="scss">
-.test {
-  color: #000;
-}
-
 .c-sub {
   // margin-left: 190px;
   padding: 54px 20px 0;
