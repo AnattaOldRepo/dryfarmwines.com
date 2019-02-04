@@ -1,8 +1,8 @@
 <template>
   <div class="button__wrapper">
     <component
-      :is="!isLink ? 'button' : 'a'"
-      :href="isLink ? href : null"
+      :is="!href ? 'button' : 'a'"
+      :href="href || null"
       :class="[
         'button',
         {'button--secondary': secondary},
@@ -20,7 +20,6 @@ export default {
   props: {
     secondary: Boolean,
     center: Boolean,
-    isLink: Boolean,
     href: String
   }
 }

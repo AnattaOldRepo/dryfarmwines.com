@@ -236,15 +236,12 @@
             Subscription History</a>
         </nav>
 
-        <base-button secondary>
-          <a
-            class="c-rHeaderNav__button"
-            href="/account/logout"
-          >
-            <div>
-              <span>Sign Out</span>
-            </div>
-          </a>
+        <base-button
+          secondary
+          href="/account/logout"
+          class="c-rHeaderNav__button"
+        >
+          Sign Out
         </base-button>
       </div>
     </div>

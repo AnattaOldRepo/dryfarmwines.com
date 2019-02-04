@@ -65,7 +65,7 @@
             <div class="c-sub__sectionInner">
               <div
                 class="c-sub__block"
-                @click.prevent="openDrawerEditShipDate"
+                @click="setAndOpenDrawer('editShipDate')"
               >
                 <div class="c-sub__blockSection">
                   <span class="c-sub__blockSectionLabel">Ships On</span>
@@ -91,7 +91,7 @@
                     v-for="(item,
                     index) in activeDeliveryScheduleGetter.delivery"
                     :key="index"
-                    @click.prevent="openDrawerEditProduct"
+                    @click="setAndOpenDrawer('editProduct')"
                   >
                     <div class="c-sub__lineItemImageImageBox">
                       <img :src="
@@ -201,7 +201,7 @@
           <div class="c-sub__section">
             <h1
               class="c-sub__sectionTitle opens-section-on-mobile"
-              @click="toggleSubscriptionSettingsMobile()"
+              @click="toggle('subscriptionSettingsOpenMobile')"
               :class="{ 'is-open-title': subscriptionSettingsOpenMobile }"
             >
               Subscription Settings
@@ -213,7 +213,7 @@
             >
               <base-card-item
                 title="Delivery Every"
-                @click="openDrawerEditFrequency"
+                @click="setAndOpenDrawer('editFrequency')"
               >
                 <span class="u-text-large">
                   {{ activeDeliveryFrequency }} {{ activeDeliveryIntervalUnit }}
@@ -240,7 +240,7 @@
                       v-for="(item,
                       index) in activeDeliveryScheduleGetter.delivery"
                       :key="index"
-                      @click.prevent="openDrawerEditProduct"
+                      @click="setAndOpenDrawer('editProduct')"
                     >
                       <div class="c-sub__lineItemImageImageBox">
                         <img :src="
@@ -305,7 +305,7 @@
           <div class="c-sub__section">
             <h1
               class="c-sub__sectionTitle opens-section-on-mobile"
-              @click="toggleAddressPaymentMobile()"
+              @click="toggle('addressPaymentOpenMobile')"
               :class="{ 'is-open-title': addressPaymentOpenMobile }"
             >
               Address & Payment
@@ -317,7 +317,7 @@
             >
               <div
                 class="c-sub__block"
-                @click.prevent="openDrawerEditShippingAddresses"
+                @click="setAndOpenDrawer('shippingAddresses')"
               >
                 <div class="c-sub__blockSection c-sub__blockSection--address">
                   <span
@@ -370,7 +370,7 @@
 
               <div
                 class="c-sub__block"
-                @click.prevent="openDrawerEditPayment"
+                @click="setAndOpenDrawer('editPayment')"
               >
                 <div class="c-sub__blockSection">
                   <span class="c-sub__blockSectionLabel">Payment Method</span>
@@ -650,46 +650,12 @@ export default {
       this.openDrawer()
     },
 
-    openDrawerEditShipDate() {
-      this.setDrawerContentType('editShipDate')
-      this.openDrawer()
-    },
-
-    openDrawerEditFrequency() {
-      this.setDrawerContentType('editFrequency')
-      this.openDrawer()
-    },
-
-    openDrawerEditProduct() {
-      this.setDrawerContentType('editProduct')
-      this.openDrawer()
-    },
-
-    openDrawerEditBillingAddress() {
-      this.setDrawerContentType('editBillingAddress')
-      this.openDrawer()
-    },
-
-    openDrawerEditPayment() {
-      this.setDrawerContentType('editPayment')
-      this.openDrawer()
-    },
-
-    openDrawerEditShippingAddresses() {
-      this.setDrawerContentType('shippingAddresses')
-      this.openDrawer()
-    },
-
     browseAllProducts() {
       this.visibleProductsCount = this.products.length
     },
 
-    toggleSubscriptionSettingsMobile() {
-      this.subscriptionSettingsOpenMobile = !this.subscriptionSettingsOpenMobile
-    },
-
-    toggleAddressPaymentMobile() {
-      this.addressPaymentOpenMobile = !this.addressPaymentOpenMobile
+    toggle(dataProp) {
+      this[dataProp] = !this[dataProp]
     }
   }
 }
@@ -880,8 +846,10 @@ export default {
 
 .c-sub__sectionButton {
   margin-top: 54px;
+  justify-content: flex-start;
 
   @media (max-width: 1023px) {
+    justify-content: center;
     margin-top: 30px;
   }
 }
@@ -988,12 +956,11 @@ export default {
 }
 
 .c-sub__browseAll {
-  display: block;
-  max-width: 224px;
-  margin: 0 auto 100px;
+  margin: 0 0 100px;
+  justify-content: center;
 
   @media (max-width: 1023px) {
-    margin: 30px auto 70px;
+    margin: 30px 0 70px;
   }
 }
 
