@@ -22,7 +22,9 @@ export const updateQuantityView = (state, payload) => {
   let { indexInDelivery, newQuantity } = payload
 
   console.log('update quantity view')
-  state.activeDeliverySchedule.delivery[indexInDelivery].subscription.quantity = newQuantity
+  state.activeDeliverySchedule.delivery[
+    indexInDelivery
+  ].subscription.quantity = newQuantity
   state.productEditDrawerUpdating = false
   state.productEditDrawerSaved = true
 }

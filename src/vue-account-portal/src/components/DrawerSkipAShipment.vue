@@ -37,7 +37,9 @@
       </p>
     </div> -->
 
-    <div class="c-shipsOnDate u-textCenter">{{ moment(nextShipmentDates[0], 'MMMM Do, YYYY').format('MMMM D, YYYY') }}</div>
+    <div class="c-shipsOnDate u-textCenter">
+      {{ moment(nextShipmentDates[0], 'MMMM Do, YYYY').format('MMMM D, YYYY') }}
+    </div>
 
     <div class="u-textCenter">Want to skip a shipment?</div>
 
@@ -52,7 +54,9 @@
 
     <hr />
 
-    <span class="c-rDrawer__title c-rDrawer__title--nextShipment">next shipments</span>
+    <span class="c-rDrawer__title c-rDrawer__title--nextShipment"
+      >next shipments</span
+    >
     <div
       class="c-rDrawer__text c-rDrawer__text--med"
       v-for="date in nextShipmentDates"

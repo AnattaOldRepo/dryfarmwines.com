@@ -1,10 +1,7 @@
 <template>
   <div class="c-subProductGrid__product">
     <div class="c-subProduct__productImageBox">
-      <img
-        :src="productImageSrc"
-        class="c-subProduct__productImage"
-      />
+      <img :src="productImageSrc" class="c-subProduct__productImage" />
     </div>
 
     <div class="c-subProduct__productInfoBox">

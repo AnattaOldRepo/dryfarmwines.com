@@ -1,12 +1,7 @@
 <template>
   <label>
     {{ label }}
-    <input
-      class="input"
-      v-bind="$attrs"
-      :value="value"
-      v-on="inputListeners"
-    />
+    <input class="input" v-bind="$attrs" :value="value" v-on="inputListeners" />
   </label>
 </template>
 

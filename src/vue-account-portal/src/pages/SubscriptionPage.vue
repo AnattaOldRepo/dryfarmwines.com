@@ -1,21 +1,12 @@
 <template>
   <div>
-    <div
-      class="c-sub__initialContainer"
-      v-if="initialRechargeDataLoading"
-    >
+    <div class="c-sub__initialContainer" v-if="initialRechargeDataLoading">
       <span class="c-sub__initialMessage">Loading ...</span>
     </div>
 
     <div v-else>
-      <div
-        class="c-sub__initialContainer"
-        v-if="customer.has_error_charge"
-      >
-        <span
-          class="c-sub__initialMessage__error"
-          style="max-width:700px;"
-        >
+      <div class="c-sub__initialContainer" v-if="customer.has_error_charge">
+        <span class="c-sub__initialMessage__error" style="max-width:700px;">
           Uh oh! Something's off and your subscription has been put on hold.
           We're so sorry! Please navigate to the "your details" section of your
           account and make sure we have your most up-to-date payment info. If we
@@ -33,21 +24,17 @@
         class="c-sub__initialContainer"
         v-else-if="deliverySchedule.length === 0"
       >
-        <span class="c-sub__initialMessage">looks like you have no current subscriptions.</span>
+        <span class="c-sub__initialMessage"
+          >looks like you have no current subscriptions.</span
+        >
         <div class="c-rDrawerProduct__actionBox">
-          <base-button
-            href="/products/wine-membership"
-            component-is="a"
-          >
+          <base-button href="/products/wine-membership" component-is="a">
             Subscribe & Save
           </base-button>
         </div>
       </div>
 
-      <div
-        class="c-sub"
-        v-else
-      >
+      <div class="c-sub" v-else>
         <SubscriptionSelect
           :class="{ 'is-hidden': uniqueDeliveries.length > 1 }"
           :customer="customer"
@@ -56,10 +43,7 @@
           :subscriptions="subscriptions"
         />
 
-        <div
-          class="c-sub__left"
-          v-if="activeDeliveryScheduleGetter"
-        >
+        <div class="c-sub__left" v-if="activeDeliveryScheduleGetter">
           <div class="c-sub__section">
             <h2 class="c-sub__sectionTitle">Your Next Shipment</h2>
             <div class="c-sub__sectionInner">
@@ -71,17 +55,14 @@
                   <span class="c-sub__blockSectionLabel">Ships On</span>
                   <span class="u-text-large">{{
                     prettyDate(activeDeliveryChargeScheduledAt)
-                    }}</span>
+                  }}</span>
                 </div>
                 <base-chevron-right />
               </div>
 
               <hr />
 
-              <div
-                class="c-sub__block"
-                style="padding: 0 30px;"
-              >
+              <div class="c-sub__block" style="padding: 0 30px;">
                 <div
                   class="c-sub__lineItems"
                   v-if="activeDeliveryScheduleGetter"
@@ -94,9 +75,11 @@
                     @click="setAndOpenDrawer('editProduct')"
                   >
                     <div class="c-sub__lineItemImageImageBox">
-                      <img :src="
+                      <img
+                        :src="
                           productImages[item.subscription.shopify_product_id]
-                        " />
+                        "
+                      />
                     </div>
 
                     <p>{{ item.subscription.product_title }}</p>
@@ -109,24 +92,23 @@
               <hr />
 
               <div class="c-sub__block">
-                <div
-                  class="c-sub__blockSection"
-                  style="cursor: default;"
-                >
-                  <span class="u-text-med">Total: {{ activeDeliveryPrice }}</span>
+                <div class="c-sub__blockSection" style="cursor: default;">
+                  <span class="u-text-med"
+                    >Total: {{ activeDeliveryPrice }}</span
+                  >
                 </div>
               </div>
 
-              <div
-                class="c-sub__block"
-                v-if="newProductAddedSaved"
-              >
+              <div class="c-sub__block" v-if="newProductAddedSaved">
                 <div class="c-sub__undoSection">
                   <div
                     class="c-rDrawer__updateMessage"
                     v-if="!updatingRemovingProduct"
                   >
-                    <span class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success">SAVED</span>
+                    <span
+                      class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success"
+                      >SAVED</span
+                    >
                     <div class="c-rDrawer__updateMessageIcon--save">
                       <svg
                         version="1.1"
@@ -135,7 +117,9 @@
                         xmlns:xlink="http://www.w3.org/1999/xlink"
                         enable-background="new 0 0 26 26"
                       >
-                        <path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z" />
+                        <path
+                          d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -149,11 +133,10 @@
                     Undo
                   </base-button>
 
-                  <div
-                    class="c-rDrawer__updateMessage"
-                    v-else
-                  >
-                    <span class="c-rDrawer__updateMessageText">Updating...</span>
+                  <div class="c-rDrawer__updateMessage" v-else>
+                    <span class="c-rDrawer__updateMessageText"
+                      >Updating...</span
+                    >
                   </div>
                 </div>
               </div>
@@ -174,7 +157,10 @@
               v-if="skipShipmentSaved"
               transition="fade"
             >
-              <span class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success">SAVED</span>
+              <span
+                class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success"
+                >SAVED</span
+              >
               <div class="c-rDrawer__updateMessageIcon--save">
                 <svg
                   version="1.1"
@@ -183,15 +169,14 @@
                   xmlns:xlink="http://www.w3.org/1999/xlink"
                   enable-background="new 0 0 26 26"
                 >
-                  <path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z" />
+                  <path
+                    d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
+                  />
                 </svg>
               </div>
             </div>
 
-            <div
-              class="c-rDrawer__updateMessage"
-              v-if="skipShipmentUpdating"
-            >
+            <div class="c-rDrawer__updateMessage" v-if="skipShipmentUpdating">
               <span class="c-rDrawer__updateMessageText">Updating...</span>
             </div>
           </div>
@@ -222,15 +207,13 @@
 
               <hr />
 
-              <div
-                class="c-sub__block"
-                style="padding: 28px 30px 0"
-              >
+              <div class="c-sub__block" style="padding: 28px 30px 0">
                 <div class="c-sub__blockSection">
                   <span
                     class="c-sub__blockSectionLabel"
                     style="margin-bottom: 0;"
-                  >Products</span>
+                    >Products</span
+                  >
                   <div
                     class="c-sub__lineItems"
                     v-if="activeDeliveryScheduleGetter"
@@ -243,9 +226,11 @@
                       @click="setAndOpenDrawer('editProduct')"
                     >
                       <div class="c-sub__lineItemImageImageBox">
-                        <img :src="
+                        <img
+                          :src="
                             productImages[item.subscription.shopify_product_id]
-                          " />
+                          "
+                        />
                       </div>
 
                       <p>{{ item.subscription.product_title }}</p>
@@ -258,16 +243,16 @@
 
               <hr v-if="newProductAddedSaved" />
 
-              <div
-                class="c-sub__block"
-                v-if="newProductAddedSaved"
-              >
+              <div class="c-sub__block" v-if="newProductAddedSaved">
                 <div class="c-sub__undoSection">
                   <div
                     class="c-rDrawer__updateMessage"
                     v-if="!updatingRemovingProduct"
                   >
-                    <span class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success">SAVED</span>
+                    <span
+                      class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success"
+                      >SAVED</span
+                    >
                     <div class="c-rDrawer__updateMessageIcon--save">
                       <svg
                         version="1.1"
@@ -276,7 +261,9 @@
                         xmlns:xlink="http://www.w3.org/1999/xlink"
                         enable-background="new 0 0 26 26"
                       >
-                        <path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z" />
+                        <path
+                          d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
+                        />
                       </svg>
                     </div>
                   </div>
@@ -289,11 +276,10 @@
                     Undo
                   </base-button>
 
-                  <div
-                    class="c-rDrawer__updateMessage"
-                    v-else
-                  >
-                    <span class="c-rDrawer__updateMessageText">Updating...</span>
+                  <div class="c-rDrawer__updateMessage" v-else>
+                    <span class="c-rDrawer__updateMessageText"
+                      >Updating...</span
+                    >
                   </div>
                 </div>
               </div>
@@ -323,43 +309,51 @@
                   <span
                     class="c-sub__blockSectionLabel"
                     style="margin-bottom: 10px;"
-                  >Shipping Address</span>
+                    >Shipping Address</span
+                  >
                   <div>
                     <span
                       v-if="activeDeliveryAddressGetter.first_name"
                       class="is-inline"
-                    >{{ activeDeliveryAddressGetter.first_name }}</span>
+                      >{{ activeDeliveryAddressGetter.first_name }}</span
+                    >
                     <span
                       v-if="activeDeliveryAddressGetter.last_name"
                       style="margin-left: 3px;"
                       class="is-inline"
-                    >{{ activeDeliveryAddressGetter.last_name }}</span>
+                      >{{ activeDeliveryAddressGetter.last_name }}</span
+                    >
                     <span v-if="activeDeliveryAddressGetter.address1">{{
                       activeDeliveryAddressGetter.address1
-                      }}</span>
+                    }}</span>
                     <span v-if="activeDeliveryAddressGetter.address2">{{
                       activeDeliveryAddressGetter.address2
-                      }}</span>
+                    }}</span>
                     <span v-if="activeDeliveryAddressGetter.company">{{
                       activeDeliveryAddressGetter.company
-                      }}</span>
+                    }}</span>
                     <span
                       class="is-inline"
                       v-if="activeDeliveryAddressGetter.city"
-                    >{{ activeDeliveryAddressGetter.city }},</span><span
+                      >{{ activeDeliveryAddressGetter.city }},</span
+                    ><span
                       style="margin-left: 3px;"
                       class="is-inline"
                       v-if="activeDeliveryAddressGetter.province"
-                    >{{ activeDeliveryAddressGetter.province }}</span><span
+                      >{{ activeDeliveryAddressGetter.province }}</span
+                    ><span
                       class="is-inline"
                       style="margin-left: 3px;"
                       v-if="activeDeliveryAddressGetter.zip"
                     >
-                      {{ activeDeliveryAddressGetter.zip }}</span>
+                      {{ activeDeliveryAddressGetter.zip }}</span
+                    >
                     <span v-if="activeDeliveryAddressGetter.country">
-                      {{ activeDeliveryAddressGetter.country }}</span>
+                      {{ activeDeliveryAddressGetter.country }}</span
+                    >
                     <span v-if="activeDeliveryAddressGetter.phone">
-                      {{ activeDeliveryAddressGetter.phone }}</span>
+                      {{ activeDeliveryAddressGetter.phone }}</span
+                    >
                   </div>
                 </div>
 
@@ -374,18 +368,14 @@
               >
                 <div class="c-sub__blockSection">
                   <span class="c-sub__blockSectionLabel">Payment Method</span>
-                  <div
-                    class="c-sub__card"
-                    v-if="customer.customer_card"
-                  >
-                    <img
-                      v-if="creditCardImage"
-                      :src="creditCardImage"
-                    />
+                  <div class="c-sub__card" v-if="customer.customer_card">
+                    <img v-if="creditCardImage" :src="creditCardImage" />
                     <span> *{{ customer.customer_card.last4 }}</span>
-                    <span>{{ customer.customer_card.exp_month }}/{{
-                      customer.customer_card.exp_year
-                      }}</span>
+                    <span
+                      >{{ customer.customer_card.exp_month }}/{{
+                        customer.customer_card.exp_year
+                      }}</span
+                    >
                   </div>
                 </div>
 
@@ -404,10 +394,7 @@
 
         <hr class="c-sub__sectionHR" />
 
-        <div
-          class="c-sub__right"
-          v-if="activeDeliveryScheduleGetter"
-        >
+        <div class="c-sub__right" v-if="activeDeliveryScheduleGetter">
           <h1 class="c-sub__sectionTitle">Add Product</h1>
           <div class="c-subProductGrid">
             <grid-product
@@ -438,15 +425,15 @@ import GridProduct from '@/components/GridProduct'
 import SubscriptionSelect from '@/components/SubscriptionSelect'
 import moment from 'moment'
 import { rechargeURL, siteURL } from '@/config'
-import ModalAddProduct from '@/components/ModalAddProduct'
+// import ModalAddProduct from '@/components/ModalAddProduct'
 
 export default {
   name: 'Subscription',
 
   components: {
     SubscriptionSelect,
-    GridProduct,
-    ModalAddProduct
+    GridProduct
+    // ModalAddProduct
   },
 
   props: {
@@ -565,13 +552,16 @@ export default {
 
       switch (creditCardBrand) {
         case 'Visa':
-          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
+          creditCardImage =
+            'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
           break
         case 'American Express':
-          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
+          creditCardImage =
+            'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
           break
         case 'Mastercard':
-          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/mastercard-icon.png?9900082236234763207'
+          creditCardImage =
+            'https://cdn.shopify.com/s/files/1/0739/9341/files/mastercard-icon.png?9900082236234763207'
           break
         default:
           creditCardImage = false
@@ -625,15 +615,22 @@ export default {
     },
 
     setActiveDeliveryScheduleLocal() {
-      const activeFirstDeliverySubscription = this.selectedDeliverySchedule.delivery[0].subscription
+      const activeFirstDeliverySubscription = this.selectedDeliverySchedule
+        .delivery[0].subscription
 
       this.setActiveDeliverySchedule(this.selectedDeliverySchedule)
       this.setActiveDeliveryScheduleIndex(this.selectedDeliveryScheduleIndex)
 
       this.setActiveFirstDeliverySubscription(activeFirstDeliverySubscription)
-      this.setActiveDeliveryAddressId(activeFirstDeliverySubscription.address_id)
-      this.setActiveDeliveryFrequency(activeFirstDeliverySubscription.charge_interval_frequency)
-      this.setActiveDeliveryIntervalUnit(activeFirstDeliverySubscription.charge_interval_unit)
+      this.setActiveDeliveryAddressId(
+        activeFirstDeliverySubscription.address_id
+      )
+      this.setActiveDeliveryFrequency(
+        activeFirstDeliverySubscription.charge_interval_frequency
+      )
+      this.setActiveDeliveryIntervalUnit(
+        activeFirstDeliverySubscription.charge_interval_unit
+      )
     },
 
     selectDelivery(deliverySchedule, index) {

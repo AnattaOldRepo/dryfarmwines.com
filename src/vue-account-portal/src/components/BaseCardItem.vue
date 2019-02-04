@@ -6,25 +6,16 @@
     :tag="tag"
     v-on="$listeners"
     :aria-label="ariaLabel"
-    :class="[
-      'c-cardItem',
-      {'has-pointer': !presentational}
-    ]"
+    :class="['c-cardItem', { 'has-pointer': !presentational }]"
   >
     <div class="c-cardItem__wrapper">
-      <div
-        v-if="title"
-        class="c-cardItem__title"
-      >
+      <div v-if="title" class="c-cardItem__title">
         {{ title }}
       </div>
       <div class="c-cardItem__content">
         <slot />
       </div>
-      <base-chevron-right
-        class="c-cardItem__chevron"
-        v-if="!presentational"
-      />
+      <base-chevron-right class="c-cardItem__chevron" v-if="!presentational" />
     </div>
   </component>
 </template>

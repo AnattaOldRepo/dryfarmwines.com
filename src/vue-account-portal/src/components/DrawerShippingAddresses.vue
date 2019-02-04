@@ -16,7 +16,6 @@
                 localActiveAddress.id == address.id
             }"
           >
-
             <span class="c-rOptionText c-rOptionText--1">{{
               address.address1
             }}</span>

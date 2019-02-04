@@ -1,11 +1,7 @@
 <template>
   <form @submit.prevent="changePassword">
     <span class="c-rDrawer__title">Change Password</span>
-    <base-input
-      type="text"
-      placeholder="New Password"
-      v-model="newPassword"
-    />
+    <base-input type="text" placeholder="New Password" v-model="newPassword" />
     <base-input
       type="text"
       placeholder="Password Confirmation"
@@ -53,4 +49,3 @@ export default {
   }
 }
 </script>
-

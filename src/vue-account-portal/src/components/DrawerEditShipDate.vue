@@ -11,10 +11,7 @@
       :value="date"
     />
 
-    <div
-      class="c-rDrawer__updateMessage"
-      v-if="shipsOnUpdating"
-    >
+    <div class="c-rDrawer__updateMessage" v-if="shipsOnUpdating">
       <span class="c-rDrawer__updateMessageText">Updating...</span>
     </div>
 
@@ -23,7 +20,10 @@
       v-else-if="shipsOnSaved"
       transition="fade"
     >
-      <span class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success">SAVED</span>
+      <span
+        class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success"
+        >SAVED</span
+      >
       <div class="c-rDrawer__updateMessageIcon--save">
         <svg
           version="1.1"
@@ -32,7 +32,9 @@
           xmlns:xlink="http://www.w3.org/1999/xlink"
           enable-background="new 0 0 26 26"
         >
-          <path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z" />
+          <path
+            d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
+          />
         </svg>
       </div>
     </div>
@@ -48,7 +50,9 @@
 
     <hr />
 
-    <span class="c-rDrawer__title c-rDrawer__title--nextShipment">next shipments</span>
+    <span class="c-rDrawer__title c-rDrawer__title--nextShipment"
+      >next shipments</span
+    >
     <p
       class="c-rDrawer__text c-rDrawer__text--med"
       v-for="date in nextShipmentDates"

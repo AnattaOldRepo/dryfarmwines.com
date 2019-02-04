@@ -5,8 +5,8 @@
       :href="href || null"
       :class="[
         'button',
-        {'button--secondary': secondary},
-        {'is-centered': center}
+        { 'button--secondary': secondary },
+        { 'is-centered': center }
       ]"
       v-on="$listeners"
     >
@@ -79,5 +79,3 @@ export default {
   }
 }
 </style>
-
-

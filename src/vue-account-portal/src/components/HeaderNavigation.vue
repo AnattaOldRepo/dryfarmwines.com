@@ -2,10 +2,7 @@
   <div class="c-rHeader">
     <div class="c-rHeader__inner c-rHeader__inner--desktop">
       <nav class="c-rHeaderNav">
-        <a
-          class="c-rHeaderNav__item"
-          href="/account"
-        >
+        <a class="c-rHeaderNav__item" href="/account">
           <svg
             style="margin-right:5px;"
             width="17px"
@@ -36,10 +33,7 @@
                   id="navigation"
                   transform="translate(187.000000, 156.000000)"
                 >
-                  <g
-                    id="Group-4"
-                    transform="translate(0.000000, 6.000000)"
-                  >
+                  <g id="Group-4" transform="translate(0.000000, 6.000000)">
                     <g id="sub-nav">
                       <g id="back-to-account">
                         <g id="Icon/Back">
@@ -50,10 +44,7 @@
                             width="24"
                             height="24"
                           ></rect>
-                          <mask
-                            id="back-to-account-mask-2"
-                            fill="white"
-                          >
+                          <mask id="back-to-account-mask-2" fill="white">
                             <use xlink:href="#back-to-account-path-1"></use>
                           </mask>
                           <g id="Mask"></g>
@@ -89,19 +80,22 @@
           :to="{ name: 'SubscriptionPage', params: {} }"
           exact
         >
-          Your Subscription</router-link>
+          Your Subscription</router-link
+        >
         <router-link
           v-if="!onCardUpdatePage"
           class="c-rHeaderNav__item"
           :to="{ name: 'DetailsPage', params: {} }"
         >
-          Your Details</router-link>
+          Your Details</router-link
+        >
         <router-link
           v-if="!onCardUpdatePage"
           class="c-rHeaderNav__item"
           :to="{ name: 'HistoryPage', params: {} }"
         >
-          Subscription History</router-link>
+          Subscription History</router-link
+        >
 
         <a
           v-if="onCardUpdatePage"
@@ -109,19 +103,22 @@
           :href="resetSubscriptionURL"
           exact
         >
-          Your Subscription</a>
+          Your Subscription</a
+        >
         <a
           v-if="onCardUpdatePage"
           class="c-rHeaderNav__item"
           :href="resetDetailsURL"
         >
-          Your Details</a>
+          Your Details</a
+        >
         <a
           v-if="onCardUpdatePage"
           class="c-rHeaderNav__item"
           :href="resetHistoryURL"
         >
-          Subscription History</a>
+          Subscription History</a
+        >
       </nav>
 
       <base-button
@@ -146,11 +143,13 @@
           >
             <g>
               <g>
-                <path d="M484.14,226.886L306.46,49.202c-5.072-5.072-11.832-7.856-19.04-7.856c-7.216,0-13.972,2.788-19.044,7.856l-16.132,16.136
+                <path
+                  d="M484.14,226.886L306.46,49.202c-5.072-5.072-11.832-7.856-19.04-7.856c-7.216,0-13.972,2.788-19.044,7.856l-16.132,16.136
                                 c-5.068,5.064-7.86,11.828-7.86,19.04c0,7.208,2.792,14.2,7.86,19.264L355.9,207.526H26.58C11.732,207.526,0,219.15,0,234.002
                                 v22.812c0,14.852,11.732,27.648,26.58,27.648h330.496L252.248,388.926c-5.068,5.072-7.86,11.652-7.86,18.864
                                 c0,7.204,2.792,13.88,7.86,18.948l16.132,16.084c5.072,5.072,11.828,7.836,19.044,7.836c7.208,0,13.968-2.8,19.04-7.872
-                                l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z" />
+                                l177.68-177.68c5.084-5.088,7.88-11.88,7.86-19.1C492.02,238.762,489.228,231.966,484.14,226.886z"
+                />
               </g>
             </g>
           </svg>
@@ -159,10 +158,7 @@
     </div>
 
     <div class="c-rHeader__inner c-rHeader__inner--mobile js-expand-wrapper">
-      <a
-        class="c-rBackToAccount"
-        href="/account"
-      >
+      <a class="c-rBackToAccount" href="/account">
         <span>Back to Account</span>
       </a>
 
@@ -180,7 +176,9 @@
           viewBox="0 0 306 306"
           xml:space="preserve"
         >
-          <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		"></polygon>
+          <polygon
+            points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		"
+          ></polygon>
         </svg>
       </div>
 
@@ -201,19 +199,22 @@
             :to="{ name: 'SubscriptionPage', params: {} }"
             exact
           >
-            Your Subscription</router-link>
+            Your Subscription</router-link
+          >
           <router-link
             v-if="!onCardUpdatePage"
             class="c-rHeaderNav__item"
             :to="{ name: 'DetailsPage', params: {} }"
           >
-            Your Details</router-link>
+            Your Details</router-link
+          >
           <router-link
             v-if="!onCardUpdatePage"
             class="c-rHeaderNav__item"
             :to="{ name: 'HistoryPage', params: {} }"
           >
-            Subscription History</router-link>
+            Subscription History</router-link
+          >
 
           <a
             v-if="onCardUpdatePage"
@@ -221,19 +222,22 @@
             :href="resetSubscriptionURL"
             exact
           >
-            Your Subscription</a>
+            Your Subscription</a
+          >
           <a
             v-if="onCardUpdatePage"
             class="c-rHeaderNav__item"
             :href="resetDetailsURL"
           >
-            Your Details</a>
+            Your Details</a
+          >
           <a
             v-if="onCardUpdatePage"
             class="c-rHeaderNav__item"
             :href="resetHistoryURL"
           >
-            Subscription History</a>
+            Subscription History</a
+          >
         </nav>
 
         <base-button

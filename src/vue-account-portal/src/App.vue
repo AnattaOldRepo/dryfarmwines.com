@@ -20,15 +20,9 @@
           @click="closeAndResetDrawer"
         />
       </transition>
-      <UpdateOverlay
-        class="c-rUpdateOverlay"
-        v-if="updateOverlay"
-      />
+      <UpdateOverlay class="c-rUpdateOverlay" v-if="updateOverlay" />
     </div>
-    <Drawer
-      :products="products"
-      :subscriptions="subscriptions"
-    />
+    <Drawer :products="products" :subscriptions="subscriptions" />
     <Modal v-if="modalOpen" />
   </div>
 </template>

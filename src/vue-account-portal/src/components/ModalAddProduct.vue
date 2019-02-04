@@ -1,30 +1,20 @@
 <template>
-  <div
-    v-if="isShown"
-    class="c-overlay"
-    @click="isShown = false"
-  >
+  <div v-if="isShown" class="c-overlay" @click="isShown = false">
     <div class="c-modal">
       <div>Product Image</div>
       <form>
         <div>Product Title</div>
         <label>
           Choose your delivery frequency
-          <select>
-
-          </select>
+          <select> </select>
         </label>
         <label>
           Varietal
-          <select>
-
-          </select>
+          <select> </select>
         </label>
         <label>
           Address
-          <select>
-
-          </select>
+          <select> </select>
         </label>
       </form>
     </div>
