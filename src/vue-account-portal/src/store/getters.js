@@ -1,4 +1,5 @@
-export const initialRechargeDataLoadingGetter = state => state.initialRechargeDataLoading
+export const initialRechargeDataLoadingGetter = state =>
+  state.initialRechargeDataLoading
 
 export const activeDeliveryScheduleGetter = (state, getters) => {
   const { uniqueDeliveries } = getters
@@ -13,14 +14,8 @@ export const activeDeliveryChargeScheduledAt = (state, getters) => {
     state.activeDeliveryScheduleIndex !== null &&
     getters.uniqueDeliveries[state.activeDeliveryScheduleIndex]
   ) {
-    console.log('state.activeDeliveryScheduleIndex', state.activeDeliveryScheduleIndex)
-    console.log('getters.uniqueDeliveries', getters.uniqueDeliveries)
-    console.log(
-      'getters.uniqueDeliveries[state.activeDeliveryScheduleIndex]',
-      getters.uniqueDeliveries[state.activeDeliveryScheduleIndex]
-    )
-
-    return getters.uniqueDeliveries[state.activeDeliveryScheduleIndex].delivery[0].subscription.next_charge_scheduled_at
+    return getters.uniqueDeliveries[state.activeDeliveryScheduleIndex]
+      .delivery[0].subscription.next_charge_scheduled_at
   }
 }
 
@@ -59,33 +54,24 @@ export const uniqueDeliveries = state => {
     // inside object keyed by delivery index, so we can figure out
     // where there's overlap in deliveries
     scheduleItem.delivery.forEach(item => {
-      console.log('item in uniquedelivery loop', item)
       if (!item.is_skipped) {
         subIdGroupsByDeliveryIndex[index].push(item.subscription.id)
       }
     })
   })
 
-  console.log('subIdGroupsByDeliveryIndex', subIdGroupsByDeliveryIndex)
-
   // key === index in deliverySchedule array
   Object.keys(subIdGroupsByDeliveryIndex).forEach(key => {
     let currentSubIdArr = subIdGroupsByDeliveryIndex[key]
 
     // add first one always
-    if (!finalUniqueDeliveries.length) {
-      console.log('first check sub ID arr', currentSubIdArr)
-
+    if (!finalUniqueDeliveries.length && currentSubIdArr.length) {
       // Make sure delivery has non-skipped items
-      if (currentSubIdArr.length) {
-        console.log('force add first', deliverySchedule[key])
+      // add actual deliverySchedule item -- deliveryShedule[key]
+      finalUniqueDeliveries.push(deliverySchedule[key])
 
-        // add actual deliverySchedule item -- deliveryShedule[key]
-        finalUniqueDeliveries.push(deliverySchedule[key])
-
-        // add arr to compare arr, to use for future checks
-        compareSubIdsArrArr.push(currentSubIdArr)
-      }
+      // add arr to compare arr, to use for future checks
+      compareSubIdsArrArr.push(currentSubIdArr)
     }
 
     // if one unique delivery already set
@@ -118,7 +104,7 @@ export const uniqueDeliveries = state => {
   return finalUniqueDeliveries
 }
 
-export const billingAddressGetter = (state, getters) => {
+export const billingAddressGetter = state => {
   return {
     address1: state.customer.billing_address1,
     address2: state.customer.billing_address2,
@@ -137,7 +123,8 @@ export const productImages = state => {
   let productImagesById = {}
 
   state.products.forEach(product => {
-    productImagesById[product.shopify_product_id] = product.shopify_product.image.src
+    productImagesById[product.shopify_product_id] =
+      product.shopify_product.image.src
   })
 
   return productImagesById
@@ -154,12 +141,13 @@ export const availableProducts = (state, getters) => {
     activeShopifyProductIds.push(subscription.shopify_product_id)
   })
 
-  console.log('activeShopifyProductIds ', activeShopifyProductIds)
-  console.log(products)
-
-  return products.filter(product => !activeShopifyProductIds.includes(product.shopify_product_id))
+  return products.filter(
+    product => !activeShopifyProductIds.includes(product.shopify_product_id)
+  )
 }
 
 export const activeSubscriptions = state => {
-  return state.subscriptions.filter(subscription => subscription.status === 'ACTIVE')
+  return state.subscriptions.filter(
+    subscription => subscription.status === 'ACTIVE'
+  )
 }

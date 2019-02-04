@@ -37,6 +37,10 @@
       </p>
     </div> -->
 
+    <div>{{ nextShipmentDates[0] }}</div>
+
+    <div>Want to skip a shipment?</div>
+
     <base-button
       @click="skipShipment"
       v-if="!skipShipmentUpdating && !skipShipmentSaved"
@@ -48,15 +52,19 @@
     <hr />
 
     <span class="c-rDrawer__title c-rDrawer__title--nextShipment">next shipments</span>
-    <p class="c-rDrawer__text c-rDrawer__text--med">{{ nextDateShipment }}</p>
-    <p class="c-rDrawer__text c-rDrawer__text--med">
-      {{ nextNextDateShipment }}
-    </p>
+    <div
+      class="c-rDrawer__text c-rDrawer__text--med"
+      v-for="date in nextShipmentDates"
+      :key="date"
+    >
+      {{ date }}
+    </div>
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import dates from '@/mixins/dates'
 import moment from 'moment'
 
 export default {
@@ -73,38 +81,15 @@ export default {
     }
   },
 
+  mixins: [dates],
+
   computed: {
     ...mapState([
       'drawerOpen',
       'drawerContentType',
-      'activeDeliveryAddressId',
-      'activeDeliveryFrequency',
       'shipsOnUpdating',
       'shipsOnSaved'
-    ]),
-
-    ...mapGetters(['activeDeliveryChargeScheduledAt', 'activeDeliveryScheduleGetter']),
-
-    nextDateShipment() {
-      let date = this.activeDeliveryChargeScheduledAt.split('T')[0]
-      let frequency = this.activeDeliveryFrequency
-      let result = moment(date, 'YYYY-MM-DD')
-        .add(frequency, 'days')
-        .format('MMMM Do, YYYY')
-
-      return result
-    },
-
-    nextNextDateShipment() {
-      let date = this.activeDeliveryChargeScheduledAt.split('T')[0]
-      let frequency = parseInt(this.activeDeliveryFrequency)
-      let frequency2 = frequency * 2
-      let result = moment(date, 'YYYY-MM-DD')
-        .add(frequency2, 'days')
-        .format('MMMM Do, YYYY')
-
-      return result
-    }
+    ])
   },
 
   methods: {

@@ -49,16 +49,19 @@
     <hr />
 
     <span class="c-rDrawer__title c-rDrawer__title--nextShipment">next shipments</span>
-    <p class="c-rDrawer__text c-rDrawer__text--med">{{ nextDateShipment }}</p>
-    <p class="c-rDrawer__text c-rDrawer__text--med">
-      {{ nextNextDateShipment }}
+    <p
+      class="c-rDrawer__text c-rDrawer__text--med"
+      v-for="date in nextShipmentDates"
+      :key="date"
+    >
+      {{ date }}
     </p>
   </div>
 </template>
 
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
-
+import dates from '@/mixins/dates'
 import Pikaday from 'pikaday'
 import moment from 'moment'
 
@@ -76,8 +79,12 @@ export default {
     }
   },
 
+  mixins: [dates],
+
   mounted() {
-    this.date = this.activeDeliveryScheduleGetter.delivery[0].subscription.next_charge_scheduled_at.split('T')[0]
+    this.date = this.activeDeliveryScheduleGetter.delivery[0].subscription.next_charge_scheduled_at.split(
+      'T'
+    )[0]
 
     this.$nextTick(() => {
       const minDate = moment()
@@ -87,7 +94,8 @@ export default {
         .add(60, 'days')
         .toDate()
 
-      this.dateOutsideRestriction = moment(this.date, 'YYYY-MM-DD').diff(maxDate) > 0
+      this.dateOutsideRestriction =
+        moment(this.date, 'YYYY-MM-DD').diff(maxDate) > 0
 
       const picker = new Pikaday({
         field: document.getElementById('datepicker-input'),
@@ -124,7 +132,15 @@ export default {
             'November',
             'December'
           ],
-          weekdays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+          weekdays: [
+            'Sunday',
+            'Monday',
+            'Tuesday',
+            'Wednesday',
+            'Thursday',
+            'Friday',
+            'Saturday'
+          ],
           weekdaysShort: ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']
         }
       })
@@ -136,33 +152,9 @@ export default {
       'drawerOpen',
       'drawerContentType',
       'activeDeliveryAddressId',
-      'activeDeliveryFrequency',
       'shipsOnUpdating',
       'shipsOnSaved'
-    ]),
-
-    ...mapGetters(['activeDeliveryChargeScheduledAt', 'activeDeliveryScheduleGetter']),
-
-    nextDateShipment() {
-      let date = this.activeDeliveryChargeScheduledAt.split('T')[0]
-      let frequency = this.activeDeliveryFrequency
-      let result = moment(date, 'YYYY-MM-DD')
-        .add(frequency, 'days')
-        .format('MMMM Do, YYYY')
-
-      return result
-    },
-
-    nextNextDateShipment() {
-      let date = this.activeDeliveryChargeScheduledAt.split('T')[0]
-      let frequency = parseInt(this.activeDeliveryFrequency)
-      let frequency2 = frequency * 2
-      let result = moment(date, 'YYYY-MM-DD')
-        .add(frequency2, 'days')
-        .format('MMMM Do, YYYY')
-
-      return result
-    }
+    ])
   },
 
   methods: {
