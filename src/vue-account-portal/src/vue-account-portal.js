@@ -11,7 +11,7 @@ import RetentionPage from './pages/RetentionPage.vue'
 import store from './store'
 import './components/_globals'
 
-import './assets/css/index.scss'
+import '@/assets/css/index.scss'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)

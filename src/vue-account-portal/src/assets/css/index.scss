@@ -6,6 +6,12 @@
   }
 }
 
+.vuePortal {
+  font-family: 'brandon-grotesque';
+  font-weight: 300;
+  color: #000;
+}
+
 // Hides block content of template
 // force display block within indv templates where needed
 .vue-block-content {
@@ -51,7 +57,7 @@
 
 .c-rUpdateOverlay__text {
   color: #fff;
-  font-family: Avenir;
+  font-family: 'brandon-grotesque';
   text-transform: uppercase;
   font-weight: 400;
   font-size: 28px;
@@ -70,7 +76,7 @@
   letter-spacing: 2px;
   padding: 10px 30px;
   text-align: center;
-  font-family: Avenir;
+  font-family: 'brandon-grotesque';
   font-weight: 700;
   border: none;
   border-radius: 3px;
@@ -135,7 +141,7 @@
   font-size: 23px;
   line-height: 35px;
   font-weight: 700;
-  font-family: Avenir;
+  font-family: 'brandon-grotesque';
   letter-spacing: 3px;
   text-align: center;
   text-transform: uppercase;
@@ -180,7 +186,7 @@
 }
 
 .c-rOptionText {
-  font-family: Avenir;
+  font-family: 'brandon-grotesque';
   font-weight: 400;
   text-align: center;
 
@@ -246,7 +252,7 @@ input.c-rForm__input:-moz-placeholder {
 input.c-rForm__input,
 select.c-rForm__input {
   width: 100%;
-  font-family: Avenir;
+  font-family: 'brandon-grotesque';
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;
@@ -291,10 +297,17 @@ select.c-rForm__input {
   letter-spacing: 0 !important;
 }
 
-.fade-enter, .fade-leave-to {
+.u-text-center,
+.u-textCenter {
+  text-align: center;
+}
+
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
 
-.fade-leave, .fade-enter-to {
+.fade-leave,
+.fade-enter-to {
   opacity: 1;
 }

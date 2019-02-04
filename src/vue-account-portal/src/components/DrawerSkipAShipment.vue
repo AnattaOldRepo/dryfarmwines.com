@@ -37,11 +37,12 @@
       </p>
     </div> -->
 
-    <div>{{ nextShipmentDates[0] }}</div>
+    <div class="c-shipsOnDate u-textCenter">{{ moment(nextShipmentDates[0], 'MMMM Do, YYYY').format('MMMM D, YYYY') }}</div>
 
-    <div>Want to skip a shipment?</div>
+    <div class="u-textCenter">Want to skip a shipment?</div>
 
     <base-button
+      class="c-skipAShipmentButton"
       @click="skipShipment"
       v-if="!skipShipmentUpdating && !skipShipmentSaved"
       center
@@ -71,7 +72,8 @@ export default {
   data: () => ({
     date: null,
     nextShipDate: '',
-    dateOutsideRestriction: false
+    dateOutsideRestriction: false,
+    moment
   }),
 
   props: {
@@ -139,30 +141,36 @@ export default {
     margin: 22px auto 38px;
   }
 
-  .c-rDrawer__title {
-    margin-bottom: 2px;
-  }
-
   .c-rDrawer__title--nextShipment {
+    text-transform: uppercase;
+    font-size: 24px;
     margin-top: 20px;
     margin-bottom: 6px;
   }
 
   .c-rDrawer__text {
-    font-weight: 400;
-    font-size: 13px;
+    font-weight: 300;
+    font-size: 18px;
     line-height: 16px;
     text-align: center;
 
-    &.c-rDrawer__text--red {
-      color: #ee2e2d;
-    }
-
     &.c-rDrawer__text--med {
-      font-size: 16px;
+      font-size: 18px;
       line-height: 25px;
       margin-bottom: 6px;
+      font-weight: 300;
     }
   }
+}
+
+.c-shipsOnDate {
+  font-size: 24px;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-bottom: 1.618em;
+}
+
+.c-skipAShipmentButton {
+  margin: 20px 0 3em;
 }
 </style>

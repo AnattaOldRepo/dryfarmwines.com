@@ -35,12 +35,13 @@ export default {
 
 .button {
   background-color: $primary-color;
+  font-family: 'Open Sans';
   color: $white;
   text-transform: uppercase;
-  font-size: 13px;
+  font-size: 14px !important;
   line-height: 1;
   letter-spacing: 2px;
-  padding: 10px 20px;
+  padding: 8px 20px;
   text-align: center;
   font: inherit;
   font-weight: 700;

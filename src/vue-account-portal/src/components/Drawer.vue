@@ -129,6 +129,7 @@ export default {
   right: 0;
   background-color: #f7f7f7;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
+  font-size: 18px;
 
   &.is-open {
     transform: translateX(0);
@@ -143,19 +144,19 @@ export default {
 
 .c-rDrawer__title {
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 1em;
   text-align: center;
-  font-weight: 700px;
-  font-size: 23px;
-  line-height: 35px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 52px;
+  text-transform: capitalize;
 }
 
 .c-rDrawer__close {
   position: absolute;
   right: 30px;
   top: 30px;
+  cursor: pointer;
 
   svg {
     width: 13px;

@@ -203,10 +203,6 @@ export default {
     margin: 22px auto 38px;
   }
 
-  .c-rDrawer__title {
-    margin-bottom: 2px;
-  }
-
   .c-rDrawer__title--nextShipment {
     margin-top: 20px;
     margin-bottom: 6px;
