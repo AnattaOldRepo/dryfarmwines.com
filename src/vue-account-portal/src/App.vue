@@ -13,11 +13,13 @@
         :subscriptions="subscriptions"
         :deliverySchedule="deliverySchedule"
       />
-      <div
-        class="c-rOverlay"
-        v-if="(drawerOpen || modalOpen) && !updateOverlay"
-        @click="closeAndResetDrawer"
-      ></div>
+      <transition name="fade">
+        <div
+          class="c-rOverlay"
+          v-if="(drawerOpen || modalOpen) && !updateOverlay"
+          @click="closeAndResetDrawer"
+        />
+      </transition>
       <UpdateOverlay
         class="c-rUpdateOverlay"
         v-if="updateOverlay"

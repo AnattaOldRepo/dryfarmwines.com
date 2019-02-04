@@ -63,17 +63,11 @@ import Pikaday from 'pikaday'
 import moment from 'moment'
 
 export default {
-  name: 'DrawerEditShipDate',
-
-  components: {},
-
-  data: function() {
-    return {
-      date: null,
-      nextShipDate: '',
-      dateOutsideRestriction: false
-    }
-  },
+  data: () => ({
+    date: null,
+    nextShipDate: '',
+    dateOutsideRestriction: false
+  }),
 
   props: {
     saved: {
@@ -83,8 +77,6 @@ export default {
   },
 
   mounted() {
-    const vm = this
-
     this.date = this.activeDeliveryScheduleGetter.delivery[0].subscription.next_charge_scheduled_at.split('T')[0]
 
     this.$nextTick(() => {
@@ -136,13 +128,6 @@ export default {
           weekdaysShort: ['Su', 'M', 'T', 'W', 'Th', 'F', 'Sa']
         }
       })
-
-      // Check restriction
-      console.log('this.date', this.date)
-      console.log('maxDate', maxDate)
-      console.log('diff', moment(this.date, 'YYYY-MM-DD').diff(maxDate))
-
-      console.log(picker)
     })
   },
 
@@ -193,8 +178,6 @@ export default {
     ...mapActions(['changeShipmentDateAction']),
 
     changeShipmentDate() {
-      console.log('select changed ')
-
       this.dateOutsideRestriction = false
 
       let payload = {
@@ -261,29 +244,12 @@ export default {
   position: relative;
   color: #333;
   background: #fff;
-  // border: 1px solid #ccc;
   border-bottom-color: #bbb;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border: none;
-  box-shadow: 0 4px 20px -4px rgba(0,0,0,0.125);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.125);
   margin-bottom: 20px;
 }
-
-/*
-clear child float (pika-lendar), using the famous micro clearfix hack
-http://nicolasgallagher.com/micro-clearfix-hack/
-*/
-// .pika-single:before,
-// .pika-single:after {
-//   content: ' ';
-//   display: table;
-// }
-// .pika-single:after {
-//   clear: both;
-// }
-// .pika-single {
-//   *zoom: 1;
-// }
 
 .pika-single.is-hidden {
   display: none;
@@ -295,9 +261,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 }
 
 .pika-lendar {
-  // float: left;
   width: 240px;
-  // margin: 8px;
   padding: 1em;
 }
 
@@ -349,7 +313,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
   text-indent: 20px;
   white-space: nowrap;
   overflow: hidden;
-  background-color: transparent;
+  background-color: #fff;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 75% 75%;
@@ -360,6 +324,7 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 
 .pika-prev:hover,
 .pika-next:hover {
+  background-color: #fff;
   opacity: 1;
 }
 
@@ -465,10 +430,10 @@ http://nicolasgallagher.com/micro-clearfix-hack/
 
 .is-selected .pika-button,
 .has-event .pika-button {
-  color: #fff;
+  color: #fff !important;
   font-weight: bold;
   background: #ee2e2d;
-  border-radius: 50px;
+  border-radius: 50%;
 
   .pikaday-hideaway & {
     background: #fff;

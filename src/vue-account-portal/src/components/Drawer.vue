@@ -128,6 +128,7 @@ export default {
   top: 0;
   right: 0;
   background-color: #f7f7f7;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
 
   &.is-open {
     transform: translateX(0);
