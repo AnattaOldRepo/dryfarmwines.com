@@ -16,7 +16,10 @@
     </div>
 
     <div class="c-rDrawer__actionBox">
-      <base-button @click="editCard">
+      <base-button
+        is-link
+        :href="`${rechargeURL}${this.customerHash}/card${previewThemeQuery}`"
+      >
         Edit Card
       </base-button>
     </div>
@@ -25,23 +28,10 @@
 
 <script>
 import { mapState, mapMutations } from 'vuex'
-import { rechargeURL } from '@/config'
+import { rechargeURL, previewThemeQuery } from '@/config'
 
 export default {
-  name: 'DrawerEditPayment',
-
-  props: {
-    // product: {
-    //     type: Object,
-    //     required: true
-    // }
-  },
-
-  data: function() {
-    return {}
-  },
-
-  mounted() {},
+  data: () => ({ rechargeURL, previewThemeQuery }),
 
   computed: {
     ...mapState([
@@ -93,17 +83,6 @@ export default {
       setTimeout(() => {
         this.resetType(false)
       }, 301)
-    },
-
-    // change route to theme editor so we can submit the update
-    editCard() {
-      // let editCardUrl = `https://checkout.rechargeapps.com/customer/${this.customerHash}/card_edit/`
-
-      let editCardUrl = `${rechargeURL}${this.customerHash}/card`
-
-      console.log(editCardUrl)
-
-      document.location = editCardUrl
     }
   }
 }
@@ -135,22 +114,13 @@ export default {
   }
 }
 
-.c-rForm {
-}
-
 .c-rForm__inputWrapper {
   width: 100%;
-
-  &--full {
-  }
 
   &--third {
     display: grid;
     grid-template-columns: repeat(3, calc(1fr - 7px));
     grid-column: 20px;
   }
-}
-
-.c-rForm__input {
 }
 </style>
