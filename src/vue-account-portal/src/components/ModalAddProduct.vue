@@ -8,9 +8,24 @@
       <div>Product Image</div>
       <form>
         <div>Product Title</div>
-        <base-input label="Choose your delivery frequency" />
-        <base-input label="Varietal" />
-        <base-input label="Address" />
+        <label>
+          Choose your delivery frequency
+          <select>
+
+          </select>
+        </label>
+        <label>
+          Varietal
+          <select>
+
+          </select>
+        </label>
+        <label>
+          Address
+          <select>
+
+          </select>
+        </label>
       </form>
     </div>
   </div>

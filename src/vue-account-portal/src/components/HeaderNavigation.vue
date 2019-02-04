@@ -254,7 +254,7 @@
 <script>
 import axios from 'axios'
 import { mapState } from 'vuex'
-import { rechargeURL, siteURL } from '@/config'
+import { rechargeURL, siteURL, previewThemeQuery } from '@/config'
 
 function hasItem(sKey) {
   // console.log('hasItem', sKey)
@@ -293,8 +293,6 @@ export default {
     }
   },
 
-  mounted() {},
-
   computed: {
     ...mapState(['customerHash']),
 
@@ -310,15 +308,15 @@ export default {
     },
 
     resetSubscriptionURL() {
-      return `${rechargeURL}${this.customerHash}/`
+      return `${rechargeURL}${this.customerHash}${previewThemeQuery}`
     },
 
     resetDetailsURL() {
-      return `${rechargeURL}${this.customerHash}/#/details`
+      return `${rechargeURL}${this.customerHash}${previewThemeQuery}/#/details`
     },
 
     resetHistoryURL() {
-      return `${rechargeURL}${this.customerHash}/#/history`
+      return `${rechargeURL}${this.customerHash}${previewThemeQuery}/#/history`
     }
   },
 

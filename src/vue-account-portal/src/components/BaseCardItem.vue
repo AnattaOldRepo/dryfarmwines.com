@@ -1,7 +1,7 @@
 <template>
   <component
     :is="!presentational ? componentIs : 'div'"
-    :href="isLink ? href : null"
+    :href="isLink || componentIs === 'a' ? href : null"
     :to="componentIs === 'router-link' ? to : null"
     :tag="tag"
     v-on="$listeners"

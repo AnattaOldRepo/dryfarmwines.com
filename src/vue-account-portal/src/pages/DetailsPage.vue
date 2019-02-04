@@ -145,7 +145,8 @@
         <base-card-wrapper title="Billing Address">
           <base-card-item
             title="Billing Address"
-            @click="editBillingAddress"
+            component-is="a"
+            :href="`${rechargeURL}${this.customerHash}/edit/${previewThemeQuery}`"
           >
             <div v-if="billingAddressGetter.first_name || billingAddressGetter.last_name">
               {{ billingAddressGetter.first_name || '' }} {{ billingAddressGetter.last_name || '' }}
@@ -178,7 +179,7 @@
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 import moment from 'moment'
-import { rechargeURL } from '@/config'
+import { rechargeURL, previewThemeQuery } from '@/config'
 
 export default {
   name: 'Details',
@@ -196,7 +197,9 @@ export default {
   },
 
   data: () => ({
-    paypalEditInfoVisible: false
+    paypalEditInfoVisible: false,
+    rechargeURL,
+    previewThemeQuery
   }),
 
   computed: {
@@ -239,7 +242,7 @@ export default {
         case 'Visa':
           creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
           break
-        case 'Amex':
+        case 'American Express':
           creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
           break
         case 'Mastercard':
@@ -300,14 +303,6 @@ export default {
     openDrawerEditBillingAddress() {
       this.setDrawerContentType('editBillingAddress')
       this.openDrawer()
-    },
-
-    editBillingAddress() {
-      let editBillingAddressUrl = `${rechargeURL}${this.customerHash}/edit/`
-
-      // editBillingAddressUrl += '?preview_theme=1792#/' // only for testing
-
-      document.location = editBillingAddressUrl
     },
 
     setAndOpenDrawer(contentType) {

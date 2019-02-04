@@ -438,12 +438,6 @@ export default {
 </script>
 
 <style lang="scss">
-.c-rDrawerShippingAddresses {
-}
-
-.c-rAddressList {
-}
-
 .c-rAddressList__item {
   display: grid;
   display: grid;

@@ -370,59 +370,6 @@
 
               <div
                 class="c-sub__block"
-                @click.prevent="editBillingAddress"
-              >
-                <div class="c-sub__blockSection c-sub__blockSection--address">
-                  <span
-                    class="c-sub__blockSectionLabel"
-                    style="margin-bottom: 10px;"
-                  >Billing Address</span>
-                  <div>
-                    <span
-                      v-if="billingAddressGetter.first_name"
-                      class="is-inline"
-                    >{{ billingAddressGetter.first_name }}</span>
-                    <span
-                      v-if="billingAddressGetter.last_name"
-                      style="margin-left: 3px;"
-                      class="is-inline"
-                    >{{ billingAddressGetter.last_name }}</span>
-                    <span v-if="billingAddressGetter.address1">{{
-                      billingAddressGetter.address1
-                      }}</span>
-                    <span v-if="billingAddressGetter.address2">{{
-                      billingAddressGetter.address2
-                      }}</span>
-                    <span v-if="billingAddressGetter.company">{{
-                      billingAddressGetter.company
-                      }}</span>
-                    <span
-                      class="is-inline"
-                      v-if="billingAddressGetter.city"
-                    >{{ billingAddressGetter.city }},</span><span
-                      class="is-inline"
-                      v-if="billingAddressGetter.province"
-                      style="margin-left: 3px;"
-                    >{{ billingAddressGetter.province }}</span><span
-                      class="is-inline"
-                      v-if="billingAddressGetter.zip"
-                      style="margin-left: 3px;"
-                    >
-                      {{ billingAddressGetter.zip }}</span>
-                    <span v-if="billingAddressGetter.country">
-                      {{ billingAddressGetter.country }}</span>
-                    <span v-if="billingAddressGetter.phone">
-                      {{ billingAddressGetter.phone }}</span>
-                  </div>
-                </div>
-
-                <base-chevron-right />
-              </div>
-
-              <hr />
-
-              <div
-                class="c-sub__block"
                 @click.prevent="openDrawerEditPayment"
               >
                 <div class="c-sub__blockSection">
@@ -491,15 +438,15 @@ import GridProduct from '@/components/GridProduct'
 import SubscriptionSelect from '@/components/SubscriptionSelect'
 import moment from 'moment'
 import { rechargeURL, siteURL } from '@/config'
-// import ModalAddProduct from '@/components/ModalAddProduct'
+import ModalAddProduct from '@/components/ModalAddProduct'
 
 export default {
   name: 'Subscription',
 
   components: {
     SubscriptionSelect,
-    GridProduct
-    // ModalAddProduct
+    GridProduct,
+    ModalAddProduct
   },
 
   props: {
@@ -655,20 +602,6 @@ export default {
       'setActiveDeliveryFrequency',
       'setActiveDeliveryIntervalUnit'
     ]),
-
-    editCard() {
-      let editCardUrl = `${rechargeURL}${this.customerHash}/card`
-
-      document.location = editCardUrl
-    },
-
-    editBillingAddress() {
-      let editBillingAddressUrl = `${rechargeURL}${this.customerHash}/edit/`
-
-      // editBillingAddressUrl += '?preview_theme=1792#/' // only for testing
-
-      document.location = editBillingAddressUrl
-    },
 
     cancelSubscription() {
       this.openModal()

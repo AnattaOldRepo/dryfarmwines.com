@@ -54,7 +54,7 @@ export default {
           creditCardImage =
             'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
           break
-        case 'Amex':
+        case 'American Express':
           creditCardImage =
             'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
           break
