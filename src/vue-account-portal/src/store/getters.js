@@ -22,7 +22,6 @@ export const activeDeliveryChargeScheduledAt = (state, getters) => {
 export const activeDeliveryAddressGetter = state => state.activeDeliveryAddress
 
 export const uniqueDeliveries = state => {
-  console.log(state.deliverySchedule)
   const { deliverySchedule } = state
 
   let finalUniqueDeliveries = [] // return

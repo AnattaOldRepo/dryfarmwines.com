@@ -1,0 +1,10 @@
+$screen-lg-min: 1023px
+
+@mixin large-max-width
+  @media (min-width: #{$screen-lg-min})
+    @content
+
+@mixin large-max-width
+  @media (max-width: #{$screen-lg-min})
+    @content
+  

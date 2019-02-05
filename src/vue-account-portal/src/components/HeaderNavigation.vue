@@ -258,7 +258,6 @@ import { mapState } from 'vuex'
 import { rechargeURL, siteURL, previewThemeQuery } from '@/config'
 
 function hasItem(sKey) {
-  // console.log('hasItem', sKey)
   if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
     return false
   }
@@ -270,10 +269,6 @@ function hasItem(sKey) {
 }
 
 function removeItem(sKey, sPath, sDomain) {
-  // console.log('rItem, sKey', sKey)
-  // console.log('rItem, sPath', sPath)
-  // console.log('rItem, sDomain', sDomain)
-
   if (!hasItem(sKey)) {
     return false
   }

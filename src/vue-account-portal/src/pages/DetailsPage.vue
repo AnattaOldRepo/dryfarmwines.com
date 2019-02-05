@@ -229,8 +229,6 @@ export default {
         creditCardBrand = this.customer.customer_card.brand
       }
 
-      console.log(creditCardBrand)
-
       switch (creditCardBrand) {
         case 'Visa':
           creditCardImage =
@@ -252,9 +250,6 @@ export default {
     },
 
     cardURL() {
-      Object.keys(this.customer).forEach(k =>
-        console.log(k, ':', this.customer[k])
-      )
       if (this.customer.customer_payment_type === 'credit') {
         return this.updateCardUrl
       } else if (this.customer.customer_payment_type === 'paypal') {

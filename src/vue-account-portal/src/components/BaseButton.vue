@@ -6,7 +6,8 @@
       :class="[
         'button',
         { 'button--secondary': secondary },
-        { 'is-centered': center }
+        { 'is-centered': center },
+        { 'is-long-button': longButton }
       ]"
       v-on="$listeners"
     >
@@ -20,6 +21,7 @@ export default {
   props: {
     secondary: Boolean,
     center: Boolean,
+    longButton: Boolean,
     href: String
   }
 }
@@ -51,6 +53,10 @@ export default {
 
   &.is-centered {
     margin: auto;
+  }
+
+  &.is-long-button {
+    width: 100%;
   }
 
   &:hover,

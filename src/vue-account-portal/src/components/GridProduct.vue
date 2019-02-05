@@ -1,7 +1,10 @@
 <template>
   <div class="c-subProductGrid__product">
     <div class="c-subProduct__productImageBox">
-      <img :src="productImageSrc" class="c-subProduct__productImage" />
+      <img
+        :src="productImageSrc"
+        class="c-subProduct__productImage"
+      />
     </div>
 
     <div class="c-subProduct__productInfoBox">
@@ -13,19 +16,29 @@
         {{ productPrice }}
       </span>
 
-      <base-button @click="addProduct">
+      <base-button @click="showProductModal = true">
         {{ updating ? '...' : 'Add' }}
       </base-button>
     </div>
+    <transition name="fade">
+      <modal-add-product
+        v-if="showProductModal"
+        :hideModal="() => showProductModal = false"
+        :product="shopifyProduct"
+      />
+    </transition>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
 import { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
+import ModalAddProduct from './ModalAddProduct'
 
 export default {
-  name: 'GridProduct',
+  components: {
+    ModalAddProduct
+  },
 
   props: {
     product: {
@@ -34,13 +47,11 @@ export default {
     }
   },
 
-  data: function() {
-    return {
-      updating: false
-    }
-  },
+  data: () => ({ updating: false, showProductModal: false }),
 
-  mounted() {},
+  mounted() {
+    console.log(this.product)
+  },
 
   computed: {
     ...mapState([
@@ -58,12 +69,12 @@ export default {
       'activeDeliveryScheduleGetter'
     ]),
 
-    productVariant() {
-      return this.product.shopify_product.variants[0]
+    shopifyProduct() {
+      return this.product.shopify_product
     },
 
-    productVariantId() {
-      return this.productVariant.id
+    productVariant() {
+      return this.product.shopify_product.variants[0]
     },
 
     productPrice() {
@@ -87,25 +98,15 @@ export default {
       }
 
       return false
-    },
-
-    APIAddProduct() {
-      return `${this.baseUrl}${this.customerHash}/subscriptions/new.json`
     }
   },
 
   methods: {
-    ...mapMutations(['setNewProductAdded', 'setNewProductAddedSaved']),
-
     ...mapActions(['addProductAction']),
 
     addProduct() {
-      console.log('addProduct in drawer product')
-
-      const { productVariantId } = this
-
       this.updating = true
-      this.addProductAction(productVariantId)
+      this.addProductAction(this.productVariant.id)
     }
   }
 }
@@ -155,8 +156,5 @@ export default {
   line-height: 19px;
   letter-spacing: 0;
   margin-bottom: 13px;
-}
-
-.c-subProduct__productButton {
 }
 </style>

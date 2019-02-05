@@ -213,7 +213,6 @@ export default {
 
     // calculate if eligible to cancel on their own
     subscriptionCancelAvailable() {
-      console.log('test')
       return this.orders.length >= 3
       // return true
     }
