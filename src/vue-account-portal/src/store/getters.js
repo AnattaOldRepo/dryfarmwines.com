@@ -37,12 +37,16 @@ export const uniqueDeliveries = state => {
     const arr1 = _arr1.concat().sort()
     const arr2 = _arr2.concat().sort()
 
-    for (let i = 0; i < arr1.length; i++) {
+    let longestArrLength = arr1.length > arr2.length ? arr1.length : arr2.length
+    let same = true
+
+    for (let i = 0; i < longestArrLength; i++) {
       if (arr1[i] !== arr2[i]) {
-        return false
+        same = false
       }
     }
-    return true
+
+    return same
   }
 
   // loop each delivery schedule
@@ -54,24 +58,36 @@ export const uniqueDeliveries = state => {
     // inside object keyed by delivery index, so we can figure out
     // where there's overlap in deliveries
     scheduleItem.delivery.forEach(item => {
-      if (!item.is_skipped) {
+      // console.log('item in uniquedelivery loop', item)
+
+      if (!item.is_skipped && !item.subscription.is_one_time_product) {
+        // console.log('subIdGroupsByDeliveryIndex[index].push(item.subscription.id)', item.subscription.id)
+
         subIdGroupsByDeliveryIndex[index].push(item.subscription.id)
       }
     })
   })
+
+  // console.log('subIdGroupsByDeliveryIndex', subIdGroupsByDeliveryIndex)
 
   // key === index in deliverySchedule array
   Object.keys(subIdGroupsByDeliveryIndex).forEach(key => {
     let currentSubIdArr = subIdGroupsByDeliveryIndex[key]
 
     // add first one always
-    if (!finalUniqueDeliveries.length && currentSubIdArr.length) {
-      // Make sure delivery has non-skipped items
-      // add actual deliverySchedule item -- deliveryShedule[key]
-      finalUniqueDeliveries.push(deliverySchedule[key])
+    if (!finalUniqueDeliveries.length) {
+      // console.log('first check sub ID arr', currentSubIdArr)
 
-      // add arr to compare arr, to use for future checks
-      compareSubIdsArrArr.push(currentSubIdArr)
+      // Make sure delivery has non-skipped items
+      if (currentSubIdArr.length) {
+        // console.log('force add first', deliverySchedule[key])
+
+        // add actual deliverySchedule item -- deliveryShedule[key]
+        finalUniqueDeliveries.push(deliverySchedule[key])
+
+        // add arr to compare arr, to use for future checks
+        compareSubIdsArrArr.push(currentSubIdArr)
+      }
     }
 
     // if one unique delivery already set
@@ -87,6 +103,7 @@ export const uniqueDeliveries = state => {
 
         // if it's a new combination of items, add delivery to unique list
         if (_arraysSameValues(compareArr, currentSubIdArr)) {
+          // console.log('same values: ', compareArr, currentSubIdArr)
           alreadySubscriptionSet = true
         }
       })
