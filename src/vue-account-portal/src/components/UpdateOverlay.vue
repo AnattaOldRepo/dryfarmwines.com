@@ -10,7 +10,15 @@
       preserveAspectRatio="xMidYMid"
     >
       <g transform="rotate(0 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -22,7 +30,15 @@
         </rect>
       </g>
       <g transform="rotate(22.5 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -34,7 +50,15 @@
         </rect>
       </g>
       <g transform="rotate(45 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -46,7 +70,15 @@
         </rect>
       </g>
       <g transform="rotate(67.5 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -58,7 +90,15 @@
         </rect>
       </g>
       <g transform="rotate(90 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -70,7 +110,15 @@
         </rect>
       </g>
       <g transform="rotate(112.5 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -82,7 +130,15 @@
         </rect>
       </g>
       <g transform="rotate(135 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -94,7 +150,15 @@
         </rect>
       </g>
       <g transform="rotate(157.5 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -106,7 +170,15 @@
         </rect>
       </g>
       <g transform="rotate(180 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -118,7 +190,15 @@
         </rect>
       </g>
       <g transform="rotate(202.5 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -130,7 +210,15 @@
         </rect>
       </g>
       <g transform="rotate(225 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -142,7 +230,15 @@
         </rect>
       </g>
       <g transform="rotate(247.5 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -154,7 +250,15 @@
         </rect>
       </g>
       <g transform="rotate(270 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -166,7 +270,15 @@
         </rect>
       </g>
       <g transform="rotate(292.5 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -178,7 +290,15 @@
         </rect>
       </g>
       <g transform="rotate(315 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"
@@ -190,7 +310,15 @@
         </rect>
       </g>
       <g transform="rotate(337.5 50 50)">
-        <rect x="47" y="24" rx="9.4" ry="4.8" width="6" height="12" fill="#fff">
+        <rect
+          x="47"
+          y="24"
+          rx="9.4"
+          ry="4.8"
+          width="6"
+          height="12"
+          fill="#fff"
+        >
           <animate
             attributeName="opacity"
             values="1;0"

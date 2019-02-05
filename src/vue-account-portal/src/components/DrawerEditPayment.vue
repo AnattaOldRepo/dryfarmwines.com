@@ -1,18 +1,23 @@
 <template>
   <div class="c-rDrawerEditPayment">
     <span class="c-rDrawer__title">Payment Method</span>
-    <div class="c-sub__card" v-if="customer.customer_card">
-      <img v-if="creditCardImage" :src="creditCardImage" />
+    <div
+      class="c-sub__card"
+      v-if="customer.customer_card"
+    >
+      <img
+        v-if="creditCardImage"
+        :src="creditCardImage"
+      />
       <span> *{{ customer.customer_card.last4 }}</span>
-      <span
-        >{{ customer.customer_card.exp_month }}/{{
-          customer.customer_card.exp_month
-        }}</span
-      >
+      <span>{{ customer.customer_card.exp_month }}/{{
+        customer.customer_card.exp_month
+        }}</span>
     </div>
 
     <div class="c-rDrawer__actionBox">
       <base-button
+        is-link
         :href="`${rechargeURL}${this.customerHash}/card${previewThemeQuery}`"
       >
         Edit Card

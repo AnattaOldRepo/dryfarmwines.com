@@ -205,6 +205,7 @@ export default {
     },
 
     cancelSubscriptions() {
+
       if (this.selectedReason !== null) {
         this.setCancellationUpdating(true)
 

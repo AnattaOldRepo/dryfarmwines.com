@@ -1,10 +1,16 @@
 <template>
   <div>
-    <div class="c-sub__initialContainer" v-if="initialRechargeDataLoading">
+    <div
+      class="c-sub__initialContainer"
+      v-if="initialRechargeDataLoading"
+    >
       <span class="c-sub__initialMessage">Loading...</span>
     </div>
 
-    <div class="c-details" v-else>
+    <div
+      class="c-details"
+      v-else
+    >
       <div class="c-details__left">
         <!-- <base-card-wrapper title="Email & Password">
           <base-card-item title="Email Address">
@@ -42,16 +48,17 @@
                 class="c-details__card"
                 v-if="
                   customer.customer_payment_type === 'credit' &&
-                    customer.customer_card
+                  customer.customer_card
                 "
               >
-                <img v-if="creditCardImage" :src="creditCardImage" />
+                <img
+                  v-if="creditCardImage"
+                  :src="creditCardImage"
+                />
                 <span> *{{ customer.customer_card.last4 }}</span>
-                <span
-                  >{{ customer.customer_card.exp_month }}/{{
-                    customer.customer_card.exp_year
-                  }}</span
-                >
+                <span>{{ customer.customer_card.exp_month }}/{{
+                  customer.customer_card.exp_year
+                  }}</span>
               </div>
 
               <div
@@ -62,55 +69,67 @@
               </div>
             </base-card-item>
           </base-card-wrapper>
-          <div class="c-details__card" v-if="paypalEditInfoVisible">
+          <div
+            class="c-details__card"
+            v-if="paypalEditInfoVisible"
+          >
             <span class="c-details__paypalInfo">
               <br />
               You need to login to
               <a
                 target="_blank"
                 href="https://www.paypal.com/us/cgi-bin/webscr?cmd=_login-run"
-                >PayPal</a
-              >
+              >PayPal</a>
               to update your card. Here are detailed
               <a
                 target="_blank"
                 href="https://www.paypal.com/us/webapps/helpcenter/helphub/article/?solutionId=FAQ999&topicID=PAYING&m=TCI"
-                >instructions</a
-              >.
+              >instructions</a>.
             </span>
           </div>
-          <base-button component-is="a" :href="cardUrl" secondary>
+          <base-button
+            component-is="a"
+            :href="cardUrl"
+            secondary
+          >
             Edit Card
           </base-button>
         </div>
       </div>
 
       <div class="c-details__right">
-        <base-card-wrapper v-if="shippingAddress" title="Shipping Address">
+        <base-card-wrapper
+          v-if="shippingAddress"
+          title="Shipping Address"
+        >
           <base-card-item
             title="Shipping Address"
             @click="setAndOpenDrawer('shippingAddresses')"
           >
-            <div v-if="shippingAddress.first_name || shippingAddress.last_name">
+            <div v-if="
+                shippingAddress.first_name ||
+                shippingAddress.last_name
+            ">
               {{ shippingAddress.first_name || '' }}
               {{ shippingAddress.last_name || '' }}
             </div>
-            <div v-if="shippingAddress.address1">
-              {{ shippingAddress.address1 }}
+            <div v-if="shippingAddress.address1">{{
+              shippingAddress.address1
+              }}
             </div>
-            <div v-if="shippingAddress.address2">
-              {{ shippingAddress.address2 }}
+            <div v-if="shippingAddress.address2">{{
+              shippingAddress.address2
+              }}
             </div>
-            <div v-if="shippingAddress.company">
-              {{ shippingAddress.company }}
+            <div v-if="shippingAddress.company">{{
+              shippingAddress.company
+              }}
             </div>
-            <div
-              v-if="
+            <div v-if="
                 shippingAddress.city ||
-                  shippingAddress.province ||
-                  shippingAddress.zip
-              "
-            >
+                shippingAddress.province ||
+                shippingAddress.zip
+            ">
               {{ shippingAddress.city || '' }},
               {{ shippingAddress.province || '' }}
               {{ shippingAddress.zip || '' }}
@@ -127,18 +146,10 @@
           <base-card-item
             title="Billing Address"
             component-is="a"
-            :href="
-              `${rechargeURL}${this.customerHash}/edit/${previewThemeQuery}`
-            "
+            :href="`${rechargeURL}${this.customerHash}/edit/${previewThemeQuery}`"
           >
-            <div
-              v-if="
-                billingAddressGetter.first_name ||
-                  billingAddressGetter.last_name
-              "
-            >
-              {{ billingAddressGetter.first_name || '' }}
-              {{ billingAddressGetter.last_name || '' }}
+            <div v-if="billingAddressGetter.first_name || billingAddressGetter.last_name">
+              {{ billingAddressGetter.first_name || '' }} {{ billingAddressGetter.last_name || '' }}
             </div>
             <div v-if="billingAddressGetter.address1">
               {{ billingAddressGetter.address1 }}
@@ -211,11 +222,7 @@ export default {
       'activeDeliveryAddress'
     ]),
 
-    ...mapGetters([
-      'activeSubscriptions',
-      'activeDeliveryChargeScheduledAt',
-      'billingAddressGetter'
-    ]),
+    ...mapGetters(['activeSubscriptions', 'activeDeliveryChargeScheduledAt', 'billingAddressGetter']),
 
     updateCardUrl() {
       return `/tools/recurring/customer/${this.customerHash}/card/`
@@ -229,18 +236,17 @@ export default {
         creditCardBrand = this.customer.customer_card.brand
       }
 
+      console.log(creditCardBrand)
+
       switch (creditCardBrand) {
         case 'Visa':
-          creditCardImage =
-            'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
+          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
           break
         case 'American Express':
-          creditCardImage =
-            'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
+          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
           break
         case 'Mastercard':
-          creditCardImage =
-            'https://cdn.shopify.com/s/files/1/0739/9341/files/mastercard-icon.png?9900082236234763207'
+          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/mastercard-icon.png?9900082236234763207'
           break
         default:
           creditCardImage = false
@@ -250,6 +256,7 @@ export default {
     },
 
     cardURL() {
+      Object.keys(this.customer).forEach(k => console.log(k, ':', this.customer[k]))
       if (this.customer.customer_payment_type === 'credit') {
         return this.updateCardUrl
       } else if (this.customer.customer_payment_type === 'paypal') {

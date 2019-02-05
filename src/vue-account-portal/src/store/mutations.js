@@ -21,9 +21,8 @@ export const setFrequencySaved = (state, value) => {
 export const updateQuantityView = (state, payload) => {
   let { indexInDelivery, newQuantity } = payload
 
-  state.activeDeliverySchedule.delivery[
-    indexInDelivery
-  ].subscription.quantity = newQuantity
+  console.log('update quantity view')
+  state.activeDeliverySchedule.delivery[indexInDelivery].subscription.quantity = newQuantity
   state.productEditDrawerUpdating = false
   state.productEditDrawerSaved = true
 }
@@ -165,11 +164,13 @@ export const setProductEditDrawerSaved = (state, value) => {
 }
 
 export const removeProduct = state => {
+  console.log('update remove product view states')
   state.productEditDrawerUpdating = false
   state.productEditDrawerSaved = true
 }
 
 export const undoAddProductView = state => {
+  console.log('remove from view')
   state.newProductAdded = {}
   state.newProductAddedSaved = false
   state.updatingRemovingProduct = false

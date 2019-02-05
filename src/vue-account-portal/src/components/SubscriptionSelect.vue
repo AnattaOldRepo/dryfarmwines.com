@@ -234,11 +234,13 @@ export default {
 
     combineSubscriptions() {
       this.combineSubscriptionsAction()
+      console.log('combineSubscriptionsAction')
     },
 
     setActiveDeliveryScheduleLocal(deliverySchedule, deliveryScheduleIndex) {
       this.setToggleDropdownOptionsOpen(false)
 
+      console.log('setActiveDeliveryScheduleLocal')
       const activeFirstDeliverySubscription =
         deliverySchedule.delivery[0].subscription
 

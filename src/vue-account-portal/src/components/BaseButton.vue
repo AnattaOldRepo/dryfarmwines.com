@@ -1,13 +1,12 @@
 <template>
   <div class="button__wrapper">
     <component
-      :is="!href ? 'button' : 'a'"
-      :href="href || null"
+      :is="!isLink ? 'button' : 'a'"
+      :href="isLink ? href : null"
       :class="[
         'button',
-        { 'button--secondary': secondary },
-        { 'is-centered': center },
-        { 'is-long-button': longButton }
+        {'button--secondary': secondary},
+        {'is-centered': center}
       ]"
       v-on="$listeners"
     >
@@ -21,7 +20,7 @@ export default {
   props: {
     secondary: Boolean,
     center: Boolean,
-    longButton: Boolean,
+    isLink: Boolean,
     href: String
   }
 }
@@ -55,10 +54,6 @@ export default {
     margin: auto;
   }
 
-  &.is-long-button {
-    width: 100%;
-  }
-
   &:hover,
   &:active,
   &:focus {
@@ -85,3 +80,5 @@ export default {
   }
 }
 </style>
+
+
