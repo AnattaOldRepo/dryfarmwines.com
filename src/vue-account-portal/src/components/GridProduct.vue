@@ -106,7 +106,7 @@ export default {
 
     addProduct() {
       this.updating = true
-      this.addProductAction(this.productVariant.id)
+      this.addProductAction({ shopify_variant_id: this.productVariant.id })
     }
   }
 }

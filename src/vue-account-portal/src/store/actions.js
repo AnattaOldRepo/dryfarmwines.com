@@ -2,7 +2,12 @@ import API from './api'
 import axios from 'axios'
 import moment from 'moment'
 import qs from 'qs'
-import { siteURL, rechargeURL, previewThemeQuery, shopifySubscriptionURL } from '@/config'
+import {
+  siteURL,
+  rechargeURL,
+  previewThemeQuery,
+  shopifySubscriptionURL
+} from '@/config'
 
 export const updateQuantityAction = ({ commit, state }, payload) => {
   let { subscriptionId, newQuantity } = payload
@@ -40,8 +45,12 @@ export const loadInitialData = async ({ commit, state }, callbackType) => {
 
   let customerAddressSubs = await axios.get(`${baseUrl}${customerHash}.json`),
     orders = await axios.get(`${baseUrl}${customerHash}/orders.json`),
-    productsSearch = await axios.get(`${baseUrl}${customerHash}/products/search.json`),
-    { data: deliverySchedule } = await axios.get(`${baseUrl}${customerHash}/delivery_schedule.json`)
+    productsSearch = await axios.get(
+      `${baseUrl}${customerHash}/products/search.json`
+    ),
+    { data: deliverySchedule } = await axios.get(
+      `${baseUrl}${customerHash}/delivery_schedule.json`
+    )
 
   if (!customerAddressSubs) {
     alert('Data timeout - please refresh the page.')
@@ -55,7 +64,11 @@ export const loadInitialData = async ({ commit, state }, callbackType) => {
   commit('setDeliverySchedule', deliverySchedule.delivery_schedule)
   commit('setInitialRechargeDataLoading', false)
 
-  if (callbackType && callbackType.name && callbackType.name === 'select-delivery-frequency') {
+  if (
+    callbackType &&
+    callbackType.name &&
+    callbackType.name === 'select-delivery-frequency'
+  ) {
     commit('setActiveDeliveryFrequency', callbackType.intervalFrequency)
     commit('setFrequencySaved', true)
     commit('setFrequencyUpdating', false)
@@ -109,10 +122,17 @@ export const loadInitialData = async ({ commit, state }, callbackType) => {
   commit('setUpdateOverlay', false)
 }
 
-export const selectDeliveryFrequencyAction = ({ commit, dispatch, state }, payload) => {
+export const selectDeliveryFrequencyAction = (
+  { commit, dispatch, state },
+  payload
+) => {
   const { customerHash } = state
 
-  let { subscriptionIds, intervalFrequency, activeDeliveryIntervalUnit } = payload
+  let {
+    subscriptionIds,
+    intervalFrequency,
+    activeDeliveryIntervalUnit
+  } = payload
 
   const interval = 3000
   let promise = Promise.resolve()
@@ -297,9 +317,12 @@ export const swapProductAction = ({ commit, state, dispatch }, payload) => {
     updateUrl,
     qs.stringify({
       quantity: subscriptionToSwap.subscription.quantity,
-      order_interval_frequency: subscriptionToSwap.subscription.charge_interval_frequency,
+      order_interval_frequency:
+        subscriptionToSwap.subscription.charge_interval_frequency,
       order_interval_unit: subscriptionToSwap.subscription.charge_interval_unit,
-      first_charge_date: moment(subscriptionToSwap.subscription.next_charge_scheduled_at).format('YYYY-MM-DD')
+      first_charge_date: moment(
+        subscriptionToSwap.subscription.next_charge_scheduled_at
+      ).format('YYYY-MM-DD')
     })
   )
     .then(function() {
@@ -349,24 +372,48 @@ export const removeProductAction = ({ commit, state, dispatch }, payload) => {
     })
 }
 
-export const addProductAction = ({ commit, getters, state, dispatch }, productVariantId) => {
+export const addProductAction = (
+  { commit, getters, state, dispatch },
+  body
+) => {
   commit('setUpdateOverlay', true)
 
   commit('setNewProductAddedSaved', false)
 
-  const { baseUrl, customerHash, activeDeliveryAddressId, activeDeliveryFrequency, activeDeliveryIntervalUnit } = state
+  const {
+    baseUrl,
+    customerHash,
+    activeDeliveryAddressId,
+    activeDeliveryFrequency,
+    activeDeliveryIntervalUnit
+  } = state
 
   const { activeDeliveryChargeScheduledAt } = getters
   const APIAddProduct = `${baseUrl}${customerHash}/subscriptions/new.json`
 
+  console.log({
+    address_id: activeDeliveryAddressId,
+    next_charge_date: moment(activeDeliveryChargeScheduledAt).format(
+      'YYYY-MM-DD'
+    ),
+    order_interval_frequency: activeDeliveryFrequency,
+    order_interval_unit: activeDeliveryIntervalUnit,
+    quantity: 1,
+    shopify_variant_id: body.shopify_variant_id,
+    ...body // replace default values above if they exist
+  })
+
   axios
     .post(APIAddProduct, {
       address_id: activeDeliveryAddressId,
-      next_charge_date: moment(activeDeliveryChargeScheduledAt).format('YYYY-MM-DD'),
+      next_charge_date: moment(activeDeliveryChargeScheduledAt).format(
+        'YYYY-MM-DD'
+      ),
       order_interval_frequency: activeDeliveryFrequency,
       order_interval_unit: activeDeliveryIntervalUnit,
       quantity: 1,
-      shopify_variant_id: productVariantId
+      shopify_variant_id: productVariantId,
+      ...body
     })
     .then(response => {
       // console.log(response);
@@ -403,7 +450,7 @@ export const undoAddProduct = ({ commit, state, dispatch }) => {
 
   const { customerHash } = state
 
-  const API_CANCEL = `${rechargeURL}${customerHash}/subscriptions/${
+  const API_CANCEL = `${siteURL}/tools/recurring/customers/${customerHash}/subscriptions/${
     state.newProductAdded.subscription.id
   }/cancel/506774`
 
@@ -440,7 +487,10 @@ export const updateChargeDate = (ctx, payload) => {
   )
 }
 
-export const changeShipmentDateAction = ({ commit, dispatch, state }, payload) => {
+export const changeShipmentDateAction = (
+  { commit, dispatch, state },
+  payload
+) => {
   const { customerHash } = state
 
   let {
@@ -541,13 +591,22 @@ export const skipShipmentAction = ({ commit, dispatch, state }, payload) => {
   })
 }
 
-export const combineSubscriptionsAction = ({ commit, dispatch, state, getters }) => {
+export const combineSubscriptionsAction = ({
+  commit,
+  dispatch,
+  state,
+  getters
+}) => {
   const { customerHash } = state
   const promises = []
 
-  const chargeIntervalFrequency = getters.uniqueDeliveries[0].delivery[0].subscription.charge_interval_frequency
-  const chargeIntervalUnit = getters.uniqueDeliveries[0].delivery[0].subscription.charge_interval_unit
-  const addressId = getters.uniqueDeliveries[0].delivery[0].subscription.address_id
+  const chargeIntervalFrequency =
+    getters.uniqueDeliveries[0].delivery[0].subscription
+      .charge_interval_frequency
+  const chargeIntervalUnit =
+    getters.uniqueDeliveries[0].delivery[0].subscription.charge_interval_unit
+  const addressId =
+    getters.uniqueDeliveries[0].delivery[0].subscription.address_id
 
   let activeSubscriptionIds = []
   let changeShipmentDateActionPayload = {
@@ -600,9 +659,17 @@ export const combineSubscriptionsAction = ({ commit, dispatch, state, getters })
     })
 }
 
-export const cancelSubscriptionAction = ({ commit, dispatch, state }, payload) => {
+export const cancelSubscriptionAction = (
+  { commit, dispatch, state },
+  payload
+) => {
   const { customerHash } = state
-  const { subscriptionIds, reasonToCancel, subscriptionTitles, frequencyText } = payload
+  const {
+    subscriptionIds,
+    reasonToCancel,
+    subscriptionTitles,
+    frequencyText
+  } = payload
   let promises = []
 
   commit('setCancellationUpdating', true)

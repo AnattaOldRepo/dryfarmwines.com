@@ -6,11 +6,11 @@
       :name="label"
     >
       <option
-        v-for="value in values"
+        v-for="{value, displayValue} in options"
         :key="value"
         :value="value"
       >
-        {{ value }}
+        {{ displayValue }}
       </option>
     </select>
   </label>
@@ -26,6 +26,24 @@ export default {
     values: {
       type: Array,
       required: true
+    },
+    displayValues: {
+      type: Array,
+      default: () => []
+    }
+  },
+
+  computed: {
+    options() {
+      const { values, displayValues } = this
+
+      const baseArr =
+        values.length >= displayValues.length ? values : displayValues
+
+      return baseArr.map((v, i) => ({
+        value: values[i],
+        displayValue: displayValues[i] || values[i]
+      }))
     }
   }
 }

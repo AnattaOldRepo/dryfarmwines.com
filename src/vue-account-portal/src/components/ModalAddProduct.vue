@@ -22,19 +22,33 @@
         <div>
           <div class="c-modalForm__title">{{ product.title }}</div>
           <modal-add-product-select
+            label="Choose your delivery frequency"
+            :values="deliveryFrequencies.values"
+            :displayValues="deliveryFrequencies.displayValues"
+            @change="handleSelectDeliveryFrequency"
+            ref="deliveryFrequencySelect"
+          />
+          <modal-add-product-select
             v-for="option in product.options"
             :key="option.name"
             :label="option.name"
             :values="option.values"
             ref="selects"
-            @change="handleSelect"
+            @change="handleSelectProductOption"
+          />
+          <modal-add-product-select
+            label="Address"
+            :values="addressOptions.values"
+            :displayValues="addressOptions.displayValues"
+            @change="handleSelectAddressID"
+            ref="addressSelect"
           />
           <div class="c-modalForm__add">
             <div
               v-if="currentVariant"
               class="c-modalForm__price"
             >
-              {{ currentVariant.price }}
+              ${{ currentVariant.price }}
             </div>
             <base-button
               class="c-modalForm__button"
@@ -51,7 +65,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 import ModalAddProductSelect from './ModalAddProductSelect'
 
 export default {
@@ -73,6 +87,8 @@ export default {
 
   data: () => ({
     selected: {},
+    addressID: null,
+    intervalUnit: 'month',
     currentVariant: null,
     updating: false
   }),
@@ -82,6 +98,17 @@ export default {
   },
 
   computed: {
+    ...mapState(['addresses']),
+
+    ...mapGetters(['uniqueDeliveries']),
+
+    addressOptions() {
+      return {
+        values: this.addresses.map(address => address.id),
+        displayValues: this.addresses.map(address => address.address1)
+      }
+    },
+
     currentVariantImage() {
       return this.currentVariant
         ? this.product.images.find(
@@ -91,8 +118,28 @@ export default {
     },
 
     defaultImage() {
-      console.log(this.product.image)
       return this.product.image
+    },
+
+    firstDeliverySubscription() {
+      return this.uniqueDeliveries[0].delivery[0].subscription
+    },
+
+    intervalUnit() {
+      return this.firstDeliverySubscription.charge_interval_unit
+    },
+
+    intervalFrequencies() {
+      return this.firstDeliverySubscription.interval_options[this.intervalUnit]
+    },
+
+    deliveryFrequencies() {
+      return {
+        values: this.intervalFrequencies,
+        displayValues: this.intervalFrequencies.map(
+          freq => `Every ${freq > 1 ? `${freq} months` : `month`}`
+        )
+      }
     }
   },
 
@@ -101,30 +148,50 @@ export default {
 
     addVariant() {
       this.updating = true
-      console.log('variant id', this.currentVariant.id)
-      setTimeout(() => {
-        this.updating = false
-      }, 1000);
-      // this.addProductAction(this.currentVariant.id)
+      this.addProductAction({
+        address_id: this.addressID,
+        order_interval_frequency: this.deliveryFrequency,
+        order_interval_unit: this.intervalUnit,
+        shopify_variant_id: this.currentVariant.id
+      })
     },
 
     potentiallyHide({ target }) {
-      if (!this.$refs.modal.contains(target)) {
+      if (this.$refs.modal && !this.$refs.modal.contains(target)) {
         this.hideModal()
       }
     },
 
-    handleSelect({ target: { name, value } }) {
+    handleSelectProductOption({ target: { name, value } }) {
       this.selected[name] = value
       this.getCurrentVariant(this.selected)
     },
 
+    handleSelectAddressID({ target: { value } }) {
+      this.addressID = Number(value)
+    },
+
+    handleSelectDeliveryFrequency({ target: { value } }) {
+      this.deliveryFrequency = value
+    },
+
     getSelected() {
+      // Product options select elements
       this.$refs.selects.forEach(({ $el }) => {
         const { name, value } = $el.firstElementChild
         this.selected[name] = value
       })
+
       this.getCurrentVariant(this.selected)
+
+      // Address options select element
+      const { value: addressID } = this.$refs.addressSelect.$el.firstElementChild
+      this.addressID = Number(addressID)
+
+      const {
+        value: deliveryFrequency
+      } = this.$refs.deliveryFrequencySelect.$el.firstElementChild
+      this.deliveryFrequency = Number(deliveryFrequency)
     },
 
     getCurrentVariant(selected) {
