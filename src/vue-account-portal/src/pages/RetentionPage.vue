@@ -1,14 +1,22 @@
 <template>
-  <div class="c-rRetWrapper" style="padding-bottom: 60px;">
-    <h1 class="c-rPageTitle" id="top-of-retention">Cancel Subscription</h1>
+  <div
+    class="c-rRetWrapper"
+    style="padding-bottom: 60px;"
+  >
+    <h1
+      class="c-rPageTitle"
+      id="top-of-retention"
+    >
+      Cancel Subscription
+    </h1>
+
+    <p class="c-rRet__text">
+      Dry Farm Wines’s priority is happy customers. Please tell us your reason for cancelling.
+    </p>
+
+    <hr class="c-rRetHrMobile" />
 
     <div class="c-rRetInner">
-      <p class="c-rRet__text">
-        Four Sigmatic’s priority is happy customers.<br />
-        Please tell us your reason for cancelling.
-      </p>
-
-      <hr class="c-rRetHrMobile" />
 
       <div class="c-rRet__reasons c-rRet__reasons--mobile">
         <div
@@ -20,17 +28,7 @@
         >
           <span class="c-rOptionText c-rOptionText--2">{{ reason.text }}</span>
           <div class="c-rOptionCheck">
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 26 26"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              enable-background="new 0 0 26 26"
-            >
-              <path
-                d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
-              />
-            </svg>
+            <check-icon />
           </div>
         </div>
       </div>
@@ -47,45 +45,34 @@
             class="c-rRet__reasonSelect"
             :class="{ 'is-active': reason.id === selectedReason }"
           >
-            <svg
-              version="1.1"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 26 26"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              enable-background="new 0 0 26 26"
-            >
-              <path
-                d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
-              />
-            </svg>
+            <check-icon />
           </div>
         </div>
       </div>
     </div>
 
     <div class="c-rRet__actionBox">
-      <a
-        class="c-rButton c-rButton--red"
-        @click.prevent="openDrawerEditShipDate"
+      <base-button
+        long-button
+        @click="openDrawerEditShipDate"
       >
-        <span>Change Shipping Date</span>
-      </a>
+        Change Shipping Date
+      </base-button>
 
-      <a
-        class="c-rButton c-rButton--red"
-        @click.prevent="openDrawerRetentionEditProducts"
+      <base-button
+        long-button
+        @click="openDrawerRetentionEditProducts"
       >
-        <span>Swap My Products</span>
-      </a>
+        Swap My Products
+      </base-button>
 
-      <a
-        class="c-rButton"
+      <base-button
         :disabled="reasonSelected === false"
-        :class="{ 'is-disabled': reasonSelected === false }"
-        @click.prevent="cancelSubscriptions"
+        long-button
+        @click="cancelSubscriptions"
       >
-        <span>Cancel Subscription</span>
-      </a>
+        Cancel Subscription
+      </base-button>
     </div>
 
     <div
@@ -100,13 +87,13 @@
 
 <script>
 import axios from 'axios'
-
+import CheckIcon from '@/components/icons/CheckIcon'
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 
 export default {
   name: 'Retention',
 
-  components: {},
+  components: { CheckIcon },
 
   props: {
     orders: {
@@ -205,7 +192,6 @@ export default {
     },
 
     cancelSubscriptions() {
-
       if (this.selectedReason !== null) {
         this.setCancellationUpdating(true)
 
@@ -268,41 +254,41 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../assets/css/variables';
+
 .c-rPageTitle {
-  font-weight: 400;
-  font-size: 19px;
+  color: black;
+  font-weight: 500;
+  font-size: 20px;
   line-height: 29px;
-  letter-spacing: 2px;
   margin: 0;
   padding: 54px 0 32px;
   border: none;
 }
 
 .c-rRetInner {
-  max-width: 600px;
-  margin: 0 auto 30px;
-  padding: 23px 50px 2px;
-  background-color: #f7f7f7;
+  max-width: 580px;
+  margin: 30px auto 30px;
+  padding: 1.618em 2em;
+  border: 1px solid $light-gray;
 
   @media (max-width: 767px) {
-    padding: 64px 30px 2px;
+    padding: 1.618em 2em;
   }
 }
 
 .c-rRet__text {
   font-weight: 400;
-  color: #ee2e2d;
   font-size: 19px;
   line-height: 30px;
   letter-spacing: 0;
   margin-bottom: 58px;
+  max-width: 900px;
   text-align: center;
+  margin: auto;
 
   @media (max-width: 767px) {
     padding: 0 20px;
-    br {
-      // display: none;
-    }
   }
 }
 
@@ -346,7 +332,6 @@ export default {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 29px;
-  padding-right: 38px;
   cursor: pointer;
 }
 
@@ -359,26 +344,19 @@ export default {
 
 .c-rRet__reasonSelect {
   border-radius: 50px;
-  border: 3px solid;
+  border: 2px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 15px;
+  padding: 12.5px;
   text-transform: uppercase;
   cursor: pointer;
 
   &.is-active {
-  }
-
-  &:hover {
-    // border-color: #7FC464;
-  }
-
-  &.is-active {
-    border-color: #7fc464;
-    background-color: #7fc464;
+    border-color: $primary-color;
+    background-color: $primary-color;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -386,10 +364,9 @@ export default {
 
     svg {
       display: block;
-      fill-color: white;
       fill: white;
-      margin-left: -1px;
-      margin-bottom: -1px;
+      margin-left: -4px;
+      height: 13px;
     }
   }
 
@@ -409,7 +386,7 @@ export default {
   max-width: 940px;
   margin: 0 auto 40px;
   display: grid;
-  grid-template-columns: repeat(3, calc(33.33% - 13.33px));
+  grid-template-columns: 1fr 1fr 1fr;
   grid-column-gap: 20px;
   padding: 0 20px;
 

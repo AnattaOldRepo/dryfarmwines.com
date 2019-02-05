@@ -7,7 +7,8 @@
         'button',
         {'button--secondary': secondary},
         {'is-centered': center},
-        {'is-long-button': longButton}
+        {'is-long-button': longButton},
+        {'button--disabled': disabled}
       ]"
       v-on="$listeners"
     >
@@ -23,6 +24,7 @@ export default {
     center: Boolean,
     longButton: Boolean,
     isLink: Boolean,
+    disabled: Boolean,
     href: String
   }
 }
@@ -84,6 +86,13 @@ export default {
     opacity: 0.7;
     color: $white;
   }
+}
+
+.button--disabled {
+  background-color: $disabled-color;
+  cursor: default;
+  pointer-events: none;
+  user-select: none;
 }
 </style>
 
