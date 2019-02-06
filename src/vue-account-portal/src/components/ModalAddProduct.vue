@@ -101,7 +101,10 @@ export default {
     addressOptions() {
       return {
         values: this.addresses.map(address => address.id),
-        displayValues: this.addresses.map(address => address.address1)
+        displayValues: this.addresses.map(
+          address =>
+            `${address.first_name} ${address.last_name} ${address.address1}`
+        )
       }
     },
 
