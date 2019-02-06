@@ -29,7 +29,10 @@
       :products="products"
       :subscriptions="subscriptions"
     />
-    <Modal v-if="modalOpen" />
+    <modal v-if="modalOpen" />
+    <transition name="fade">
+      <modal-add-product v-if="showAddProductModal" />
+    </transition>
   </div>
 </template>
 
@@ -39,6 +42,7 @@ import { mapState, mapMutations, mapActions } from 'vuex'
 import UpdateOverlay from '@/components/UpdateOverlay'
 import Drawer from '@/components/Drawer'
 import Modal from '@/components/Modal'
+import ModalAddProduct from '@/components/ModalAddProduct'
 import HeaderNavigation from '@/components/HeaderNavigation'
 
 export default {
@@ -46,7 +50,8 @@ export default {
     UpdateOverlay,
     HeaderNavigation,
     Drawer,
-    Modal
+    Modal,
+    ModalAddProduct
   },
 
   watch: {
@@ -93,7 +98,9 @@ export default {
       'orders',
       'products',
       'deliverySchedule'
-    ])
+    ]),
+
+    ...mapState('ui', ['showAddProductModal'])
   },
 
   methods: {

@@ -108,12 +108,15 @@ export default {
   methods: {
     ...mapMutations(['setNewProductAdded', 'setNewProductAddedSaved']),
 
+    ...mapMutations('ui', ['openAddProductModal']),
+
     ...mapActions(['swapProductAction', 'addProductAction']),
 
     addProduct() {
-      console.log('addProduct in drawer product')
-      this.updating = true
-      this.addProductAction(this.productVariantId)
+      this.openAddProductModal({ product: this.product.shopify_product })
+      // console.log('addProduct in drawer product')
+      // this.updating = true
+      // this.addProductAction(this.productVariantId)
     },
 
     swapProduct() {

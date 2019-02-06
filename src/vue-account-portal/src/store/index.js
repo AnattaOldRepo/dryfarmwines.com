@@ -3,6 +3,7 @@ import Vue from 'vue'
 import * as actions from './actions'
 import * as mutations from './mutations'
 import * as getters from './getters'
+import ui from './modules/ui'
 import { rechargeURL } from '@/config'
 
 Vue.use(Vuex)
@@ -65,5 +66,8 @@ export default new Vuex.Store({
   },
   getters,
   mutations,
-  actions
+  actions,
+  modules: {
+    ui
+  }
 })

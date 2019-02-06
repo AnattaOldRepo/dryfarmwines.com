@@ -65,24 +65,12 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex'
+import { mapState, mapGetters, mapActions, mapMutations } from 'vuex'
 import ModalAddProductSelect from './ModalAddProductSelect'
 
 export default {
   components: {
     ModalAddProductSelect
-  },
-
-  props: {
-    product: {
-      type: Object,
-      required: true
-    },
-
-    hideModal: {
-      type: Function,
-      required: true
-    }
   },
 
   data: () => ({
@@ -100,7 +88,13 @@ export default {
   computed: {
     ...mapState(['addresses']),
 
+    ...mapState('ui', ['addProductModalProduct']),
+
     ...mapGetters(['uniqueDeliveries']),
+
+    product() {
+      return this.addProductModalProduct
+    },
 
     addressOptions() {
       return {
@@ -146,6 +140,8 @@ export default {
   methods: {
     ...mapActions(['addProductAction']),
 
+    ...mapMutations('ui', ['closeAddProductModal']),
+
     addVariant() {
       this.updating = true
       this.addProductAction({
@@ -158,7 +154,7 @@ export default {
 
     potentiallyHide({ target }) {
       if (this.$refs.modal && !this.$refs.modal.contains(target)) {
-        this.hideModal()
+        this.closeAddProductModal()
       }
     },
 
@@ -216,6 +212,7 @@ img {
 
 .c-overlay {
   position: fixed;
+  z-index: 1001;
   top: 0;
   left: 0;
   right: 0;

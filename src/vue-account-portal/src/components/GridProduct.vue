@@ -16,30 +16,17 @@
         {{ productPrice }}
       </span>
 
-      <base-button @click="showProductModal = true">
+      <base-button @click="setProductModal">
         {{ updating ? '...' : 'Add' }}
       </base-button>
     </div>
-    <transition name="fade">
-      <modal-add-product
-        v-if="showProductModal"
-        :hideModal="() => showProductModal = false"
-        :product="shopifyProduct"
-      />
-    </transition>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
 import { mapState, mapMutations, mapGetters, mapActions } from 'vuex'
-import ModalAddProduct from './ModalAddProduct'
 
 export default {
-  components: {
-    ModalAddProduct
-  },
-
   props: {
     product: {
       type: Object,
@@ -103,6 +90,12 @@ export default {
 
   methods: {
     ...mapActions(['addProductAction']),
+
+    ...mapMutations('ui', ['openAddProductModal']),
+
+    setProductModal() {
+      this.openAddProductModal({ product: this.shopifyProduct })
+    },
 
     addProduct() {
       this.updating = true

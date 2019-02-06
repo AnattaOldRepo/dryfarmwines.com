@@ -7,12 +7,16 @@
       <span
         class="c-rModal__title "
         v-if="subscriptionCanceled"
-      >Cancellation</span>
+      >
+        Cancellation
+      </span>
 
       <span
         class="c-rModal__title "
         v-else
-      >WAIT!</span>
+      >
+        WAIT!
+      </span>
     </div>
 
     <div
@@ -21,7 +25,7 @@
     >
       <div class="c-rModal__content">
         <p class="c-rModal__text c-rModal__text--bold">
-          your subscription is now cancelled.
+          Your subscription is now cancelled.
         </p>
 
         <p class="c-rModal__text c-rModal__text--bold c-rModal__text--red">
@@ -62,8 +66,7 @@
     >
       <div class="c-rModal__content">
         <p class="c-rModal__text c-rModal__text--bold c-rModal__text--red">
-          TO CANCEL BEFORE YOU’VE RECEIVED 3 SHIPMENTS,<br />
-          PLEASE EMAIL
+          TO CANCEL BEFORE YOU’VE RECEIVED 3 SHIPMENTS,<br />PLEASE EMAIL
           <a href="https://dryfarmwines.zendesk.com/hc/en-us/categories/201489385-Contact-Us">CUSTOMER SUPPORT*</a>.
         </p>
 
@@ -77,19 +80,7 @@
           <br />YOU’LL BE CHARGED THE FULL PRODUCT AMOUNT + SHIPPING ON EACH
           APPLICABLE ORDER.
         </p>
-
-        <!-- <p class="c-rModal__text c-rModal__text--med">
-                    Not into a subscription?  No problem.  You can make as many one time purchases as you like.
-                </p> -->
       </div>
-
-      <!-- <div class="c-rModal__actionBox c-rModal__actionBox--single">
-                <a class="c-rButton c-rButton--red"
-                    @click.prevent="closeModal"
-                >
-                    Don't Cancel
-                </a>            
-            </div>    -->
 
       <div class="c-rModal__actionBox c-rModal__actionBox--triple">
         <a
