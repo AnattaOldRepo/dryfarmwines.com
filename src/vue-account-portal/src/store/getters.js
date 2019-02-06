@@ -158,9 +158,11 @@ export const availableProducts = (state, getters) => {
     activeShopifyProductIds.push(subscription.shopify_product_id)
   })
 
-  return products.filter(
-    product => !activeShopifyProductIds.includes(product.shopify_product_id)
-  )
+  // return products.filter(
+  //   product => !activeShopifyProductIds.includes(product.shopify_product_id)
+  // )
+
+  return products
 }
 
 export const activeSubscriptions = state => {

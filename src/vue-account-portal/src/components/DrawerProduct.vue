@@ -17,20 +17,18 @@
       class="c-rDrawerProduct__actionBox"
       v-if="drawerContentType === 'swapProduct'"
     >
-      <a class="c-rButton c-rButton--red" @click.prevent="swapProduct">
-        <span v-if="!updating">SWAP</span>
-        <span v-else>Updating...</span>
-      </a>
+      <base-button @click.prevent="swapProduct">
+        {{ !updating ? 'SWAP' : 'Updating...' }}
+      </base-button>
     </div>
 
     <div
       class="c-rDrawerProduct__actionBox"
       v-if="drawerContentType === 'addProduct'"
     >
-      <a class="c-rButton c-rButton--red" @click.prevent="addProduct">
-        <span v-if="!updating">Add & Subscribe</span>
-        <span v-else>Updating...</span>
-      </a>
+      <base-button @click.prevent="addProduct">
+        {{ !updating ? 'Add & Subscribe' : 'Updating...' }}
+      </base-button>
     </div>
   </div>
 </template>
@@ -49,18 +47,11 @@ export default {
     }
   },
 
-  data: function() {
-    return {
-      updating: false
-    }
-  },
-
-  mounted() {},
+  data: () => ({ updating: false }),
 
   computed: {
     ...mapState([
       'drawerContentType',
-
       'activeFirstDeliverySubscription',
       'activeDeliveryAddressId',
       'activeDeliveryFrequency',
@@ -113,20 +104,17 @@ export default {
     ...mapActions(['swapProductAction', 'addProductAction']),
 
     addProduct() {
-      this.openAddProductModal({ product: this.product.shopify_product })
-      // console.log('addProduct in drawer product')
-      // this.updating = true
-      // this.addProductAction(this.productVariantId)
+      this.openAddProductModal({
+        product: this.product.shopify_product,
+        mode: 'add to current subscription'
+      })
     },
 
     swapProduct() {
-      const payload = {
-        newProductVariantId: this.productVariantId,
-        newProduct: this.product
-      }
-
-      this.updating = true
-      this.swapProductAction(payload)
+      this.openAddProductModal({
+        product: this.product.shopify_product,
+        mode: 'swap'
+      })
     }
   }
 }
@@ -164,21 +152,12 @@ export default {
     padding: 10px 0px;
   }
 
-  .c-rDrawerProduct__title {
-  }
-
-  .c-rDrawerProduct__price {
-  }
-
   .c-rDrawerProduct__actionBox {
     // margin-top: 30px;
     margin-top: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .c-rDrawerProduct__button {
   }
 
   .c-editProduct__lineitems {
@@ -198,9 +177,6 @@ export default {
 
   .c-editProduct__lineitemInfoBox {
     margin-bottom: 24px;
-  }
-
-  .c-rDrawerProduct__actionBox {
   }
 
   .c-editProduct__lineitemButtonBox {

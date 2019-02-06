@@ -22,6 +22,7 @@
         <div>
           <div class="c-modalForm__title">{{ product.title }}</div>
           <modal-add-product-select
+            v-if="mode === 'add'"
             label="Choose your delivery frequency"
             :values="deliveryFrequencies.values"
             :displayValues="deliveryFrequencies.displayValues"
@@ -37,6 +38,7 @@
             @change="handleSelectProductOption"
           />
           <modal-add-product-select
+            v-if="mode === 'add'"
             label="Address"
             :values="addressOptions.values"
             :displayValues="addressOptions.displayValues"
@@ -52,10 +54,10 @@
             </div>
             <base-button
               class="c-modalForm__button"
-              @click.prevent="addVariant"
+              @click.prevent="addOrSwapProductAction"
               long-button
             >
-              {{ updating ? '...' : 'Add' }}
+              {{ updating ? '...' : mode === 'swap' ? 'Swap' : 'Add' }}
             </base-button>
           </div>
         </div>
@@ -88,7 +90,7 @@ export default {
   computed: {
     ...mapState(['addresses']),
 
-    ...mapState('ui', ['addProductModalProduct']),
+    ...mapState('ui', ['addProductModalProduct', 'mode']),
 
     ...mapGetters(['uniqueDeliveries']),
 
@@ -138,9 +140,19 @@ export default {
   },
 
   methods: {
-    ...mapActions(['addProductAction']),
+    ...mapActions(['addProductAction', 'swapProductAction']),
 
     ...mapMutations('ui', ['closeAddProductModal']),
+
+    addOrSwapProductAction() {
+      if (this.mode === 'add') {
+        this.addVariant()
+      } else if (this.mode === 'swap') {
+        this.swapProduct()
+      } else if (this.mode === 'add to current subscription') {
+        this.addVariantToCurrentSubscription()
+      }
+    },
 
     addVariant() {
       this.updating = true
@@ -148,6 +160,20 @@ export default {
         address_id: this.addressID,
         order_interval_frequency: this.deliveryFrequency,
         order_interval_unit: this.intervalUnit,
+        shopify_variant_id: this.currentVariant.id
+      })
+    },
+
+    swapProduct() {
+      this.updating = true
+      this.swapProductAction({
+        shopify_variant_id: this.currentVariant.id
+      })
+    },
+
+    addVariantToCurrentSubscription() {
+      this.updating = true
+      this.addProductAction({
         shopify_variant_id: this.currentVariant.id
       })
     },
@@ -180,14 +206,18 @@ export default {
 
       this.getCurrentVariant(this.selected)
 
-      // Address options select element
-      const { value: addressID } = this.$refs.addressSelect.$el.firstElementChild
-      this.addressID = Number(addressID)
+      if (this.mode === 'add') {
+        // Address options select element
+        const {
+          value: addressID
+        } = this.$refs.addressSelect.$el.firstElementChild
+        this.addressID = Number(addressID)
 
-      const {
-        value: deliveryFrequency
-      } = this.$refs.deliveryFrequencySelect.$el.firstElementChild
-      this.deliveryFrequency = Number(deliveryFrequency)
+        const {
+          value: deliveryFrequency
+        } = this.$refs.deliveryFrequencySelect.$el.firstElementChild
+        this.deliveryFrequency = Number(deliveryFrequency)
+      }
     },
 
     getCurrentVariant(selected) {
@@ -208,6 +238,7 @@ export default {
 img {
   width: 100%;
   transition: all 0.3s;
+  display: block;
 }
 
 .c-overlay {
@@ -228,19 +259,24 @@ img {
 .c-modal {
   margin: 1.618em;
   padding: 3em;
-  height: 100%;
-  width: 100%;
-  max-height: 500px;
-  max-width: 800px;
-  border-radius: 5px;
+  max-height: calc(100% - (1.618em * 2));
   background: $off-white;
-  box-shadow: 0 8px 80px -22px rgba(0, 0, 0, 0.33);
+  overflow: scroll;
+  max-width: 600px;
+
+  @media (min-width: 768px) {
+    max-width: 800px;
+
+    .c-modalForm {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
 }
 
 .c-modalForm {
   display: grid;
-  grid-template-columns: 1fr 1fr;
   gap: 2em;
+  margin: 0;
 }
 
 .c-modalForm__imageWrapper {

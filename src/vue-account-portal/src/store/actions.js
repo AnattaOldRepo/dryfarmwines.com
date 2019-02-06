@@ -298,7 +298,7 @@ export const updateBillingAddressAction = ({ commit, state }, payload) => {
 export const swapProductAction = ({ commit, state, dispatch }, payload) => {
   const { customerHash, subscriptionToSwap } = state
 
-  const { newProductVariantId } = payload
+  const { shopify_variant_id } = payload
 
   console.log('swa product action')
   console.log(subscriptionToSwap)
@@ -308,7 +308,7 @@ export const swapProductAction = ({ commit, state, dispatch }, payload) => {
 
   let updateUrl = `${rechargeURL}${customerHash}/subscriptions/${
     subscriptionToSwap.subscription.id
-  }/swap?shopify_variant_id=${newProductVariantId}`
+  }/swap?shopify_variant_id=${shopify_variant_id}`
 
   console.log('updateUrl', updateUrl)
   commit('setUpdateOverlay', true)

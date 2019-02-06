@@ -45,7 +45,7 @@ export default {
   font-size: 14px !important;
   line-height: 1;
   letter-spacing: 2px;
-  padding: 8px 20px;
+  padding: 5px 15px;
   text-align: center;
   font: inherit;
   font-weight: 700;
