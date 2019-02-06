@@ -11,19 +11,15 @@
       class="c-details"
       v-else
     >
-      <div class="c-details__left">
-        <!-- <base-card-wrapper title="Email & Password">
-          <base-card-item title="Email Address">
-            {{ customer.email }}
-          </base-card-item>
-          <base-card-item
-            title="Password"
-            @click="setAndOpenDrawer('changePassword')"
-          >
-            *******
-          </base-card-item>
-        </base-card-wrapper> -->
+      <SubscriptionSelect
+        :class="{ 'is-hidden': uniqueDeliveries.length > 1 }"
+        :customer="customer"
+        :delivery-schedule="deliverySchedule"
+        :products="products"
+        :subscriptions="subscriptions"
+      />
 
+      <div class="c-details__left">
         <base-card-wrapper
           v-if="deliverySchedule.length"
           title="Your Subscription"
@@ -177,12 +173,17 @@
 </template>
 
 <script>
-import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 import moment from 'moment'
+import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import SubscriptionSelect from '@/components/SubscriptionSelect'
 import { rechargeURL, previewThemeQuery } from '@/config'
 
 export default {
   name: 'Details',
+
+  components: {
+    SubscriptionSelect
+  },
 
   props: {
     customer: {
@@ -222,7 +223,12 @@ export default {
       'activeDeliveryAddress'
     ]),
 
-    ...mapGetters(['activeSubscriptions', 'activeDeliveryChargeScheduledAt', 'billingAddressGetter']),
+    ...mapGetters([
+      'activeSubscriptions',
+      'activeDeliveryChargeScheduledAt',
+      'billingAddressGetter',
+      'uniqueDeliveries'
+    ]),
 
     updateCardUrl() {
       return `/tools/recurring/customer/${this.customerHash}/card/`
@@ -240,13 +246,16 @@ export default {
 
       switch (creditCardBrand) {
         case 'Visa':
-          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
+          creditCardImage =
+            'https://cdn.shopify.com/s/files/1/0739/9341/files/visa-icon.png?9900082236234763207'
           break
         case 'American Express':
-          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
+          creditCardImage =
+            'https://cdn.shopify.com/s/files/1/0739/9341/files/amex-icon.png?9900082236234763207'
           break
         case 'Mastercard':
-          creditCardImage = 'https://cdn.shopify.com/s/files/1/0739/9341/files/mastercard-icon.png?9900082236234763207'
+          creditCardImage =
+            'https://cdn.shopify.com/s/files/1/0739/9341/files/mastercard-icon.png?9900082236234763207'
           break
         default:
           creditCardImage = false
@@ -256,7 +265,9 @@ export default {
     },
 
     cardURL() {
-      Object.keys(this.customer).forEach(k => console.log(k, ':', this.customer[k]))
+      Object.keys(this.customer).forEach(k =>
+        console.log(k, ':', this.customer[k])
+      )
       if (this.customer.customer_payment_type === 'credit') {
         return this.updateCardUrl
       } else if (this.customer.customer_payment_type === 'paypal') {
@@ -317,7 +328,7 @@ export default {
 .c-details {
   padding: 54px 20px 0;
   margin: 0 auto;
-  max-width: 1060px;
+  max-width: 1120px;
 
   @media (max-width: 1023px) {
     padding: 54px 28px 0;
