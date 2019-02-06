@@ -7,19 +7,20 @@
           class="c-rAddressList__item"
           v-for="(address, index) in addresses"
           :key="index"
+          @click="switchAddress"
         >
           <div
             class="c-rOption"
             :class="{
               'is-active':
-                !isEmptyObject(localActiveAddress) &&
-                localActiveAddress.id == address.id
+                !isEmptyObject(activeAddress) &&
+                activeAddress.id == address.id
             }"
           >
 
-            <span class="c-rOptionText c-rOptionText--1">{{
-              address.address1
-            }}</span>
+            <span class="c-rOptionText c-rOptionText--1">
+              {{ address.address1 }}
+            </span>
             <span class="c-rOptionText c-rOptionText--2">
               {{ address.address2 }}, {{ address.city }},
               {{ address.province }}
@@ -35,9 +36,7 @@
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 enable-background="new 0 0 26 26"
               >
-                <path
-                  d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
-                />
+                <path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z" />
               </svg>
             </div>
           </div>
@@ -77,14 +76,14 @@
             class="c-rForm__input"
             type="text"
             placeholder="Last Name"
-            v-model="updateFirst_name"
+            v-model="activeAddress.first_name"
           />
 
           <input
             class="c-rForm__input"
             type="text"
             placeholder="First Name"
-            v-model="updateLast_name"
+            v-model="activeAddress.last_name"
           />
         </div>
 
@@ -93,9 +92,12 @@
             name="countries"
             class="c-rForm__input"
             placeholder="Country"
-            v-model="updateCountry"
+            v-model="activeAddress.country"
           >
-            <option disabled value="">Country</option>
+            <option
+              disabled
+              value=""
+            >Country</option>
             <option value="United States">United States</option>
           </select>
         </div>
@@ -105,14 +107,14 @@
             class="c-rForm__input"
             type="text"
             placeholder="Address"
-            v-model="updateAddress1"
+            v-model="activeAddress.address1"
           />
 
           <input
             class="c-rForm__input"
             type="text"
             placeholder="Apt/Suite"
-            v-model="updateAddress2"
+            v-model="activeAddress.address2"
           />
         </div>
 
@@ -121,7 +123,7 @@
             class="c-rForm__input"
             type="text"
             placeholder="Company"
-            v-model="updateCompany"
+            v-model="activeAddress.company"
           />
         </div>
 
@@ -130,62 +132,24 @@
             class="c-rForm__input"
             type="text"
             placeholder="City"
-            v-model="updateCity"
+            v-model="activeAddress.city"
           />
 
-          <select class="c-rForm__input" v-model="updateProvince">
-            <option disabled value="">State</option>
-            <option value="AL">Alabama</option>
-            <option value="AK">Alaska</option>
-            <option value="AZ">Arizona</option>
-            <option value="AR">Arkansas</option>
-            <option value="CA">California</option>
-            <option value="CO">Colorado</option>
-            <option value="CT">Connecticut</option>
-            <option value="DE">Delaware</option>
-            <option value="DC">District Of Columbia</option>
-            <option value="FL">Florida</option>
-            <option value="GA">Georgia</option>
-            <option value="HI">Hawaii</option>
-            <option value="ID">Idaho</option>
-            <option value="IL">Illinois</option>
-            <option value="IN">Indiana</option>
-            <option value="IA">Iowa</option>
-            <option value="KS">Kansas</option>
-            <option value="KY">Kentucky</option>
-            <option value="LA">Louisiana</option>
-            <option value="ME">Maine</option>
-            <option value="MD">Maryland</option>
-            <option value="MA">Massachusetts</option>
-            <option value="MI">Michigan</option>
-            <option value="MN">Minnesota</option>
-            <option value="MS">Mississippi</option>
-            <option value="MO">Missouri</option>
-            <option value="MT">Montana</option>
-            <option value="NE">Nebraska</option>
-            <option value="NV">Nevada</option>
-            <option value="NH">New Hampshire</option>
-            <option value="NJ">New Jersey</option>
-            <option value="NM">New Mexico</option>
-            <option value="NY">New York</option>
-            <option value="NC">North Carolina</option>
-            <option value="ND">North Dakota</option>
-            <option value="OH">Ohio</option>
-            <option value="OK">Oklahoma</option>
-            <option value="OR">Oregon</option>
-            <option value="PA">Pennsylvania</option>
-            <option value="RI">Rhode Island</option>
-            <option value="SC">South Carolina</option>
-            <option value="SD">South Dakota</option>
-            <option value="TN">Tennessee</option>
-            <option value="TX">Texas</option>
-            <option value="UT">Utah</option>
-            <option value="VT">Vermont</option>
-            <option value="VA">Virginia</option>
-            <option value="WA">Washington</option>
-            <option value="WV">West Virginia</option>
-            <option value="WI">Wisconsin</option>
-            <option value="WY">Wyoming</option>
+          <select
+            class="c-rForm__input"
+            v-model="activeAddress.province"
+          >
+            <option
+              disabled
+              value=""
+            >State</option>
+            <option
+              v-for="{ name: state } in states"
+              :key="state"
+              :value="state"
+            >
+              {{ state }}
+            </option>
           </select>
         </div>
 
@@ -194,26 +158,32 @@
             class="c-rForm__input"
             type="text"
             placeholder="Postal Code"
-            v-model="updateZip"
+            v-model="activeAddress.zip"
           />
 
           <input
             class="c-rForm__input"
             type="text"
             placeholder="Phone (Optional)"
-            v-model="updatePhone"
+            v-model="activeAddress.phone"
           />
         </div>
       </div>
 
       <div class="c-rDrawer__actionBox">
-        <a class="c-rButton c-rButton--red" @click.prevent="updateAddress()">
+        <a
+          class="c-rButton c-rButton--red"
+          @click.prevent="updateAddress()"
+        >
           <span>Save Address</span>
         </a>
       </div>
     </div>
 
-    <div class="c-rDrawer__updateMessage" v-if="addressUpdating">
+    <div
+      class="c-rDrawer__updateMessage"
+      v-if="addressUpdating"
+    >
       <span
         v-if="!isEmptyObject(addressUpdateErrors)"
         class="c-rDrawer__updateMessageText"
@@ -222,18 +192,21 @@
           class="c-rForm__errorMessage"
           v-for="(error, index) in addressUpdateErrors"
           :key="index"
-          >{{ error[0] }}</span
-        >
+        >{{ error[0] }}</span>
       </span>
 
-      <span v-else class="c-rDrawer__updateMessageText">Updating...</span>
+      <span
+        v-else
+        class="c-rDrawer__updateMessageText"
+      >Updating...</span>
     </div>
 
-    <div class="c-rDrawer__updateMessage" v-if="addressSaved" transition="fade">
-      <span
-        class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success"
-        >SAVED</span
-      >
+    <div
+      class="c-rDrawer__updateMessage"
+      v-if="addressSaved"
+      transition="fade"
+    >
+      <span class="c-rDrawer__updateMessageText c-rDrawer__updateMessageText--success">SAVED</span>
       <div class="c-rDrawer__updateMessageIcon--save">
         <svg
           version="1.1"
@@ -242,9 +215,7 @@
           xmlns:xlink="http://www.w3.org/1999/xlink"
           enable-background="new 0 0 26 26"
         >
-          <path
-            d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z"
-          />
+          <path d="m.3,14c-0.2-0.2-0.3-0.5-0.3-0.7s0.1-0.5 0.3-0.7l1.4-1.4c0.4-0.4 1-0.4 1.4,0l.1,.1 5.5,5.9c0.2,0.2 0.5,0.2 0.7,0l13.4-13.9h0.1v-8.88178e-16c0.4-0.4 1-0.4 1.4,0l1.4,1.4c0.4,0.4 0.4,1 0,1.4l0,0-16,16.6c-0.2,0.2-0.4,0.3-0.7,0.3-0.3,0-0.5-0.1-0.7-0.3l-7.8-8.4-.2-.3z" />
         </svg>
       </div>
     </div>
@@ -253,55 +224,20 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
+import states from '@/assets/states'
 
 export default {
-  name: 'DrawerShippingAddresses',
-
-  props: {
-    // product: {
-    //     type: Object,
-    //     required: true
-    // }
-  },
-
-  data: function() {
-    return {
-      addressMode: 'default',
-      localActiveAddress: {},
-
-      initialFirst_name: null,
-      initialLast_name: null,
-      initialAddress1: null,
-      initialAddress2: null,
-      initialCompany: null,
-      initialCountry: null,
-      initialProvince: null,
-      intialCity: null,
-      initialZip: null,
-      // initialState: null,
-      initialPhone: null,
-
-      updateFirst_name: null,
-      updateLast_name: null,
-      updateAddress1: null,
-      updateAddress2: null,
-      updateCompany: null,
-      updateCountry: null,
-      updateProvince: null,
-      updateCity: null,
-      updateZip: null,
-      // updateState: null,
-      updatePhone: null
-    }
-  },
+  data: () => ({
+    addressMode: 'default',
+    activeAddress: {},
+    states
+  }),
 
   mounted() {
-    this.localActiveAddress = this.activeDeliveryAddress
+    this.activeAddress = this.activeDeliveryAddress
 
     this.setAddressSaved(false)
     this.setAddressUpdating(false)
-
-    this.updateAddressStatesToLocal()
   },
 
   computed: {
@@ -321,21 +257,12 @@ export default {
       let addressIndex = null
 
       this.addresses.forEach((address, index) => {
-        if (address.id === this.localActiveAddress.id) {
+        if (address.id === this.activeAddress.id) {
           addressIndex = index
         }
       })
 
       return addressIndex
-    }
-  },
-
-  watch: {
-    addressIndex: {
-      immediate: true,
-      handler: function() {
-        this.updateAddressStatesToLocal()
-      }
     }
   },
 
@@ -364,57 +291,12 @@ export default {
       this.updateAddressOnSubscriptionsAction(payload)
     },
 
-    updateAddressStatesToLocal() {
-      console.log('update Address local')
-      this.initialFirst_name = this.localActiveAddress.first_name
-      this.initialLast_name = this.localActiveAddress.last_name
-      this.initialAddress1 = this.localActiveAddress.address1
-      this.initialAddress2 = this.localActiveAddress.address2
-      this.initialCompany = this.localActiveAddress.company
-      this.initialCountry = this.localActiveAddress.country
-      this.initialProvince = this.localActiveAddress.province
-      this.initialZip = this.localActiveAddress.zip
-      this.initialCity = this.localActiveAddress.city
-      this.initialPhone = this.localActiveAddress.phone
-
-      this.updateFirst_name = this.localActiveAddress.first_name
-      this.updateLast_name = this.localActiveAddress.last_name
-      this.updateAddress1 = this.localActiveAddress.address1
-      this.updateAddress2 = this.localActiveAddress.address2
-      this.updateCompany = this.localActiveAddress.company
-      this.updateCountry = this.localActiveAddress.country
-      this.updateProvince = this.localActiveAddress.province
-      this.updateZip = this.localActiveAddress.zip
-      this.updateCity = this.localActiveAddress.city
-      this.updatePhone = this.localActiveAddress.phone
-    },
-
     updateAddress() {
-      let updateAddress = {
-        first_name: this.updateFirst_name,
-        last_name: this.updateLast_name,
-        address1: this.updateAddress1,
-        address2: this.updateAddress2,
-        company: this.updateCompany,
-        country: this.updateCountry,
-        province: this.updateProvince,
-        city: this.updateCity,
-        zip: this.updateZip,
-        state: this.updateState,
-        phone: this.updatePhone
-      }
-
-      let payload = {
-        addressToUpdateId: this.localActiveAddress.id,
+      this.updateAddressAction({
+        addressToUpdateId: this.activeAddress.id,
         addressIndex: this.addressIndex,
-        addressUpdates: updateAddress
-      }
-
-      this.updateAddressAction(payload)
-    },
-
-    selectLocalActiveAddress(address) {
-      this.localActiveAddress = address
+        addressUpdates: this.activeAddress
+      })
     },
 
     addAddressMode() {
@@ -422,7 +304,7 @@ export default {
     },
 
     editAddressMode(address) {
-      this.selectLocalActiveAddress(address)
+      this.activeAddress = address
       this.addressMode = 'edit'
     },
 
