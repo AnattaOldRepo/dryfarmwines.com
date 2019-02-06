@@ -2,18 +2,20 @@
   <div>
     <div v-if="addressMode === 'default'">
       <span class="c-rDrawer__title">Shipping Addresses</span>
-      <div class="c-rAddressList">
+      <div
+        v-if="addresses"
+        class="c-rAddressList"
+      >
         <div
           class="c-rAddressList__item"
           v-for="(address, index) in addresses"
           :key="index"
-          @click="switchAddress"
         >
           <div
             class="c-rOption"
             :class="{
               'is-active':
-                !isEmptyObject(activeAddress) &&
+                Object.keys(activeAddress).length &&
                 activeAddress.id == address.id
             }"
           >
@@ -185,7 +187,7 @@
       v-if="addressUpdating"
     >
       <span
-        v-if="!isEmptyObject(addressUpdateErrors)"
+        v-if="Object.keys(addressUpdateErrors).length"
         class="c-rDrawer__updateMessageText"
       >
         <span
