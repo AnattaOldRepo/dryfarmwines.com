@@ -80,7 +80,8 @@ export default env => {
       extensions: ['*', '.js', '.vue', '.json'],
       alias: {
         vue$: 'vue/dist/vue.esm.js',
-        '@': resolve(__dirname, './src/')
+        '@': resolve(__dirname, './src/'),
+        styles: resolve(__dirname, './src/assets/styles/')
       }
     }
   }

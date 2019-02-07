@@ -1,0 +1,69 @@
+img {
+  width: 100%;
+  transition: all 0.3s;
+  display: block;
+}
+
+.c-overlay {
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.c-modal {
+  margin: 1.618em;
+  padding: 3em;
+  max-height: calc(100% - (1.618em * 2));
+  background: $off-white;
+  overflow: scroll;
+  max-width: 600px;
+
+  @media (min-width: 768px) {
+    max-width: 800px;
+
+    .c-modalForm {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+.c-modalForm {
+  display: grid;
+  gap: 2em;
+  margin: 0;
+}
+
+.c-modalForm__imageWrapper {
+  transition: all 0.33s;
+}
+
+.c-modalForm__title {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 1em;
+}
+
+.c-modalForm__add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.c-modalForm__price {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.c-modalForm__button {
+  width: 50%;
+}
