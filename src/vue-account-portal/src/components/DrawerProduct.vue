@@ -132,7 +132,7 @@ export default {
   }
 
   .c-rDrawerProduct__imageBox {
-    width: 50px;
+    width: 80px;
     margin-right: 20px;
     box-sizing: border-box;
     display: block;

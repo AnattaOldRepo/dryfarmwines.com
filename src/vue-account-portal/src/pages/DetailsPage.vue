@@ -85,7 +85,7 @@
           </div>
           <base-button
             component-is="a"
-            :href="cardUrl"
+            :href="updateCardUrl"
             secondary
           >
             Edit Card
@@ -231,7 +231,7 @@ export default {
     ]),
 
     updateCardUrl() {
-      return `/tools/recurring/customer/${this.customerHash}/card/`
+      return `${rechargeURL}${this.customerHash}/card${previewThemeQuery}`
     },
 
     creditCardImage() {

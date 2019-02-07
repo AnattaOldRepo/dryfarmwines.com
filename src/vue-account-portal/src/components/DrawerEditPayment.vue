@@ -16,10 +16,7 @@
     </div>
 
     <div class="c-rDrawer__actionBox">
-      <base-button
-        is-link
-        :href="`${rechargeURL}${this.customerHash}/card${previewThemeQuery}`"
-      >
+      <base-button :href="`${rechargeURL}${this.customerHash}/card${previewThemeQuery}`">
         Edit Card
       </base-button>
     </div>

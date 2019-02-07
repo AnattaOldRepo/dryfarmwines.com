@@ -397,7 +397,6 @@
             <base-button
               class="c-sub__sectionButton"
               to="/retention"
-              is-router-link
               secondary
             >
               Cancel Subscription
