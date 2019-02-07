@@ -18,7 +18,10 @@
       >
         <div class="c-editProduct__lineitemContent">
           <div class="c-editProduct__lineitemImageBox">
-            <img :src="productImages[item.subscription.shopify_product_id]" />
+            <img
+              :src="getProductVariantImage(products, item.subscription)"
+              alt=""
+            />
           </div>
 
           <div class="c-editProduct__lineitemInfoBox">
@@ -131,6 +134,7 @@
 
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import productVariantImage from '@/mixins/productVariantImage'
 
 export default {
   name: 'DrawerEditProduct',
@@ -143,11 +147,18 @@ export default {
       'productEditDrawerUpdating',
       'productEditDrawerSaved',
       'activeDeliveryFrequency',
-      'activeDeliveryIntervalUnit'
+      'activeDeliveryIntervalUnit',
+      'products'
     ]),
 
-    ...mapGetters(['productImages', 'activeDeliveryScheduleGetter', 'activeSubscriptions'])
+    ...mapGetters([
+      'productImages',
+      'activeDeliveryScheduleGetter',
+      'activeSubscriptions'
+    ])
   },
+
+  mixins: [productVariantImage],
 
   methods: {
     ...mapMutations([
@@ -220,12 +231,16 @@ export default {
       } else if (addOrRemove === 'remove') {
         newQuantity = currentQuantity - 1
       } else {
-        console.log('updateQuantity requires either or "add" or "remove" as a param')
+        console.log(
+          'updateQuantity requires either or "add" or "remove" as a param'
+        )
         return
       }
 
       if (newQuantity <= 0) {
-        console.log('Unable to remove product by changing quantity, remove entire subscription')
+        console.log(
+          'Unable to remove product by changing quantity, remove entire subscription'
+        )
         this.removeProduct(item, index)
       } else {
         payload = {

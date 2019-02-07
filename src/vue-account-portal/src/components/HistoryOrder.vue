@@ -5,10 +5,8 @@
       :class="{ 'is-open': orderOpen }"
       @click="toggleOrder"
     >
-      <span
-        >{{ prettyOrderProcessedDate }} -
-        {{ formatMoney(order.total_price) }}</span
-      >
+      <span>{{ prettyOrderProcessedDate }} -
+        {{ formatMoney(order.total_price) }}</span>
       <svg
         version="1.1"
         id="Capa_1"
@@ -22,13 +20,14 @@
         style="enable-background:new 0 0 306 306;"
         xml:space="preserve"
       >
-        <polygon
-          points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		"
-        />
+        <polygon points="94.35,0 58.65,35.7 175.95,153 58.65,270.3 94.35,306 247.35,153 		" />
       </svg>
     </div>
 
-    <div class="c-rOrderMain" v-if="orderOpen">
+    <div
+      class="c-rOrderMain"
+      v-if="orderOpen"
+    >
       <div class="c-rOrderMain__info">
         <span>ORDER STATUS: {{ order.status }}</span>
         <span class="u-font-bold">ORDER #: {{ order.id }}</span>
@@ -42,31 +41,27 @@
         >
           <div class="c-rOrderMain__topItemWrap">
             <div class="c-rOrderMain__itemItemImageBox">
-              <img :src="productImages[item.shopify_product_id]" />
+              <img :src="getProductVariantImage(products, item)" />
             </div>
 
             <div class="c-rOrderMain__lineItemContentBox">
               <p>{{ item.title }}</p>
-              <div
-                class="c-rOrderMain__itemItemPricingBox c-rOrderMain__itemItemPricingBox--desktop"
-              >
+              <div class="c-rOrderMain__itemItemPricingBox c-rOrderMain__itemItemPricingBox--desktop">
                 <span class="is-faded">QTY: {{ item.quantity }}</span>
                 <span class="is-faded">{{ '$' + item.price }}</span>
                 <span class="u-font-bold">{{
                   '$' + item.price * item.quantity
-                }}</span>
+                  }}</span>
               </div>
             </div>
           </div>
 
-          <div
-            class="c-rOrderMain__itemItemPricingBox c-rOrderMain__itemItemPricingBox--mobile"
-          >
+          <div class="c-rOrderMain__itemItemPricingBox c-rOrderMain__itemItemPricingBox--mobile">
             <span class="is-faded">QTY: {{ item.quantity }}</span>
             <span class="is-faded">{{ '$' + item.price }}</span>
             <span class="u-font-bold">{{
               '$' + item.price * item.quantity
-            }}</span>
+              }}</span>
           </div>
         </div>
       </div>
@@ -81,7 +76,7 @@
           <span>SHIPPING</span>
           <span v-if="order.total_shipping">{{
             formatMoney(order.total_shipping)
-          }}</span>
+            }}</span>
           <span v-else>--</span>
         </div>
 
@@ -95,7 +90,7 @@
           <span>DISCOUNT</span>
           <span v-if="order.total_discounts">{{
             formatMoney(order.total_discounts)
-          }}</span>
+            }}</span>
           <span v-else>--</span>
         </div>
 
@@ -109,7 +104,8 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
+import productVariantImage from '@/mixins/productVariantImage'
 import moment from 'moment'
 
 export default {
@@ -128,9 +124,11 @@ export default {
     }
   },
 
-  mounted() {},
+  mixins: [productVariantImage],
 
   computed: {
+    ...mapState(['products']),
+
     ...mapGetters(['productImages']),
 
     prettyOrderProcessedDate() {
@@ -195,9 +193,6 @@ export default {
   &.is-open svg {
     transform: rotate(270deg);
   }
-}
-
-.c-rOrderMain {
 }
 
 .c-rOrderMain__info {

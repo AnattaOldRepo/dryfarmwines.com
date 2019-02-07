@@ -159,12 +159,6 @@
       </div>
 
       <div class="c-rModal__actionBox c-rModal__actionBox--single">
-        <!-- <a class="c-rButton c-rButton--red"
-                    @click.prevent="closeModal"
-                >
-                    Don't Cancel
-                </a> -->
-
         <a
           class="c-rButton c-rButton--red"
           @click.prevent="goToRetention"
@@ -239,7 +233,6 @@ export default {
   methods: {
     ...mapMutations([
       'closeModal',
-      'openModal',
       'toggleModal',
       'setDrawerContentType',
       'openDrawer'

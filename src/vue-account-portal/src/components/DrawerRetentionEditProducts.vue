@@ -15,7 +15,10 @@
       >
         <div class="c-editProduct__lineitemContent">
           <div class="c-editProduct__lineitemImageBox">
-            <img :src="productImages[item.subscription.shopify_product_id]" />
+            <img
+              :src="getProductVariantImage(item.subscription)"
+              alt=""
+            />
           </div>
 
           <div>
@@ -69,17 +72,12 @@
 
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
+import productVariantImage from '@/mixins/productVariantImage'
 
 export default {
   name: 'DrawerRetentionEditProducts',
 
-  props: {},
-
-  data: function() {
-    return {}
-  },
-
-  mounted() {},
+  mixins: [productVariantImage],
 
   computed: {
     ...mapState([
@@ -90,7 +88,7 @@ export default {
       'productEditDrawerSaved'
     ]),
 
-    ...mapGetters(['productImages', 'activeDeliveryScheduleGetter'])
+    ...mapGetters(['activeDeliveryScheduleGetter'])
   },
 
   methods: {

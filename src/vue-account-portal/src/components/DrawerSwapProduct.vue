@@ -8,13 +8,12 @@
       class="c-rDrawerProduct"
       style="30px 16px 8px 30px; margin-bottom: 28px"
     >
-      <div class="c-rDrawerProduct__info" style="margin-bottom: 0">
+      <div
+        class="c-rDrawerProduct__info"
+        style="margin-bottom: 0"
+      >
         <div class="c-rDrawerProduct__imageBox">
-          <img
-            :src="
-              productImages[subscriptionToSwap.subscription.shopify_product_id]
-            "
-          />
+          <img :src="getProductVariantImage(products, subscriptionToSwap.subscription)" />
         </div>
 
         <div class="c-rDrawerProduct__contentBox">
@@ -23,7 +22,7 @@
           </p>
           <span class="c-rDrawerProduct__price">{{
             formatMoney(subscriptionToSwap.subscription.price)
-          }}</span>
+            }}</span>
         </div>
       </div>
     </div>
@@ -40,7 +39,8 @@
 
 <script>
 import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
-import DrawerProduct from '../components/DrawerProduct.vue'
+import productVariantImage from '@/mixins/productVariantImage'
+import DrawerProduct from '@/components/DrawerProduct'
 
 export default {
   name: 'DrawerSwapProduct',
@@ -61,17 +61,13 @@ export default {
     }
   },
 
-  data: function() {
-    return {}
-  },
-
-  mounted() {},
+  mixins: [productVariantImage],
 
   computed: {
     ...mapState([
       'drawerOpen',
       'drawerContentType',
-
+      'products',
       'subscriptionToSwap',
       'subscriptionToSwapIndex'
     ]),

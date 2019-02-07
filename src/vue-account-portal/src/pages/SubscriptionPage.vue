@@ -94,9 +94,10 @@
                     @click="setAndOpenDrawer('editProduct')"
                   >
                     <div class="c-sub__lineItemImageImageBox">
-                      <img :src="
-                          productImages[item.subscription.shopify_product_id]
-                        " />
+                      <img
+                        :src="getProductVariantImage(products, item.subscription)"
+                        alt=""
+                      />
                     </div>
 
                     <p>{{ item.subscription.product_title }}</p>
@@ -243,9 +244,10 @@
                       @click="setAndOpenDrawer('editProduct')"
                     >
                       <div class="c-sub__lineItemImageImageBox">
-                        <img :src="
-                            productImages[item.subscription.shopify_product_id]
-                          " />
+                        <img
+                          :src="getProductVariantImage(products, item.subscription)"
+                          alt=""
+                        />
                       </div>
 
                       <p>{{ item.subscription.product_title }}</p>
@@ -394,7 +396,8 @@
             </div>
             <base-button
               class="c-sub__sectionButton"
-              @click="openModal()"
+              to="/retention"
+              is-router-link
               secondary
             >
               Cancel Subscription
@@ -436,6 +439,7 @@ import { mapState, mapMutations, mapActions, mapGetters } from 'vuex'
 import GridProduct from '@/components/GridProduct'
 import SubscriptionSelect from '@/components/SubscriptionSelect'
 import moment from 'moment'
+import productVariantImage from '@/mixins/productVariantImage'
 import { rechargeURL, siteURL } from '@/config'
 
 export default {
@@ -468,6 +472,8 @@ export default {
     }
   },
 
+  mixins: [productVariantImage],
+
   data: () => ({
     initialDataLoading: true,
     visibleProductsCount: 6,
@@ -495,12 +501,12 @@ export default {
       'activeDeliveryAddressId',
       'activeDeliveryAddress',
       'activeDeliveryFrequency',
-      'activeDeliveryIntervalUnit'
+      'activeDeliveryIntervalUnit',
+      'products'
     ]),
 
     ...mapGetters([
       'activeDeliveryAddressGetter',
-      'productImages',
       'availableProducts',
       'activeDeliveryChargeScheduledAt',
       'uniqueDeliveries',
@@ -825,6 +831,10 @@ export default {
 .c-sub__sectionButton {
   margin-top: 54px;
   justify-content: flex-start;
+
+  a {
+    color: #fff;
+  }
 
   @media (max-width: 1023px) {
     justify-content: center;

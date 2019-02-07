@@ -57,7 +57,7 @@
               @click.prevent="addOrSwapProductAction"
               long-button
             >
-              {{ updating ? '...' : mode === 'swap' ? 'Swap' : 'Add' }}
+              {{ mode === 'swap' ? 'Swap' : 'Add' }}
             </base-button>
           </div>
         </div>

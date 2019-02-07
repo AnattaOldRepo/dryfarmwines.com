@@ -1,8 +1,9 @@
 <template>
   <div class="button__wrapper">
     <component
-      :is="!isLink ? 'button' : 'a'"
+      :is="!isLink ? !isRouterLink ? 'button' : 'router-link' : 'a'"
       :href="isLink ? href : null"
+      :to="isRouterLink ? to : null"
       :class="[
         'button',
         {'button--secondary': secondary},
@@ -24,8 +25,10 @@ export default {
     center: Boolean,
     longButton: Boolean,
     isLink: Boolean,
+    isRouterLink: Boolean,
     disabled: Boolean,
-    href: String
+    href: String,
+    to: [String, Object]
   }
 }
 </script>
