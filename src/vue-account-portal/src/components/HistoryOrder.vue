@@ -153,8 +153,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/css/variables';
-
 .c-order {
   width: 100%;
   max-width: 600px;

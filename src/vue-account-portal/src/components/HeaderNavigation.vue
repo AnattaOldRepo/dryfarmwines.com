@@ -329,8 +329,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/css/variables';
-
 .c-rHeader {
   background: $header-background-color;
   box-sizing: border-box;

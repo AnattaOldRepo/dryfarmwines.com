@@ -334,10 +334,11 @@
   </div>
 </template>
 
-<style lang="sass" scoped>
-.c-rUpdateOverlay__spinner
-  display: block
-  width: 100px
-  height: 100px
-  margin: 0 auto
+<style lang="scss" scoped>
+.c-rUpdateOverlay__spinner {
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+}
 </style>

@@ -254,8 +254,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/css/variables';
-
 .c-rPageTitle {
   color: black;
   font-weight: 500;

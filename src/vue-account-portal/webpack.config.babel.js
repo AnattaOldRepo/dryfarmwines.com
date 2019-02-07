@@ -26,12 +26,34 @@ export default env => {
         },
         {
           test: /\.scss$/,
-          use: ['vue-style-loader', 'css-loader', 'sass-loader']
+          use: [
+            'vue-style-loader',
+            'css-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                data: `
+                  @import "@/assets/styles/_abstracts.scss";
+                `
+              }
+            }
+          ]
         },
-        {
-          test: /\.sass$/,
-          use: ['vue-style-loader', 'css-loader', 'sass-loader?indentedSyntax']
-        },
+        // {
+        //   test: /\.sass$/,
+        //   use: [
+        //     'vue-style-loader',
+        //     'css-loader',
+        //     {
+        //       loader: 'sass-loader?indentedSyntax',
+        //       options: {
+        //         data: `
+        //         @import "@/assets/styles/setup/_variables.scss"
+        //       `
+        //       }
+        //     }
+        //   ]
+        // },
         {
           test: /\.vue$/,
           loader: 'vue-loader',

@@ -1,4 +1,3 @@
-import axios from 'axios'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
@@ -11,18 +10,12 @@ import RetentionPage from './pages/RetentionPage.vue'
 import store from './store'
 import './components/_globals'
 
-import '@/assets/css/index.scss'
+import '@/assets/styles/global.scss'
 
 Vue.use(VueRouter)
 Vue.use(Vuex)
 
 Vue.mixin({
-  data: function() {
-    return {}
-  },
-
-  computed: {},
-
   methods: {
     isEmptyObject: function(object) {
       return Object.keys(object).length === 0
