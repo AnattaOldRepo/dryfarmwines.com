@@ -1,0 +1,94 @@
+.c-rDrawerEditProduct {
+  .c-rDrawerEditProduct__shipText {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: 0;
+    text-align: center;
+    display: block;
+  }
+}
+
+.c-editProduct__lineitems {
+  margin-left: -30px;
+  margin-right: -30px;
+}
+
+.c-editProduct__lineitem {
+  background-color: #fff;
+  margin-bottom: 4px;
+  padding: 30px 16px 30px 30px;
+}
+
+.c-editProduct__lineitemContent {
+  display: flex;
+}
+
+.c-editProduct__lineitemInfoBox {
+  margin-bottom: 24px;
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.c-rDrawerProduct__actionBox {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-editProduct__lineitemEdit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.c-editProduct__lineitemImageBox {
+  width: 50px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  display: block;
+
+  img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.c-editProduct__lineitemButtonBox {
+  display: flex;
+  align-items: center;
+
+  .c-button {
+    &:first-child {
+      padding-left: 0;
+      margin-right: 10px;
+    }
+  }
+}
+
+.c-editProduct__lineitemQuantityBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+
+  span {
+    padding: 7px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.c-editProduct__lineitemQuantity {
+      border: 1px solid black;
+    }
+  }
+
+  svg {
+    width: 10px;
+    height: 10px;
+  }
+}

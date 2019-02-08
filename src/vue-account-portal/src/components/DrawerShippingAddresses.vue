@@ -321,46 +321,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.c-rAddressList__item {
-  display: grid;
-  display: grid;
-  grid-template-columns: 1fr 30px;
-  grid-column-gap: 14px;
-  margin-bottom: 20px;
-
-  &:last-of-type {
-    margin-bottom: 0;
-  }
-}
-
-.c-rAddressList__itemEditAddress {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: #000;
-
-    span {
-      color: #000;
-    }
-  }
-
-  svg {
-    height: 20px;
-    width: 20px;
-    margin-bottom: 2px;
-  }
-
-  span {
-    font-size: 13px;
-    line-height: 16px;
-    letter-spacing: 0;
-  }
-}
+<style lang="scss" scoped>
+@import '~styles/components/drawer-shipping-addresses';
 </style>

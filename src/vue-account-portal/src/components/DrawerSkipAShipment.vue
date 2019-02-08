@@ -133,44 +133,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.c-rDrawerEditShipDate {
-  padding: 0 14px;
-
-  .c-rDrawer__updateMessage {
-    margin: 22px auto 38px;
-  }
-
-  .c-rDrawer__title--nextShipment {
-    text-transform: uppercase;
-    font-size: 24px;
-    margin-top: 20px;
-    margin-bottom: 6px;
-  }
-
-  .c-rDrawer__text {
-    font-weight: 300;
-    font-size: 18px;
-    line-height: 16px;
-    text-align: center;
-
-    &.c-rDrawer__text--med {
-      font-size: 18px;
-      line-height: 25px;
-      margin-bottom: 6px;
-      font-weight: 300;
-    }
-  }
-}
-
-.c-shipsOnDate {
-  font-size: 24px;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin-bottom: 1.618em;
-}
-
-.c-skipAShipmentButton {
-  margin: 20px 0 3em;
-}
+<style lang="scss" scoped>
+@import '~styles/components/drawer-skip-a-shipment';
 </style>

@@ -162,11 +162,11 @@
   cursor: pointer;
 
   &:hover {
-    border-color: red;
+    border-color: $primary-color;
   }
 
   &.is-active {
-    border-color: red;
+    border-color: $primary-color;
 
     .c-rOptionCheck {
       display: block;
@@ -211,7 +211,7 @@
   transform: translateX(-50%) translateY(-50%);
   left: 50%;
   top: -2px;
-  background-color: red;
+  background-color: $primary-color;
   border-radius: 100px;
   color: #fff;
   width: 24px;

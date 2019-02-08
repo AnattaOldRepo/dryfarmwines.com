@@ -1,0 +1,56 @@
+.c-details {
+  padding: 54px 20px 0;
+  margin: 0 auto;
+  max-width: 1120px;
+
+  @media (max-width: 1023px) {
+    padding: 54px 28px 0;
+  }
+}
+
+.c-details__paypalInfo {
+  a {
+    color: $primary-color;
+    font-weight: 700;
+  }
+}
+
+.c-details__left {
+  margin-right: 68px;
+  float: left;
+  max-width: 350px;
+  width: 100%;
+
+  @media (max-width: 1023px) {
+    float: none;
+    margin: 0 auto;
+  }
+}
+
+.c-details__right {
+  float: left;
+  width: 100%;
+  max-width: 350px;
+}
+
+.c-details__card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 10px;
+
+  img {
+    width: 30px;
+    margin-right: 10px;
+  }
+
+  span {
+    display: inline-block;
+    margin-bottom: 0;
+    line-height: 1;
+
+    &:first-of-type {
+      margin-right: 5px;
+    }
+  }
+}

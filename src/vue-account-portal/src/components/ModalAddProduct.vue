@@ -236,5 +236,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~styles/components/modal-add-product';
+@import "~styles/components/modal-add-product";
 </style>

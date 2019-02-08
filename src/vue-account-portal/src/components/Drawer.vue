@@ -51,7 +51,6 @@ import DrawerAddProduct from './DrawerAddProduct'
 import DrawerEditShipDate from './DrawerEditShipDate'
 import DrawerEditFrequency from './DrawerEditFrequency'
 // import DrawerEditAddress from './DrawerEditAddress'
-import DrawerAddAddress from './DrawerAddAddress'
 import DrawerEditPayment from './DrawerEditPayment'
 import DrawerEditBillingAddress from './DrawerEditBillingAddress'
 import DrawerShippingAddresses from './DrawerShippingAddresses'
@@ -69,7 +68,6 @@ export default {
     DrawerEditShipDate,
     DrawerEditFrequency,
     // DrawerEditAddress,
-    DrawerAddAddress,
     DrawerEditPayment,
     DrawerEditBillingAddress,
     DrawerShippingAddresses,
@@ -89,7 +87,6 @@ export default {
       addProduct: DrawerAddProduct,
       editShipDate: DrawerEditShipDate,
       editFrequency: DrawerEditFrequency,
-      addAddress: DrawerAddAddress,
       editPayment: DrawerEditPayment,
       // editCard: DrawerEditCard,
       editBillingAddress: DrawerEditBillingAddress,
@@ -117,99 +114,5 @@ export default {
 </script>
 
 <style lang="scss">
-.c-rDrawer {
-  position: fixed;
-  z-index: 1001;
-  width: 100%;
-  max-width: 400px;
-  height: 100%;
-  transform: translateX(100%);
-  transition: transform 0.3s ease;
-  top: 0;
-  right: 0;
-  background-color: #f7f7f7;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.05);
-  font-size: 18px;
-
-  &.is-open {
-    transform: translateX(0);
-  }
-}
-
-.c-rDrawer__inner {
-  padding: 50px 30px;
-  overflow-y: scroll;
-  max-height: 100vh;
-}
-
-.c-rDrawer__title {
-  display: block;
-  margin-bottom: 1em;
-  text-align: center;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 52px;
-  text-transform: capitalize;
-}
-
-.c-rDrawer__close {
-  position: absolute;
-  right: 30px;
-  top: 30px;
-  cursor: pointer;
-
-  svg {
-    width: 13px;
-    height: 13px;
-  }
-}
-
-.c-rDrawer__actionBox {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
-  .c-rButton {
-    margin-bottom: 10px;
-  }
-}
-
-.c-rDrawer__updateMessage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 30px auto;
-}
-
-.c-rDrawer__updateMessageText {
-  font-weight: 700;
-  font-size: 13px;
-  line-height: 1;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-
-  &.c-rDrawer__updateMessageText--success {
-    color: #7fc464;
-  }
-}
-
-.c-rDrawer__updateMessageIcon--save {
-  background-color: #7fc464;
-  border-radius: 100px;
-  color: #fff;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 6px;
-
-  svg {
-    width: 13px;
-    fill: #fff;
-    margin-left: -1px;
-    margin-bottom: -1px;
-  }
-}
+@import '~styles/components/drawer';
 </style>

@@ -38,7 +38,7 @@ export default {
 
 .button {
   background-color: $primary-color;
-  font-family: 'Open Sans';
+  font-family: $secondary-font;
   color: $white;
   text-transform: uppercase;
   font-size: 14px !important;

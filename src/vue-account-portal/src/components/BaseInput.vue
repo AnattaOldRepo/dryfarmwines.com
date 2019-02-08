@@ -39,7 +39,7 @@ export default {
 <style lang="scss" scoped>
 .input {
   width: 100%;
-  font-family: Avenir;
+  font-family: $primary-font;
   font-weight: 400;
   font-size: 16px;
   line-height: 25px;

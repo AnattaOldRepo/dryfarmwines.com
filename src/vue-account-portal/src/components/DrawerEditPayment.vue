@@ -85,39 +85,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.c-rDrawerEditPayment {
-  .c-sub__card {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    margin-bottom: 20px;
-
-    img {
-      width: 50px;
-      margin-right: 10px;
-    }
-
-    span {
-      display: inline-block;
-      margin-bottom: 0;
-      line-height: 1;
-
-      &:first-of-type {
-        margin-right: 5px;
-      }
-    }
-  }
-}
-
-.c-rForm__inputWrapper {
-  width: 100%;
-
-  &--third {
-    display: grid;
-    grid-template-columns: repeat(3, calc(1fr - 7px));
-    grid-column: 20px;
-  }
-}
+<style lang="scss" scoped>
+@import '~styles/components/drawer-edit-payment';
 </style>

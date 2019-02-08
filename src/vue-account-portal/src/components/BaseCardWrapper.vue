@@ -19,12 +19,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.c-cardWrapper {
-  margin: 0 0 3em;
-}
-
-.c-cardWrapper__cards {
-  border: 1px solid $light-gray;
-}
+@import '~styles/components/base-card-wrapper';
 </style>
 

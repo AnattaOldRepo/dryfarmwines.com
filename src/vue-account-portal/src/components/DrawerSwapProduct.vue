@@ -98,21 +98,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.c-rDrawerSwapProduct {
-  margin-left: -30px;
-  margin-right: -30px;
-
-  .c-rDrawer__subtitle {
-    font-size: 13px;
-    line-height: 16px;
-    letter-spacing: 2px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    display: block;
-    text-align: center;
-    text-transform: uppercase;
-    margin-bottom: 13px;
-  }
-}
+<style lang="scss" scoped>
+@import '~styles/components/drawer-swap-product';
 </style>

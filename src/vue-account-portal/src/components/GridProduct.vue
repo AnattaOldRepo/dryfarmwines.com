@@ -36,10 +36,6 @@ export default {
 
   data: () => ({ updating: false, showProductModal: false }),
 
-  mounted() {
-    console.log(this.product)
-  },
-
   computed: {
     ...mapState([
       'baseUrl',
@@ -105,49 +101,6 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.c-subProductGrid__product {
-  padding: 0 10px;
-
-  @media (max-width: 1023px) {
-    .c-rButton {
-      padding: 10px 16px;
-    }
-  }
-}
-
-.c-subProduct__productImageBox {
-  width: 70%;
-  margin: 0 auto;
-  min-width: 160px;
-  max-width: 160px;
-}
-
-.c-subProduct__productImage {
-  max-width: 100%;
-}
-
-.c-subProduct__productInfoBox {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.c-subProduct__productTitle {
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 16px;
-  letter-spacing: 0;
-  margin-bottom: 13px;
-  text-align: center;
-}
-
-.c-subProduct__productPrice {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 19px;
-  letter-spacing: 0;
-  margin-bottom: 13px;
-}
+<style lang="scss" scoped>
+@import '~styles/components/grid-product.scss';
 </style>

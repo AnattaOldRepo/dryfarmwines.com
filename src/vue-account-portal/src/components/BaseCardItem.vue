@@ -53,52 +53,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.c-cardItem {
-  display: block;
-  padding: 0;
-  width: 100%;
-  background: none;
-  text-align: left;
-  text-transform: none;
-  font-size: 14px;
-  color: $dark-text;
-
-  &.has-pointer {
-    cursor: pointer;
-  }
-
-  &:not(:last-of-type) .c-cardItem__wrapper {
-    border-bottom: 1px solid $light-gray;
-  }
-}
-
-.c-cardItem__wrapper {
-  width: calc(100% - 3.236em);
-  margin: auto;
-  padding: 1.618em 0;
-  display: grid;
-  grid-template-columns: 1fr auto;
-}
-
-.c-cardItem__title {
-  width: 100%;
-  font-weight: 700;
-  grid-column: 1 / 2;
-  text-transform: uppercase;
-  padding: 0;
-  margin-bottom: 0.618em;
-}
-
-.c-cardItem__content {
-  margin-right: auto;
-  grid-column: 1 / 2;
-  font-weight: normal;
-  line-height: 1.5;
-}
-
-.c-cardItem__chevron {
-  height: 100%;
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
-}
+@import "~styles/components/base-card-item";
 </style>
