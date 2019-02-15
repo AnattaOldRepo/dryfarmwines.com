@@ -78,7 +78,6 @@ export default {
   data: () => ({
     selected: {},
     addressID: null,
-    intervalUnit: 'month',
     currentVariant: null,
     updating: false
   }),
@@ -125,7 +124,7 @@ export default {
     },
 
     intervalUnit() {
-      return this.firstDeliverySubscription.charge_interval_unit
+      return this.firstDeliverySubscription.charge_interval_unit || 'month'
     },
 
     intervalFrequencies() {
